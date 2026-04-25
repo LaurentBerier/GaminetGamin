@@ -18,15 +18,7 @@ const queryClient = new QueryClient();
 function RedirectToFr() {
   const [, setLocation] = useLocation();
   useEffect(() => {
-    const saved = localStorage.getItem("gg_lang");
-    if (saved === "en") setLocation("/en");
-    else if (saved === "es") setLocation("/es");
-    else {
-      const nav = navigator.language.toLowerCase();
-      if (nav.startsWith("es")) setLocation("/es");
-      else if (nav.startsWith("en")) setLocation("/en");
-      else setLocation("/fr");
-    }
+    setLocation("/fr");
   }, [setLocation]);
   return null;
 }
