@@ -44,8 +44,7 @@
     "fait_quebec": "Fait au Québec",
     "retour": "Retour à la boutique",
     "partager": "Partager",
-    "partage_profits": "de chaque vente est remis à",
-    "et_organisme": "et",
+    "partage_profits": "de chaque vente est versé à",
     "soumission_badge": "Dessin soumis par la communauté"
   },
   "apropos": {
@@ -111,7 +110,7 @@
     "step3_titre": "On choisit, on imprime, on partage",
     "step3_texte": "Si on choisit son dessin, il devient une vraie collection. L'artiste reçoit un chandail gratuit + une portion des profits sur chaque vente.",
     "cause_titre": "La cause derrière les dessins",
-    "cause_texte": "Pour chaque vente d'un design soumis par la communauté, 15% va directement à l'artiste (ou à ses parents), et 10% est versé à un organisme jeunesse québécois choisi par l'enfant.",
+    "cause_texte": "Pour chaque vente d'un design soumis par la communauté, 10% est versé à un organisme jeunesse québécois choisi par l'enfant créateur.",
     "cause_organismes": "Les organismes partenaires",
     "cause_org1": "Fondation Jeunes en Tête",
     "cause_org2": "Grands Frères Grandes Soeurs",
@@ -140,7 +139,7 @@
     "faq2_q": "Mon enfant garde-t-il les droits sur son dessin?",
     "faq2_r": "Absolument. On demande seulement une licence d'impression et de vente. Ton enfant reste le propriétaire de son œuvre.",
     "faq3_q": "Combien gagne mon enfant?",
-    "faq3_r": "15% de chaque vente du produit, versé par chèque ou crédit boutique au choix du parent. Plus 10% à l'organisme jeunesse de son choix.",
+    "faq3_r": "10% de chaque vente va à l'organisme jeunesse choisi par l'enfant, versé par chèque ou crédit boutique au choix du parent.",
     "faq4_q": "Combien de temps avant qu'on vous réponde?",
     "faq4_r": "On examine toutes les soumissions et on répond dans un délai de 4 à 6 semaines. Merci de votre patience!"
   }

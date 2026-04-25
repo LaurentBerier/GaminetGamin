@@ -5,27 +5,9 @@ import { useState } from "react";
 import { Menu, X, ShoppingBag } from "lucide-react";
 
 const routeMap = {
-  fr: {
-    boutique: "/fr/boutique",
-    apropos: "/fr/apropos",
-    artistes: "/fr/artistes",
-    contact: "/fr/contact",
-    p_tits_artistes: "/fr/p-tits-artistes",
-  },
-  en: {
-    boutique: "/en/shop",
-    apropos: "/en/about",
-    artistes: "/en/little-monsters",
-    contact: "/en/contact",
-    p_tits_artistes: "/en/little-artists",
-  },
-  es: {
-    boutique: "/es/tienda",
-    apropos: "/es/nosotros",
-    artistes: "/es/pequenos-monstruos",
-    contact: "/es/contacto",
-    p_tits_artistes: "/es/pequenos-artistas",
-  },
+  fr: { boutique: "/fr/boutique", apropos: "/fr/apropos", artistes: "/fr/artistes", contact: "/fr/contact" },
+  en: { boutique: "/en/shop", apropos: "/en/about", artistes: "/en/little-monsters", contact: "/en/contact" },
+  es: { boutique: "/es/tienda", apropos: "/es/nosotros", artistes: "/es/pequenos-monstruos", contact: "/es/contacto" },
 };
 
 export function Header() {
@@ -38,7 +20,6 @@ export function Header() {
 
   const navLinks = [
     { href: routes.boutique, label: t.nav.boutique },
-    { href: routes.p_tits_artistes, label: t.nav.p_tits_artistes, highlight: true },
     { href: routes.artistes, label: t.nav.artistes },
     { href: routes.apropos, label: t.nav.apropos },
     { href: routes.contact, label: t.nav.contact },
@@ -67,8 +48,6 @@ export function Header() {
                 className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
                   location === link.href
                     ? "text-stone-900 border-b-2 border-gg-gold pb-0.5"
-                    : link.highlight
-                    ? "text-gg-green hover:text-stone-900 font-bold"
                     : "text-stone-500 hover:text-stone-900"
                 }`}
                 data-testid={`nav-link-${link.label.toLowerCase().replace(/[^a-z]/g, "-")}`}
@@ -107,8 +86,6 @@ export function Header() {
                 className={`text-sm font-medium py-2 px-2 rounded-lg transition-colors ${
                   location === link.href
                     ? "text-stone-900 bg-amber-50"
-                    : link.highlight
-                    ? "text-gg-green font-bold hover:bg-stone-100"
                     : "text-stone-600 hover:text-stone-900 hover:bg-stone-100"
                 }`}
                 data-testid={`mobile-nav-${link.label}`}

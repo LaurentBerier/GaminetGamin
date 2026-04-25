@@ -9,7 +9,7 @@ export default function HomePage() {
 
   const shopRoute = lang === "fr" ? "/fr/boutique" : lang === "en" ? "/en/shop" : "/es/tienda";
   const aboutRoute = lang === "fr" ? "/fr/apropos" : lang === "en" ? "/en/about" : "/es/nosotros";
-  const programRoute = lang === "fr" ? "/fr/p-tits-artistes" : lang === "en" ? "/en/little-artists" : "/es/pequenos-artistas";
+  const programRoute = lang === "fr" ? "/fr/artistes" : lang === "en" ? "/en/little-monsters" : "/es/pequenos-monstruos";
 
   const nouveautes = produits.filter((p) => p.nouveaute).slice(0, 4);
 

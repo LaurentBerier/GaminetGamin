@@ -44,8 +44,7 @@
     "fait_quebec": "Hecho en Québec",
     "retour": "Volver a la tienda",
     "partager": "Compartir",
-    "partage_profits": "de cada venta va a",
-    "et_organisme": "y",
+    "partage_profits": "de cada venta se dona a",
     "soumission_badge": "Diseño enviado por la comunidad"
   },
   "apropos": {
@@ -111,7 +110,7 @@
     "step3_titre": "Elegimos, imprimimos y compartimos",
     "step3_texte": "Si elegimos el dibujo, se convierte en una colección real. El artista recibe una camiseta gratis + una parte de las ganancias de cada venta.",
     "cause_titre": "La causa detrás de los dibujos",
-    "cause_texte": "Por cada venta de un diseño enviado por la comunidad, el 15% va directamente al artista (o a sus padres), y el 10% se dona a una organización juvenil de Québec elegida por el niño.",
+    "cause_texte": "Por cada venta de un diseño enviado por la comunidad, el 10% se dona a una organización juvenil de Québec elegida por el niño creador.",
     "cause_organismes": "Organizaciones asociadas",
     "cause_org1": "Fondation Jeunes en Tête",
     "cause_org2": "Grandes Hermanos Grandes Hermanas",
@@ -140,7 +139,7 @@
     "faq2_q": "¿Mi hijo conserva los derechos sobre su dibujo?",
     "faq2_r": "Absolutamente. Solo pedimos una licencia de impresión y venta. Tu hijo sigue siendo el propietario de su obra.",
     "faq3_q": "¿Cuánto gana mi hijo?",
-    "faq3_r": "El 15% de cada venta del producto, pagado por cheque o crédito en la tienda a elección del padre. Más el 10% para la organización juvenil de su elección.",
+    "faq3_r": "El 10% de cada venta va a la organización juvenil elegida por el niño, pagado por cheque o crédito en la tienda a elección del padre.",
     "faq4_q": "¿Cuánto tiempo hasta recibir respuesta?",
     "faq4_r": "Revisamos todos los envíos y respondemos en un plazo de 4 a 6 semanas. ¡Gracias por su paciencia!"
   }

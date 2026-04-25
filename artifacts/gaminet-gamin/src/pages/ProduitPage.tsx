@@ -19,7 +19,7 @@ export default function ProduitPage() {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   const shopRoute = lang === "fr" ? "/fr/boutique" : lang === "en" ? "/en/shop" : "/es/tienda";
-  const programRoute = lang === "fr" ? "/fr/p-tits-artistes" : lang === "en" ? "/en/little-artists" : "/es/pequenos-artistas";
+  const programRoute = lang === "fr" ? "/fr/artistes" : lang === "en" ? "/en/little-monsters" : "/es/pequenos-monstruos";
   const produit = produits.find((p) => p.id === params.id);
 
   if (!produit) {
@@ -181,10 +181,8 @@ export default function ProduitPage() {
             <div className="flex items-start gap-3 bg-green-50 border border-green-100 rounded-2xl px-5 py-4" data-testid="partage-profits">
               <Heart size={16} className="text-gg-green mt-0.5 flex-shrink-0" />
               <p className="text-stone-600 text-sm leading-relaxed">
-                <span className="font-bold text-gg-green">15% </span>
+                <span className="font-bold text-gg-green">10% </span>
                 {t.produit.partage_profits}{" "}
-                <span className="font-bold text-stone-900">{produit.artiste.nom}</span>
-                {" "}{t.produit.et_organisme}{" "}
                 <span className="font-bold text-stone-900">{organisme[lang]}</span>.
               </p>
             </div>
