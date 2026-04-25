@@ -1,0 +1,55 @@
+SECTION SUPPLÉMENTAIRE: PROGRAMME "P'TITS ARTISTES"
+
+Ajoute une nouvelle page principale dans le menu, accessible aussi depuis l'accueil.
+
+Page /fr/p-tits-artistes (ou /en/little-artists, /es/pequenos-artistas)
+
+Contenu de la page:
+
+1. Hero
+- Titre accrocheur (FR: "Ton dessin sur un gaminet. Pour vrai.")
+- Sous-titre expliquant le concept en 2 phrases
+- Bouton "Soumettre un dessin"
+
+2. Comment ça marche (3 étapes visuelles)
+- Étape 1: Ton enfant dessine ce qu'il veut, comme il le veut
+- Étape 2: Tu prends une photo et tu nous l'envoies
+- Étape 3: Si on choisit son dessin, il devient une vraie collection. L'artiste reçoit un chandail gratuit + une portion des profits sur chaque vente vendue.
+
+3. Section "La cause"
+- Explication: pour chaque vente d'un design soumis, X% va à l'artiste et X% à un organisme jeunesse québécois (à choisir, exemples: Fondation Jeunes en Tête, Grands Frères Grandes Soeurs, Tel-Jeunes)
+- L'enfant créateur peut choisir parmi 3 organismes lequel reçoit sa portion s'il préfère
+
+4. Formulaire de soumission
+- Prénom de l'enfant
+- Âge
+- Ville/région
+- Courriel du parent (obligatoire)
+- Téléphone (optionnel)
+- Upload du dessin (jpg, png, max 10mb)
+- Champ texte "Raconte-nous ton dessin" (max 200 caractères, optionnel)
+- Cases à cocher obligatoires:
+  * Le parent autorise la soumission et confirme avoir 18 ans+
+  * Le parent accepte les conditions (lien vers page conditions)
+- Bouton "Envoyer mon chef-d'oeuvre"
+
+5. Galerie "Hall des p'tits artistes"
+- Grille de soumissions sélectionnées et publiées
+- Pour chaque dessin: photo, prénom + âge de l'artiste, sa ville, ce qu'il dit de son dessin
+- Si le dessin est devenu un produit, badge "Disponible en gaminet" avec lien vers la fiche produit
+
+6. FAQ rapide
+- Qui peut participer? (enfants 4-14 ans, résidents du Canada pour commencer)
+- Mon enfant garde-t-il les droits? (oui, on demande juste une licence pour imprimer et vendre)
+- Combien gagne mon enfant? (% précis sur chaque vente, payé en chèque ou crédit boutique au choix du parent)
+- Combien de temps avant qu'on me réponde? (4-6 semaines)
+
+Aspect technique:
+- Le formulaire envoie à un endpoint /api/soumissions qui pour l'instant log dans la console et envoie un courriel (utilise un placeholder pour Resend ou SendGrid)
+- Crée un fichier /data/soumissions-vedettes.json avec 4-6 exemples pour peupler la galerie
+- Stocke les uploads dans /public/uploads/soumissions/ pour le prototype
+
+Important:
+- Mentionne ce programme dans l'accueil avec une bannière visible
+- Sur chaque fiche produit issue d'une soumission externe (pas tes enfants), affiche un badge "Dessiné par [Prénom], [âge] ans" avec mini-bio cliquable
+- Sur la fiche produit, indique "X% de chaque vente est remis à [organisme/artiste]"

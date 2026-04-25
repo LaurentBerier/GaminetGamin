@@ -4,7 +4,8 @@
     "boutique": "Shop",
     "apropos": "About",
     "artistes": "The Little Monsters",
-    "contact": "Contact"
+    "contact": "Contact",
+    "p_tits_artistes": "Little Artists"
   },
   "home": {
     "slogan": "Drawn by little monsters. Worn by real folks.",
@@ -12,7 +13,10 @@
     "cta_boutique": "Shop the collection",
     "cta_apropos": "Our story",
     "nouveautes": "Fresh drops",
-    "voir_tout": "See the whole shop"
+    "voir_tout": "See the whole shop",
+    "programme_titre": "Your child's drawing deserves to be worn.",
+    "programme_texte": "The Little Artists program turns children's drawings into real collections. The artist gets a free shirt + a share of every sale.",
+    "programme_cta": "Submit a drawing"
   },
   "boutique": {
     "titre": "The Shop",
@@ -39,7 +43,10 @@
     "ajouter": "Add to cart",
     "fait_quebec": "Made in Québec",
     "retour": "Back to shop",
-    "partager": "Share"
+    "partager": "Share",
+    "partage_profits": "of each sale goes to",
+    "et_organisme": "and",
+    "soumission_badge": "Community-submitted design"
   },
   "apropos": {
     "titre": "What is Gaminet Gamin GG?",
@@ -91,5 +98,50 @@
     "fr": "FR",
     "en": "EN",
     "es": "ES"
+  },
+  "p_tits_artistes": {
+    "hero_titre": "Your child's drawing on a real garment.",
+    "hero_sous_titre": "We select children's drawings to print on our clothing. If we choose your kid's drawing, it becomes a real collection — they get a free shirt and a share of every sale.",
+    "hero_cta": "Submit a drawing",
+    "steps_titre": "How it works",
+    "step1_titre": "Your child draws",
+    "step1_texte": "They draw whatever they want, however they want. A creature, a dinosaur, a rainbow with eyes — we welcome everything.",
+    "step2_titre": "You send us a photo",
+    "step2_texte": "Take a photo of the drawing and submit it using the form below. No artistic expertise required.",
+    "step3_titre": "We choose, print, and share",
+    "step3_texte": "If we select the drawing, it becomes a real collection. The artist gets a free shirt + a share of profits from every sale.",
+    "cause_titre": "The cause behind the drawings",
+    "cause_texte": "For every sale of a community-submitted design, 15% goes directly to the artist (or their parents), and 10% is donated to a Québec youth organization chosen by the child.",
+    "cause_organismes": "Partner organizations",
+    "cause_org1": "Fondation Jeunes en Tête",
+    "cause_org2": "Big Brothers Big Sisters",
+    "cause_org3": "Tel-Jeunes",
+    "cause_note": "The young artist can choose which of these three organizations receives their share if they'd rather donate than keep it.",
+    "form_titre": "Submit a drawing",
+    "form_prenom": "Child's first name",
+    "form_age": "Child's age",
+    "form_ville": "City / region",
+    "form_courriel": "Parent's email",
+    "form_telephone": "Phone number (optional)",
+    "form_dessin": "Photo of the drawing (JPG or PNG, max 10 MB)",
+    "form_raconte": "Tell us about the drawing",
+    "form_raconte_placeholder": "What did they try to draw? (max 200 characters)",
+    "form_consent1": "I authorize this submission and confirm I am 18 years of age or older.",
+    "form_consent2": "I accept the terms and conditions of the Little Artists program.",
+    "form_submit": "Send my masterpiece",
+    "form_merci": "Wow, we can't wait to see it! We'll get back to you within 4 to 6 weeks. 🎨",
+    "form_erreur": "Oops, something went wrong. Please try again in a moment.",
+    "gallery_titre": "The Little Artists Hall",
+    "gallery_sous_titre": "Drawings selected by our team, submitted by the community.",
+    "gallery_disponible": "Available as a garment",
+    "faq_titre": "Frequently asked questions",
+    "faq1_q": "Who can participate?",
+    "faq1_r": "Children ages 4 to 14 residing in Canada. A parent or guardian must submit the form.",
+    "faq2_q": "Does my child keep the rights to their drawing?",
+    "faq2_r": "Absolutely. We only ask for a printing and sales license. Your child remains the owner of their artwork.",
+    "faq3_q": "How much does my child earn?",
+    "faq3_r": "15% of each product sale, paid by cheque or store credit at the parent's choice. Plus 10% to the youth organization of their choice.",
+    "faq4_q": "How long until we hear back?",
+    "faq4_r": "We review all submissions and respond within 4 to 6 weeks. Thank you for your patience!"
   }
 }

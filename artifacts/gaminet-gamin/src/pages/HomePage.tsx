@@ -2,13 +2,14 @@ import { Link } from "wouter";
 import { useLang } from "@/contexts/LangContext";
 import { ProductCard } from "@/components/ProductCard";
 import produits from "@/data/produits.json";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Pencil } from "lucide-react";
 
 export default function HomePage() {
   const { lang, t } = useLang();
 
   const shopRoute = lang === "fr" ? "/fr/boutique" : lang === "en" ? "/en/shop" : "/es/tienda";
   const aboutRoute = lang === "fr" ? "/fr/apropos" : lang === "en" ? "/en/about" : "/es/nosotros";
+  const programRoute = lang === "fr" ? "/fr/p-tits-artistes" : lang === "en" ? "/en/little-artists" : "/es/pequenos-artistas";
 
   const nouveautes = produits.filter((p) => p.nouveaute).slice(0, 4);
 
@@ -44,6 +45,33 @@ export default function HomePage() {
                 </button>
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROGRAMME BANNER */}
+      <section className="bg-gg-gold/10 border-y border-gg-gold/30" data-testid="programme-banner">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-gg-gold/20 flex items-center justify-center flex-shrink-0">
+                <Pencil size={22} className="text-gg-gold" />
+              </div>
+              <div>
+                <h3 className="font-black text-stone-900 text-lg" style={{ fontFamily: "'Nunito', sans-serif" }}>
+                  {t.home.programme_titre}
+                </h3>
+                <p className="text-stone-600 text-sm max-w-lg">
+                  {t.home.programme_texte}
+                </p>
+              </div>
+            </div>
+            <Link href={programRoute} className="flex-shrink-0">
+              <button className="bg-stone-900 text-stone-50 px-6 py-3 rounded-full font-semibold text-sm hover:bg-gg-green transition-colors duration-300 flex items-center gap-2 group whitespace-nowrap" data-testid="cta-programme">
+                {t.home.programme_cta}
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
           </div>
         </div>
       </section>

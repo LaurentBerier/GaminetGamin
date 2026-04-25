@@ -4,7 +4,8 @@
     "boutique": "Boutique",
     "apropos": "À propos",
     "artistes": "Les p'tits monstres",
-    "contact": "Contact"
+    "contact": "Contact",
+    "p_tits_artistes": "P'tits artistes"
   },
   "home": {
     "slogan": "Dessiné par des p'tits monstres. Porté par du vrai monde.",
@@ -12,7 +13,10 @@
     "cta_boutique": "Magasiner la collection",
     "cta_apropos": "Notre histoire",
     "nouveautes": "Les dernières trouvailles",
-    "voir_tout": "Voir toute la boutique"
+    "voir_tout": "Voir toute la boutique",
+    "programme_titre": "Ton dessin mérite d'être porté.",
+    "programme_texte": "Le programme P'tits Artistes transforme les dessins d'enfants en vraies collections. L'artiste reçoit un chandail gratuit + une portion des profits.",
+    "programme_cta": "Soumettre un dessin"
   },
   "boutique": {
     "titre": "La boutique",
@@ -39,7 +43,10 @@
     "ajouter": "Ajouter au panier",
     "fait_quebec": "Fait au Québec",
     "retour": "Retour à la boutique",
-    "partager": "Partager"
+    "partager": "Partager",
+    "partage_profits": "de chaque vente est remis à",
+    "et_organisme": "et",
+    "soumission_badge": "Dessin soumis par la communauté"
   },
   "apropos": {
     "titre": "C'est quoi, Gaminet Gamin GG?",
@@ -91,5 +98,50 @@
     "fr": "FR",
     "en": "EN",
     "es": "ES"
+  },
+  "p_tits_artistes": {
+    "hero_titre": "Ton dessin sur un gaminet. Pour vrai.",
+    "hero_sous_titre": "On choisit les dessins d'enfants qu'on imprime sur nos vêtements. Si on choisit celui de ton kid, il devient une vraie collection — pis il reçoit un chandail gratuit et une portion de chaque vente.",
+    "hero_cta": "Soumettre un dessin",
+    "steps_titre": "Comment ça marche",
+    "step1_titre": "Ton enfant dessine",
+    "step1_texte": "Il dessine ce qu'il veut, comme il le veut. Une bébite, un dinosaure, un arc-en-ciel avec des yeux — on accepte tout.",
+    "step2_titre": "Tu nous envoies une photo",
+    "step2_texte": "Tu prends une photo du dessin et tu la soumets via le formulaire ci-dessous. Aucune expertise artistique requise.",
+    "step3_titre": "On choisit, on imprime, on partage",
+    "step3_texte": "Si on choisit son dessin, il devient une vraie collection. L'artiste reçoit un chandail gratuit + une portion des profits sur chaque vente.",
+    "cause_titre": "La cause derrière les dessins",
+    "cause_texte": "Pour chaque vente d'un design soumis par la communauté, 15% va directement à l'artiste (ou à ses parents), et 10% est versé à un organisme jeunesse québécois choisi par l'enfant.",
+    "cause_organismes": "Les organismes partenaires",
+    "cause_org1": "Fondation Jeunes en Tête",
+    "cause_org2": "Grands Frères Grandes Soeurs",
+    "cause_org3": "Tel-Jeunes",
+    "cause_note": "L'enfant créateur peut choisir lequel de ces trois organismes reçoit sa portion s'il préfère donner plutôt que garder.",
+    "form_titre": "Soumettre un dessin",
+    "form_prenom": "Prénom de l'enfant",
+    "form_age": "Âge de l'enfant",
+    "form_ville": "Ville / région",
+    "form_courriel": "Courriel du parent",
+    "form_telephone": "Téléphone (optionnel)",
+    "form_dessin": "Photo du dessin (JPG ou PNG, max 10 Mo)",
+    "form_raconte": "Raconte-nous son dessin",
+    "form_raconte_placeholder": "Qu'est-ce qu'il a voulu dessiner? (max 200 caractères)",
+    "form_consent1": "J'autorise la soumission de ce dessin et je confirme avoir 18 ans ou plus.",
+    "form_consent2": "J'accepte les conditions d'utilisation du programme P'tits Artistes.",
+    "form_submit": "Envoyer mon chef-d'œuvre",
+    "form_merci": "Wow, on a hâte de voir ça! On te revient dans 4 à 6 semaines. 🎨",
+    "form_erreur": "Oups, quelque chose a foiré. Réessaie dans quelques instants.",
+    "gallery_titre": "Le hall des p'tits artistes",
+    "gallery_sous_titre": "Des dessins sélectionnés par notre équipe, soumis par la communauté.",
+    "gallery_disponible": "Disponible en gaminet",
+    "faq_titre": "Questions fréquentes",
+    "faq1_q": "Qui peut participer?",
+    "faq1_r": "Les enfants de 4 à 14 ans résidant au Canada. Le parent ou tuteur doit soumettre le formulaire.",
+    "faq2_q": "Mon enfant garde-t-il les droits sur son dessin?",
+    "faq2_r": "Absolument. On demande seulement une licence d'impression et de vente. Ton enfant reste le propriétaire de son œuvre.",
+    "faq3_q": "Combien gagne mon enfant?",
+    "faq3_r": "15% de chaque vente du produit, versé par chèque ou crédit boutique au choix du parent. Plus 10% à l'organisme jeunesse de son choix.",
+    "faq4_q": "Combien de temps avant qu'on vous réponde?",
+    "faq4_r": "On examine toutes les soumissions et on répond dans un délai de 4 à 6 semaines. Merci de votre patience!"
   }
 }

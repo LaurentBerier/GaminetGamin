@@ -1,17 +1,25 @@
 import { useParams, useLocation } from "wouter";
 import { useLang } from "@/contexts/LangContext";
 import produits from "@/data/produits.json";
-import { ArrowLeft, ShoppingBag, Share2 } from "lucide-react";
+import { ArrowLeft, ShoppingBag, Share2, Heart } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
+
+const ORGANISME_MAP: Record<string, { fr: string; en: string; es: string }> = {
+  "jeunes-en-tete": { fr: "Fondation Jeunes en Tête", en: "Fondation Jeunes en Tête", es: "Fondation Jeunes en Tête" },
+  "grands-freres": { fr: "Grands Frères Grandes Soeurs", en: "Big Brothers Big Sisters", es: "Grandes Hermanos Grandes Hermanas" },
+  "tel-jeunes": { fr: "Tel-Jeunes", en: "Tel-Jeunes", es: "Tel-Jeunes" },
+};
 
 export default function ProduitPage() {
   const params = useParams<{ id: string }>();
   const { lang, translateField, t } = useLang();
   const [, setLocation] = useLocation();
   const [selectedImg, setSelectedImg] = useState(0);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   const shopRoute = lang === "fr" ? "/fr/boutique" : lang === "en" ? "/en/shop" : "/es/tienda";
+  const programRoute = lang === "fr" ? "/fr/p-tits-artistes" : lang === "en" ? "/en/little-artists" : "/es/pequenos-artistas";
   const produit = produits.find((p) => p.id === params.id);
 
   if (!produit) {
@@ -26,6 +34,10 @@ export default function ProduitPage() {
       </main>
     );
   }
+
+  const organismeId = (produit as any).artiste?.organisme as string | undefined;
+  const organisme = organismeId ? ORGANISME_MAP[organismeId] : null;
+  const isSoumission = !!(produit as any).soumission;
 
   return (
     <main className="max-w-6xl mx-auto px-4 sm:px-6 py-12" data-testid="produit-page">
@@ -67,8 +79,17 @@ export default function ProduitPage() {
         </div>
 
         <div data-testid="product-details">
-          <div className="inline-block bg-gg-gold/20 text-stone-700 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
-            {t.produit.fait_quebec}
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            <div className="inline-block bg-gg-gold/20 text-stone-700 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+              {t.produit.fait_quebec}
+            </div>
+            {isSoumission && (
+              <Link href={programRoute}>
+                <div className="inline-flex items-center gap-1 bg-gg-green/10 text-gg-green text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full cursor-pointer hover:bg-gg-green/20 transition-colors" data-testid="soumission-badge">
+                  🎨 {t.produit.soumission_badge}
+                </div>
+              </Link>
+            )}
           </div>
 
           <h1 className="text-3xl sm:text-4xl font-black text-stone-900 uppercase tracking-tight mb-2" style={{ fontFamily: "'Nunito', sans-serif" }} data-testid="product-title">
@@ -107,7 +128,12 @@ export default function ProduitPage() {
               {produit.tailles.map((taille) => (
                 <button
                   key={taille}
-                  className="px-4 py-2 border-2 border-stone-200 text-stone-700 rounded-xl text-sm font-medium hover:border-stone-900 hover:text-stone-900 transition-all"
+                  onClick={() => setSelectedSize(taille)}
+                  className={`px-4 py-2 border-2 rounded-xl text-sm font-medium transition-all ${
+                    selectedSize === taille
+                      ? "border-stone-900 bg-stone-900 text-stone-50"
+                      : "border-stone-200 text-stone-700 hover:border-stone-900 hover:text-stone-900"
+                  }`}
                   data-testid={`size-btn-${taille}`}
                 >
                   {taille}
@@ -132,21 +158,37 @@ export default function ProduitPage() {
             </button>
           </div>
 
-          <div className="bg-amber-50 border border-amber-100 rounded-2xl p-5" data-testid="artiste-card">
+          {/* ARTISTE CARD */}
+          <div className="bg-amber-50 border border-amber-100 rounded-2xl p-5 mb-4" data-testid="artiste-card">
             <h3 className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-3">{t.produit.artiste}</h3>
             <div className="flex items-center gap-3 mb-2">
               <div className="w-10 h-10 rounded-full bg-gg-gold/30 flex items-center justify-center font-black text-stone-700 text-lg">
                 {produit.artiste.nom[0]}
               </div>
               <div>
-                <p className="font-bold text-stone-900" data-testid="artist-name">{produit.artiste.nom}</p>
-                <p className="text-stone-500 text-xs">{produit.artiste.age} {t.artistes.age}</p>
+                <p className="font-bold text-stone-900" data-testid="artist-name">
+                  {produit.artiste.nom}, {produit.artiste.age} {t.artistes.age}
+                </p>
               </div>
             </div>
             <p className="text-stone-600 text-sm leading-relaxed" data-testid="artist-bio">
               {translateField(produit.artiste.bio as any)}
             </p>
           </div>
+
+          {/* PARTAGE DES PROFITS */}
+          {organisme && (
+            <div className="flex items-start gap-3 bg-green-50 border border-green-100 rounded-2xl px-5 py-4" data-testid="partage-profits">
+              <Heart size={16} className="text-gg-green mt-0.5 flex-shrink-0" />
+              <p className="text-stone-600 text-sm leading-relaxed">
+                <span className="font-bold text-gg-green">15% </span>
+                {t.produit.partage_profits}{" "}
+                <span className="font-bold text-stone-900">{produit.artiste.nom}</span>
+                {" "}{t.produit.et_organisme}{" "}
+                <span className="font-bold text-stone-900">{organisme[lang]}</span>.
+              </p>
+            </div>
+          )}
 
           <p className="text-stone-400 text-xs mt-4">{t.produit.composition}: {produit.composition}</p>
         </div>

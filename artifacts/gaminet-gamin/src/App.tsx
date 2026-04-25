@@ -11,6 +11,7 @@ import ProduitPage from "@/pages/ProduitPage";
 import AproposPage from "@/pages/AproposPage";
 import ArtistesPage from "@/pages/ArtistesPage";
 import ContactPage from "@/pages/ContactPage";
+import PtitsArtistesPage from "@/pages/PtitsArtistesPage";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -44,18 +45,21 @@ function AppLayout() {
           <Route path="/fr/apropos" component={AproposPage} />
           <Route path="/fr/artistes" component={ArtistesPage} />
           <Route path="/fr/contact" component={ContactPage} />
+          <Route path="/fr/p-tits-artistes" component={PtitsArtistesPage} />
           <Route path="/en" component={HomePage} />
           <Route path="/en/shop" component={BoutiquePage} />
           <Route path="/en/shop/:id" component={ProduitPage} />
           <Route path="/en/about" component={AproposPage} />
           <Route path="/en/little-monsters" component={ArtistesPage} />
           <Route path="/en/contact" component={ContactPage} />
+          <Route path="/en/little-artists" component={PtitsArtistesPage} />
           <Route path="/es" component={HomePage} />
           <Route path="/es/tienda" component={BoutiquePage} />
           <Route path="/es/tienda/:id" component={ProduitPage} />
           <Route path="/es/nosotros" component={AproposPage} />
           <Route path="/es/pequenos-monstruos" component={ArtistesPage} />
           <Route path="/es/contacto" component={ContactPage} />
+          <Route path="/es/pequenos-artistas" component={PtitsArtistesPage} />
           <Route component={NotFound} />
         </Switch>
       </div>

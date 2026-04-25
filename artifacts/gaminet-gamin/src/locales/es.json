@@ -4,7 +4,8 @@
     "boutique": "Tienda",
     "apropos": "Nosotros",
     "artistes": "Los pequeños monstruos",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "p_tits_artistes": "Pequeños artistas"
   },
   "home": {
     "slogan": "Dibujado por pequeños monstruos. Llevado por gente de verdad.",
@@ -12,7 +13,10 @@
     "cta_boutique": "Ver la colección",
     "cta_apropos": "Nuestra historia",
     "nouveautes": "Lo nuevo",
-    "voir_tout": "Ver toda la tienda"
+    "voir_tout": "Ver toda la tienda",
+    "programme_titre": "El dibujo de tu hijo merece ser llevado.",
+    "programme_texte": "El programa Pequeños Artistas convierte dibujos de niños en colecciones reales. El artista recibe una camiseta gratis + una parte de cada venta.",
+    "programme_cta": "Enviar un dibujo"
   },
   "boutique": {
     "titre": "La tienda",
@@ -39,7 +43,10 @@
     "ajouter": "Agregar al carrito",
     "fait_quebec": "Hecho en Québec",
     "retour": "Volver a la tienda",
-    "partager": "Compartir"
+    "partager": "Compartir",
+    "partage_profits": "de cada venta va a",
+    "et_organisme": "y",
+    "soumission_badge": "Diseño enviado por la comunidad"
   },
   "apropos": {
     "titre": "¿Qué es Gaminet Gamin GG?",
@@ -91,5 +98,50 @@
     "fr": "FR",
     "en": "EN",
     "es": "ES"
+  },
+  "p_tits_artistes": {
+    "hero_titre": "El dibujo de tu hijo en una prenda real.",
+    "hero_sous_titre": "Seleccionamos dibujos de niños para imprimir en nuestra ropa. Si elegimos el de tu hijo, se convierte en una colección real — recibe una camiseta gratis y una parte de cada venta.",
+    "hero_cta": "Enviar un dibujo",
+    "steps_titre": "Cómo funciona",
+    "step1_titre": "Tu hijo dibuja",
+    "step1_texte": "Dibuja lo que quiera, como quiera. Un bicho, un dinosaurio, un arcoíris con ojos — aceptamos todo.",
+    "step2_titre": "Tú nos envías una foto",
+    "step2_texte": "Toma una foto del dibujo y envíala con el formulario de abajo. No se requiere experiencia artística.",
+    "step3_titre": "Elegimos, imprimimos y compartimos",
+    "step3_texte": "Si elegimos el dibujo, se convierte en una colección real. El artista recibe una camiseta gratis + una parte de las ganancias de cada venta.",
+    "cause_titre": "La causa detrás de los dibujos",
+    "cause_texte": "Por cada venta de un diseño enviado por la comunidad, el 15% va directamente al artista (o a sus padres), y el 10% se dona a una organización juvenil de Québec elegida por el niño.",
+    "cause_organismes": "Organizaciones asociadas",
+    "cause_org1": "Fondation Jeunes en Tête",
+    "cause_org2": "Grandes Hermanos Grandes Hermanas",
+    "cause_org3": "Tel-Jeunes",
+    "cause_note": "El joven artista puede elegir cuál de estas tres organizaciones recibe su parte si prefiere donar en lugar de quedársela.",
+    "form_titre": "Enviar un dibujo",
+    "form_prenom": "Nombre del niño",
+    "form_age": "Edad del niño",
+    "form_ville": "Ciudad / región",
+    "form_courriel": "Correo del padre/madre",
+    "form_telephone": "Teléfono (opcional)",
+    "form_dessin": "Foto del dibujo (JPG o PNG, máx. 10 MB)",
+    "form_raconte": "Cuéntanos sobre el dibujo",
+    "form_raconte_placeholder": "¿Qué intentó dibujar? (máx. 200 caracteres)",
+    "form_consent1": "Autorizo este envío y confirmo que tengo 18 años o más.",
+    "form_consent2": "Acepto los términos y condiciones del programa Pequeños Artistas.",
+    "form_submit": "Enviar mi obra maestra",
+    "form_merci": "¡Vaya, tenemos muchas ganas de verlo! Te respondemos en 4 a 6 semanas. 🎨",
+    "form_erreur": "Ups, algo salió mal. Por favor inténtalo de nuevo en un momento.",
+    "gallery_titre": "El salón de los pequeños artistas",
+    "gallery_sous_titre": "Dibujos seleccionados por nuestro equipo, enviados por la comunidad.",
+    "gallery_disponible": "Disponible en prenda",
+    "faq_titre": "Preguntas frecuentes",
+    "faq1_q": "¿Quién puede participar?",
+    "faq1_r": "Niños de 4 a 14 años que residan en Canadá. Un padre o tutor debe enviar el formulario.",
+    "faq2_q": "¿Mi hijo conserva los derechos sobre su dibujo?",
+    "faq2_r": "Absolutamente. Solo pedimos una licencia de impresión y venta. Tu hijo sigue siendo el propietario de su obra.",
+    "faq3_q": "¿Cuánto gana mi hijo?",
+    "faq3_r": "El 15% de cada venta del producto, pagado por cheque o crédito en la tienda a elección del padre. Más el 10% para la organización juvenil de su elección.",
+    "faq4_q": "¿Cuánto tiempo hasta recibir respuesta?",
+    "faq4_r": "Revisamos todos los envíos y respondemos en un plazo de 4 a 6 semanas. ¡Gracias por su paciencia!"
   }
 }

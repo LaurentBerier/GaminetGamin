@@ -7,6 +7,7 @@ const routeEquivalents: Record<string, Record<Lang, string>> = {
   apropos: { fr: "/fr/apropos", en: "/en/about", es: "/es/nosotros" },
   artistes: { fr: "/fr/artistes", en: "/en/little-monsters", es: "/es/pequenos-monstruos" },
   contact: { fr: "/fr/contact", en: "/en/contact", es: "/es/contacto" },
+  p_tits_artistes: { fr: "/fr/p-tits-artistes", en: "/en/little-artists", es: "/es/pequenos-artistas" },
 };
 
 function getEquivalentRoute(currentPath: string, targetLang: Lang): string {

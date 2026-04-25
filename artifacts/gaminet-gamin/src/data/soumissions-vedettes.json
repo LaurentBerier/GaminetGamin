@@ -1,0 +1,86 @@
+[
+  {
+    "id": "sou-001",
+    "prenom": "Maëlle",
+    "age": 6,
+    "ville": "Montréal",
+    "description": {
+      "fr": "C'est un chat qui vole dans l'espace parce qu'il a mangé trop d'étoiles.",
+      "en": "It's a cat flying in space because it ate too many stars.",
+      "es": "Es un gato volando en el espacio porque se comió demasiadas estrellas."
+    },
+    "image": "/soumissions/chat-espace.jpg",
+    "produit_id": null,
+    "selectionne": true
+  },
+  {
+    "id": "sou-002",
+    "prenom": "Théodore",
+    "age": 9,
+    "ville": "Québec",
+    "description": {
+      "fr": "Un dragon qui aime les hot-dogs. Il s'appelle Roger.",
+      "en": "A dragon who loves hot dogs. His name is Roger.",
+      "es": "Un dragón que ama los hot dogs. Se llama Roger."
+    },
+    "image": "/soumissions/dragon-hotdog.jpg",
+    "produit_id": "dragon-roger-tshirt",
+    "selectionne": true
+  },
+  {
+    "id": "sou-003",
+    "prenom": "Camille",
+    "age": 7,
+    "ville": "Laval",
+    "description": {
+      "fr": "Ma maison dans les nuages avec mes trois chats et mon poisson.",
+      "en": "My house in the clouds with my three cats and my fish.",
+      "es": "Mi casa en las nubes con mis tres gatos y mi pez."
+    },
+    "image": "/soumissions/maison-nuages.jpg",
+    "produit_id": null,
+    "selectionne": true
+  },
+  {
+    "id": "sou-004",
+    "prenom": "Raphaël",
+    "age": 5,
+    "ville": "Sherbrooke",
+    "description": {
+      "fr": "C'est moi mais avec des ailes de papillon et un casque de pompier.",
+      "en": "It's me but with butterfly wings and a firefighter helmet.",
+      "es": "Soy yo pero con alas de mariposa y casco de bombero."
+    },
+    "image": "/soumissions/moi-papillon.jpg",
+    "produit_id": null,
+    "selectionne": true
+  },
+  {
+    "id": "sou-005",
+    "prenom": "Éloise",
+    "age": 11,
+    "ville": "Gatineau",
+    "description": {
+      "fr": "Un soleil triste parce qu'il fait trop chaud et il est fatigué.",
+      "en": "A sad sun because it's too hot and it's tired.",
+      "es": "Un sol triste porque hace demasiado calor y está cansado."
+    },
+    "image": "/soumissions/soleil-triste.jpg",
+    "produit_id": "soleil-fatigue-hoodie",
+    "selectionne": true
+  },
+  {
+    "id": "sou-006",
+    "prenom": "Noah",
+    "age": 8,
+    "ville": "Longueuil",
+    "description": {
+      "fr": "Un requin avec des pattes qui veut devenir vétérinaire.",
+      "en": "A shark with legs who wants to be a vet.",
+      "es": "Un tiburón con patas que quiere ser veterinario."
+    },
+    "image": "/soumissions/requin-pattes.jpg",
+    "produit_id": null,
+    "selectionne": true
+  }
+]
