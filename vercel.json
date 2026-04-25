@@ -2,5 +2,11 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm --filter @workspace/gaminet-gamin run build",
-  "outputDirectory": "artifacts/gaminet-gamin/dist/public"
+  "outputDirectory": "artifacts/gaminet-gamin/dist/public",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
