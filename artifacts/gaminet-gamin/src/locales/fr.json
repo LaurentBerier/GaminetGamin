@@ -1,0 +1,95 @@
+{
+  "lang": "fr",
+  "nav": {
+    "boutique": "Boutique",
+    "apropos": "À propos",
+    "artistes": "Les p'tits monstres",
+    "contact": "Contact"
+  },
+  "home": {
+    "slogan": "Dessiné par des p'tits monstres. Porté par du vrai monde.",
+    "subslogan": "Des designs faits icitte au Québec, par des enfants qui ont plus d'imagination que nous autres.",
+    "cta_boutique": "Magasiner la collection",
+    "cta_apropos": "Notre histoire",
+    "nouveautes": "Les dernières trouvailles",
+    "voir_tout": "Voir toute la boutique"
+  },
+  "boutique": {
+    "titre": "La boutique",
+    "sous_titre": "Toute la collection, en un seul spot.",
+    "filtrer": "Filtrer",
+    "tout": "Tout",
+    "t_shirts": "T-shirts",
+    "hoodies": "Hoodies",
+    "sweats": "Sweats",
+    "casquettes": "Casquettes",
+    "debardeurs": "Débardeurs",
+    "ajouter_panier": "Ajouter au panier",
+    "disponible": "Disponible en",
+    "couleurs": "couleurs",
+    "voir_produit": "Voir le produit",
+    "aucun_produit": "Aucun produit pour cette catégorie pour l'instant. Revenez bientôt!"
+  },
+  "produit": {
+    "description": "Description",
+    "artiste": "Dessiné par",
+    "composition": "Composition",
+    "tailles": "Tailles disponibles",
+    "couleurs": "Couleurs",
+    "ajouter": "Ajouter au panier",
+    "fait_quebec": "Fait au Québec",
+    "retour": "Retour à la boutique",
+    "partager": "Partager"
+  },
+  "apropos": {
+    "titre": "C'est quoi, Gaminet Gamin GG?",
+    "p1": "T'as des enfants qui dessinent des bébites sur des feuilles de papier pis tu te demandes quoi faire avec ça? Nous autres, on a décidé de les mettre sur du linge.",
+    "p2": "Gaminet Gamin GG, c'est une shop québécoise qui met en valeur les dessins d'enfants sur des vêtements de qualité. Chaque design vient d'un kid qui avait une idée weird pis pas peur de la montrer.",
+    "p3": "On est fiers de faire ça icitte, au Québec. Parce que l'imagination des enfants, ça mérite pas d'être tirée dans le fond d'un tiroir.",
+    "mission": "Notre mission",
+    "mission_texte": "Transformer les griffonnages génies en linge que du vrai monde va porter.",
+    "valeurs": "Ce qui nous tient à cœur",
+    "val1_titre": "100% Québec",
+    "val1_texte": "Dessiné, produit et livré d'icitte.",
+    "val2_titre": "Designs originaux",
+    "val2_texte": "Chaque dessin est unique — signé par son p'tit artiste.",
+    "val3_titre": "Qualité réelle",
+    "val3_texte": "Du tissu durable, confortable, qui dure longtemps."
+  },
+  "artistes": {
+    "titre": "Les p'tits monstres derrière les designs",
+    "sous_titre": "Ces kids-là, ils savent pas dessiner... pis c'est exactement pour ça qu'on les aime.",
+    "age": "ans"
+  },
+  "contact": {
+    "titre": "Nous rejoindre",
+    "sous_titre": "Une question? Une commande spéciale? Une idée weird? On écoute.",
+    "nom": "Ton nom",
+    "courriel": "Ton courriel",
+    "message": "Ton message",
+    "envoyer": "Envoyer",
+    "merci": "Message envoyé! On te revient vite de même.",
+    "instagram": "Suivez-nous sur Instagram",
+    "email_label": "Courriel"
+  },
+  "footer": {
+    "droits": "Tous droits réservés",
+    "politique": "Politique de confidentialité",
+    "livraison": "Info livraison",
+    "faq": "FAQ",
+    "fait_avec": "Fait avec ❤️ au Québec"
+  },
+  "panier": {
+    "titre": "Ton panier",
+    "vide": "Ton panier est vide — go magasiner!",
+    "total": "Total",
+    "commander": "Passer la commande",
+    "continuer": "Continuer à magasiner",
+    "retirer": "Retirer"
+  },
+  "lang_selector": {
+    "fr": "FR",
+    "en": "EN",
+    "es": "ES"
+  }
+}

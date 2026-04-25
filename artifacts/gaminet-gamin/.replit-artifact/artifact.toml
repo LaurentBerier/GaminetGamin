@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Gaminet Gamin GG"
+version = "1.0.0"
+id = "artifacts/gaminet-gamin"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24740
+
+[services.development]
+run = "pnpm --filter @workspace/gaminet-gamin run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/gaminet-gamin", "run", "build" ]
+publicDir = "artifacts/gaminet-gamin/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24740"
+BASE_PATH = "/"

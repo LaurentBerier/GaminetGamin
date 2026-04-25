@@ -1,0 +1,498 @@
+[
+  {
+    "id": "grenouille-center",
+    "categorie": "sweats",
+    "prix": 64.99,
+    "image": "/prod-frog-center.png",
+    "images": ["/prod-frog-center.png", "/prod-frog-pocket.png"],
+    "nouveaute": true,
+    "couleurs": ["#E8E4DC", "#7A8C5E", "#B8A89A", "#C8A882", "#3D4F2F"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Grenouille Philosophe — Sweat",
+      "en": "Philosophical Frog — Sweatshirt",
+      "es": "Rana Filósofa — Sudadera"
+    },
+    "description": {
+      "fr": "Une grenouille qui pense à des affaires importantes. Imprimée sur un sweat oversize tout doux en coton brossé. Le genre de vêtement que tu mets le samedi matin pis que tu gardes toute la journée.",
+      "en": "A frog thinking about important stuff. Printed on a super-soft oversized brushed cotton sweatshirt. The kind of piece you put on Saturday morning and never take off.",
+      "es": "Una rana pensando en cosas importantes. Impresa en una sudadera oversized de algodón cepillado súper suave. El tipo de prenda que te pones el sábado por la mañana y no te quitas en todo el día."
+    },
+    "artiste": {
+      "id": "amelie",
+      "nom": "Amélie",
+      "age": 8,
+      "bio": {
+        "fr": "Amélie dessine des grenouilles depuis l'âge de 3 ans. Elle dit que les grenouilles sont les animaux les plus intelligents.",
+        "en": "Amélie has been drawing frogs since age 3. She says frogs are the smartest animals.",
+        "es": "Amélie lleva dibujando ranas desde los 3 años. Dice que las ranas son los animales más inteligentes."
+      }
+    },
+    "composition": "80% coton, 20% polyester"
+  },
+  {
+    "id": "grenouille-pocket",
+    "categorie": "sweats",
+    "prix": 64.99,
+    "image": "/prod-frog-pocket.png",
+    "images": ["/prod-frog-pocket.png", "/prod-frog-center.png"],
+    "nouveaute": false,
+    "couleurs": ["#E8E4DC", "#7A8C5E", "#B8A89A", "#C8A882", "#3D4F2F"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Grenouille Philosophe — Sweat Pocket",
+      "en": "Philosophical Frog — Pocket Sweat",
+      "es": "Rana Filósofa — Sudadera Pocket"
+    },
+    "description": {
+      "fr": "Même grenouille, même philosophie, mais version chest-pocket. Parce que des fois t'as envie d'être subtil.",
+      "en": "Same frog, same philosophy, but chest-pocket edition. Because sometimes you want to keep it low-key.",
+      "es": "Misma rana, misma filosofía, pero en versión bolsillo. Porque a veces quieres ser sutil."
+    },
+    "artiste": {
+      "id": "amelie",
+      "nom": "Amélie",
+      "age": 8,
+      "bio": {
+        "fr": "Amélie dessine des grenouilles depuis l'âge de 3 ans. Elle dit que les grenouilles sont les animaux les plus intelligents.",
+        "en": "Amélie has been drawing frogs since age 3. She says frogs are the smartest animals.",
+        "es": "Amélie lleva dibujando ranas desde los 3 años. Dice que las ranas son los animales más inteligentes."
+      }
+    },
+    "composition": "80% coton, 20% polyester"
+  },
+  {
+    "id": "montagnes-sage",
+    "categorie": "t-shirts",
+    "prix": 44.99,
+    "image": "/prod-mountain-tshirt.png",
+    "images": ["/prod-mountain-tshirt.png", "/prod-mountain-tshirt-lilac.png"],
+    "nouveaute": true,
+    "couleurs": ["#7A8C5E", "#4A7396", "#C8A882", "#E8E4DC", "#C05A3A", "#2D2D2D"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Les Trois Montagnes — T-shirt",
+      "en": "The Three Mountains — T-shirt",
+      "es": "Las Tres Montañas — Camiseta"
+    },
+    "description": {
+      "fr": "Trois montagnes avec des faces kawaii et une p'tite créature dans la neige. C'est profond ou c'est juste cute? Les deux, mon capitaine.",
+      "en": "Three mountains with kawaii faces and a little creature in the snow. Is it deep or just cute? Both, honestly.",
+      "es": "Tres montañas con caritas kawaii y una pequeña criatura en la nieve. ¿Es profundo o solo mono? Las dos cosas, capitán."
+    },
+    "artiste": {
+      "id": "felix",
+      "nom": "Félix",
+      "age": 7,
+      "bio": {
+        "fr": "Félix aime les montagnes même s'il en a jamais vu pour vrai. Il les dessine quand même avec beaucoup de conviction.",
+        "en": "Félix loves mountains even though he's never seen one in real life. He draws them with total conviction anyway.",
+        "es": "Félix ama las montañas aunque nunca las haya visto en persona. Las dibuja con total convicción de todos modos."
+      }
+    },
+    "composition": "100% coton"
+  },
+  {
+    "id": "montagnes-lilac",
+    "categorie": "t-shirts",
+    "prix": 44.99,
+    "image": "/prod-mountain-tshirt-lilac.png",
+    "images": ["/prod-mountain-tshirt-lilac.png", "/prod-mountain-tshirt.png"],
+    "nouveaute": false,
+    "couleurs": ["#C9B8D4", "#7A8C5E", "#4A7396", "#F0C87A", "#C05A3A"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Les Trois Montagnes — Lilas",
+      "en": "The Three Mountains — Lilac",
+      "es": "Las Tres Montañas — Lila"
+    },
+    "description": {
+      "fr": "La version lilas du classique. Parce que les montagnes existent aussi dans les tons pastels.",
+      "en": "The lilac version of the classic. Because mountains exist in pastel tones too.",
+      "es": "La versión lila del clásico. Porque las montañas también existen en tonos pastel."
+    },
+    "artiste": {
+      "id": "felix",
+      "nom": "Félix",
+      "age": 7,
+      "bio": {
+        "fr": "Félix aime les montagnes même s'il en a jamais vu pour vrai. Il les dessine quand même avec beaucoup de conviction.",
+        "en": "Félix loves mountains even though he's never seen one in real life. He draws them with total conviction anyway.",
+        "es": "Félix ama las montañas aunque nunca las haya visto en persona. Las dibuja con total convicción de todos modos."
+      }
+    },
+    "composition": "100% coton"
+  },
+  {
+    "id": "fantome-hoodie",
+    "categorie": "hoodies",
+    "prix": 74.99,
+    "image": "/prod-ghost-hoodie.png",
+    "images": ["/prod-ghost-hoodie.png", "/prod-mountain-hoodie.png"],
+    "nouveaute": true,
+    "couleurs": ["#1A2A4A", "#4A7396", "#E8E4DC", "#3D4F2F"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Fantôme de Robot — Hoodie",
+      "en": "Robot Ghost — Hoodie",
+      "es": "Fantasma Robot — Hoodie"
+    },
+    "description": {
+      "fr": "Un fantôme qui ressemble à un robot ou un robot qui ressemble à un fantôme? Mystère total. Imprimé sur un hoodie marine surdimensionné, épais et chaud comme un câlin.",
+      "en": "A ghost that looks like a robot or a robot that looks like a ghost? Total mystery. Printed on a thick, warm oversized navy hoodie that feels like a hug.",
+      "es": "¿Un fantasma que parece un robot o un robot que parece un fantasma? Misterio total. Impreso en un hoodie navy oversized, grueso y cálido como un abrazo."
+    },
+    "artiste": {
+      "id": "lea",
+      "nom": "Léa",
+      "age": 9,
+      "bio": {
+        "fr": "Léa dessine beaucoup de créatures hybrides. Selon elle, les robots et les fantômes ont beaucoup en commun.",
+        "en": "Léa draws lots of hybrid creatures. According to her, robots and ghosts have a lot in common.",
+        "es": "Léa dibuja muchas criaturas híbridas. Según ella, los robots y los fantasmas tienen mucho en común."
+      }
+    },
+    "composition": "85% coton, 15% polyester"
+  },
+  {
+    "id": "montagne-hoodie",
+    "categorie": "hoodies",
+    "prix": 74.99,
+    "image": "/prod-mountain-hoodie.png",
+    "images": ["/prod-mountain-hoodie.png", "/prod-ghost-hoodie.png"],
+    "nouveaute": false,
+    "couleurs": ["#1A2A4A", "#4A7396", "#E8E4DC", "#3D4F2F"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Montagne Souriante — Hoodie Pocket",
+      "en": "Smiley Mountain — Pocket Hoodie",
+      "es": "Montaña Sonriente — Hoodie Bolsillo"
+    },
+    "description": {
+      "fr": "Une montagne contente avec un petit cœur. Simple. Parfait. Brodé sur un hoodie épais qui va durer des années.",
+      "en": "A happy mountain with a little heart. Simple. Perfect. Printed on a thick hoodie that'll last for years.",
+      "es": "Una montaña feliz con un corazón pequeño. Simple. Perfecto. Impreso en un hoodie grueso que durará años."
+    },
+    "artiste": {
+      "id": "felix",
+      "nom": "Félix",
+      "age": 7,
+      "bio": {
+        "fr": "Félix aime les montagnes même s'il en a jamais vu pour vrai. Il les dessine quand même avec beaucoup de conviction.",
+        "en": "Félix loves mountains even though he's never seen one in real life. He draws them with total conviction anyway.",
+        "es": "Félix ama las montañas aunque nunca las haya visto en persona. Las dibuja con total convicción de todos modos."
+      }
+    },
+    "composition": "85% coton, 15% polyester"
+  },
+  {
+    "id": "flatuleur-jaune",
+    "categorie": "t-shirts",
+    "prix": 44.99,
+    "image": "/prod-flatuleur-yellow.png",
+    "images": ["/prod-flatuleur-yellow.png", "/prod-flatuleur-blue.png"],
+    "nouveaute": true,
+    "couleurs": ["#E8A820", "#CC2222", "#4A7396", "#E87AB0", "#2A5E2A", "#1A2A4A"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Flatuleur Mental — T-shirt",
+      "en": "Mental Farter — T-shirt",
+      "es": "Pedo Mental — Camiseta"
+    },
+    "description": {
+      "fr": "Un être bizarre avec des arcs-en-ciel qui sort de partout et un mot prouit inscrit dessus. C'est l'art, baby. Imprimé pleine face sur un t-shirt oversize épais.",
+      "en": "A weird creature with rainbows shooting out everywhere and the word 'prouit' written on it. This is art, baby. Full print on a thick oversized tee.",
+      "es": "Una criatura extraña con arcoíris saliendo por todos lados y la palabra 'prouit' escrita. Esto es arte, baby. Impresión completa en una camiseta oversized gruesa."
+    },
+    "artiste": {
+      "id": "theo",
+      "nom": "Théo",
+      "age": 6,
+      "bio": {
+        "fr": "Théo trouve les pets hilarants et refuse catégoriquement d'en avoir honte. Respect.",
+        "en": "Théo finds farts hilarious and categorically refuses to be embarrassed about it. Respect.",
+        "es": "Théo encuentra los pedos hilarantes y se niega categóricamente a avergonzarse. Respeto."
+      }
+    },
+    "composition": "100% coton"
+  },
+  {
+    "id": "flatuleur-bleu",
+    "categorie": "t-shirts",
+    "prix": 44.99,
+    "image": "/prod-flatuleur-blue.png",
+    "images": ["/prod-flatuleur-blue.png", "/prod-flatuleur-yellow.png"],
+    "nouveaute": false,
+    "couleurs": ["#E8A820", "#CC2222", "#4A7396", "#E87AB0", "#2A5E2A", "#1A2A4A"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Flatuleur Mental — Bleu",
+      "en": "Mental Farter — Blue",
+      "es": "Pedo Mental — Azul"
+    },
+    "description": {
+      "fr": "Même flatuleur, version bleu lavé. Avec le dos qui montre le logo Gaminet Gamin. Parce que représenter, c'est important.",
+      "en": "Same farter, washed blue edition. The back shows the Gaminet Gamin logo. Because representing matters.",
+      "es": "Mismo pedorro, versión azul lavado. La espalda muestra el logo de Gaminet Gamin. Porque representar importa."
+    },
+    "artiste": {
+      "id": "theo",
+      "nom": "Théo",
+      "age": 6,
+      "bio": {
+        "fr": "Théo trouve les pets hilarants et refuse catégoriquement d'en avoir honte. Respect.",
+        "en": "Théo finds farts hilarious and categorically refuses to be embarrassed about it. Respect.",
+        "es": "Théo encuentra los pedos hilarantes y se niega categóricamente a avergonzarse. Respeto."
+      }
+    },
+    "composition": "100% coton"
+  },
+  {
+    "id": "monstre-bleu",
+    "categorie": "t-shirts",
+    "prix": 44.99,
+    "image": "/prod-monster-blue.png",
+    "images": ["/prod-monster-blue.png", "/prod-monster-lilac.png"],
+    "nouveaute": false,
+    "couleurs": ["#A8C4D4", "#7A8C5E", "#E8A820", "#C9B8D4", "#F0C87A"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "P'tit Monstre Roi — T-shirt Bleu",
+      "en": "Little Monster King — Blue T-shirt",
+      "es": "Pequeño Monstruo Rey — Camiseta Azul"
+    },
+    "description": {
+      "fr": "Un monstre vert avec une couronne qui lève les bras comme s'il venait de scorer. Chest-pocket sur un t-shirt bleu poudre oversize.",
+      "en": "A green monster with a crown raising its arms like it just scored. Chest-pocket on a powder blue oversized tee.",
+      "es": "Un monstruo verde con corona levantando los brazos como si acabara de marcar un gol. Bolsillo en una camiseta azul polvo oversized."
+    },
+    "artiste": {
+      "id": "maeva",
+      "nom": "Maéva",
+      "age": 5,
+      "bio": {
+        "fr": "Maéva dit que son monstre s'appelle Bibou. Bibou est roi de son château imaginaire depuis 2023.",
+        "en": "Maéva says her monster is called Bibou. Bibou has been king of his imaginary castle since 2023.",
+        "es": "Maéva dice que su monstruo se llama Bibou. Bibou ha sido rey de su castillo imaginario desde 2023."
+      }
+    },
+    "composition": "100% coton"
+  },
+  {
+    "id": "monstre-lilas",
+    "categorie": "t-shirts",
+    "prix": 44.99,
+    "image": "/prod-monster-lilac.png",
+    "images": ["/prod-monster-lilac.png", "/prod-monster-blue.png"],
+    "nouveaute": false,
+    "couleurs": ["#C9B8D4", "#7A8C5E", "#E8A820", "#A8C4D4", "#F0C87A"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "P'tit Monstre Roi — T-shirt Lilas",
+      "en": "Little Monster King — Lilac T-shirt",
+      "es": "Pequeño Monstruo Rey — Camiseta Lila"
+    },
+    "description": {
+      "fr": "Bibou en version lilas. Toujours aussi content de sa vie. Toujours aussi roi.",
+      "en": "Bibou in lilac. Still just as happy with life. Still a king.",
+      "es": "Bibou en versión lila. Todavía tan feliz con la vida. Todavía rey."
+    },
+    "artiste": {
+      "id": "maeva",
+      "nom": "Maéva",
+      "age": 5,
+      "bio": {
+        "fr": "Maéva dit que son monstre s'appelle Bibou. Bibou est roi de son château imaginaire depuis 2023.",
+        "en": "Maéva says her monster is called Bibou. Bibou has been king of his imaginary castle since 2023.",
+        "es": "Maéva dice que su monstruo se llama Bibou. Bibou ha sido rey de su castillo imaginario desde 2023."
+      }
+    },
+    "composition": "100% coton"
+  },
+  {
+    "id": "cochin-bleu",
+    "categorie": "t-shirts",
+    "prix": 44.99,
+    "image": "/prod-cochin-blue.png",
+    "images": ["/prod-cochin-blue.png"],
+    "nouveaute": true,
+    "couleurs": ["#4A7396", "#E8A820", "#CC2222", "#F0C87A"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Cochon-Poulet Dansant — T-shirt",
+      "en": "Dancing Chicken-Pig — T-shirt",
+      "es": "Cerdo-Pollo Bailador — Camiseta"
+    },
+    "description": {
+      "fr": "C'est un cochon? C'est un poulet? C'est les deux? En tout cas, il est content et il danse. C'est tout ce qui compte.",
+      "en": "Is it a pig? Is it a chicken? Is it both? Either way, it's happy and it's dancing. That's all that matters.",
+      "es": "¿Es un cerdo? ¿Es un pollo? ¿Es los dos? De todos modos, está feliz y está bailando. Eso es lo que importa."
+    },
+    "artiste": {
+      "id": "noah",
+      "nom": "Noah",
+      "age": 7,
+      "bio": {
+        "fr": "Noah dessine des animaux hybrides depuis qu'il a compris que les règles de la biologie sont facultatives en art.",
+        "en": "Noah has been drawing hybrid animals ever since he realized biology rules are optional in art.",
+        "es": "Noah lleva dibujando animales híbridos desde que se dio cuenta de que las reglas de la biología son opcionales en el arte."
+      }
+    },
+    "composition": "100% coton"
+  },
+  {
+    "id": "stranger-things-blue",
+    "categorie": "t-shirts",
+    "prix": 49.99,
+    "image": "/prod-stranger-front.png",
+    "images": ["/prod-stranger-front.png", "/prod-stranger-blue.png"],
+    "nouveaute": true,
+    "couleurs": ["#4A7396", "#CC2222", "#C8A882", "#7A7A7A", "#E8A820"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Stranger Kid — T-shirt",
+      "en": "Stranger Kid — T-shirt",
+      "es": "Stranger Kid — Camiseta"
+    },
+    "description": {
+      "fr": "Un demogorgon kawaii qui crie 'HEIP' avec son walkie-talkie. Parce qu'icitte au Québec, on aime les choses étranges aussi.",
+      "en": "A kawaii demogorgon yelling 'HEIP' with its walkie-talkie. Because here in Québec, we love strange things too.",
+      "es": "Un demogorgon kawaii gritando 'HEIP' con su walkie-talkie. Porque aquí en Québec, también amamos las cosas raras."
+    },
+    "artiste": {
+      "id": "mia",
+      "nom": "Mia",
+      "age": 10,
+      "bio": {
+        "fr": "Mia a regardé Stranger Things avec ses parents pis a décidé de dessiner le demogorgon mais en cute. Mission réussie.",
+        "en": "Mia watched Stranger Things with her parents and decided to draw the demogorgon but cute. Mission accomplished.",
+        "es": "Mia vio Stranger Things con sus padres y decidió dibujar el demogorgon pero lindo. Misión cumplida."
+      }
+    },
+    "composition": "100% coton lavé"
+  },
+  {
+    "id": "lapin-tshirt",
+    "categorie": "t-shirts",
+    "prix": 44.99,
+    "image": "/prod-bunny-tshirt.png",
+    "images": ["/prod-bunny-tshirt.png", "/prod-bunny-hoodie.png"],
+    "nouveaute": false,
+    "couleurs": ["#4A7396", "#CC2222", "#C8A882", "#7A7A7A", "#E8A820"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Lapin Blasé — T-shirt",
+      "en": "Done-With-It Bunny — T-shirt",
+      "es": "Conejo Aburrido — Camiseta"
+    },
+    "description": {
+      "fr": "Un lapin avec des lunettes qui a clairement des affaires plus importantes à faire. Parfait pour les gens qui comprennent.",
+      "en": "A bunny in glasses who clearly has more important things to do. Perfect for people who get it.",
+      "es": "Un conejo con gafas que claramente tiene cosas más importantes que hacer. Perfecto para gente que lo entiende."
+    },
+    "artiste": {
+      "id": "clara",
+      "nom": "Clara",
+      "age": 9,
+      "bio": {
+        "fr": "Clara dit que son lapin s'appelle Monsieur Tremblay et qu'il travaille à la ville. Elle refuse d'expliquer davantage.",
+        "en": "Clara says her bunny is named Mr. Tremblay and that he works for the city. She refuses to elaborate.",
+        "es": "Clara dice que su conejo se llama Sr. Tremblay y que trabaja para el municipio. Se niega a dar más detalles."
+      }
+    },
+    "composition": "100% coton lavé"
+  },
+  {
+    "id": "lapin-hoodie",
+    "categorie": "hoodies",
+    "prix": 74.99,
+    "image": "/prod-bunny-hoodie.png",
+    "images": ["/prod-bunny-hoodie.png", "/prod-bunny-tshirt.png"],
+    "nouveaute": false,
+    "couleurs": ["#4A7396", "#CC2222", "#C8A882", "#7A7A7A", "#E8A820"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Lapin Blasé — Hoodie",
+      "en": "Done-With-It Bunny — Hoodie",
+      "es": "Conejo Aburrido — Hoodie"
+    },
+    "description": {
+      "fr": "Monsieur Tremblay sur un hoodie. Chaud, confortable, et légèrement condescendant. Exactement comme lui.",
+      "en": "Mr. Tremblay on a hoodie. Warm, comfortable, and mildly condescending. Just like him.",
+      "es": "Sr. Tremblay en un hoodie. Cálido, cómodo y levemente condescendiente. Igual que él."
+    },
+    "artiste": {
+      "id": "clara",
+      "nom": "Clara",
+      "age": 9,
+      "bio": {
+        "fr": "Clara dit que son lapin s'appelle Monsieur Tremblay et qu'il travaille à la ville. Elle refuse d'expliquer davantage.",
+        "en": "Clara says her bunny is named Mr. Tremblay and that he works for the city. She refuses to elaborate.",
+        "es": "Clara dice que su conejo se llama Sr. Tremblay y que trabaja para el municipio. Se niega a dar más detalles."
+      }
+    },
+    "composition": "85% coton, 15% polyester"
+  },
+  {
+    "id": "bouffon-tanktop",
+    "categorie": "debardeurs",
+    "prix": 34.99,
+    "image": "/prod-jester-tanktop.png",
+    "images": ["/prod-jester-tanktop.png"],
+    "nouveaute": true,
+    "couleurs": ["#4A7396"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Bouffon Mystérieux — Débardeur + Casquette",
+      "en": "Mysterious Jester — Tank + Cap Set",
+      "es": "Bufón Misterioso — Camiseta sin Mangas + Gorra"
+    },
+    "description": {
+      "fr": "Un p'tit bonhomme jaune bizarre avec des cornes debout dans les herbes. En grand format sur un débardeur bleu, et en version miniature sur une casquette assortie. Le duo parfait pour l'été.",
+      "en": "A weird little yellow dude with horns standing in the grass. Large on a blue tank top and miniature on a matching cap. The perfect summer combo.",
+      "es": "Un pequeño tipo amarillo raro con cuernos parado en el pasto. Grande en una camiseta sin mangas azul y en miniatura en una gorra a juego. El combo perfecto para el verano."
+    },
+    "artiste": {
+      "id": "enzo",
+      "nom": "Enzo",
+      "age": 6,
+      "bio": {
+        "fr": "Enzo a dessiné ce personnage pendant un trajet en autobus. Il s'appelle Jeff.",
+        "en": "Enzo drew this character during a bus ride. His name is Jeff.",
+        "es": "Enzo dibujó este personaje durante un viaje en autobús. Se llama Jeff."
+      }
+    },
+    "composition": "100% coton"
+  },
+  {
+    "id": "chat-hoodie",
+    "categorie": "hoodies",
+    "prix": 74.99,
+    "image": "/prod-cat-hoodie.png",
+    "images": ["/prod-cat-hoodie.png"],
+    "nouveaute": true,
+    "couleurs": ["#2D2D2D"],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Gros Chat Inquiet — Hoodie",
+      "en": "Worried Big Cat — Hoodie",
+      "es": "Gato Grande Preocupado — Hoodie"
+    },
+    "description": {
+      "fr": "Un chat avec des grands yeux qui a clairement des inquiétudes existentielles. Sur un hoodie charbon surdimensionné que tu voudras jamais enlever.",
+      "en": "A cat with big eyes who clearly has existential concerns. On an oversized charcoal hoodie you'll never want to take off.",
+      "es": "Un gato con ojos grandes que claramente tiene preocupaciones existenciales. En un hoodie carbón oversized del que nunca querrás separarte."
+    },
+    "artiste": {
+      "id": "jade",
+      "nom": "Jade",
+      "age": 8,
+      "bio": {
+        "fr": "Jade a un chat qui s'appelle Potato. Ce dessin n'est pas Potato. C'est une autre créature.",
+        "en": "Jade has a cat named Potato. This drawing is not Potato. It's a different creature.",
+        "es": "Jade tiene un gato llamado Potato. Este dibujo no es Potato. Es otra criatura."
+      }
+    },
+    "composition": "85% coton, 15% polyester"
+  }
+]

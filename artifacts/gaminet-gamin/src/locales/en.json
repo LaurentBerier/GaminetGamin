@@ -1,0 +1,95 @@
+{
+  "lang": "en",
+  "nav": {
+    "boutique": "Shop",
+    "apropos": "About",
+    "artistes": "The Little Monsters",
+    "contact": "Contact"
+  },
+  "home": {
+    "slogan": "Drawn by little monsters. Worn by real folks.",
+    "subslogan": "Designs made right here in Québec, by kids with more imagination than the rest of us.",
+    "cta_boutique": "Shop the collection",
+    "cta_apropos": "Our story",
+    "nouveautes": "Fresh drops",
+    "voir_tout": "See the whole shop"
+  },
+  "boutique": {
+    "titre": "The Shop",
+    "sous_titre": "The full collection, all in one place.",
+    "filtrer": "Filter",
+    "tout": "All",
+    "t_shirts": "T-Shirts",
+    "hoodies": "Hoodies",
+    "sweats": "Sweatshirts",
+    "casquettes": "Caps",
+    "debardeurs": "Tank Tops",
+    "ajouter_panier": "Add to cart",
+    "disponible": "Available in",
+    "couleurs": "colors",
+    "voir_produit": "View product",
+    "aucun_produit": "Nothing here yet in this category — check back soon!"
+  },
+  "produit": {
+    "description": "Description",
+    "artiste": "Drawn by",
+    "composition": "Material",
+    "tailles": "Available sizes",
+    "couleurs": "Colors",
+    "ajouter": "Add to cart",
+    "fait_quebec": "Made in Québec",
+    "retour": "Back to shop",
+    "partager": "Share"
+  },
+  "apropos": {
+    "titre": "What is Gaminet Gamin GG?",
+    "p1": "You know those drawings your kid scribbles on paper and you're not sure what to do with them? We put them on clothes.",
+    "p2": "Gaminet Gamin GG is a Québec-based shop that turns children's drawings into quality garments. Every design comes from a kid with a weird idea and zero fear of showing it.",
+    "p3": "We're proud to do this right here in Québec — Made in Québec, no asterisk. Because kids' imaginations deserve better than a kitchen drawer.",
+    "mission": "Our mission",
+    "mission_texte": "Turn genius scribbles into clothes real people actually want to wear.",
+    "valeurs": "What we care about",
+    "val1_titre": "100% Québec",
+    "val1_texte": "Designed, produced, and shipped from Québec.",
+    "val2_titre": "Original designs",
+    "val2_texte": "Every drawing is unique — signed by its little artist.",
+    "val3_titre": "Real quality",
+    "val3_texte": "Durable, comfortable fabric that lasts."
+  },
+  "artistes": {
+    "titre": "The little monsters behind the designs",
+    "sous_titre": "These kids can't draw — and that's exactly why we love them.",
+    "age": "years old"
+  },
+  "contact": {
+    "titre": "Get in touch",
+    "sous_titre": "A question? A special order? A wild idea? We're listening.",
+    "nom": "Your name",
+    "courriel": "Your email",
+    "message": "Your message",
+    "envoyer": "Send",
+    "merci": "Message sent! We'll get back to you soon.",
+    "instagram": "Follow us on Instagram",
+    "email_label": "Email"
+  },
+  "footer": {
+    "droits": "All rights reserved",
+    "politique": "Privacy policy",
+    "livraison": "Shipping info",
+    "faq": "FAQ",
+    "fait_avec": "Made with ❤️ in Québec"
+  },
+  "panier": {
+    "titre": "Your cart",
+    "vide": "Your cart is empty — go shopping!",
+    "total": "Total",
+    "commander": "Place order",
+    "continuer": "Keep shopping",
+    "retirer": "Remove"
+  },
+  "lang_selector": {
+    "fr": "FR",
+    "en": "EN",
+    "es": "ES"
+  }
+}

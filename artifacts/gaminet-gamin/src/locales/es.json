@@ -1,0 +1,95 @@
+{
+  "lang": "es",
+  "nav": {
+    "boutique": "Tienda",
+    "apropos": "Nosotros",
+    "artistes": "Los pequeños monstruos",
+    "contact": "Contacto"
+  },
+  "home": {
+    "slogan": "Dibujado por pequeños monstruos. Llevado por gente de verdad.",
+    "subslogan": "Diseños hechos aquí mismo en Québec, por niños con más imaginación que cualquiera de nosotros.",
+    "cta_boutique": "Ver la colección",
+    "cta_apropos": "Nuestra historia",
+    "nouveautes": "Lo nuevo",
+    "voir_tout": "Ver toda la tienda"
+  },
+  "boutique": {
+    "titre": "La tienda",
+    "sous_titre": "Toda la colección, en un solo lugar.",
+    "filtrer": "Filtrar",
+    "tout": "Todo",
+    "t_shirts": "Camisetas",
+    "hoodies": "Hoodies",
+    "sweats": "Sudaderas",
+    "casquettes": "Gorras",
+    "debardeurs": "Camisetas sin mangas",
+    "ajouter_panier": "Agregar al carrito",
+    "disponible": "Disponible en",
+    "couleurs": "colores",
+    "voir_produit": "Ver producto",
+    "aucun_produit": "Nada aquí todavía — ¡vuelve pronto!"
+  },
+  "produit": {
+    "description": "Descripción",
+    "artiste": "Dibujado por",
+    "composition": "Composición",
+    "tailles": "Tallas disponibles",
+    "couleurs": "Colores",
+    "ajouter": "Agregar al carrito",
+    "fait_quebec": "Hecho en Québec",
+    "retour": "Volver a la tienda",
+    "partager": "Compartir"
+  },
+  "apropos": {
+    "titre": "¿Qué es Gaminet Gamin GG?",
+    "p1": "¿Tienes niños que dibujan bichos raros en papel y no sabes qué hacer con eso? Nosotros decidimos ponerlos en ropa.",
+    "p2": "Gaminet Gamin GG es una tienda quebequense que convierte dibujos de niños en prendas de calidad. Cada diseño viene de un niño con una idea rarísima y sin miedo a mostrarla.",
+    "p3": "Nos enorgullece hacer esto aquí mismo en Québec — Hecho en Québec, sin asterisco. Porque la imaginación de los niños merece algo mejor que el fondo de un cajón.",
+    "mission": "Nuestra misión",
+    "mission_texte": "Transformar garabatos geniales en ropa que la gente de verdad quiera usar.",
+    "valeurs": "Lo que nos importa",
+    "val1_titre": "100% Québec",
+    "val1_texte": "Diseñado, producido y enviado desde Québec.",
+    "val2_titre": "Diseños originales",
+    "val2_texte": "Cada dibujo es único — firmado por su pequeño artista.",
+    "val3_titre": "Calidad real",
+    "val3_texte": "Tela duradera y cómoda que aguanta el tiempo."
+  },
+  "artistes": {
+    "titre": "Los pequeños monstruos detrás de los diseños",
+    "sous_titre": "Estos niños no saben dibujar — y eso es exactamente por lo que los amamos.",
+    "age": "años"
+  },
+  "contact": {
+    "titre": "Contáctanos",
+    "sous_titre": "¿Una pregunta? ¿Un pedido especial? ¿Una idea loca? Te escuchamos.",
+    "nom": "Tu nombre",
+    "courriel": "Tu correo",
+    "message": "Tu mensaje",
+    "envoyer": "Enviar",
+    "merci": "¡Mensaje enviado! Te respondemos pronto.",
+    "instagram": "Síguenos en Instagram",
+    "email_label": "Correo"
+  },
+  "footer": {
+    "droits": "Todos los derechos reservados",
+    "politique": "Política de privacidad",
+    "livraison": "Info de envío",
+    "faq": "FAQ",
+    "fait_avec": "Hecho con ❤️ en Québec"
+  },
+  "panier": {
+    "titre": "Tu carrito",
+    "vide": "Tu carrito está vacío — ¡ve a comprar!",
+    "total": "Total",
+    "commander": "Realizar pedido",
+    "continuer": "Seguir comprando",
+    "retirer": "Eliminar"
+  },
+  "lang_selector": {
+    "fr": "FR",
+    "en": "EN",
+    "es": "ES"
+  }
+}
