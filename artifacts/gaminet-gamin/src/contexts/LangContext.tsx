@@ -51,6 +51,10 @@ export function LangProvider({ children }: { children: ReactNode }) {
     }
   }, [location]);
 
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   const setLang = (newLang: Lang) => {
     setLangState(newLang);
     localStorage.setItem("gg_lang", newLang);

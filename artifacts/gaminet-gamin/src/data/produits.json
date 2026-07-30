@@ -1,10 +1,150 @@
 [
   {
+    "id": "duo-g",
+    "categorie": "t-shirts",
+    "prix": 44.99,
+    "designImage": "/designs/gaminet-g-duo.webp",
+    "garments": [
+      {
+        "id": "tshirt",
+        "label": { "fr": "T-shirt", "en": "T-shirt", "es": "Camiseta" },
+        "price": 44.99,
+        "composition": "100% coton"
+      },
+      {
+        "id": "hoodie",
+        "label": { "fr": "Hoodie", "en": "Hoodie", "es": "Hoodie" },
+        "price": 74.99,
+        "composition": "85% coton, 15% polyester"
+      },
+      {
+        "id": "crewneck",
+        "label": { "fr": "Sweat col rond", "en": "Crewneck", "es": "Sudadera" },
+        "price": 64.99,
+        "composition": "80% coton, 20% polyester"
+      }
+    ],
+    "nouveaute": true,
+    "couleurs": [
+      {
+        "hex": "#F2EDE2",
+        "name": { "fr": "Crème", "en": "Cream", "es": "Crema" }
+      },
+      {
+        "hex": "#1B2A4A",
+        "name": { "fr": "Marine", "en": "Navy", "es": "Marino" }
+      },
+      {
+        "hex": "#77906F",
+        "name": { "fr": "Sauge", "en": "Sage", "es": "Salvia" }
+      },
+      {
+        "hex": "#343434",
+        "name": { "fr": "Noir délavé", "en": "Washed black", "es": "Negro lavado" }
+      },
+      {
+        "hex": "#B7AED0",
+        "name": { "fr": "Lilas", "en": "Lilac", "es": "Lila" }
+      }
+    ],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Le Duo G — T-shirt & Hoodie",
+      "en": "The G Duo — T-shirt & Hoodie",
+      "es": "El Dúo G — Camiseta y Hoodie"
+    },
+    "description": {
+      "fr": "Deux petits g qui se tiennent ensemble, dont un avec sa casquette préférée. Choisis le vêtement et la couleur: le dessin reste le même, le look change complètement.",
+      "en": "Two little g characters sticking together, one in a favorite cap. Choose the garment and color: the art stays the same while the whole look changes.",
+      "es": "Dos pequeños personajes g juntos, uno con su gorra favorita. Elige la prenda y el color: el dibujo no cambia, pero el look sí."
+    },
+    "artiste": {
+      "id": "collection-gaminet",
+      "nom": "Gaminet Gamin",
+      "bio": {
+        "fr": "Un dessin original de la nouvelle collection des p'tits monstres Gaminet Gamin.",
+        "en": "An original drawing from the new Gaminet Gamin little monsters collection.",
+        "es": "Un dibujo original de la nueva colección de pequeños monstruos Gaminet Gamin."
+      }
+    },
+    "composition": "Selon le vêtement choisi"
+  },
+  {
+    "id": "duo-tuques",
+    "categorie": "hoodies",
+    "prix": 44.99,
+    "designImage": "/designs/gaminet-winter-duo.webp",
+    "garments": [
+      {
+        "id": "tshirt",
+        "label": { "fr": "T-shirt", "en": "T-shirt", "es": "Camiseta" },
+        "price": 44.99,
+        "composition": "100% coton"
+      },
+      {
+        "id": "hoodie",
+        "label": { "fr": "Hoodie", "en": "Hoodie", "es": "Hoodie" },
+        "price": 74.99,
+        "composition": "85% coton, 15% polyester"
+      },
+      {
+        "id": "crewneck",
+        "label": { "fr": "Sweat col rond", "en": "Crewneck", "es": "Sudadera" },
+        "price": 64.99,
+        "composition": "80% coton, 20% polyester"
+      }
+    ],
+    "nouveaute": true,
+    "couleurs": [
+      {
+        "hex": "#F2EDE2",
+        "name": { "fr": "Crème", "en": "Cream", "es": "Crema" }
+      },
+      {
+        "hex": "#3D596E",
+        "name": { "fr": "Bleu ardoise", "en": "Slate blue", "es": "Azul pizarra" }
+      },
+      {
+        "hex": "#8C5A49",
+        "name": { "fr": "Brique", "en": "Brick", "es": "Ladrillo" }
+      },
+      {
+        "hex": "#343434",
+        "name": { "fr": "Noir délavé", "en": "Washed black", "es": "Negro lavado" }
+      },
+      {
+        "hex": "#C7A772",
+        "name": { "fr": "Moutarde", "en": "Mustard", "es": "Mostaza" }
+      }
+    ],
+    "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
+    "nom": {
+      "fr": "Le Duo Tuques — T-shirt & Hoodie",
+      "en": "The Toque Duo — T-shirt & Hoodie",
+      "es": "El Dúo de Gorros — Camiseta y Hoodie"
+    },
+    "description": {
+      "fr": "Deux personnages bien emmitouflés: une tuque à pompon en haut, des cache-oreilles en bas. Un dessin d'hiver qui fonctionne aussi bien sur un tee que sur un gros hoodie.",
+      "en": "Two bundled-up characters: a pom-pom toque on top and furry ear flaps below. A winter drawing that works just as well on a tee as on a heavy hoodie.",
+      "es": "Dos personajes bien abrigados: un gorro con pompón arriba y orejeras abajo. Un dibujo de invierno que funciona en camiseta o hoodie."
+    },
+    "artiste": {
+      "id": "collection-gaminet",
+      "nom": "Gaminet Gamin",
+      "bio": {
+        "fr": "Un dessin original de la nouvelle collection des p'tits monstres Gaminet Gamin.",
+        "en": "An original drawing from the new Gaminet Gamin little monsters collection.",
+        "es": "Un dibujo original de la nueva colección de pequeños monstruos Gaminet Gamin."
+      }
+    },
+    "composition": "Selon le vêtement choisi"
+  },
+  {
     "id": "grenouille-center",
     "categorie": "sweats",
     "prix": 64.99,
-    "image": "/prod-frog-center.png",
-    "images": ["/prod-frog-center.png", "/prod-frog-pocket.png"],
+    "image": "/prod-frog-center.webp",
+    "images": ["/prod-frog-center.webp", "/prod-frog-pocket.webp"],
     "nouveaute": true,
     "couleurs": ["#E8E4DC", "#7A8C5E", "#B8A89A", "#C8A882", "#3D4F2F"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -34,8 +174,8 @@
     "id": "grenouille-pocket",
     "categorie": "sweats",
     "prix": 64.99,
-    "image": "/prod-frog-pocket.png",
-    "images": ["/prod-frog-pocket.png", "/prod-frog-center.png"],
+    "image": "/prod-frog-pocket.webp",
+    "images": ["/prod-frog-pocket.webp", "/prod-frog-center.webp"],
     "nouveaute": false,
     "couleurs": ["#E8E4DC", "#7A8C5E", "#B8A89A", "#C8A882", "#3D4F2F"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -65,8 +205,8 @@
     "id": "montagnes-sage",
     "categorie": "t-shirts",
     "prix": 44.99,
-    "image": "/prod-mountain-tshirt.png",
-    "images": ["/prod-mountain-tshirt.png", "/prod-mountain-tshirt-lilac.png"],
+    "image": "/prod-mountain-tshirt.webp",
+    "images": ["/prod-mountain-tshirt.webp", "/prod-mountain-tshirt-lilac.webp"],
     "nouveaute": true,
     "couleurs": ["#7A8C5E", "#4A7396", "#C8A882", "#E8E4DC", "#C05A3A", "#2D2D2D"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -96,8 +236,8 @@
     "id": "montagnes-lilac",
     "categorie": "t-shirts",
     "prix": 44.99,
-    "image": "/prod-mountain-tshirt-lilac.png",
-    "images": ["/prod-mountain-tshirt-lilac.png", "/prod-mountain-tshirt.png"],
+    "image": "/prod-mountain-tshirt-lilac.webp",
+    "images": ["/prod-mountain-tshirt-lilac.webp", "/prod-mountain-tshirt.webp"],
     "nouveaute": false,
     "couleurs": ["#C9B8D4", "#7A8C5E", "#4A7396", "#F0C87A", "#C05A3A"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -127,8 +267,8 @@
     "id": "fantome-hoodie",
     "categorie": "hoodies",
     "prix": 74.99,
-    "image": "/prod-ghost-hoodie.png",
-    "images": ["/prod-ghost-hoodie.png", "/prod-mountain-hoodie.png"],
+    "image": "/prod-ghost-hoodie.webp",
+    "images": ["/prod-ghost-hoodie.webp", "/prod-mountain-hoodie.webp"],
     "nouveaute": true,
     "couleurs": ["#1A2A4A", "#4A7396", "#E8E4DC", "#3D4F2F"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -158,8 +298,8 @@
     "id": "montagne-hoodie",
     "categorie": "hoodies",
     "prix": 74.99,
-    "image": "/prod-mountain-hoodie.png",
-    "images": ["/prod-mountain-hoodie.png", "/prod-ghost-hoodie.png"],
+    "image": "/prod-mountain-hoodie.webp",
+    "images": ["/prod-mountain-hoodie.webp", "/prod-ghost-hoodie.webp"],
     "nouveaute": false,
     "couleurs": ["#1A2A4A", "#4A7396", "#E8E4DC", "#3D4F2F"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -189,8 +329,8 @@
     "id": "flatuleur-jaune",
     "categorie": "t-shirts",
     "prix": 44.99,
-    "image": "/prod-flatuleur-yellow.png",
-    "images": ["/prod-flatuleur-yellow.png", "/prod-flatuleur-blue.png"],
+    "image": "/prod-flatuleur-yellow.webp",
+    "images": ["/prod-flatuleur-yellow.webp", "/prod-flatuleur-blue.webp"],
     "nouveaute": true,
     "couleurs": ["#E8A820", "#CC2222", "#4A7396", "#E87AB0", "#2A5E2A", "#1A2A4A"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -220,8 +360,8 @@
     "id": "flatuleur-bleu",
     "categorie": "t-shirts",
     "prix": 44.99,
-    "image": "/prod-flatuleur-blue.png",
-    "images": ["/prod-flatuleur-blue.png", "/prod-flatuleur-yellow.png"],
+    "image": "/prod-flatuleur-blue.webp",
+    "images": ["/prod-flatuleur-blue.webp", "/prod-flatuleur-yellow.webp"],
     "nouveaute": false,
     "couleurs": ["#E8A820", "#CC2222", "#4A7396", "#E87AB0", "#2A5E2A", "#1A2A4A"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -251,8 +391,8 @@
     "id": "monstre-bleu",
     "categorie": "t-shirts",
     "prix": 44.99,
-    "image": "/prod-monster-blue.png",
-    "images": ["/prod-monster-blue.png", "/prod-monster-lilac.png"],
+    "image": "/prod-monster-blue.webp",
+    "images": ["/prod-monster-blue.webp", "/prod-monster-lilac.webp"],
     "nouveaute": false,
     "couleurs": ["#A8C4D4", "#7A8C5E", "#E8A820", "#C9B8D4", "#F0C87A"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -282,8 +422,8 @@
     "id": "monstre-lilas",
     "categorie": "t-shirts",
     "prix": 44.99,
-    "image": "/prod-monster-lilac.png",
-    "images": ["/prod-monster-lilac.png", "/prod-monster-blue.png"],
+    "image": "/prod-monster-lilac.webp",
+    "images": ["/prod-monster-lilac.webp", "/prod-monster-blue.webp"],
     "nouveaute": false,
     "couleurs": ["#C9B8D4", "#7A8C5E", "#E8A820", "#A8C4D4", "#F0C87A"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -313,8 +453,8 @@
     "id": "cochin-bleu",
     "categorie": "t-shirts",
     "prix": 44.99,
-    "image": "/prod-cochin-blue.png",
-    "images": ["/prod-cochin-blue.png"],
+    "image": "/prod-cochin-blue.webp",
+    "images": ["/prod-cochin-blue.webp"],
     "nouveaute": true,
     "couleurs": ["#4A7396", "#E8A820", "#CC2222", "#F0C87A"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -344,8 +484,8 @@
     "id": "stranger-things-blue",
     "categorie": "t-shirts",
     "prix": 49.99,
-    "image": "/prod-stranger-front.png",
-    "images": ["/prod-stranger-front.png", "/prod-stranger-blue.png"],
+    "image": "/prod-stranger-front.webp",
+    "images": ["/prod-stranger-front.webp", "/prod-stranger-blue.webp"],
     "nouveaute": true,
     "couleurs": ["#4A7396", "#CC2222", "#C8A882", "#7A7A7A", "#E8A820"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -375,8 +515,8 @@
     "id": "lapin-tshirt",
     "categorie": "t-shirts",
     "prix": 44.99,
-    "image": "/prod-bunny-tshirt.png",
-    "images": ["/prod-bunny-tshirt.png", "/prod-bunny-hoodie.png"],
+    "image": "/prod-bunny-tshirt.webp",
+    "images": ["/prod-bunny-tshirt.webp", "/prod-bunny-hoodie.webp"],
     "nouveaute": false,
     "couleurs": ["#4A7396", "#CC2222", "#C8A882", "#7A7A7A", "#E8A820"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -406,8 +546,8 @@
     "id": "lapin-hoodie",
     "categorie": "hoodies",
     "prix": 74.99,
-    "image": "/prod-bunny-hoodie.png",
-    "images": ["/prod-bunny-hoodie.png", "/prod-bunny-tshirt.png"],
+    "image": "/prod-bunny-hoodie.webp",
+    "images": ["/prod-bunny-hoodie.webp", "/prod-bunny-tshirt.webp"],
     "nouveaute": false,
     "couleurs": ["#4A7396", "#CC2222", "#C8A882", "#7A7A7A", "#E8A820"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -437,8 +577,8 @@
     "id": "bouffon-tanktop",
     "categorie": "debardeurs",
     "prix": 34.99,
-    "image": "/prod-jester-tanktop.png",
-    "images": ["/prod-jester-tanktop.png"],
+    "image": "/prod-jester-tanktop.webp",
+    "images": ["/prod-jester-tanktop.webp"],
     "nouveaute": true,
     "couleurs": ["#4A7396"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],
@@ -468,8 +608,8 @@
     "id": "chat-hoodie",
     "categorie": "hoodies",
     "prix": 74.99,
-    "image": "/prod-cat-hoodie.png",
-    "images": ["/prod-cat-hoodie.png"],
+    "image": "/prod-cat-hoodie.webp",
+    "images": ["/prod-cat-hoodie.webp"],
     "nouveaute": true,
     "couleurs": ["#2D2D2D"],
     "tailles": ["XS", "S", "M", "L", "XL", "XXL"],

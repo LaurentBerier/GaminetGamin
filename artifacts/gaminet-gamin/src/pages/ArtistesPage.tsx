@@ -4,13 +4,14 @@ import produits from "@/data/produits.json";
 import soumissions from "@/data/soumissions-vedettes.json";
 import { useState, useRef } from "react";
 import { ArrowRight, Upload, CheckCircle2, ChevronDown, ChevronUp, Palette, Camera, Shirt, Heart } from "lucide-react";
+import type { Product } from "@/types/product";
 
 type ArtistEntry = {
   id: string;
   nom: string;
   age: number;
   bio: { fr: string; en: string; es: string };
-  products: typeof produits;
+  products: Product[];
 };
 
 const GALLERY_COLORS = [
@@ -43,10 +44,11 @@ export default function ArtistesPage() {
   const shopRoute = lang === "fr" ? "/fr/boutique" : lang === "en" ? "/en/shop" : "/es/tienda";
 
   const artistMap = new Map<string, ArtistEntry>();
-  for (const p of produits) {
+  for (const p of produits as Product[]) {
     const a = p.artiste;
+    if (!a.age) continue;
     if (!artistMap.has(a.id)) {
-      artistMap.set(a.id, { id: a.id, nom: a.nom, age: a.age, bio: a.bio as any, products: [] });
+      artistMap.set(a.id, { id: a.id, nom: a.nom, age: a.age, bio: a.bio, products: [] });
     }
     artistMap.get(a.id)!.products.push(p);
   }

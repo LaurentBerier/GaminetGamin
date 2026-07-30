@@ -4,6 +4,15 @@ import produits from "@/data/produits.json";
 import { ArrowLeft, ShoppingBag, Share2, Heart } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
+import { GarmentMockup } from "@/components/GarmentMockup";
+import {
+  getColorOptions,
+  getDefaultGarment,
+  isLayeredProduct,
+  type GarmentId,
+  type Product,
+  type ProductColor,
+} from "@/types/product";
 
 const ORGANISME_MAP: Record<string, { fr: string; en: string; es: string }> = {
   "jeunes-en-tete": { fr: "Fondation Jeunes en Tête", en: "Fondation Jeunes en Tête", es: "Fondation Jeunes en Tête" },
@@ -20,7 +29,15 @@ export default function ProduitPage() {
 
   const shopRoute = lang === "fr" ? "/fr/boutique" : lang === "en" ? "/en/shop" : "/es/tienda";
   const programRoute = lang === "fr" ? "/fr/artistes" : lang === "en" ? "/en/little-monsters" : "/es/pequenos-monstruos";
-  const produit = produits.find((p) => p.id === params.id);
+  const produit = (produits as Product[]).find((p) => p.id === params.id);
+  const defaultGarment = produit ? getDefaultGarment(produit) : null;
+  const colors = produit ? getColorOptions(produit) : [];
+  const [selectedGarmentId, setSelectedGarmentId] = useState<GarmentId | undefined>(
+    defaultGarment?.id,
+  );
+  const [selectedColor, setSelectedColor] = useState<ProductColor | undefined>(
+    colors[0],
+  );
 
   if (!produit) {
     return (
@@ -35,9 +52,16 @@ export default function ProduitPage() {
     );
   }
 
-  const organismeId = (produit as any).artiste?.organisme as string | undefined;
+  const organismeId = produit.artiste.organisme;
   const organisme = organismeId ? ORGANISME_MAP[organismeId] : null;
-  const isSoumission = !!(produit as any).soumission;
+  const isSoumission = Boolean(produit.soumission);
+  const selectedGarment =
+    produit.garments?.find((garment) => garment.id === selectedGarmentId) ??
+    defaultGarment;
+  const selectedColorOption = selectedColor ?? colors[0];
+  const layered = isLayeredProduct(produit);
+  const currentPrice = selectedGarment?.price ?? produit.prix;
+  const currentComposition = selectedGarment?.composition ?? produit.composition;
 
   return (
     <main className="max-w-6xl mx-auto px-4 sm:px-6 py-12" data-testid="produit-page">
@@ -52,29 +76,62 @@ export default function ProduitPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="space-y-4" data-testid="product-images">
-          <div className="rounded-2xl overflow-hidden bg-stone-50 aspect-square border border-stone-100">
-            <img
-              src={produit.images[selectedImg]}
-              alt={translateField(produit.nom as any)}
-              className="w-full h-full object-cover"
-              data-testid="img-product-main"
-            />
-          </div>
-          {produit.images.length > 1 && (
-            <div className="flex gap-3">
-              {produit.images.map((img, i) => (
-                <button
-                  key={i}
-                  onClick={() => setSelectedImg(i)}
-                  className={`w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${
-                    selectedImg === i ? "border-stone-900" : "border-stone-200 opacity-60 hover:opacity-100"
-                  }`}
-                  data-testid={`img-thumb-${i}`}
-                >
-                  <img src={img} alt="" className="w-full h-full object-cover" />
-                </button>
-              ))}
+          {layered && produit.designImage && selectedGarment && selectedColorOption ? (
+            <div className="rounded-2xl overflow-hidden bg-stone-50 aspect-square border border-stone-100">
+              <GarmentMockup
+                alt={translateField(produit.nom)}
+                color={selectedColorOption.hex}
+                designImage={produit.designImage}
+                garment={selectedGarment.id}
+                priority
+              />
             </div>
+          ) : (
+            <>
+              <div className="relative rounded-2xl overflow-hidden bg-stone-50 aspect-square border border-stone-100">
+                <img
+                  src={produit.images?.[selectedImg] ?? produit.image}
+                  alt={translateField(produit.nom)}
+                  className="w-full h-full object-cover"
+                  width="1100"
+                  height="1100"
+                  fetchPriority="high"
+                  decoding="async"
+                  data-testid="img-product-main"
+                />
+                {selectedColorOption && (
+                  <div
+                    className="absolute inset-0 opacity-20 mix-blend-color pointer-events-none"
+                    style={{ backgroundColor: selectedColorOption.hex }}
+                    aria-hidden="true"
+                  />
+                )}
+              </div>
+              {(produit.images?.length ?? 0) > 1 && (
+                <div className="flex gap-3">
+                  {produit.images?.map((img, i) => (
+                    <button
+                      key={img}
+                      onClick={() => setSelectedImg(i)}
+                      className={`w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${
+                        selectedImg === i ? "border-stone-900" : "border-stone-200 opacity-60 hover:opacity-100"
+                      }`}
+                      data-testid={`img-thumb-${i}`}
+                    >
+                      <img
+                        src={img}
+                        alt=""
+                        className="w-full h-full object-cover"
+                        width="64"
+                        height="64"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </div>
 
@@ -97,7 +154,7 @@ export default function ProduitPage() {
           </h1>
 
           <p className="text-2xl font-bold text-stone-900 mb-6" data-testid="product-price">
-            {produit.prix.toFixed(2)} $
+            {currentPrice.toFixed(2)} $
           </p>
 
           <div className="mb-6">
@@ -107,15 +164,52 @@ export default function ProduitPage() {
             </p>
           </div>
 
+          {produit.garments && produit.garments.length > 0 && (
+            <div className="mb-6">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-3">
+                {lang === "fr" ? "Vêtement" : lang === "en" ? "Garment" : "Prenda"}
+              </h3>
+              <div className="grid grid-cols-3 gap-2" data-testid="product-garments">
+                {produit.garments.map((garment) => (
+                  <button
+                    key={garment.id}
+                    type="button"
+                    onClick={() => setSelectedGarmentId(garment.id)}
+                    className={`px-3 py-3 rounded-xl text-sm font-semibold border-2 transition-all ${
+                      selectedGarment?.id === garment.id
+                        ? "border-stone-900 bg-stone-900 text-stone-50"
+                        : "border-stone-200 text-stone-700 hover:border-stone-900"
+                    }`}
+                    aria-pressed={selectedGarment?.id === garment.id}
+                    data-testid={`garment-${garment.id}`}
+                  >
+                    <span className="block">{translateField(garment.label)}</span>
+                    <span className="block text-xs opacity-70 mt-0.5">
+                      {garment.price.toFixed(2)} $
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="mb-6">
             <h3 className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-3">{t.produit.couleurs}</h3>
             <div className="flex gap-2 flex-wrap" data-testid="product-colors">
-              {produit.couleurs.map((c, i) => (
+              {colors.map((color, i) => (
                 <button
-                  key={i}
-                  className="w-8 h-8 rounded-full border-2 border-transparent hover:border-stone-900 transition-all hover:scale-110"
-                  style={{ backgroundColor: c }}
-                  title={c}
+                  key={color.hex}
+                  type="button"
+                  onClick={() => setSelectedColor(color)}
+                  className={`w-8 h-8 rounded-full border-2 hover:border-stone-900 transition-all hover:scale-110 ${
+                    selectedColorOption?.hex === color.hex
+                      ? "border-stone-900 ring-2 ring-stone-300"
+                      : "border-transparent"
+                  }`}
+                  style={{ backgroundColor: color.hex }}
+                  title={color.name[lang]}
+                  aria-label={color.name[lang]}
+                  aria-pressed={selectedColorOption?.hex === color.hex}
                   data-testid={`color-swatch-${i}`}
                 />
               ))}
@@ -167,7 +261,8 @@ export default function ProduitPage() {
               </div>
               <div>
                 <p className="font-bold text-stone-900" data-testid="artist-name">
-                  {produit.artiste.nom}, {produit.artiste.age} {t.artistes.age}
+                  {produit.artiste.nom}
+                  {produit.artiste.age ? `, ${produit.artiste.age} ${t.artistes.age}` : ""}
                 </p>
               </div>
             </div>
@@ -188,7 +283,7 @@ export default function ProduitPage() {
             </div>
           )}
 
-          <p className="text-stone-400 text-xs mt-4">{t.produit.composition}: {produit.composition}</p>
+          <p className="text-stone-400 text-xs mt-4">{t.produit.composition}: {currentComposition}</p>
         </div>
       </div>
     </main>

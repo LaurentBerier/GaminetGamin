@@ -3,6 +3,7 @@ import { useLang } from "@/contexts/LangContext";
 import { ProductCard } from "@/components/ProductCard";
 import produits from "@/data/produits.json";
 import { ArrowRight, Pencil } from "lucide-react";
+import type { Product } from "@/types/product";
 
 export default function HomePage() {
   const { lang, t } = useLang();
@@ -11,7 +12,7 @@ export default function HomePage() {
   const aboutRoute = lang === "fr" ? "/fr/apropos" : lang === "en" ? "/en/about" : "/es/nosotros";
   const programRoute = lang === "fr" ? "/fr/artistes" : lang === "en" ? "/en/little-monsters" : "/es/pequenos-monstruos";
 
-  const nouveautes = produits.filter((p) => p.nouveaute).slice(0, 4);
+  const nouveautes = (produits as Product[]).filter((p) => p.nouveaute).slice(0, 4);
 
   return (
     <main>
@@ -91,8 +92,8 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-          {nouveautes.map((p) => (
-            <ProductCard key={p.id} produit={p as any} />
+          {nouveautes.map((p, index) => (
+            <ProductCard key={p.id} produit={p} priority={index === 0} />
           ))}
         </div>
       </section>

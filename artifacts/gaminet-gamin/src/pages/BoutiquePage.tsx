@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLang } from "@/contexts/LangContext";
 import { ProductCard } from "@/components/ProductCard";
 import produits from "@/data/produits.json";
+import type { Product } from "@/types/product";
 
 type Categorie = "tout" | "t-shirts" | "hoodies" | "sweats" | "casquettes" | "debardeurs";
 
@@ -18,7 +19,8 @@ export default function BoutiquePage() {
     { key: "casquettes", label: t.boutique.casquettes },
   ];
 
-  const filtered = categorie === "tout" ? produits : produits.filter((p) => p.categorie === categorie);
+  const productList = produits as Product[];
+  const filtered = categorie === "tout" ? productList : productList.filter((p) => p.categorie === categorie);
 
   return (
     <main className="max-w-6xl mx-auto px-4 sm:px-6 py-16" data-testid="boutique-page">
@@ -54,7 +56,7 @@ export default function BoutiquePage() {
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6" data-testid="products-grid">
           {filtered.map((p) => (
-            <ProductCard key={p.id} produit={p as any} />
+            <ProductCard key={p.id} produit={p} />
           ))}
         </div>
       )}
