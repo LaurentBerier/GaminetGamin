@@ -108,7 +108,6 @@ overrides:
   lightningcss>lightningcss-win32-x64-msvc: '-'
   '@tailwindcss/oxide>@tailwindcss/oxide-android-arm64': '-'
   '@tailwindcss/oxide>@tailwindcss/oxide-darwin-arm64': '-'
-  '@tailwindcss/oxide>@tailwindcss/oxide-darwin-x64': '-'
   '@tailwindcss/oxide>@tailwindcss/oxide-freebsd-x64': '-'
   '@tailwindcss/oxide>@tailwindcss/oxide-linux-arm-gnueabihf': '-'
   '@tailwindcss/oxide>@tailwindcss/oxide-linux-arm64-gnu': '-'
@@ -156,6 +155,10 @@ overrides:
 importers:
 
   .:
+    dependencies:
+      pg:
+        specifier: ^8.20.0
+        version: 8.20.0
     devDependencies:
       prettier:
         specifier: ^3.8.1
@@ -167,6 +170,9 @@ importers:
       '@rollup/rollup-darwin-x64':
         specifier: 4.59.0
         version: 4.59.0
+      '@tailwindcss/oxide-darwin-x64':
+        specifier: 4.2.1
+        version: 4.2.1
       lightningcss-darwin-x64:
         specifier: 1.31.1
         version: 1.31.1
@@ -2145,6 +2151,12 @@ packages:
 
   '@tailwindcss/node@4.2.1':
     resolution: {integrity: sha512-jlx6sLk4EOwO6hHe1oCGm1Q4AN/s0rSrTTPBGPM0/RQ6Uylwq17FuU8IeJJKEjtc6K6O07zsvP+gDO6MMWo7pg==}
+
+  '@tailwindcss/oxide-darwin-x64@4.2.1':
+    resolution: {integrity: sha512-/f/ozlaXGY6QLbpvd/kFTro2l18f7dHKpB+ieXz+Cijl4Mt9AI2rTrpq7V+t04nK+j9XBQHnSMdeQRhbGyt6fw==}
+    engines: {node: '>= 20'}
+    cpu: [x64]
+    os: [darwin]
 
   '@tailwindcss/oxide-linux-x64-gnu@4.2.1':
     resolution: {integrity: sha512-qMFzxI2YlBOLW5PhblzuSWlWfwLHaneBE0xHzLrBgNtqN6mWfs+qYbhryGSXQjFYB1Dzf5w+LN5qbUTPhW7Y5g==}
@@ -6579,6 +6591,9 @@ snapshots:
       source-map-js: 1.2.1
       tailwindcss: 4.2.1
 
+  '@tailwindcss/oxide-darwin-x64@4.2.1':
+    optional: true
+
   '@tailwindcss/oxide-linux-x64-gnu@4.2.1':
     optional: true
 
@@ -6587,6 +6602,7 @@ snapshots:
 
   '@tailwindcss/oxide@4.2.1':
     optionalDependencies:
+      '@tailwindcss/oxide-darwin-x64': 4.2.1
       '@tailwindcss/oxide-linux-x64-gnu': 4.2.1
       '@tailwindcss/oxide-wasm32-wasi': 4.2.1
 

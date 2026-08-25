@@ -8,6 +8,9 @@
     "typecheck:libs": "tsc --build",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
   },
+  "dependencies": {
+    "pg": "^8.20.0"
+  },
   "private": true,
   "devDependencies": {
     "prettier": "^3.8.1",
@@ -15,6 +18,7 @@
   },
   "optionalDependencies": {
     "@rollup/rollup-darwin-x64": "4.59.0",
+    "@tailwindcss/oxide-darwin-x64": "4.2.1",
     "lightningcss-darwin-x64": "1.31.1"
   }
 }

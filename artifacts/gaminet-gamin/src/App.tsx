@@ -11,6 +11,7 @@ import ProduitPage from "@/pages/ProduitPage";
 import AproposPage from "@/pages/AproposPage";
 import ArtistesPage from "@/pages/ArtistesPage";
 import ContactPage from "@/pages/ContactPage";
+import { CollectionPreview as CollectionVotingPage } from "@/pages/CollectionVotingPage";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,13 @@ function RedirectToFr() {
 }
 
 function AppLayout() {
+  const [location] = useLocation();
+  const isVotingStorefront = ["/fr/boutique", "/en/shop", "/es/tienda"].includes(location);
+
+  if (isVotingStorefront) {
+    return <CollectionVotingPage />;
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-stone-50">
       <Header />

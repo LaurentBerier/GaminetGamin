@@ -1,7 +1,56 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "nextjs",
   "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "pnpm --filter gaminet-gamin-collection-vote run build:vercel",
-  "outputDirectory": "artifacts/gaminet-gamin-vote/.next"
+  "buildCommand": "pnpm --filter @workspace/gaminet-gamin run build",
+  "outputDirectory": "artifacts/gaminet-gamin/dist/public",
+  "functions": {
+    "api/votes.js": {
+      "maxDuration": 10,
+      "includeFiles": "artifacts/gaminet-gamin-vote/content/catalog.json"
+    }
+  },
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/catalog/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=2592000"
+        }
+      ]
+    },
+    {
+      "source": "/designs/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=2592000"
+        }
+      ]
+    },
+    {
+      "source": "/prod-(.*).webp",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=2592000"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
