@@ -137,6 +137,19 @@ COLORS = {
     "berry-purple": ("#963a8d", {"fr": "Violet baie", "en": "Berry purple"}),
 }
 
+TITLE_OVERRIDES = {
+    "IMG_6173": "Le Chalet",
+    "IMG_6218": "Chaise Haricot",
+}
+
+ALL_SECTION_ORDER = {
+    "vivid": 0,
+    "classics": 1,
+    "caps": 2,
+    "beanies": 3,
+    "bucket-hats": 4,
+}
+
 
 def slug(value: str) -> str:
     normalized = unicodedata.normalize("NFKD", value)
@@ -186,6 +199,7 @@ def make_item(
     source_image: Path,
     source_collection: str,
 ) -> dict:
+    title = TITLE_OVERRIDES.get(design_id, title)
     garment_id, garment_label = GARMENTS[garment_key]
     web_name = f"{slug(item_id)}.webp"
     optimize_image(source_image, ASSET_ROOT / web_name)
@@ -273,8 +287,10 @@ for manifest_path, collection_root, source_collection in expansion_sources:
             )
         )
 
-if len(items) != 95:
-    raise RuntimeError(f"Expected 95 apparel variants, found {len(items)}")
+items.sort(key=lambda item: ALL_SECTION_ORDER[item["sectionId"]])
+
+if len(items) != 119:
+    raise RuntimeError(f"Expected 119 apparel variants, found {len(items)}")
 if len({item['id'] for item in items}) != len(items):
     raise RuntimeError("Catalog item IDs are not unique")
 

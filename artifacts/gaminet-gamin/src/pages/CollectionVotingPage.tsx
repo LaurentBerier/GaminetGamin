@@ -1,6 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState, type TouchEvent } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { PointerEvent as ReactPointerEvent, TouchEvent } from 'react';
+import { ZoomIn, ZoomOut } from 'lucide-react';
 import catalog from '../../../gaminet-gamin-vote/content/catalog.json';
 
 type ResultData = {
@@ -13,6 +15,32 @@ type ResultData = {
   >;
   lastVoteAt: number;
 };
+
+type Point = { x: number; y: number };
+
+type PreviewTouchGesture =
+  | { mode: 'swipe'; start: Point }
+  | { mode: 'pan'; start: Point; startPan: Point }
+  | { mode: 'pinch'; startDistance: number; startZoom: number; startCenter: Point; startPan: Point };
+
+const maxPreviewZoom = 3;
+const desktopPreviewZoom = 2.25;
+
+function clamp(value: number, minimum: number, maximum: number) {
+  return Math.min(maximum, Math.max(minimum, value));
+}
+
+function touchPoint(touch: { clientX: number; clientY: number }): Point {
+  return { x: touch.clientX, y: touch.clientY };
+}
+
+function touchDistance(first: { clientX: number; clientY: number }, second: { clientX: number; clientY: number }) {
+  return Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY);
+}
+
+function touchCenter(first: { clientX: number; clientY: number }, second: { clientX: number; clientY: number }): Point {
+  return { x: (first.clientX + second.clientX) / 2, y: (first.clientY + second.clientY) / 2 };
+}
 
 const itemById = new Map(catalog.items.map((item) => [item.id, item]));
 const activeItems = catalog.items.filter((item) => item.active);
@@ -204,10 +232,16 @@ export function CollectionPreview() {
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [shareState, setShareState] = useState('Partager');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [previewZoom, setPreviewZoom] = useState(1);
+  const [previewPan, setPreviewPan] = useState<Point>({ x: 0, y: 0 });
   const selectedRef = useRef<string[]>([]);
   const saveQueue = useRef<Promise<void>>(Promise.resolve());
   const saveRevision = useRef(0);
-  const previewSwipeStart = useRef<{ x: number; y: number } | null>(null);
+  const previewFrameRef = useRef<HTMLDivElement>(null);
+  const previewZoomRef = useRef(1);
+  const previewPanRef = useRef<Point>({ x: 0, y: 0 });
+  const previewTouchGesture = useRef<PreviewTouchGesture | null>(null);
+  const previewPointerStart = useRef<{ pointerId: number; start: Point; startPan: Point } | null>(null);
 
   useEffect(() => {
     if (resultsKey) return;
@@ -262,7 +296,40 @@ export function CollectionPreview() {
     });
   }, [filter, query]);
 
+  const constrainPreviewPan = useCallback((zoom: number, pan: Point): Point => {
+    const frame = previewFrameRef.current;
+    if (!frame || zoom <= 1) return { x: 0, y: 0 };
+    const maximumX = frame.clientWidth * (zoom - 1) / 2;
+    const maximumY = frame.clientHeight * (zoom - 1) / 2;
+    return {
+      x: clamp(pan.x, -maximumX, maximumX),
+      y: clamp(pan.y, -maximumY, maximumY),
+    };
+  }, []);
+
+  const updatePreviewTransform = useCallback((zoom: number, pan: Point) => {
+    const nextZoom = clamp(zoom, 1, maxPreviewZoom);
+    const nextPan = constrainPreviewPan(nextZoom, pan);
+    previewZoomRef.current = nextZoom;
+    previewPanRef.current = nextPan;
+    setPreviewZoom(nextZoom);
+    setPreviewPan(nextPan);
+  }, [constrainPreviewPan]);
+
+  const resetPreviewTransform = useCallback(() => {
+    updatePreviewTransform(1, { x: 0, y: 0 });
+  }, [updatePreviewTransform]);
+
+  const togglePreviewZoom = useCallback(() => {
+    if (previewZoomRef.current > 1) {
+      resetPreviewTransform();
+    } else {
+      updatePreviewTransform(desktopPreviewZoom, { x: 0, y: 0 });
+    }
+  }, [resetPreviewTransform, updatePreviewTransform]);
+
   const navigatePreview = useCallback((direction: -1 | 1) => {
+    resetPreviewTransform();
     setPreviewItemId((currentId) => {
       if (filteredItems.length < 2) return currentId;
       const currentIndex = filteredItems.findIndex((item) => item.id === currentId);
@@ -270,7 +337,13 @@ export function CollectionPreview() {
       const nextIndex = (currentIndex + direction + filteredItems.length) % filteredItems.length;
       return filteredItems[nextIndex].id;
     });
-  }, [filteredItems]);
+  }, [filteredItems, resetPreviewTransform]);
+
+  useEffect(() => {
+    previewTouchGesture.current = null;
+    previewPointerStart.current = null;
+    resetPreviewTransform();
+  }, [previewItemId, resetPreviewTransform]);
 
   useEffect(() => {
     if (!previewItemId) return;
@@ -302,20 +375,119 @@ export function CollectionPreview() {
     });
   }, [filteredItems, previewItemId]);
 
-  const startPreviewSwipe = (event: TouchEvent<HTMLDivElement>) => {
+  const startPreviewGesture = (event: TouchEvent<HTMLDivElement>) => {
+    if (event.touches.length >= 2) {
+      const first = event.touches[0];
+      const second = event.touches[1];
+      previewTouchGesture.current = {
+        mode: 'pinch',
+        startDistance: Math.max(touchDistance(first, second), 1),
+        startZoom: previewZoomRef.current,
+        startCenter: touchCenter(first, second),
+        startPan: previewPanRef.current,
+      };
+      return;
+    }
     const touch = event.touches[0];
-    previewSwipeStart.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
+    if (!touch) return;
+    const start = touchPoint(touch);
+    previewTouchGesture.current = previewZoomRef.current > 1
+      ? { mode: 'pan', start, startPan: previewPanRef.current }
+      : { mode: 'swipe', start };
   };
 
-  const finishPreviewSwipe = (event: TouchEvent<HTMLDivElement>) => {
-    const start = previewSwipeStart.current;
-    const touch = event.changedTouches[0];
-    previewSwipeStart.current = null;
-    if (!start || !touch) return;
-    const horizontalDistance = touch.clientX - start.x;
-    const verticalDistance = touch.clientY - start.y;
-    if (Math.abs(horizontalDistance) < 50 || Math.abs(horizontalDistance) <= Math.abs(verticalDistance)) return;
-    navigatePreview(horizontalDistance < 0 ? 1 : -1);
+  const movePreviewGesture = (event: TouchEvent<HTMLDivElement>) => {
+    const gesture = previewTouchGesture.current;
+    if (!gesture) return;
+    if (event.touches.length >= 2) {
+      const first = event.touches[0];
+      const second = event.touches[1];
+      if (gesture.mode !== 'pinch') {
+        previewTouchGesture.current = {
+          mode: 'pinch',
+          startDistance: Math.max(touchDistance(first, second), 1),
+          startZoom: previewZoomRef.current,
+          startCenter: touchCenter(first, second),
+          startPan: previewPanRef.current,
+        };
+        return;
+      }
+      event.preventDefault();
+      const nextZoom = clamp(gesture.startZoom * touchDistance(first, second) / gesture.startDistance, 1, maxPreviewZoom);
+      const currentCenter = touchCenter(first, second);
+      const frame = previewFrameRef.current;
+      if (!frame) return;
+      const bounds = frame.getBoundingClientRect();
+      const frameCenter = { x: bounds.left + bounds.width / 2, y: bounds.top + bounds.height / 2 };
+      const startingCenter = { x: gesture.startCenter.x - frameCenter.x, y: gesture.startCenter.y - frameCenter.y };
+      const movingCenter = { x: currentCenter.x - frameCenter.x, y: currentCenter.y - frameCenter.y };
+      const anchoredPoint = {
+        x: (startingCenter.x - gesture.startPan.x) / gesture.startZoom,
+        y: (startingCenter.y - gesture.startPan.y) / gesture.startZoom,
+      };
+      updatePreviewTransform(nextZoom, {
+        x: movingCenter.x - anchoredPoint.x * nextZoom,
+        y: movingCenter.y - anchoredPoint.y * nextZoom,
+      });
+      return;
+    }
+    if (gesture.mode === 'pan' && event.touches[0]) {
+      event.preventDefault();
+      const current = touchPoint(event.touches[0]);
+      updatePreviewTransform(previewZoomRef.current, {
+        x: gesture.startPan.x + current.x - gesture.start.x,
+        y: gesture.startPan.y + current.y - gesture.start.y,
+      });
+    }
+  };
+
+  const finishPreviewGesture = (event: TouchEvent<HTMLDivElement>) => {
+    const gesture = previewTouchGesture.current;
+    if (!gesture) return;
+    if (event.touches.length === 1 && previewZoomRef.current > 1) {
+      const start = touchPoint(event.touches[0]);
+      previewTouchGesture.current = { mode: 'pan', start, startPan: previewPanRef.current };
+      return;
+    }
+    previewTouchGesture.current = null;
+    if (gesture.mode === 'swipe') {
+      const touch = event.changedTouches[0];
+      if (!touch) return;
+      const horizontalDistance = touch.clientX - gesture.start.x;
+      const verticalDistance = touch.clientY - gesture.start.y;
+      if (Math.abs(horizontalDistance) >= 50 && Math.abs(horizontalDistance) > Math.abs(verticalDistance)) {
+        navigatePreview(horizontalDistance < 0 ? 1 : -1);
+      }
+      return;
+    }
+    if (previewZoomRef.current <= 1.02) resetPreviewTransform();
+  };
+
+  const startPreviewPointerPan = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType !== 'mouse' || previewZoomRef.current <= 1 || (event.target as HTMLElement).closest('button')) return;
+    previewPointerStart.current = {
+      pointerId: event.pointerId,
+      start: { x: event.clientX, y: event.clientY },
+      startPan: previewPanRef.current,
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+    event.preventDefault();
+  };
+
+  const movePreviewPointerPan = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const start = previewPointerStart.current;
+    if (!start || start.pointerId !== event.pointerId) return;
+    updatePreviewTransform(previewZoomRef.current, {
+      x: start.startPan.x + event.clientX - start.start.x,
+      y: start.startPan.y + event.clientY - start.start.y,
+    });
+  };
+
+  const finishPreviewPointerPan = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const start = previewPointerStart.current;
+    if (!start || start.pointerId !== event.pointerId) return;
+    previewPointerStart.current = null;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
   };
 
   const persistLikes = (nextSelections: string[]) => {
@@ -554,12 +726,30 @@ export function CollectionPreview() {
             <button onClick={() => setPreviewItemId('')} aria-label="Fermer l’agrandissement" className="absolute right-4 top-4 z-30 grid h-11 w-11 place-items-center rounded-full bg-white text-2xl font-black shadow-md transition hover:scale-105">×</button>
             <div className="grid md:grid-cols-[1.3fr_0.7fr]">
               <div
-                className="relative aspect-square touch-pan-y select-none overflow-hidden bg-stone-100"
-                onTouchStart={startPreviewSwipe}
-                onTouchEnd={finishPreviewSwipe}
-                onTouchCancel={() => { previewSwipeStart.current = null; }}
+                ref={previewFrameRef}
+                className={`relative aspect-square select-none overflow-hidden bg-stone-100 ${previewZoom > 1 ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
+                style={{ touchAction: previewZoom > 1 ? 'none' : 'pan-y' }}
+                onTouchStart={startPreviewGesture}
+                onTouchMove={movePreviewGesture}
+                onTouchEnd={finishPreviewGesture}
+                onTouchCancel={() => { previewTouchGesture.current = null; }}
+                onPointerDown={startPreviewPointerPan}
+                onPointerMove={movePreviewPointerPan}
+                onPointerUp={finishPreviewPointerPan}
+                onPointerCancel={finishPreviewPointerPan}
               >
-                <img key={previewItem.id} src={previewItem.image} alt={`${previewItem.title} — aperçu agrandi`} draggable={false} className="h-full w-full object-contain" />
+                <img
+                  key={previewItem.id}
+                  src={previewItem.image}
+                  alt={`${previewItem.title} — aperçu agrandi`}
+                  draggable={false}
+                  className="pointer-events-none h-full w-full object-contain"
+                  style={{
+                    transform: `translate3d(${previewPan.x}px, ${previewPan.y}px, 0) scale(${previewZoom})`,
+                    transformOrigin: 'center',
+                    willChange: 'transform',
+                  }}
+                />
                 <button
                   type="button"
                   onClick={() => toggle(previewItem.id)}
@@ -571,6 +761,16 @@ export function CollectionPreview() {
                 >
                   {selected.includes(previewItem.id) ? '♥' : '♡'}
                 </button>
+                <button
+                  type="button"
+                  onClick={togglePreviewZoom}
+                  aria-label={previewZoom > 1 ? 'Revenir à la taille normale' : 'Agrandir l’illustration'}
+                  aria-pressed={previewZoom > 1}
+                  title={previewZoom > 1 ? 'Réduire l’illustration' : 'Agrandir l’illustration'}
+                  className={`absolute left-[4.75rem] top-4 z-20 hidden h-12 w-12 place-items-center rounded-full border shadow-lg transition hover:scale-105 md:grid ${previewZoom > 1 ? 'border-[#201c19] bg-[#dce77d] text-[#201c19]' : 'border-white bg-white text-black/55'}`}
+                >
+                  {previewZoom > 1 ? <ZoomOut size={21} strokeWidth={2.5} /> : <ZoomIn size={21} strokeWidth={2.5} />}
+                </button>
                 {filteredItems.length > 1 && (
                   <>
                     <button type="button" onClick={() => navigatePreview(-1)} aria-label="Voir le vêtement précédent" className="absolute left-3 top-1/2 z-20 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-3xl font-black shadow-md backdrop-blur transition hover:scale-105">‹</button>
@@ -580,6 +780,9 @@ export function CollectionPreview() {
                     </div>
                   </>
                 )}
+                <div aria-live="polite" className="absolute bottom-3 right-3 z-20 rounded-full bg-white/90 px-3 py-1.5 text-[10px] font-black text-black/60 shadow-sm backdrop-blur md:hidden">
+                  {previewZoom > 1 ? `${previewZoom.toFixed(1)}×` : 'Pincez pour zoomer'}
+                </div>
               </div>
               <div className="flex flex-col justify-center p-6 sm:p-10">
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-[#c8914a]">{sectionById.get(previewItem.sectionId)?.label.fr}</p>
@@ -599,7 +802,10 @@ export function CollectionPreview() {
                     {previewItem.color.label.fr}
                   </div>
                 </div>
-                {filteredItems.length > 1 && <p className="mt-5 text-center text-xs font-bold text-black/40">Glissez la photo ou utilisez les flèches pour voir le prochain vêtement.</p>}
+                <p className="mt-5 text-center text-xs font-bold leading-relaxed text-black/40">
+                  Pincez l’image sur mobile ou utilisez la loupe sur ordinateur pour voir l’illustration de plus près.
+                  {filteredItems.length > 1 && ' Glissez à taille normale ou utilisez les flèches pour changer de vêtement.'}
+                </p>
               </div>
             </div>
           </div>
