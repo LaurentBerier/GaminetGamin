@@ -1,4 +1,5 @@
 const { Pool } = require('pg');
+const { createHmac, timingSafeEqual } = require('crypto');
 const catalog = require('../artifacts/gaminet-gamin-vote/content/catalog.json');
 
 const validItemIds = new Set(
@@ -8,6 +9,9 @@ const validCampaignIds = new Set([catalog.campaign.id]);
 
 let pool;
 let schemaReady;
+
+const adminCookieName = 'gg_admin';
+const adminSessionDurationSeconds = 8 * 60 * 60;
 
 function cleanText(value, maximum = 80) {
   return typeof value === 'string'
@@ -28,6 +32,79 @@ function send(response, status, data) {
   response.setHeader('Content-Type', 'application/json; charset=utf-8');
   response.setHeader('Cache-Control', 'no-store');
   response.end(JSON.stringify(data));
+}
+
+function adminSecret() {
+  return process.env.ADMIN_PASSWORD || process.env.RESULTS_KEY || '';
+}
+
+function safelyMatches(supplied, expected) {
+  const suppliedBuffer = Buffer.from(supplied);
+  const expectedBuffer = Buffer.from(expected);
+  return (
+    suppliedBuffer.length === expectedBuffer.length &&
+    timingSafeEqual(suppliedBuffer, expectedBuffer)
+  );
+}
+
+function adminSignature(secret, expiresAt) {
+  return createHmac('sha256', secret)
+    .update(`gaminet-gamin-admin:${expiresAt}`)
+    .digest('base64url');
+}
+
+function cookieValue(request, name) {
+  const cookieHeader = request.headers?.cookie ?? '';
+  for (const part of cookieHeader.split(';')) {
+    const [cookieName, ...valueParts] = part.trim().split('=');
+    if (cookieName === name) {
+      try {
+        return decodeURIComponent(valueParts.join('='));
+      } catch {
+        return '';
+      }
+    }
+  }
+  return '';
+}
+
+function hasAdminSession(request) {
+  const secret = adminSecret();
+  if (!secret) return false;
+  const [rawExpiry, signature] = cookieValue(request, adminCookieName).split('.');
+  const expiresAt = Number(rawExpiry);
+  if (
+    !Number.isSafeInteger(expiresAt) ||
+    expiresAt <= Date.now() ||
+    !signature
+  ) {
+    return false;
+  }
+  return safelyMatches(signature, adminSignature(secret, expiresAt));
+}
+
+function secureCookieSuffix(request) {
+  const forwardedProtocol = queryValue(request.headers?.['x-forwarded-proto']);
+  return process.env.NODE_ENV === 'production' || forwardedProtocol === 'https'
+    ? '; Secure'
+    : '';
+}
+
+function startAdminSession(request, response) {
+  const secret = adminSecret();
+  const expiresAt = Date.now() + adminSessionDurationSeconds * 1000;
+  const value = `${expiresAt}.${adminSignature(secret, expiresAt)}`;
+  response.setHeader(
+    'Set-Cookie',
+    `${adminCookieName}=${encodeURIComponent(value)}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${adminSessionDurationSeconds}${secureCookieSuffix(request)}`,
+  );
+}
+
+function endAdminSession(request, response) {
+  response.setHeader(
+    'Set-Cookie',
+    `${adminCookieName}=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0${secureCookieSuffix(request)}`,
+  );
 }
 
 async function getPool() {
@@ -201,21 +278,20 @@ async function handleGet(request, response) {
   if (mode !== 'results') {
     return send(response, 400, { error: 'Mode inconnu.' });
   }
-  const configuredKey = process.env.RESULTS_KEY;
-  const suppliedKey = queryValue(request.query.key);
-  if (!configuredKey) {
+  if (!adminSecret()) {
     return send(response, 503, {
-      error: 'La clé privée des résultats n’est pas configurée.',
+      error: 'Le mot de passe administrateur n’est pas configuré.',
     });
   }
-  if (!suppliedKey || suppliedKey !== configuredKey) {
-    return send(response, 403, { error: 'Lien de résultats invalide.' });
+  if (!hasAdminSession(request)) {
+    return send(response, 401, { error: 'Authentification administrateur requise.' });
   }
 
   const ballots = await readCampaignBallots(campaignId);
   const itemCounts = {};
   const groups = {};
   let lastVoteAt = 0;
+  let totalVotes = 0;
   for (const ballot of ballots) {
     const group = ballot.voterGroup.trim() || 'Sans groupe';
     groups[group] ??= { participants: 0, itemCounts: {} };
@@ -223,6 +299,7 @@ async function handleGet(request, response) {
     lastVoteAt = Math.max(lastVoteAt, ballot.updatedAt);
     for (const itemId of ballot.selectedItemIds) {
       if (!validItemIds.has(itemId)) continue;
+      totalVotes += 1;
       itemCounts[itemId] = (itemCounts[itemId] ?? 0) + 1;
       groups[group].itemCounts[itemId] =
         (groups[group].itemCounts[itemId] ?? 0) + 1;
@@ -231,6 +308,7 @@ async function handleGet(request, response) {
   return send(response, 200, {
     campaignId,
     participants: ballots.length,
+    totalVotes,
     itemCounts,
     groups,
     lastVoteAt,
@@ -240,6 +318,29 @@ async function handleGet(request, response) {
 async function handlePost(request, response) {
   const body =
     typeof request.body === 'string' ? JSON.parse(request.body) : request.body ?? {};
+
+  if (body.action === 'admin-login') {
+    const secret = adminSecret();
+    if (!secret) {
+      return send(response, 503, {
+        error: 'Le mot de passe administrateur n’est pas configuré.',
+      });
+    }
+    const password = typeof body.password === 'string' && body.password.length <= 1024
+      ? body.password
+      : '';
+    if (!safelyMatches(password, secret)) {
+      return send(response, 401, { error: 'Mot de passe incorrect.' });
+    }
+    startAdminSession(request, response);
+    return send(response, 200, { success: true });
+  }
+
+  if (body.action === 'admin-logout') {
+    endAdminSession(request, response);
+    return send(response, 200, { success: true });
+  }
+
   const campaignId = cleanText(body.campaignId, 64);
   const voterId = cleanText(body.voterId, 100);
   const voterName = cleanText(body.voterName, 80);

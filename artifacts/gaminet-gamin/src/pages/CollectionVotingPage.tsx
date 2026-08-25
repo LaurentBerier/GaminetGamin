@@ -70,7 +70,7 @@ async function copyText(value: string) {
   await navigator.clipboard.writeText(value);
 }
 
-function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
+function ResultsDashboard() {
   const [data, setData] = useState<ResultData | null>(null);
   const [error, setError] = useState('');
   const [group, setGroup] = useState('all');
@@ -84,8 +84,8 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
     setError('');
     try {
       const response = await fetch(
-        `/api/votes?mode=results&campaignId=${encodeURIComponent(catalog.campaign.id)}&key=${encodeURIComponent(resultsKey)}`,
-        { cache: 'no-store' },
+        `/api/votes?mode=results&campaignId=${encodeURIComponent(catalog.campaign.id)}`,
+        { cache: 'no-store', credentials: 'same-origin' },
       );
       const body = (await response.json()) as ResultData & { error?: string };
       if (!response.ok) throw new Error(body.error || 'Impossible de charger les résultats.');
@@ -95,7 +95,7 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
     } finally {
       setIsLoading(false);
     }
-  }, [resultsKey]);
+  }, []);
 
   useEffect(() => {
     const refreshTimer = window.setTimeout(() => void refresh(), 0);
@@ -283,6 +283,10 @@ export function CollectionPreview() {
         .finally(() => setHydrated(true));
     }, 0);
     return () => window.clearTimeout(initializeTimer);
+  }, [resultsKey]);
+
+  useEffect(() => {
+    if (resultsKey) window.location.replace('/admin');
   }, [resultsKey]);
 
   const filteredItems = useMemo(() => {
@@ -548,7 +552,13 @@ export function CollectionPreview() {
     }
   };
 
-  if (resultsKey) return <ResultsDashboard resultsKey={resultsKey} />;
+  if (resultsKey) {
+    return (
+      <main className="grid min-h-screen place-items-center bg-[#201c19] text-white">
+        <p className="font-black">Redirection vers l’administration…</p>
+      </main>
+    );
+  }
 
   const previewItem = previewItemId ? itemById.get(previewItemId) : undefined;
   const previewItemIndex = previewItem

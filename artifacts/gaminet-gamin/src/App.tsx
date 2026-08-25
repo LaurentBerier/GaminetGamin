@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { LangProvider } from "@/contexts/LangContext";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import HomePage from "@/pages/HomePage";
 import BoutiquePage from "@/pages/BoutiquePage";
 import ProduitPage from "@/pages/ProduitPage";
@@ -15,6 +15,7 @@ import { CollectionPreview as CollectionVotingPage } from "@/pages/CollectionVot
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
+const AdminDashboardPage = lazy(() => import("@/pages/AdminDashboardPage"));
 
 function RedirectToFr() {
   const [, setLocation] = useLocation();
@@ -27,6 +28,14 @@ function RedirectToFr() {
 function AppLayout() {
   const [location] = useLocation();
   const isVotingStorefront = ["/fr/boutique", "/en/shop", "/es/tienda"].includes(location);
+
+  if (location === "/admin" || location === "/admin/") {
+    return (
+      <Suspense fallback={<main className="grid min-h-screen place-items-center bg-[#201c19] font-black text-white">Ouverture de l’administration…</main>}>
+        <AdminDashboardPage />
+      </Suspense>
+    );
+  }
 
   if (isVotingStorefront) {
     return <CollectionVotingPage />;

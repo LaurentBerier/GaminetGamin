@@ -15,7 +15,8 @@ Public catalog and voting site for the 95 current apparel mockups.
 - Ballots are stored in the platform database, not only in the browser.
 - The current campaign allows up to 12 favorites from 95 options.
 - A group can be attached through the URL, for example `?group=famille` or `?group=boutique-montreal`.
-- The private results link aggregates overall popularity and supports group-by-group comparisons.
+- `/admin` provides a password-protected dashboard with the overall ranking, group-by-group comparisons, and a CSV export.
+- Set `ADMIN_PASSWORD` in the hosting environment. Existing deployments can continue using `RESULTS_KEY` as a fallback.
 
 No email address is requested or stored.
 
