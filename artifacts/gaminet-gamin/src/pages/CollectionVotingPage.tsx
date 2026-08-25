@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type TouchEvent } from 'react';
 import catalog from '../../../gaminet-gamin-vote/content/catalog.json';
 
 type ResultData = {
@@ -207,6 +207,7 @@ export function CollectionPreview() {
   const selectedRef = useRef<string[]>([]);
   const saveQueue = useRef<Promise<void>>(Promise.resolve());
   const saveRevision = useRef(0);
+  const previewSwipeStart = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     if (resultsKey) return;
@@ -250,20 +251,6 @@ export function CollectionPreview() {
     return () => window.clearTimeout(initializeTimer);
   }, [resultsKey]);
 
-  useEffect(() => {
-    if (!previewItemId) return;
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setPreviewItemId('');
-    };
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', closeOnEscape);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', closeOnEscape);
-    };
-  }, [previewItemId]);
-
   const filteredItems = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase('fr');
     return activeItems.filter((item) => {
@@ -271,9 +258,65 @@ export function CollectionPreview() {
       if (!normalized) return true;
       return `${item.title} ${item.garment.label.fr} ${item.color.label.fr}`
         .toLocaleLowerCase('fr')
-        .includes(normalized);
+      .includes(normalized);
     });
   }, [filter, query]);
+
+  const navigatePreview = useCallback((direction: -1 | 1) => {
+    setPreviewItemId((currentId) => {
+      if (filteredItems.length < 2) return currentId;
+      const currentIndex = filteredItems.findIndex((item) => item.id === currentId);
+      if (currentIndex < 0) return filteredItems[0].id;
+      const nextIndex = (currentIndex + direction + filteredItems.length) % filteredItems.length;
+      return filteredItems[nextIndex].id;
+    });
+  }, [filteredItems]);
+
+  useEffect(() => {
+    if (!previewItemId) return;
+    const navigateWithKeyboard = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setPreviewItemId('');
+      if (event.key === 'ArrowLeft') navigatePreview(-1);
+      if (event.key === 'ArrowRight') navigatePreview(1);
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', navigateWithKeyboard);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', navigateWithKeyboard);
+    };
+  }, [navigatePreview, previewItemId]);
+
+  useEffect(() => {
+    if (!previewItemId || filteredItems.length < 2) return;
+    const currentIndex = filteredItems.findIndex((item) => item.id === previewItemId);
+    if (currentIndex < 0) return;
+    const adjacentItems = [
+      filteredItems[(currentIndex - 1 + filteredItems.length) % filteredItems.length],
+      filteredItems[(currentIndex + 1) % filteredItems.length],
+    ];
+    adjacentItems.forEach((item) => {
+      const image = new Image();
+      image.src = item.image;
+    });
+  }, [filteredItems, previewItemId]);
+
+  const startPreviewSwipe = (event: TouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0];
+    previewSwipeStart.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
+  };
+
+  const finishPreviewSwipe = (event: TouchEvent<HTMLDivElement>) => {
+    const start = previewSwipeStart.current;
+    const touch = event.changedTouches[0];
+    previewSwipeStart.current = null;
+    if (!start || !touch) return;
+    const horizontalDistance = touch.clientX - start.x;
+    const verticalDistance = touch.clientY - start.y;
+    if (Math.abs(horizontalDistance) < 50 || Math.abs(horizontalDistance) <= Math.abs(verticalDistance)) return;
+    navigatePreview(horizontalDistance < 0 ? 1 : -1);
+  };
 
   const persistLikes = (nextSelections: string[]) => {
     if (!voterId) return;
@@ -336,6 +379,9 @@ export function CollectionPreview() {
   if (resultsKey) return <ResultsDashboard resultsKey={resultsKey} />;
 
   const previewItem = previewItemId ? itemById.get(previewItemId) : undefined;
+  const previewItemIndex = previewItem
+    ? filteredItems.findIndex((item) => item.id === previewItem.id)
+    : -1;
   const statusLabel = saveState === 'saving'
     ? 'Enregistrement…'
     : saveState === 'saved'
@@ -503,17 +549,47 @@ export function CollectionPreview() {
       </footer>
 
       {previewItem && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-[#201c19]/75 p-3 backdrop-blur-sm sm:p-6" role="dialog" aria-modal="true" aria-labelledby="preview-title" onMouseDown={(event) => { if (event.target === event.currentTarget) setPreviewItemId(''); }}>
+        <div className="fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-[#201c19]/75 p-3 backdrop-blur-sm sm:p-6" role="dialog" aria-modal="true" aria-labelledby="preview-title" onMouseDown={(event) => { if (event.target === event.currentTarget) setPreviewItemId(''); }}>
           <div className="relative mx-auto my-3 max-w-5xl overflow-hidden rounded-3xl bg-[#faf9f6] shadow-2xl sm:my-8">
-            <button onClick={() => setPreviewItemId('')} aria-label="Fermer l’agrandissement" className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full bg-white text-2xl font-black shadow-md">×</button>
+            <button onClick={() => setPreviewItemId('')} aria-label="Fermer l’agrandissement" className="absolute right-4 top-4 z-30 grid h-11 w-11 place-items-center rounded-full bg-white text-2xl font-black shadow-md transition hover:scale-105">×</button>
             <div className="grid md:grid-cols-[1.3fr_0.7fr]">
-              <div className="aspect-square bg-stone-100">
-                <img src={previewItem.image} alt={`${previewItem.title} — aperçu agrandi`} className="h-full w-full object-contain" />
+              <div
+                className="relative aspect-square touch-pan-y select-none overflow-hidden bg-stone-100"
+                onTouchStart={startPreviewSwipe}
+                onTouchEnd={finishPreviewSwipe}
+                onTouchCancel={() => { previewSwipeStart.current = null; }}
+              >
+                <img key={previewItem.id} src={previewItem.image} alt={`${previewItem.title} — aperçu agrandi`} draggable={false} className="h-full w-full object-contain" />
+                <button
+                  type="button"
+                  onClick={() => toggle(previewItem.id)}
+                  disabled={!hydrated || (selected.length >= catalog.campaign.maxSelections && !selected.includes(previewItem.id))}
+                  aria-pressed={selected.includes(previewItem.id)}
+                  aria-label={`${selected.includes(previewItem.id) ? 'Retirer le vote pour' : 'Voter pour'} ${previewItem.title}`}
+                  title={selected.length >= catalog.campaign.maxSelections && !selected.includes(previewItem.id) ? `Maximum de ${catalog.campaign.maxSelections} favoris atteint` : undefined}
+                  className={`absolute left-4 top-4 z-20 grid h-12 w-12 place-items-center rounded-full border text-3xl shadow-lg transition hover:scale-110 disabled:cursor-not-allowed disabled:opacity-40 ${selected.includes(previewItem.id) ? 'border-[#201c19] bg-[#ff718a] text-[#201c19]' : 'border-white bg-white text-black/40 hover:text-[#ff718a]'}`}
+                >
+                  {selected.includes(previewItem.id) ? '♥' : '♡'}
+                </button>
+                {filteredItems.length > 1 && (
+                  <>
+                    <button type="button" onClick={() => navigatePreview(-1)} aria-label="Voir le vêtement précédent" className="absolute left-3 top-1/2 z-20 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-3xl font-black shadow-md backdrop-blur transition hover:scale-105">‹</button>
+                    <button type="button" onClick={() => navigatePreview(1)} aria-label="Voir le vêtement suivant" className="absolute right-3 top-1/2 z-20 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-3xl font-black shadow-md backdrop-blur transition hover:scale-105">›</button>
+                    <div className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 rounded-full bg-[#201c19]/80 px-3 py-1.5 text-[11px] font-black text-white backdrop-blur">
+                      {previewItemIndex + 1} / {filteredItems.length}
+                    </div>
+                  </>
+                )}
               </div>
               <div className="flex flex-col justify-center p-6 sm:p-10">
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-[#c8914a]">{sectionById.get(previewItem.sectionId)?.label.fr}</p>
-                <h2 id="preview-title" className="mt-3 text-3xl font-black uppercase tracking-tight sm:text-4xl">{previewItem.title}</h2>
+                <h2 id="preview-title" aria-live="polite" className="mt-3 text-3xl font-black uppercase tracking-tight sm:text-4xl">{previewItem.title}</h2>
                 <p className="mt-3 text-2xl font-black">{previewItem.garment.price.toFixed(2)} $</p>
+                <button type="button" onClick={() => toggle(previewItem.id)} disabled={!hydrated || (selected.length >= catalog.campaign.maxSelections && !selected.includes(previewItem.id))} aria-pressed={selected.includes(previewItem.id)} className={`mt-5 flex w-full items-center justify-center gap-3 rounded-full px-6 py-4 text-base font-black transition disabled:opacity-40 ${selected.includes(previewItem.id) ? 'bg-[#ff718a] text-[#201c19]' : 'bg-[#201c19] text-white hover:bg-[#4a7a5e]'}`}>
+                  <span className="text-2xl">{selected.includes(previewItem.id) ? '♥' : '♡'}</span>
+                  {selected.includes(previewItem.id) ? 'Retirer de mes favoris' : 'Voter pour ce vêtement'}
+                </button>
+                <p className="mt-2 text-center text-xs font-bold text-black/40">Le cœur enregistre automatiquement votre vote.</p>
                 <div className="mt-6 border-y border-stone-200 py-5">
                   <p className="text-xs font-black uppercase tracking-[0.12em] text-black/40">Vêtement</p>
                   <p className="mt-1 font-bold">{previewItem.garment.label.fr}</p>
@@ -523,11 +599,7 @@ export function CollectionPreview() {
                     {previewItem.color.label.fr}
                   </div>
                 </div>
-                <button type="button" onClick={() => toggle(previewItem.id)} disabled={!hydrated || (selected.length >= catalog.campaign.maxSelections && !selected.includes(previewItem.id))} aria-pressed={selected.includes(previewItem.id)} className={`mt-7 flex w-full items-center justify-center gap-3 rounded-full px-6 py-4 text-base font-black transition disabled:opacity-40 ${selected.includes(previewItem.id) ? 'bg-[#ff718a] text-[#201c19]' : 'bg-[#201c19] text-white hover:bg-[#4a7a5e]'}`}>
-                  <span className="text-2xl">{selected.includes(previewItem.id) ? '♥' : '♡'}</span>
-                  {selected.includes(previewItem.id) ? 'Retirer de mes favoris' : 'Voter pour ce vêtement'}
-                </button>
-                <p className="mt-3 text-center text-xs font-bold text-black/40">Le cœur enregistre automatiquement votre vote.</p>
+                {filteredItems.length > 1 && <p className="mt-5 text-center text-xs font-bold text-black/40">Glissez la photo ou utilisez les flèches pour voir le prochain vêtement.</p>}
               </div>
             </div>
           </div>
