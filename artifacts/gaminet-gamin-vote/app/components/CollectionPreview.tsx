@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+/* eslint-disable @next/next/no-img-element */
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import catalog from '../../content/catalog.json';
 
-type CatalogItem = (typeof catalog.items)[number];
 type ResultData = {
   campaignId: string;
   participants: number;
@@ -52,7 +52,7 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
   const [shareGroup, setShareGroup] = useState('famille');
   const [groupLinkCopied, setGroupLinkCopied] = useState(false);
 
-  const refresh = async () => {
+  const refresh = useCallback(async () => {
     setIsLoading(true);
     setError('');
     try {
@@ -68,11 +68,12 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [resultsKey]);
 
   useEffect(() => {
-    void refresh();
-  }, [resultsKey]);
+    const refreshTimer = window.setTimeout(() => void refresh(), 0);
+    return () => window.clearTimeout(refreshTimer);
+  }, [refresh]);
 
   const currentParticipants =
     group === 'all' ? data?.participants ?? 0 : data?.groups[group]?.participants ?? 0;
@@ -210,36 +211,44 @@ export function CollectionPreview() {
 
   useEffect(() => {
     if (resultsKey) return;
-    const voterKey = `gg-voter:${catalog.campaign.id}`;
-    let storedVoterId = localStorage.getItem(voterKey) ?? '';
-    if (!storedVoterId) {
-      storedVoterId = crypto.randomUUID();
-      localStorage.setItem(voterKey, storedVoterId);
-    }
-    setVoterId(storedVoterId);
+    const initializeTimer = window.setTimeout(() => {
+      const voterKey = `gg-voter:${catalog.campaign.id}`;
+      let storedVoterId = localStorage.getItem(voterKey) ?? '';
+      if (!storedVoterId) {
+        storedVoterId = crypto.randomUUID();
+        localStorage.setItem(voterKey, storedVoterId);
+      }
+      setVoterId(storedVoterId);
 
-    fetch(`/api/votes?mode=ballot&campaignId=${encodeURIComponent(catalog.campaign.id)}&voterId=${encodeURIComponent(storedVoterId)}`, { cache: 'no-store' })
-      .then(async (response) =>
-        (await response.json()) as {
-          ballot?: {
-            voterName: string;
-            voterGroup: string;
-            selectedItemIds: string[];
-          } | null;
-        },
-      )
-      .then((body) => {
-        if (!body.ballot) return;
-        const storedSelections = body.ballot.selectedItemIds
-          .filter((id) => itemById.has(id))
-          .slice(0, catalog.campaign.maxSelections);
-        selectedRef.current = storedSelections;
-        setSelected(storedSelections);
-        if (!voterGroup && body.ballot.voterGroup) setVoterGroup(body.ballot.voterGroup);
-        if (storedSelections.length) setSaveState('saved');
-      })
-      .catch(() => undefined)
-      .finally(() => setHydrated(true));
+      fetch(`/api/votes?mode=ballot&campaignId=${encodeURIComponent(catalog.campaign.id)}&voterId=${encodeURIComponent(storedVoterId)}`, { cache: 'no-store' })
+        .then(async (response) => {
+          const body = (await response.json()) as {
+            ballot?: {
+              voterName: string;
+              voterGroup: string;
+              selectedItemIds: string[];
+            } | null;
+            error?: string;
+          };
+          if (!response.ok) {
+            throw new Error(body.error || 'Impossible de charger vos favoris.');
+          }
+          return body;
+        })
+        .then((body) => {
+          if (!body.ballot) return;
+          const storedSelections = body.ballot.selectedItemIds
+            .filter((id) => itemById.has(id))
+            .slice(0, catalog.campaign.maxSelections);
+          selectedRef.current = storedSelections;
+          setSelected(storedSelections);
+          setVoterGroup((current) => current || body.ballot?.voterGroup || '');
+          if (storedSelections.length) setSaveState('saved');
+        })
+        .catch(() => setSaveState('error'))
+        .finally(() => setHydrated(true));
+    }, 0);
+    return () => window.clearTimeout(initializeTimer);
   }, [resultsKey]);
 
   useEffect(() => {
