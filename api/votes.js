@@ -352,12 +352,9 @@ async function handlePost(request, response) {
   if (!validCampaignIds.has(campaignId) || !validPublicId(voterId)) {
     return send(response, 400, { error: 'Bulletin invalide.' });
   }
-  if (
-    selectedItemIds.length > catalog.campaign.maxSelections ||
-    selectedItemIds.some((itemId) => !validItemIds.has(itemId))
-  ) {
+  if (selectedItemIds.some((itemId) => !validItemIds.has(itemId))) {
     return send(response, 400, {
-      error: `Choisissez de ${catalog.campaign.minSelections} à ${catalog.campaign.maxSelections} morceaux.`,
+      error: 'Choisissez uniquement parmi les morceaux disponibles.',
     });
   }
 

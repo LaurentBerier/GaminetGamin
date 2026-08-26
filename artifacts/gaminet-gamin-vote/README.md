@@ -1,6 +1,6 @@
 # Gaminet Gamin — Collection vote
 
-Public catalog and voting site for the 95 current apparel mockups.
+Public catalog and voting site for the 107 current apparel mockups.
 
 ## What is data-driven
 
@@ -13,7 +13,7 @@ Public catalog and voting site for the 95 current apparel mockups.
 
 - Each browser receives an anonymous voter ID; every heart click immediately updates its vote.
 - Ballots are stored in the platform database, not only in the browser.
-- The current campaign allows up to 12 favorites from 95 options.
+- Visitors can save as many favorites as they want, and the catalog order is randomized on every visit.
 - A group can be attached through the URL, for example `?group=famille` or `?group=boutique-montreal`.
 - `/admin` provides a password-protected dashboard with the overall ranking, group-by-group comparisons, and a CSV export.
 - Set `ADMIN_PASSWORD` in the hosting environment. Existing deployments can continue using `RESULTS_KEY` as a fallback.

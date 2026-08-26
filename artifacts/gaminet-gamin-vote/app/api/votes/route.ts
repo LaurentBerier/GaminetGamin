@@ -222,13 +222,10 @@ export async function POST(request: NextRequest) {
   if (!validCampaignIds.has(campaignId) || !validPublicId(voterId)) {
     return json({ error: 'Bulletin invalide.' }, { status: 400 });
   }
-  if (
-    selectedItemIds.length > catalog.campaign.maxSelections ||
-    selectedItemIds.some((itemId) => !validItemIds.has(itemId))
-  ) {
+  if (selectedItemIds.some((itemId) => !validItemIds.has(itemId))) {
     return json(
       {
-        error: `Choisissez de ${catalog.campaign.minSelections} à ${catalog.campaign.maxSelections} morceaux.`,
+        error: 'Choisissez uniquement parmi les morceaux disponibles.',
       },
       { status: 400 },
     );

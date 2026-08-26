@@ -1,91 +1,89 @@
 import { Link } from "wouter";
 import { ArrowRight, Heart, Pencil, Sparkles } from "lucide-react";
+import { useState } from "react";
 import { useLang, type Lang } from "@/contexts/LangContext";
 import catalog from "../../../gaminet-gamin-vote/content/catalog.json";
 
-const featuredIds = [
-  "primary-vivid-v2-20260823-142513-t-shirt-hot-pink",
-  "primary-vivid-v2-20260823-142759-hoodie-bright-teal",
-  "primary-vivid-v2-20260805-140323-crewneck-sweatshirt-tangerine-orange",
-  "primary-bucket-hats-img-6504-bucket-hat-sunflower-yellow",
-  "primary-caps-v2-20260805-140342-casquette-berry-purple",
-  "primary-beanies-img-6555-tuque-cobalt-blue",
-] as const;
+const activeItems = catalog.items.filter((item) => item.active);
+const activeItemCount = activeItems.length;
 
-const featuredItems = featuredIds
-  .map((id) => catalog.items.find((item) => item.id === id))
-  .filter((item): item is (typeof catalog.items)[number] => Boolean(item));
-
-const activeItemCount = catalog.items.filter((item) => item.active).length;
+function shuffled<T>(items: readonly T[]) {
+  const result = [...items];
+  for (let index = result.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [result[index], result[swapIndex]] = [result[swapIndex], result[index]];
+  }
+  return result;
+}
 
 const copy = {
   fr: {
     eyebrow: "Collection 2026 · Vote ouvert",
     title: "Tu choisis la prochaine collection.",
     intro:
-      "La vraie collection est prête à être départagée. Choisis jusqu’à 12 favoris : tes votes nous aideront à décider quels vêtements prendront vie.",
+      "La vraie collection est prête à être départagée. Choisis autant de favoris que tu veux : tes votes nous aideront à décider quels vêtements prendront vie.",
     primaryCta: "Voter pour mes préférés",
     secondaryCta: "Voir les candidats",
     pieces: "créations en lice",
-    choices: "choix par personne",
+    choices: "favoris sans limite",
     madeHere: "imaginé au Québec",
     collectionEyebrow: "Le vestiaire en lice",
     collectionTitle: "De la couleur. Des monstres. Ton dernier mot.",
     collectionIntro:
-      "T-shirts, hoodies, crewnecks, casquettes, tuques et chapeaux : voici un aperçu des vraies créations soumises au vote.",
+      "T-shirts, hoodies, crewnecks, casquettes et chapeaux : voici un aperçu des vraies créations soumises au vote.",
     candidate: "Candidat 2026",
     vote: "Voter",
     seeAll: `Découvrir les ${activeItemCount} créations`,
     finalEyebrow: "Ton vote compte",
     finalTitle: "Quel vêtement mérite sa place dans la prochaine collection?",
     finalText:
-      "Fais défiler toute la collection, garde jusqu’à 12 coups de cœur et confirme ton bulletin en quelques minutes.",
+      "Fais défiler toute la collection et garde tous les coups de cœur que tu veux. Chaque cœur est enregistré automatiquement.",
     finalCta: "Je choisis mes favoris",
   },
   en: {
     eyebrow: "Collection 2026 · Voting is open",
     title: "You choose the next collection.",
     intro:
-      "The real collection is ready for your verdict. Pick up to 12 favorites: your votes will help decide which garments come to life.",
+      "The real collection is ready for your verdict. Pick as many favorites as you like: your votes will help decide which garments come to life.",
     primaryCta: "Vote for my favorites",
     secondaryCta: "Meet the candidates",
     pieces: "designs in the running",
-    choices: "choices per person",
+    choices: "unlimited favorites",
     madeHere: "imagined in Québec",
     collectionEyebrow: "The lineup",
     collectionTitle: "Big color. Little monsters. Your final say.",
     collectionIntro:
-      "T-shirts, hoodies, crewnecks, caps, beanies and bucket hats: here is a glimpse of the real designs up for a vote.",
+      "T-shirts, hoodies, crewnecks, caps and bucket hats: here is a glimpse of the real designs up for a vote.",
     candidate: "2026 candidate",
     vote: "Vote",
     seeAll: `Explore all ${activeItemCount} designs`,
     finalEyebrow: "Your vote counts",
     finalTitle: "Which garment deserves a place in the next collection?",
     finalText:
-      "Browse the full collection, save up to 12 favorites and cast your ballot in just a few minutes.",
+      "Browse the full collection and save every favorite you like. Each heart is recorded automatically.",
     finalCta: "Choose my favorites",
   },
   es: {
     eyebrow: "Colección 2026 · Votación abierta",
     title: "Tú eliges la próxima colección.",
     intro:
-      "La colección real está lista para tu veredicto. Elige hasta 12 favoritas: tus votos nos ayudarán a decidir qué prendas cobrarán vida.",
+      "La colección real está lista para tu veredicto. Elige todas las favoritas que quieras: tus votos nos ayudarán a decidir qué prendas cobrarán vida.",
     primaryCta: "Votar por mis favoritas",
     secondaryCta: "Ver las candidatas",
     pieces: "diseños candidatos",
-    choices: "opciones por persona",
+    choices: "favoritas sin límite",
     madeHere: "imaginado en Québec",
     collectionEyebrow: "La selección",
     collectionTitle: "Mucho color. Pequeños monstruos. Tú decides.",
     collectionIntro:
-      "Camisetas, sudaderas, gorras, gorros y sombreros: descubre una muestra de los diseños reales sometidos a votación.",
+      "Camisetas, sudaderas, gorras y sombreros: descubre una muestra de los diseños reales sometidos a votación.",
     candidate: "Candidata 2026",
     vote: "Votar",
     seeAll: `Descubrir los ${activeItemCount} diseños`,
     finalEyebrow: "Tu voto cuenta",
     finalTitle: "¿Qué prenda merece un lugar en la próxima colección?",
     finalText:
-      "Explora la colección completa, guarda hasta 12 favoritas y confirma tu voto en unos minutos.",
+      "Explora la colección completa y guarda todas las favoritas que quieras. Cada corazón se registra automáticamente.",
     finalCta: "Elegir mis favoritas",
   },
 } as const;
@@ -96,7 +94,6 @@ const spanishGarments: Record<string, string> = {
   "crewneck-sweatshirt": "Sudadera",
   "long-sleeve-shirt": "Camiseta de manga larga",
   casquette: "Gorra",
-  tuque: "Gorro",
   "bucket-hat": "Sombrero",
 };
 
@@ -122,6 +119,7 @@ function colorLabel(item: (typeof catalog.items)[number], lang: Lang) {
 export default function HomePage() {
   const { lang, t } = useLang();
   const pageCopy = copy[lang];
+  const [featuredItems] = useState(() => shuffled(activeItems).slice(0, 6));
 
   const shopRoute = lang === "fr" ? "/fr/boutique" : lang === "en" ? "/en/shop" : "/es/tienda";
   const programRoute = lang === "fr" ? "/fr/artistes" : lang === "en" ? "/en/little-monsters" : "/es/pequenos-monstruos";
@@ -178,7 +176,7 @@ export default function HomePage() {
                 <p className="mt-1 text-[10px] font-bold uppercase leading-tight tracking-[0.1em] text-black/45">{pageCopy.pieces}</p>
               </div>
               <div className="px-4">
-                <p className="text-2xl font-black text-[#201c19]">{catalog.campaign.maxSelections}</p>
+                <p className="text-2xl font-black text-[#201c19]">∞</p>
                 <p className="mt-1 text-[10px] font-bold uppercase leading-tight tracking-[0.1em] text-black/45">{pageCopy.choices}</p>
               </div>
               <div className="pl-4">

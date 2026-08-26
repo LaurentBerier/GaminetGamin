@@ -15,11 +15,23 @@ type ResultData = {
   lastVoteAt: number;
 };
 
-const itemById = new Map(catalog.items.map((item) => [item.id, item]));
 const activeItems = catalog.items.filter((item) => item.active);
-const sectionById = new Map(
-  catalog.sections.map((section) => [section.id, section]),
+const itemById = new Map(activeItems.map((item) => [item.id, item]));
+const activeSections = catalog.sections.filter((section) =>
+  activeItems.some((item) => item.sectionId === section.id),
 );
+const sectionById = new Map(
+  activeSections.map((section) => [section.id, section]),
+);
+
+function shuffled<T>(items: T[]) {
+  const copy = [...items];
+  for (let index = copy.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
+  }
+  return copy;
+}
 
 function getUrlValue(name: string) {
   if (typeof window === 'undefined') return '';
@@ -195,6 +207,7 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
 
 export function CollectionPreview() {
   const [resultsKey] = useState(() => getUrlValue('results'));
+  const [randomizedItems, setRandomizedItems] = useState(activeItems);
   const [filter, setFilter] = useState('all');
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState<string[]>([]);
@@ -208,6 +221,10 @@ export function CollectionPreview() {
   const selectedRef = useRef<string[]>([]);
   const saveQueue = useRef<Promise<void>>(Promise.resolve());
   const saveRevision = useRef(0);
+
+  useEffect(() => {
+    setRandomizedItems(shuffled(activeItems));
+  }, []);
 
   useEffect(() => {
     if (resultsKey) return;
@@ -237,9 +254,7 @@ export function CollectionPreview() {
         })
         .then((body) => {
           if (!body.ballot) return;
-          const storedSelections = body.ballot.selectedItemIds
-            .filter((id) => itemById.has(id))
-            .slice(0, catalog.campaign.maxSelections);
+          const storedSelections = body.ballot.selectedItemIds.filter((id) => itemById.has(id));
           selectedRef.current = storedSelections;
           setSelected(storedSelections);
           setVoterGroup((current) => current || body.ballot?.voterGroup || '');
@@ -267,14 +282,14 @@ export function CollectionPreview() {
 
   const filteredItems = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase('fr');
-    return activeItems.filter((item) => {
+    return randomizedItems.filter((item) => {
       if (filter !== 'all' && item.sectionId !== filter) return false;
       if (!normalized) return true;
       return `${item.title} ${item.garment.label.fr} ${item.color.label.fr}`
         .toLocaleLowerCase('fr')
         .includes(normalized);
     });
-  }, [filter, query]);
+  }, [filter, query, randomizedItems]);
 
   const persistLikes = (nextSelections: string[]) => {
     if (!voterId) return;
@@ -310,10 +325,7 @@ export function CollectionPreview() {
     const current = selectedRef.current;
     const nextSelections = current.includes(itemId)
       ? current.filter((id) => id !== itemId)
-      : current.length < catalog.campaign.maxSelections
-        ? [...current, itemId]
-        : current;
-    if (nextSelections === current) return;
+      : [...current, itemId];
     selectedRef.current = nextSelections;
     setSelected(nextSelections);
     persistLikes(nextSelections);
@@ -368,7 +380,7 @@ export function CollectionPreview() {
               </div>
               <button onClick={() => void share()} className="hidden rounded-full border border-stone-200 bg-white px-3 py-2 text-xs font-black lg:block">{shareState}</button>
               <div className="rounded-full bg-[#201c19] px-3.5 py-2 text-xs font-black text-white" title={statusLabel}>
-                <span className="mr-1 text-[#ff718a]">♥</span> {selected.length}/{catalog.campaign.maxSelections}
+                <span className="mr-1 text-[#ff718a]">♥</span> {selected.length}
               </div>
               <button type="button" onClick={() => setMobileMenuOpen((current) => !current)} className="grid h-10 w-10 place-items-center rounded-lg text-xl font-black hover:bg-stone-100 md:hidden" aria-label="Menu" aria-expanded={mobileMenuOpen}>
                 {mobileMenuOpen ? '×' : '☰'}
@@ -411,7 +423,7 @@ export function CollectionPreview() {
               <button onClick={() => setFilter('all')} className={`shrink-0 rounded-full px-4 py-2.5 text-sm font-bold ${filter === 'all' ? 'bg-[#201c19] text-white' : 'bg-stone-100 text-black/55 hover:bg-stone-200'}`}>
                 Tout · {activeItems.length}
               </button>
-              {catalog.sections.map((section) => {
+              {activeSections.map((section) => {
                 const count = activeItems.filter((item) => item.sectionId === section.id).length;
                 return (
                   <button key={section.id} onClick={() => setFilter(section.id)} className={`shrink-0 rounded-full px-4 py-2.5 text-sm font-bold ${filter === section.id ? 'bg-[#201c19] text-white' : 'bg-stone-100 text-black/55 hover:bg-stone-200'}`}>
@@ -437,7 +449,6 @@ export function CollectionPreview() {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
           {filteredItems.map((item) => {
             const isSelected = selected.includes(item.id);
-            const isAtLimit = selected.length >= catalog.campaign.maxSelections && !isSelected;
             return (
               <article key={item.id} className={`group overflow-hidden rounded-2xl border bg-white transition duration-300 hover:-translate-y-0.5 hover:shadow-lg ${isSelected ? 'border-[#ff718a] ring-2 ring-[#ff718a]/35' : 'border-stone-200'}`}>
                 <div className="relative aspect-square overflow-hidden bg-stone-100">
@@ -445,7 +456,7 @@ export function CollectionPreview() {
                     <img src={item.image} alt={`${item.title} — ${item.garment.label.fr} ${item.color.label.fr}`} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.035]" />
                     <span className="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.12em] text-black/60 opacity-0 shadow-sm transition group-hover:opacity-100">Agrandir</span>
                   </button>
-                  <button type="button" onClick={() => toggle(item.id)} disabled={!hydrated || isAtLimit} aria-pressed={isSelected} aria-label={`${isSelected ? 'Retirer le vote pour' : 'Voter pour'} ${item.title}`} title={isAtLimit ? `Maximum de ${catalog.campaign.maxSelections} favoris atteint` : undefined} className={`absolute right-3 top-3 z-10 grid h-11 w-11 place-items-center rounded-full border text-2xl shadow-md transition hover:scale-110 disabled:cursor-not-allowed disabled:opacity-40 ${isSelected ? 'border-[#201c19] bg-[#ff718a] text-[#201c19]' : 'border-white bg-white text-black/35 hover:text-[#ff718a]'}`}>
+                  <button type="button" onClick={() => toggle(item.id)} disabled={!hydrated} aria-pressed={isSelected} aria-label={`${isSelected ? 'Retirer le vote pour' : 'Voter pour'} ${item.title}`} className={`absolute right-3 top-3 z-10 grid h-11 w-11 place-items-center rounded-full border text-2xl shadow-md transition hover:scale-110 disabled:cursor-not-allowed disabled:opacity-40 ${isSelected ? 'border-[#201c19] bg-[#ff718a] text-[#201c19]' : 'border-white bg-white text-black/35 hover:text-[#ff718a]'}`}>
                     {isSelected ? '♥' : '♡'}
                   </button>
                 </div>
@@ -524,7 +535,7 @@ export function CollectionPreview() {
                     {previewItem.color.label.fr}
                   </div>
                 </div>
-                <button type="button" onClick={() => toggle(previewItem.id)} disabled={!hydrated || (selected.length >= catalog.campaign.maxSelections && !selected.includes(previewItem.id))} aria-pressed={selected.includes(previewItem.id)} className={`mt-7 flex w-full items-center justify-center gap-3 rounded-full px-6 py-4 text-base font-black transition disabled:opacity-40 ${selected.includes(previewItem.id) ? 'bg-[#ff718a] text-[#201c19]' : 'bg-[#201c19] text-white hover:bg-[#4a7a5e]'}`}>
+                <button type="button" onClick={() => toggle(previewItem.id)} disabled={!hydrated} aria-pressed={selected.includes(previewItem.id)} className={`mt-7 flex w-full items-center justify-center gap-3 rounded-full px-6 py-4 text-base font-black transition disabled:opacity-40 ${selected.includes(previewItem.id) ? 'bg-[#ff718a] text-[#201c19]' : 'bg-[#201c19] text-white hover:bg-[#4a7a5e]'}`}>
                   <span className="text-2xl">{selected.includes(previewItem.id) ? '♥' : '♡'}</span>
                   {selected.includes(previewItem.id) ? 'Retirer de mes favoris' : 'Voter pour ce vêtement'}
                 </button>

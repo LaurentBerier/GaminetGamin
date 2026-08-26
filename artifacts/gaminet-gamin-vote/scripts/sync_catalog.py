@@ -15,7 +15,7 @@ import re
 import unicodedata
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageChops, ImageEnhance, ImageFilter
 
 
 SITE_ROOT = Path(__file__).resolve().parents[1]
@@ -36,7 +36,10 @@ def find_source_root() -> Path:
 
 SOURCE_ROOT = find_source_root()
 CATALOG_PATH = SITE_ROOT / "content" / "catalog.json"
-ASSET_ROOT = SITE_ROOT / "public" / "catalog"
+ASSET_ROOTS = [
+    SITE_ROOT / "public" / "catalog",
+    SITE_ROOT.parent / "gaminet-gamin" / "public" / "catalog",
+]
 
 SECTION_DEFINITIONS = [
     {
@@ -67,17 +70,8 @@ SECTION_DEFINITIONS = [
         },
     },
     {
-        "id": "beanies",
-        "order": 40,
-        "label": {"fr": "Tuques", "en": "Beanies"},
-        "description": {
-            "fr": "Des personnages lisibles qui suivent la texture de la maille.",
-            "en": "Readable characters that follow the knit texture.",
-        },
-    },
-    {
         "id": "bucket-hats",
-        "order": 50,
+        "order": 40,
         "label": {"fr": "Chapeaux", "en": "Bucket hats"},
         "description": {
             "fr": "Les options chapeau pour les dessins aux silhouettes les plus fortes.",
@@ -105,7 +99,6 @@ GARMENTS = {
         {"fr": "Chandail manches longues", "en": "Long-sleeve shirt"},
     ),
     "casquette": ("cap", {"fr": "Casquette", "en": "Cap"}),
-    "tuque": ("beanie", {"fr": "Tuque", "en": "Beanie"}),
     "bucket hat": ("bucket-hat", {"fr": "Chapeau", "en": "Bucket hat"}),
 }
 
@@ -117,7 +110,6 @@ PRICES = {
     "crewneck": 64.99,
     "hoodie": 74.99,
     "cap": 34.99,
-    "beanie": 34.99,
     "bucket-hat": 39.99,
 }
 
@@ -146,8 +138,46 @@ ALL_SECTION_ORDER = {
     "vivid": 0,
     "classics": 1,
     "caps": 2,
-    "beanies": 3,
-    "bucket-hats": 4,
+    "bucket-hats": 3,
+}
+
+# These illustration-led garments intentionally use more of the printable
+# chest area than the rest of the catalog. Keeping the overrides here makes
+# the storefront assets reproducible whenever the catalog is synchronized.
+LARGE_PRINT_OVERRIDES = {
+    ("standard", "IMG_6166"): {
+        "template": SOURCE_ROOT / "_templates" / "crewneck-grey.png",
+        "maximum": (520, 550),
+        "center": (627, 520),
+        "saturation": 0.82,
+        "opacity": 0.965,
+        "blur": 18,
+        "texture_floor": 222,
+        "texture_base": 246,
+        "contrast": 1.015,
+    },
+    ("standard", "IMG_6173"): {
+        "template": SOURCE_ROOT / "_templates" / "hoodie-black.png",
+        "maximum": (495, 470),
+        "center": (627, 505),
+        "saturation": 0.82,
+        "opacity": 0.965,
+        "blur": 18,
+        "texture_floor": 222,
+        "texture_base": 246,
+        "contrast": 1.015,
+    },
+    ("primary", "IMG_6166"): {
+        "template": SOURCE_ROOT / "apparel_expansion" / "_templates" / "hoodie-electric-purple.png",
+        "maximum": (405, 500),
+        "center": (627, 500),
+        "saturation": 0.84,
+        "opacity": 0.955,
+        "blur": 14,
+        "texture_floor": 210,
+        "texture_base": 245,
+        "contrast": 1.0,
+    },
 }
 
 
@@ -176,11 +206,60 @@ def checksum(path: Path) -> str:
     return digest.hexdigest()[:16]
 
 
-def optimize_image(source: Path, destination: Path) -> None:
+def optimize_rendered_image(image: Image.Image, destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
-    image = Image.open(source).convert("RGB")
+    image = image.convert("RGB")
     image.thumbnail((900, 900), Image.Resampling.LANCZOS)
     image.save(destination, "WEBP", quality=82, method=6)
+
+
+def optimize_image(source: Path, destination: Path) -> None:
+    optimize_rendered_image(Image.open(source), destination)
+
+
+def trim_alpha(image: Image.Image) -> Image.Image:
+    image = image.convert("RGBA")
+    bounds = image.getchannel("A").getbbox()
+    if not bounds:
+        raise ValueError("Illustration has an empty alpha channel")
+    return image.crop(bounds)
+
+
+def fit(image: Image.Image, maximum: tuple[int, int]) -> Image.Image:
+    image = image.copy()
+    image.thumbnail(maximum, Image.Resampling.LANCZOS)
+    return image
+
+
+def render_large_print(design_id: str, override: dict) -> Image.Image:
+    garment = Image.open(override["template"]).convert("RGBA")
+    art = fit(
+        trim_alpha(Image.open(SOURCE_ROOT / "colored" / f"{design_id}-colored.png")),
+        override["maximum"],
+    )
+    center_x, center_y = override["center"]
+    xy = (round(center_x - art.width / 2), round(center_y - art.height / 2))
+
+    original_alpha = art.getchannel("A")
+    printed_rgb = ImageEnhance.Color(art.convert("RGB")).enhance(override["saturation"])
+    printed_rgb = ImageEnhance.Contrast(printed_rgb).enhance(0.97)
+    x, y = xy
+    fabric = garment.crop((x, y, x + art.width, y + art.height)).convert("RGB")
+    gray = fabric.convert("L")
+    broad = gray.filter(ImageFilter.GaussianBlur(override["blur"]))
+    detail = ImageChops.subtract(gray, broad, scale=1.0, offset=128)
+    texture = detail.point(
+        lambda value: max(
+            override["texture_floor"],
+            min(255, round(override["texture_base"] + (value - 128) * 0.22)),
+        )
+    )
+    texture_rgb = Image.merge("RGB", (texture, texture, texture))
+    printed_rgb = ImageChops.multiply(printed_rgb, texture_rgb)
+    printed_rgb = ImageEnhance.Contrast(printed_rgb).enhance(override["contrast"])
+    printed_rgb.putalpha(original_alpha.point(lambda value: round(value * override["opacity"])))
+    garment.alpha_composite(printed_rgb, xy)
+    return garment
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -202,8 +281,14 @@ def make_item(
     title = TITLE_OVERRIDES.get(design_id, title)
     garment_id, garment_label = GARMENTS[garment_key]
     web_name = f"{slug(item_id)}.webp"
-    optimize_image(source_image, ASSET_ROOT / web_name)
-    return {
+    override = LARGE_PRINT_OVERRIDES.get((source_collection, design_id))
+    for asset_root in ASSET_ROOTS:
+        destination = asset_root / web_name
+        if override:
+            optimize_rendered_image(render_large_print(design_id, override), destination)
+        else:
+            optimize_image(source_image, destination)
+    item = {
         "id": slug(item_id),
         "designId": design_id,
         "title": title,
@@ -222,6 +307,12 @@ def make_item(
             "checksum": checksum(source_image),
         },
     }
+    if override:
+        item["render"] = {
+            "variant": "large-print",
+            "printBoxPx": f"{override['maximum'][0]}x{override['maximum'][1]}",
+        }
+    return item
 
 
 items: list[dict] = []
@@ -260,11 +351,12 @@ for manifest_path, collection_root, source_collection in expansion_sources:
         category = row["category"]
         is_headwear = "headwear" in category
         product = row["product"]
+        if product == "tuque":
+            continue
         color_id = normalized_color(row["color"])
         if is_headwear:
             section_id = {
                 "casquette": "caps",
-                "tuque": "beanies",
                 "bucket hat": "bucket-hats",
             }[product]
             asset_folder = "headwear"
@@ -289,8 +381,8 @@ for manifest_path, collection_root, source_collection in expansion_sources:
 
 items.sort(key=lambda item: ALL_SECTION_ORDER[item["sectionId"]])
 
-if len(items) != 119:
-    raise RuntimeError(f"Expected 119 apparel variants, found {len(items)}")
+if len(items) != 107:
+    raise RuntimeError(f"Expected 107 apparel variants, found {len(items)}")
 if len({item['id'] for item in items}) != len(items):
     raise RuntimeError("Catalog item IDs are not unique")
 
@@ -302,7 +394,6 @@ catalog = {
             "fr": "Vote de la prochaine collection",
             "en": "Next collection vote",
         },
-        "maxSelections": 12,
         "minSelections": 0,
     },
     "sections": SECTION_DEFINITIONS,
@@ -315,4 +406,7 @@ CATALOG_PATH.write_text(
     encoding="utf-8",
 )
 print(f"Wrote {CATALOG_PATH}")
-print(f"Optimized {len(items)} apparel images into {ASSET_ROOT}")
+print(
+    f"Optimized {len(items)} apparel images into "
+    + ", ".join(str(path) for path in ASSET_ROOTS)
+)

@@ -6,7 +6,6 @@
       "fr": "Vote de la prochaine collection",
       "en": "Next collection vote"
     },
-    "maxSelections": 12,
     "minSelections": 0
   },
   "sections": [
@@ -47,20 +46,8 @@
       }
     },
     {
-      "id": "beanies",
-      "order": 40,
-      "label": {
-        "fr": "Tuques",
-        "en": "Beanies"
-      },
-      "description": {
-        "fr": "Des personnages lisibles qui suivent la texture de la maille.",
-        "en": "Readable characters that follow the knit texture."
-      }
-    },
-    {
       "id": "bucket-hats",
-      "order": 50,
+      "order": 40,
       "label": {
         "fr": "Chapeaux",
         "en": "Bucket hats"
@@ -273,6 +260,10 @@
         "collection": "primary",
         "file": "IMG_6166-hoodie-electric-purple-mockup.png",
         "checksum": "2af71c9438c4ca9b"
+      },
+      "render": {
+        "variant": "large-print",
+        "printBoxPx": "405x500"
       }
     },
     {
@@ -882,6 +873,10 @@
         "collection": "standard",
         "file": "IMG_6166-crewneck-grey-mockup.png",
         "checksum": "2995c96862963448"
+      },
+      "render": {
+        "variant": "large-print",
+        "printBoxPx": "520x550"
       }
     },
     {
@@ -969,6 +964,10 @@
         "collection": "standard",
         "file": "IMG_6173-hoodie-black-mockup.png",
         "checksum": "c802bd04379da8b5"
+      },
+      "render": {
+        "variant": "large-print",
+        "printBoxPx": "495x470"
       }
     },
     {
@@ -2825,354 +2824,6 @@
         "collection": "alternate",
         "file": "IMG_6554-casquette-tangerine-orange-set2-mockup.png",
         "checksum": "7da6f5c1d0afc140"
-      }
-    },
-    {
-      "id": "primary-beanies-img-6555-tuque-cobalt-blue",
-      "designId": "IMG_6555",
-      "title": "Le Crabe Timide",
-      "sectionId": "beanies",
-      "garment": {
-        "id": "beanie",
-        "label": {
-          "fr": "Tuque",
-          "en": "Beanie"
-        },
-        "price": 34.99
-      },
-      "color": {
-        "id": "cobalt-blue",
-        "hex": "#1d45c7",
-        "label": {
-          "fr": "Bleu cobalt",
-          "en": "Cobalt blue"
-        }
-      },
-      "image": "/catalog/primary-beanies-img-6555-tuque-cobalt-blue.webp",
-      "active": true,
-      "source": {
-        "collection": "primary",
-        "file": "IMG_6555-tuque-cobalt-blue-mockup.png",
-        "checksum": "3f39a1cc773382af"
-      }
-    },
-    {
-      "id": "primary-beanies-img-6555-tuque-berry-purple",
-      "designId": "IMG_6555",
-      "title": "Le Crabe Timide",
-      "sectionId": "beanies",
-      "garment": {
-        "id": "beanie",
-        "label": {
-          "fr": "Tuque",
-          "en": "Beanie"
-        },
-        "price": 34.99
-      },
-      "color": {
-        "id": "berry-purple",
-        "hex": "#963a8d",
-        "label": {
-          "fr": "Violet baie",
-          "en": "Berry purple"
-        }
-      },
-      "image": "/catalog/primary-beanies-img-6555-tuque-berry-purple.webp",
-      "active": true,
-      "source": {
-        "collection": "primary",
-        "file": "IMG_6555-tuque-berry-purple-mockup.png",
-        "checksum": "10c6d50d14561112"
-      }
-    },
-    {
-      "id": "primary-beanies-img-6555-tuque-sunflower-yellow",
-      "designId": "IMG_6555",
-      "title": "Le Crabe Timide",
-      "sectionId": "beanies",
-      "garment": {
-        "id": "beanie",
-        "label": {
-          "fr": "Tuque",
-          "en": "Beanie"
-        },
-        "price": 34.99
-      },
-      "color": {
-        "id": "sunflower-yellow",
-        "hex": "#ffc928",
-        "label": {
-          "fr": "Jaune tournesol",
-          "en": "Sunflower yellow"
-        }
-      },
-      "image": "/catalog/primary-beanies-img-6555-tuque-sunflower-yellow.webp",
-      "active": true,
-      "source": {
-        "collection": "primary",
-        "file": "IMG_6555-tuque-sunflower-yellow-mockup.png",
-        "checksum": "64923433bd90be26"
-      }
-    },
-    {
-      "id": "primary-beanies-img-6328-tuque-cobalt-blue",
-      "designId": "IMG_6328",
-      "title": "Le Roi Haricot",
-      "sectionId": "beanies",
-      "garment": {
-        "id": "beanie",
-        "label": {
-          "fr": "Tuque",
-          "en": "Beanie"
-        },
-        "price": 34.99
-      },
-      "color": {
-        "id": "cobalt-blue",
-        "hex": "#1d45c7",
-        "label": {
-          "fr": "Bleu cobalt",
-          "en": "Cobalt blue"
-        }
-      },
-      "image": "/catalog/primary-beanies-img-6328-tuque-cobalt-blue.webp",
-      "active": true,
-      "source": {
-        "collection": "primary",
-        "file": "IMG_6328-tuque-cobalt-blue-mockup.png",
-        "checksum": "604038c61dbdaaf5"
-      }
-    },
-    {
-      "id": "primary-beanies-img-6328-tuque-berry-purple",
-      "designId": "IMG_6328",
-      "title": "Le Roi Haricot",
-      "sectionId": "beanies",
-      "garment": {
-        "id": "beanie",
-        "label": {
-          "fr": "Tuque",
-          "en": "Beanie"
-        },
-        "price": 34.99
-      },
-      "color": {
-        "id": "berry-purple",
-        "hex": "#963a8d",
-        "label": {
-          "fr": "Violet baie",
-          "en": "Berry purple"
-        }
-      },
-      "image": "/catalog/primary-beanies-img-6328-tuque-berry-purple.webp",
-      "active": true,
-      "source": {
-        "collection": "primary",
-        "file": "IMG_6328-tuque-berry-purple-mockup.png",
-        "checksum": "c4732c678b62aaca"
-      }
-    },
-    {
-      "id": "primary-beanies-img-6328-tuque-sunflower-yellow",
-      "designId": "IMG_6328",
-      "title": "Le Roi Haricot",
-      "sectionId": "beanies",
-      "garment": {
-        "id": "beanie",
-        "label": {
-          "fr": "Tuque",
-          "en": "Beanie"
-        },
-        "price": 34.99
-      },
-      "color": {
-        "id": "sunflower-yellow",
-        "hex": "#ffc928",
-        "label": {
-          "fr": "Jaune tournesol",
-          "en": "Sunflower yellow"
-        }
-      },
-      "image": "/catalog/primary-beanies-img-6328-tuque-sunflower-yellow.webp",
-      "active": true,
-      "source": {
-        "collection": "primary",
-        "file": "IMG_6328-tuque-sunflower-yellow-mockup.png",
-        "checksum": "864840bb5afe47d8"
-      }
-    },
-    {
-      "id": "alternate-beanies-v2-20260805-140256-tuque-cobalt-blue",
-      "designId": "V2_20260805_140256",
-      "title": "La Chenille Étonnée",
-      "sectionId": "beanies",
-      "garment": {
-        "id": "beanie",
-        "label": {
-          "fr": "Tuque",
-          "en": "Beanie"
-        },
-        "price": 34.99
-      },
-      "color": {
-        "id": "cobalt-blue",
-        "hex": "#1d45c7",
-        "label": {
-          "fr": "Bleu cobalt",
-          "en": "Cobalt blue"
-        }
-      },
-      "image": "/catalog/alternate-beanies-v2-20260805-140256-tuque-cobalt-blue.webp",
-      "active": true,
-      "source": {
-        "collection": "alternate",
-        "file": "V2_20260805_140256-tuque-cobalt-blue-set2-mockup.png",
-        "checksum": "83281c2ff542fa8b"
-      }
-    },
-    {
-      "id": "alternate-beanies-v2-20260805-140256-tuque-berry-purple",
-      "designId": "V2_20260805_140256",
-      "title": "La Chenille Étonnée",
-      "sectionId": "beanies",
-      "garment": {
-        "id": "beanie",
-        "label": {
-          "fr": "Tuque",
-          "en": "Beanie"
-        },
-        "price": 34.99
-      },
-      "color": {
-        "id": "berry-purple",
-        "hex": "#963a8d",
-        "label": {
-          "fr": "Violet baie",
-          "en": "Berry purple"
-        }
-      },
-      "image": "/catalog/alternate-beanies-v2-20260805-140256-tuque-berry-purple.webp",
-      "active": true,
-      "source": {
-        "collection": "alternate",
-        "file": "V2_20260805_140256-tuque-berry-purple-set2-mockup.png",
-        "checksum": "511ded2e30e8cfe0"
-      }
-    },
-    {
-      "id": "alternate-beanies-v2-20260805-140256-tuque-sunflower-yellow",
-      "designId": "V2_20260805_140256",
-      "title": "La Chenille Étonnée",
-      "sectionId": "beanies",
-      "garment": {
-        "id": "beanie",
-        "label": {
-          "fr": "Tuque",
-          "en": "Beanie"
-        },
-        "price": 34.99
-      },
-      "color": {
-        "id": "sunflower-yellow",
-        "hex": "#ffc928",
-        "label": {
-          "fr": "Jaune tournesol",
-          "en": "Sunflower yellow"
-        }
-      },
-      "image": "/catalog/alternate-beanies-v2-20260805-140256-tuque-sunflower-yellow.webp",
-      "active": true,
-      "source": {
-        "collection": "alternate",
-        "file": "V2_20260805_140256-tuque-sunflower-yellow-set2-mockup.png",
-        "checksum": "76206f3bf2cae8ef"
-      }
-    },
-    {
-      "id": "alternate-beanies-img-0103-tuque-cobalt-blue",
-      "designId": "IMG_0103",
-      "title": "Nounours Bonjour",
-      "sectionId": "beanies",
-      "garment": {
-        "id": "beanie",
-        "label": {
-          "fr": "Tuque",
-          "en": "Beanie"
-        },
-        "price": 34.99
-      },
-      "color": {
-        "id": "cobalt-blue",
-        "hex": "#1d45c7",
-        "label": {
-          "fr": "Bleu cobalt",
-          "en": "Cobalt blue"
-        }
-      },
-      "image": "/catalog/alternate-beanies-img-0103-tuque-cobalt-blue.webp",
-      "active": true,
-      "source": {
-        "collection": "alternate",
-        "file": "IMG_0103-tuque-cobalt-blue-set2-mockup.png",
-        "checksum": "5f4f422e14d9e5dd"
-      }
-    },
-    {
-      "id": "alternate-beanies-img-0103-tuque-berry-purple",
-      "designId": "IMG_0103",
-      "title": "Nounours Bonjour",
-      "sectionId": "beanies",
-      "garment": {
-        "id": "beanie",
-        "label": {
-          "fr": "Tuque",
-          "en": "Beanie"
-        },
-        "price": 34.99
-      },
-      "color": {
-        "id": "berry-purple",
-        "hex": "#963a8d",
-        "label": {
-          "fr": "Violet baie",
-          "en": "Berry purple"
-        }
-      },
-      "image": "/catalog/alternate-beanies-img-0103-tuque-berry-purple.webp",
-      "active": true,
-      "source": {
-        "collection": "alternate",
-        "file": "IMG_0103-tuque-berry-purple-set2-mockup.png",
-        "checksum": "0dd747949d1560aa"
-      }
-    },
-    {
-      "id": "alternate-beanies-img-0103-tuque-sunflower-yellow",
-      "designId": "IMG_0103",
-      "title": "Nounours Bonjour",
-      "sectionId": "beanies",
-      "garment": {
-        "id": "beanie",
-        "label": {
-          "fr": "Tuque",
-          "en": "Beanie"
-        },
-        "price": 34.99
-      },
-      "color": {
-        "id": "sunflower-yellow",
-        "hex": "#ffc928",
-        "label": {
-          "fr": "Jaune tournesol",
-          "en": "Sunflower yellow"
-        }
-      },
-      "image": "/catalog/alternate-beanies-img-0103-tuque-sunflower-yellow.webp",
-      "active": true,
-      "source": {
-        "collection": "alternate",
-        "file": "IMG_0103-tuque-sunflower-yellow-set2-mockup.png",
-        "checksum": "92c0419db9215e94"
       }
     },
     {
