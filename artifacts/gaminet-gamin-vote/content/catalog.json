@@ -254,7 +254,7 @@
           "en": "Electric purple"
         }
       },
-      "image": "/catalog/primary-vivid-img-6166-hoodie-electric-purple.webp",
+      "image": "/catalog/primary-vivid-img-6166-hoodie-electric-purple-r30d9109b29.webp",
       "active": true,
       "source": {
         "collection": "primary",
@@ -262,8 +262,8 @@
         "checksum": "2af71c9438c4ca9b"
       },
       "render": {
-        "variant": "large-print",
-        "printBoxPx": "405x500"
+        "variant": "custom-print",
+        "printBoxPx": "270x300"
       }
     },
     {
@@ -867,7 +867,7 @@
           "en": "Heather grey"
         }
       },
-      "image": "/catalog/classic-img-6166-crewneck-grey.webp",
+      "image": "/catalog/classic-img-6166-crewneck-grey-r62a49108e0.webp",
       "active": true,
       "source": {
         "collection": "standard",
@@ -875,8 +875,8 @@
         "checksum": "2995c96862963448"
       },
       "render": {
-        "variant": "large-print",
-        "printBoxPx": "520x550"
+        "variant": "custom-print",
+        "printBoxPx": "365x385"
       }
     },
     {
@@ -958,7 +958,7 @@
           "en": "Black"
         }
       },
-      "image": "/catalog/classic-img-6173-hoodie-black.webp",
+      "image": "/catalog/classic-img-6173-hoodie-black-r9f82fa121a.webp",
       "active": true,
       "source": {
         "collection": "standard",
@@ -966,8 +966,8 @@
         "checksum": "c802bd04379da8b5"
       },
       "render": {
-        "variant": "large-print",
-        "printBoxPx": "495x470"
+        "variant": "custom-print",
+        "printBoxPx": "250x215"
       }
     },
     {

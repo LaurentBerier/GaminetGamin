@@ -141,13 +141,14 @@ ALL_SECTION_ORDER = {
     "bucket-hats": 3,
 }
 
-# These illustration-led garments intentionally use more of the printable
-# chest area than the rest of the catalog. Keeping the overrides here makes
-# the storefront assets reproducible whenever the catalog is synchronized.
-LARGE_PRINT_OVERRIDES = {
+# These garments need custom print placement. Keeping the dimensions here
+# makes the storefront assets reproducible whenever the catalog is synchronized.
+# The sizes deliberately leave a comfortable margin around the illustration so
+# the print stays inside the usable chest area on both the card and the preview.
+PRINT_OVERRIDES = {
     ("standard", "IMG_6166"): {
         "template": SOURCE_ROOT / "_templates" / "crewneck-grey.png",
-        "maximum": (520, 550),
+        "maximum": (365, 385),
         "center": (627, 520),
         "saturation": 0.82,
         "opacity": 0.965,
@@ -158,7 +159,7 @@ LARGE_PRINT_OVERRIDES = {
     },
     ("standard", "IMG_6173"): {
         "template": SOURCE_ROOT / "_templates" / "hoodie-black.png",
-        "maximum": (495, 470),
+        "maximum": (250, 215),
         "center": (627, 505),
         "saturation": 0.82,
         "opacity": 0.965,
@@ -169,7 +170,7 @@ LARGE_PRINT_OVERRIDES = {
     },
     ("primary", "IMG_6166"): {
         "template": SOURCE_ROOT / "apparel_expansion" / "_templates" / "hoodie-electric-purple.png",
-        "maximum": (405, 500),
+        "maximum": (270, 300),
         "center": (627, 500),
         "saturation": 0.84,
         "opacity": 0.955,
@@ -206,6 +207,25 @@ def checksum(path: Path) -> str:
     return digest.hexdigest()[:16]
 
 
+def rendered_asset_version(design_id: str, override: dict) -> str:
+    """Return a stable cache key for a composited mockup and its settings."""
+    digest = hashlib.sha256()
+    art_path = SOURCE_ROOT / "colored" / f"{design_id}-colored.png"
+    for path in (art_path, override["template"]):
+        with path.open("rb") as handle:
+            for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+                digest.update(chunk)
+    settings = {
+        key: value
+        for key, value in override.items()
+        if key != "template"
+    }
+    digest.update(
+        json.dumps(settings, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    )
+    return digest.hexdigest()[:10]
+
+
 def optimize_rendered_image(image: Image.Image, destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     image = image.convert("RGB")
@@ -231,7 +251,7 @@ def fit(image: Image.Image, maximum: tuple[int, int]) -> Image.Image:
     return image
 
 
-def render_large_print(design_id: str, override: dict) -> Image.Image:
+def render_custom_print(design_id: str, override: dict) -> Image.Image:
     garment = Image.open(override["template"]).convert("RGBA")
     art = fit(
         trim_alpha(Image.open(SOURCE_ROOT / "colored" / f"{design_id}-colored.png")),
@@ -280,12 +300,15 @@ def make_item(
 ) -> dict:
     title = TITLE_OVERRIDES.get(design_id, title)
     garment_id, garment_label = GARMENTS[garment_key]
-    web_name = f"{slug(item_id)}.webp"
-    override = LARGE_PRINT_OVERRIDES.get((source_collection, design_id))
+    override = PRINT_OVERRIDES.get((source_collection, design_id))
+    web_stem = slug(item_id)
+    if override:
+        web_stem = f"{web_stem}-r{rendered_asset_version(design_id, override)}"
+    web_name = f"{web_stem}.webp"
     for asset_root in ASSET_ROOTS:
         destination = asset_root / web_name
         if override:
-            optimize_rendered_image(render_large_print(design_id, override), destination)
+            optimize_rendered_image(render_custom_print(design_id, override), destination)
         else:
             optimize_image(source_image, destination)
     item = {
@@ -309,7 +332,7 @@ def make_item(
     }
     if override:
         item["render"] = {
-            "variant": "large-print",
+            "variant": "custom-print",
             "printBoxPx": f"{override['maximum'][0]}x{override['maximum'][1]}",
         }
     return item
