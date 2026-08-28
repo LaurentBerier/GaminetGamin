@@ -35,6 +35,13 @@ const activeItems = catalog.items.filter((item) => item.active);
 const sectionById = new Map(
   catalog.sections.map((section) => [section.id, section]),
 );
+const themeById = new Map(catalog.themes.map((theme) => [theme.id, theme]));
+const specialCollectionById = new Map(
+  catalog.specialCollections.map((collection) => [collection.id, collection]),
+);
+const colorOptions = Array.from(
+  new Map(activeItems.map((item) => [item.color.id, item.color])).values(),
+).sort((left, right) => left.label.fr.localeCompare(right.label.fr, 'fr'));
 
 function humanGroup(value: string) {
   if (!value || value === 'Sans groupe') return value || 'Sans groupe';
@@ -172,6 +179,9 @@ export default function AdminDashboardPage() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState('all');
   const [selectedSection, setSelectedSection] = useState('all');
+  const [selectedTheme, setSelectedTheme] = useState('all');
+  const [selectedColor, setSelectedColor] = useState('all');
+  const [selectedSpecial, setSelectedSpecial] = useState('all');
   const [query, setQuery] = useState('');
   const [showZeroVotes, setShowZeroVotes] = useState(false);
   const [shareGroup, setShareGroup] = useState('famille');
@@ -280,12 +290,15 @@ export default function AdminDashboardPage() {
       .filter(({ item }) => {
         if (!showZeroVotes && (currentCounts[item.id] ?? 0) === 0) return false;
         if (selectedSection !== 'all' && item.sectionId !== selectedSection) return false;
+        if (selectedTheme !== 'all' && item.themeId !== selectedTheme) return false;
+        if (selectedColor !== 'all' && item.color.id !== selectedColor) return false;
+        if (selectedSpecial !== 'all' && item.specialCollectionId !== selectedSpecial) return false;
         if (!normalizedQuery) return true;
-        return `${item.title} ${item.garment.label.fr} ${item.color.label.fr}`
+        return `${item.title} ${item.garment.label.fr} ${item.color.label.fr} ${themeById.get(item.themeId)?.label.fr ?? ''} ${item.specialCollectionId ? specialCollectionById.get(item.specialCollectionId)?.label.fr ?? '' : ''}`
           .toLocaleLowerCase('fr')
           .includes(normalizedQuery);
       });
-  }, [allRanked, currentCounts, query, selectedSection, showZeroVotes]);
+  }, [allRanked, currentCounts, query, selectedColor, selectedSection, selectedSpecial, selectedTheme, showZeroVotes]);
 
   const groups = useMemo(
     () => Object.entries(data?.groups ?? {}).sort((left, right) => right[1].participants - left[1].participants || left[0].localeCompare(right[0], 'fr')),
@@ -295,13 +308,16 @@ export default function AdminDashboardPage() {
   const exportResults = () => {
     const groupLabel = selectedGroup === 'all' ? 'Tous les votes' : humanGroup(selectedGroup);
     const rows: Array<Array<string | number>> = [
-      ['Rang', 'Dessin', 'Vêtement', 'Couleur', 'Catégorie', 'Votes', 'Appui (%)', 'Groupe'],
+      ['Rang', 'Dessin', 'Vêtement', 'Couleur', 'Catégorie', 'Thème', 'Collection spéciale', 'Rôle', 'Votes', 'Appui (%)', 'Groupe'],
       ...ranked.map(({ item, votes }, index) => [
         index + 1,
         item.title,
         item.garment.label.fr,
         item.color.label.fr,
         sectionById.get(item.sectionId)?.label.fr ?? item.sectionId,
+        themeById.get(item.themeId)?.label.fr ?? item.themeId,
+        item.specialCollectionId ? specialCollectionById.get(item.specialCollectionId)?.label.fr ?? '' : '',
+        item.collectionRole?.fr ?? '',
         votes,
         currentParticipants ? Math.round((votes / currentParticipants) * 100) : 0,
         groupLabel,
@@ -434,9 +450,9 @@ export default function AdminDashboardPage() {
           ))}
         </div>
 
-        {allRanked.some((entry) => entry.votes > 0) && (
+        {ranked.some((entry) => entry.votes > 0) && (
           <section className="mt-4 grid gap-3 md:grid-cols-3" aria-label="Palmarès">
-            {allRanked.filter((entry) => entry.votes > 0).slice(0, 3).map(({ item, votes }, index) => (
+            {ranked.filter((entry) => entry.votes > 0).slice(0, 3).map(({ item, votes }, index) => (
               <article key={item.id} className={`overflow-hidden rounded-[1.6rem] ${index === 0 ? 'bg-[#201c19] text-white' : 'border border-black/8 bg-white'}`}>
                 <div className="grid grid-cols-[104px_1fr] items-center">
                   <img src={item.image} alt="" className="h-full min-h-32 w-full object-cover" />
@@ -456,12 +472,24 @@ export default function AdminDashboardPage() {
           <div className="flex flex-col gap-4 border-b border-black/8 p-5 sm:flex-row sm:items-end sm:justify-between sm:p-6">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.14em] text-[#b77832]">Compilation complète</p>
-              <h2 id="ranking-title" className="mt-2 text-2xl font-black">Classement des modèles</h2>
+              <h2 id="ranking-title" className="mt-2 text-2xl font-black">Classements par thème, catégorie, couleur et collection</h2>
             </div>
             <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-end">
+              <select value={selectedTheme} onChange={(event) => setSelectedTheme(event.target.value)} className="rounded-full border border-black/10 bg-[#f7f3eb] px-4 py-3 text-sm font-bold outline-none focus:border-[#b77832]" aria-label="Filtrer par thème">
+                <option value="all">Tous les thèmes</option>
+                {catalog.themes.map((theme) => <option key={theme.id} value={theme.id}>{theme.label.fr}</option>)}
+              </select>
               <select value={selectedSection} onChange={(event) => setSelectedSection(event.target.value)} className="rounded-full border border-black/10 bg-[#f7f3eb] px-4 py-3 text-sm font-bold outline-none focus:border-[#b77832]" aria-label="Filtrer par catégorie">
                 <option value="all">Toutes les catégories</option>
                 {catalog.sections.map((section) => <option key={section.id} value={section.id}>{section.label.fr}</option>)}
+              </select>
+              <select value={selectedColor} onChange={(event) => setSelectedColor(event.target.value)} className="rounded-full border border-black/10 bg-[#f7f3eb] px-4 py-3 text-sm font-bold outline-none focus:border-[#b77832]" aria-label="Filtrer par couleur">
+                <option value="all">Toutes les couleurs</option>
+                {colorOptions.map((color) => <option key={color.id} value={color.id}>{color.label.fr}</option>)}
+              </select>
+              <select value={selectedSpecial} onChange={(event) => setSelectedSpecial(event.target.value)} className="rounded-full border border-black/10 bg-[#f7f3eb] px-4 py-3 text-sm font-bold outline-none focus:border-[#b77832]" aria-label="Filtrer par collection spéciale">
+                <option value="all">Toutes les collections</option>
+                {catalog.specialCollections.map((collection) => <option key={collection.id} value={collection.id}>{collection.label.fr}</option>)}
               </select>
               <label className="relative block">
                 <Search size={16} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-black/35" aria-hidden="true" />
@@ -491,6 +519,10 @@ export default function AdminDashboardPage() {
                   <div className="min-w-0 pr-4">
                     <h3 className="truncate text-sm font-black sm:text-base">{item.title}</h3>
                     <p className="mt-1 truncate text-[11px] font-semibold text-black/40">{item.garment.label.fr} · {item.color.label.fr}</p>
+                    <p className="mt-1 truncate text-[10px] font-black uppercase tracking-[0.08em] text-[#b77832]">
+                      {themeById.get(item.themeId)?.label.fr}
+                      {item.specialCollectionId ? ` · ${specialCollectionById.get(item.specialCollectionId)?.label.fr}` : ''}
+                    </p>
                     <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-black/7">
                       <div className="h-full rounded-full bg-[#ff718a]" style={{ width: `${relativeWidth}%` }} />
                     </div>

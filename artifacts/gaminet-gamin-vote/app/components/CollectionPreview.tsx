@@ -23,6 +23,16 @@ const activeSections = catalog.sections.filter((section) =>
 const sectionById = new Map(
   activeSections.map((section) => [section.id, section]),
 );
+const themeById = new Map(catalog.themes.map((theme) => [theme.id, theme]));
+const specialCollectionById = new Map(
+  catalog.specialCollections.map((collection) => [collection.id, collection]),
+);
+const garmentOptions = Array.from(
+  new Map(activeItems.map((item) => [item.garment.id, item.garment])).values(),
+).sort((left, right) => left.label.fr.localeCompare(right.label.fr, 'fr'));
+const colorOptions = Array.from(
+  new Map(activeItems.map((item) => [item.color.id, item.color])).values(),
+).sort((left, right) => left.label.fr.localeCompare(right.label.fr, 'fr'));
 
 function shuffled<T>(items: T[]) {
   const copy = [...items];
@@ -63,6 +73,10 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
   const [copied, setCopied] = useState(false);
   const [shareGroup, setShareGroup] = useState('famille');
   const [groupLinkCopied, setGroupLinkCopied] = useState(false);
+  const [rankingTheme, setRankingTheme] = useState('all');
+  const [rankingGarment, setRankingGarment] = useState('all');
+  const [rankingColor, setRankingColor] = useState('all');
+  const [rankingSpecial, setRankingSpecial] = useState('all');
 
   const refresh = useCallback(async () => {
     setIsLoading(true);
@@ -93,7 +107,14 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
     group === 'all' ? data?.itemCounts ?? {} : data?.groups[group]?.itemCounts ?? {};
   const ranked = activeItems
     .map((item) => ({ item, votes: currentCounts[item.id] ?? 0 }))
-    .filter((entry) => entry.votes > 0)
+    .filter(({ item, votes }) => {
+      if (votes === 0) return false;
+      if (rankingTheme !== 'all' && item.themeId !== rankingTheme) return false;
+      if (rankingGarment !== 'all' && item.garment.id !== rankingGarment) return false;
+      if (rankingColor !== 'all' && item.color.id !== rankingColor) return false;
+      if (rankingSpecial !== 'all' && item.specialCollectionId !== rankingSpecial) return false;
+      return true;
+    })
     .sort((left, right) => right.votes - left.votes || left.item.title.localeCompare(right.item.title));
 
   const copyMainLink = async () => {
@@ -169,6 +190,28 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
           </button>
         </div>
 
+        <div className="mt-5 grid grid-cols-2 gap-2 rounded-[1.6rem] border border-black/8 bg-white p-4 lg:grid-cols-[1fr_1fr_1fr_1.2fr_auto]">
+          <select value={rankingTheme} onChange={(event) => setRankingTheme(event.target.value)} className="rounded-xl border border-black/10 bg-[#f7f3eb] px-3 py-3 text-xs font-bold outline-none focus:border-[#b77832]" aria-label="Classer par thème">
+            <option value="all">Tous les thèmes</option>
+            {catalog.themes.map((theme) => <option key={theme.id} value={theme.id}>{theme.label.fr}</option>)}
+          </select>
+          <select value={rankingGarment} onChange={(event) => setRankingGarment(event.target.value)} className="rounded-xl border border-black/10 bg-[#f7f3eb] px-3 py-3 text-xs font-bold outline-none focus:border-[#b77832]" aria-label="Classer par catégorie de vêtement">
+            <option value="all">Toutes les catégories</option>
+            {garmentOptions.map((garment) => <option key={garment.id} value={garment.id}>{garment.label.fr}</option>)}
+          </select>
+          <select value={rankingColor} onChange={(event) => setRankingColor(event.target.value)} className="rounded-xl border border-black/10 bg-[#f7f3eb] px-3 py-3 text-xs font-bold outline-none focus:border-[#b77832]" aria-label="Classer par couleur">
+            <option value="all">Toutes les couleurs</option>
+            {colorOptions.map((color) => <option key={color.id} value={color.id}>{color.label.fr}</option>)}
+          </select>
+          <select value={rankingSpecial} onChange={(event) => setRankingSpecial(event.target.value)} className="rounded-xl border border-black/10 bg-[#f7f3eb] px-3 py-3 text-xs font-bold outline-none focus:border-[#b77832]" aria-label="Classer par collection spéciale">
+            <option value="all">Toutes les collections</option>
+            {catalog.specialCollections.map((collection) => <option key={collection.id} value={collection.id}>{collection.label.fr}</option>)}
+          </select>
+          <button type="button" onClick={() => { setRankingTheme('all'); setRankingGarment('all'); setRankingColor('all'); setRankingSpecial('all'); }} className="col-span-2 rounded-xl px-3 py-3 text-xs font-black text-black/45 hover:bg-stone-100 hover:text-black lg:col-span-1">
+            Réinitialiser
+          </button>
+        </div>
+
         <div className="mt-6 overflow-hidden rounded-[2rem] border border-black/8 bg-white shadow-[0_12px_40px_rgba(53,45,36,0.08)]">
           <div className="grid grid-cols-[44px_1fr_72px] border-b border-black/8 px-4 py-3 text-[10px] font-black uppercase tracking-[0.15em] text-black/45 sm:grid-cols-[56px_90px_1fr_100px] sm:px-6">
             <span>#</span><span className="hidden sm:block">Aperçu</span><span>Morceau</span><span className="text-right">Votes</span>
@@ -187,6 +230,10 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
                   <div className="min-w-0 pr-4">
                     <p className="truncate font-black">{item.title}</p>
                     <p className="mt-1 truncate text-xs text-black/45">{item.garment.label.fr} · {item.color.label.fr}</p>
+                    <p className="mt-1 truncate text-[10px] font-black uppercase tracking-[0.08em] text-[#b77832]">
+                      {themeById.get(item.themeId)?.label.fr}
+                      {item.specialCollectionId ? ` · ${specialCollectionById.get(item.specialCollectionId)?.label.fr}` : ''}
+                    </p>
                     <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-black/8">
                       <div className="h-full rounded-full bg-[#ff6f86]" style={{ width: `${percentage}%` }} />
                     </div>
@@ -209,6 +256,10 @@ export function CollectionPreview() {
   const [resultsKey] = useState(() => getUrlValue('results'));
   const [randomizedItems, setRandomizedItems] = useState(activeItems);
   const [filter, setFilter] = useState('all');
+  const [themeFilter, setThemeFilter] = useState('all');
+  const [garmentFilter, setGarmentFilter] = useState('all');
+  const [colorFilter, setColorFilter] = useState('all');
+  const [specialFilter, setSpecialFilter] = useState('all');
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState<string[]>([]);
   const [previewItemId, setPreviewItemId] = useState('');
@@ -284,12 +335,16 @@ export function CollectionPreview() {
     const normalized = query.trim().toLocaleLowerCase('fr');
     return randomizedItems.filter((item) => {
       if (filter !== 'all' && item.sectionId !== filter) return false;
+      if (themeFilter !== 'all' && item.themeId !== themeFilter) return false;
+      if (garmentFilter !== 'all' && item.garment.id !== garmentFilter) return false;
+      if (colorFilter !== 'all' && item.color.id !== colorFilter) return false;
+      if (specialFilter !== 'all' && item.specialCollectionId !== specialFilter) return false;
       if (!normalized) return true;
-      return `${item.title} ${item.garment.label.fr} ${item.color.label.fr}`
+      return `${item.title} ${item.garment.label.fr} ${item.color.label.fr} ${themeById.get(item.themeId)?.label.fr ?? ''} ${item.specialCollectionId ? specialCollectionById.get(item.specialCollectionId)?.label.fr ?? '' : ''}`
         .toLocaleLowerCase('fr')
-        .includes(normalized);
+      .includes(normalized);
     });
-  }, [filter, query, randomizedItems]);
+  }, [colorFilter, filter, garmentFilter, query, randomizedItems, specialFilter, themeFilter]);
 
   const persistLikes = (nextSelections: string[]) => {
     if (!voterId) return;
@@ -437,6 +492,43 @@ export function CollectionPreview() {
               <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Rechercher un dessin…" className="w-full rounded-full border border-stone-200 bg-white px-5 py-3 text-sm font-bold outline-none placeholder:text-black/35 focus:border-[#c8914a] lg:w-64" />
             </label>
           </div>
+          <div className="mt-3 grid grid-cols-2 gap-2 border-t border-stone-200/80 pt-3 lg:grid-cols-[1fr_1fr_1fr_1.2fr_auto]">
+            <label>
+              <span className="sr-only">Filtrer par thème</span>
+              <select value={themeFilter} onChange={(event) => setThemeFilter(event.target.value)} className="w-full rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-xs font-bold outline-none focus:border-[#c8914a]">
+                <option value="all">Tous les thèmes</option>
+                {catalog.themes.map((theme) => <option key={theme.id} value={theme.id}>{theme.label.fr}</option>)}
+              </select>
+            </label>
+            <label>
+              <span className="sr-only">Filtrer par catégorie de vêtement</span>
+              <select value={garmentFilter} onChange={(event) => setGarmentFilter(event.target.value)} className="w-full rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-xs font-bold outline-none focus:border-[#c8914a]">
+                <option value="all">Toutes les catégories</option>
+                {garmentOptions.map((garment) => <option key={garment.id} value={garment.id}>{garment.label.fr}</option>)}
+              </select>
+            </label>
+            <label>
+              <span className="sr-only">Filtrer par couleur</span>
+              <select value={colorFilter} onChange={(event) => setColorFilter(event.target.value)} className="w-full rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-xs font-bold outline-none focus:border-[#c8914a]">
+                <option value="all">Toutes les couleurs</option>
+                {colorOptions.map((color) => <option key={color.id} value={color.id}>{color.label.fr}</option>)}
+              </select>
+            </label>
+            <label>
+              <span className="sr-only">Filtrer par collection spéciale</span>
+              <select value={specialFilter} onChange={(event) => setSpecialFilter(event.target.value)} className="w-full rounded-xl border border-stone-200 bg-white px-3 py-2.5 text-xs font-bold outline-none focus:border-[#c8914a]">
+                <option value="all">Toutes les collections</option>
+                {catalog.specialCollections.map((collection) => <option key={collection.id} value={collection.id}>{collection.label.fr}</option>)}
+              </select>
+            </label>
+            <button
+              type="button"
+              onClick={() => { setThemeFilter('all'); setGarmentFilter('all'); setColorFilter('all'); setSpecialFilter('all'); setQuery(''); }}
+              className="col-span-2 rounded-xl px-3 py-2.5 text-xs font-black text-black/45 hover:bg-stone-100 hover:text-black lg:col-span-1"
+            >
+              Réinitialiser · {filteredItems.length}
+            </button>
+          </div>
         </div>
 
         {filter !== 'all' && sectionById.get(filter) && (
@@ -469,7 +561,14 @@ export function CollectionPreview() {
                     <span className="h-3 w-3 rounded-full border border-black/10" style={{ backgroundColor: item.color.hex }} />
                     <span className="truncate">{item.garment.label.fr} · {item.color.label.fr}</span>
                   </div>
-                  <p className="mt-3 text-[10px] font-black uppercase tracking-[0.14em] text-[#c8914a]">{sectionById.get(item.sectionId)?.label.fr}</p>
+                  <div className="mt-3 flex flex-wrap items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.1em]">
+                    <span className="text-[#c8914a]">{themeById.get(item.themeId)?.label.fr}</span>
+                    {item.specialCollectionId && (
+                      <span className="rounded-full bg-[#dce77d] px-2 py-1 text-[#201c19]">
+                        {specialCollectionById.get(item.specialCollectionId)?.label.fr}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </article>
             );
@@ -526,6 +625,22 @@ export function CollectionPreview() {
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-[#c8914a]">{sectionById.get(previewItem.sectionId)?.label.fr}</p>
                 <h2 id="preview-title" className="mt-3 text-3xl font-black uppercase tracking-tight sm:text-4xl">{previewItem.title}</h2>
                 <p className="mt-3 text-2xl font-black">{previewItem.garment.price.toFixed(2)} $</p>
+                <div className="mt-4 flex flex-wrap gap-2 text-xs font-black">
+                  <span className="rounded-full bg-stone-200 px-3 py-1.5 text-black/60">{themeById.get(previewItem.themeId)?.label.fr}</span>
+                  {previewItem.specialCollectionId && (
+                    <span className="rounded-full bg-[#dce77d] px-3 py-1.5 text-[#201c19]">
+                      {specialCollectionById.get(previewItem.specialCollectionId)?.label.fr}
+                    </span>
+                  )}
+                </div>
+                {previewItem.specialCollectionId && (
+                  <div className="mt-4 rounded-2xl border border-[#c7d459] bg-[#f4f8cb] p-4">
+                    <p className="text-[10px] font-black uppercase tracking-[0.14em] text-black/45">
+                      {specialCollectionById.get(previewItem.specialCollectionId)?.kind.fr}
+                    </p>
+                    <p className="mt-1 text-sm font-black">{previewItem.collectionRole?.fr}</p>
+                  </div>
+                )}
                 <div className="mt-6 border-y border-stone-200 py-5">
                   <p className="text-xs font-black uppercase tracking-[0.12em] text-black/40">Vêtement</p>
                   <p className="mt-1 font-bold">{previewItem.garment.label.fr}</p>

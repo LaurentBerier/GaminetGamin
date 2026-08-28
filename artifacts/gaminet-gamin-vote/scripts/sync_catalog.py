@@ -12,6 +12,7 @@ import hashlib
 import json
 import os
 import re
+import sys
 import unicodedata
 from pathlib import Path
 
@@ -36,10 +37,17 @@ def find_source_root() -> Path:
 
 SOURCE_ROOT = find_source_root()
 CATALOG_PATH = SITE_ROOT / "content" / "catalog.json"
+ARTWORK_OVERRIDE_ROOT = SITE_ROOT / "content" / "artwork-overrides"
 ASSET_ROOTS = [
     SITE_ROOT / "public" / "catalog",
     SITE_ROOT.parent / "gaminet-gamin" / "public" / "catalog",
 ]
+
+# The source renderer owns the perspective and fabric treatment for headwear.
+# Importing it here lets the web sync rebuild every hat from the transparent
+# master while enforcing one vertical center for each product shape.
+sys.path.insert(0, str(SOURCE_ROOT / "apparel_expansion"))
+from apparel_surface import render_headwear  # noqa: E402
 
 SECTION_DEFINITIONS = [
     {
@@ -76,6 +84,69 @@ SECTION_DEFINITIONS = [
         "description": {
             "fr": "Les options chapeau pour les dessins aux silhouettes les plus fortes.",
             "en": "Bucket-hat options for the strongest illustration silhouettes.",
+        },
+    },
+]
+
+THEME_DEFINITIONS = [
+    {
+        "id": "royaume-des-pepins",
+        "label": {"fr": "Le Royaume des Pépins", "en": "The Kingdom of Seeds"},
+        "description": {
+            "fr": "Les héros, alliés et microbes du jeu Le Royaume des Pépins.",
+            "en": "Heroes, allies, and microbes from The Kingdom of Seeds game.",
+        },
+    },
+    {
+        "id": "animaux-rigolos",
+        "label": {"fr": "Animaux rigolos", "en": "Funny animals"},
+        "description": {
+            "fr": "Grenouilles, chats, crabes et autres bêtes pleines de caractère.",
+            "en": "Frogs, cats, crabs, and other creatures full of personality.",
+        },
+    },
+    {
+        "id": "gourmandises",
+        "label": {"fr": "Gourmandises", "en": "Food fun"},
+        "description": {
+            "fr": "Des aliments, collations et légumes qui ont pris vie.",
+            "en": "Food, snacks, and vegetables that came to life.",
+        },
+    },
+    {
+        "id": "musique-et-cosmos",
+        "label": {"fr": "Musique et cosmos", "en": "Music and cosmos"},
+        "description": {
+            "fr": "Des étoiles, des instruments et beaucoup de rythme.",
+            "en": "Stars, instruments, and plenty of rhythm.",
+        },
+    },
+    {
+        "id": "aventures-et-copains",
+        "label": {"fr": "Aventures et copains", "en": "Adventures and friends"},
+        "description": {
+            "fr": "Des voyages, des lieux étonnants et des duos inséparables.",
+            "en": "Journeys, surprising places, and inseparable duos.",
+        },
+    },
+    {
+        "id": "monstres-et-merveilles",
+        "label": {"fr": "Monstres et merveilles", "en": "Monsters and wonders"},
+        "description": {
+            "fr": "Les créatures les plus étranges et merveilleuses de la collection.",
+            "en": "The collection's strangest and most wonderful creatures.",
+        },
+    },
+]
+
+SPECIAL_COLLECTION_DEFINITIONS = [
+    {
+        "id": "royaume-des-pepins",
+        "label": {"fr": "Le Royaume des Pépins", "en": "The Kingdom of Seeds"},
+        "kind": {"fr": "Produit associé · Jeu", "en": "Associated product · Game"},
+        "description": {
+            "fr": "Une collection spéciale inspirée du jeu Le Royaume des Pépins.",
+            "en": "A special collection inspired by The Kingdom of Seeds game.",
         },
     },
 ]
@@ -131,7 +202,91 @@ COLORS = {
 
 TITLE_OVERRIDES = {
     "IMG_6173": "Le Chalet",
+    "IMG_6553": "Le Microboss",
     "IMG_6218": "Chaise Haricot",
+    "V2_20260805_140256": "Le Microbe Ébahi",
+    "V2_20260805_140312": "Le Vilain Hérissé",
+    "V2_20260805_140334": "Monsieur Citron",
+    "V2_20260805_140342": "Wallie",
+}
+
+ARTWORK_OVERRIDES = {
+    "V2_20260805_140334": (
+        ARTWORK_OVERRIDE_ROOT / "V2_20260805_140334-colored-yellow.png"
+    ),
+}
+
+THEME_DESIGN_IDS = {
+    "royaume-des-pepins": {
+        "IMG_6553",
+        "V2_20260805_140256",
+        "V2_20260805_140312",
+        "V2_20260805_140334",
+        "V2_20260805_140342",
+    },
+    "animaux-rigolos": {
+        "IMG_6164",
+        "IMG_6170",
+        "IMG_6211",
+        "IMG_6235",
+        "IMG_6285",
+        "IMG_6299",
+        "IMG_6443",
+        "IMG_6444",
+        "IMG_6554",
+        "IMG_6555",
+        "IMG_6556",
+        "IMG_6739",
+        "V2_20260823_142751",
+        "V2_20260823_142759",
+    },
+    "gourmandises": {
+        "BreuvageGentilGlace",
+        "IMG_6218",
+        "IMG_6301",
+        "IMG_6328",
+        "IMG_6504",
+        "IMG_6782",
+        "IMG_6799",
+        "V2_20260805_140243",
+        "V2_20260823_142146",
+        "V2_20260823_142456",
+        "V2_20260823_142638",
+    },
+    "musique-et-cosmos": {
+        "IMG_6163",
+        "V2_20260823_142513",
+        "V2_20260823_142700",
+        "V2_20260823_142733",
+        "V2_20260823_142806",
+        "V2_20260823_142814",
+    },
+    "aventures-et-copains": {
+        "IMG_6169",
+        "IMG_6173",
+        "IMG_6212",
+        "IMG_6336",
+        "IMG_6357",
+        "IMG_6550",
+        "IMG_6740",
+        "IMG_6750",
+        "IMG_6751",
+        "IMG_6772",
+        "IMG_6773",
+    },
+}
+
+SPECIAL_COLLECTION_BY_DESIGN = {
+    design_id: "royaume-des-pepins"
+    for design_id in THEME_DESIGN_IDS["royaume-des-pepins"]
+}
+
+COLLECTION_ROLE_BY_DESIGN = {
+    "IMG_6553": {"fr": "Boss des microbes", "en": "Microbe boss"},
+    "V2_20260805_140256": {"fr": "Microbe surpris", "en": "Surprised microbe"},
+    "V2_20260805_140312": {"fr": "Microbe ennemi", "en": "Enemy microbe"},
+    "V2_20260805_140334": {"fr": "Gentil allié citron", "en": "Friendly lemon ally"},
+    "V2_20260805_140342": {"fr": "Personnage du jeu", "en": "Game character"},
 }
 
 ALL_SECTION_ORDER = {
@@ -139,6 +294,22 @@ ALL_SECTION_ORDER = {
     "classics": 1,
     "caps": 2,
     "bucket-hats": 3,
+}
+
+HEADWEAR_PRINT_MAXIMUMS = {
+    ("bucket-hat", "IMG_6504"): (225, 190),
+    ("bucket-hat", "IMG_6553"): (215, 195),
+    ("bucket-hat", "IMG_6336"): (240, 170),
+    ("bucket-hat", "V2_20260823_142456"): (225, 195),
+    ("cap", "V2_20260805_140342"): (250, 175),
+    ("cap", "V2_20260823_142146"): (250, 175),
+    ("cap", "V2_20260805_140334"): (230, 185),
+    ("cap", "IMG_6554"): (220, 190),
+}
+
+HEADWEAR_PRINT_CENTERS = {
+    "bucket-hat": (627, 565),
+    "cap": (575, 555),
 }
 
 # These garments need custom print placement. Keeping the dimensions here
@@ -179,6 +350,17 @@ PRINT_OVERRIDES = {
         "texture_base": 245,
         "contrast": 1.0,
     },
+    ("standard", "V2_20260805_140334"): {
+        "template": SOURCE_ROOT / "_templates" / "tshirt-navy.png",
+        "maximum": (280, 305),
+        "center": (627, 520),
+        "saturation": 0.82,
+        "opacity": 0.965,
+        "blur": 18,
+        "texture_floor": 222,
+        "texture_base": 246,
+        "contrast": 1.015,
+    },
 }
 
 
@@ -190,6 +372,20 @@ def slug(value: str) -> str:
 
 def normalized_color(value: str) -> str:
     return slug(value)
+
+
+def artwork_path(design_id: str) -> Path:
+    return ARTWORK_OVERRIDES.get(
+        design_id,
+        SOURCE_ROOT / "colored" / f"{design_id}-colored.png",
+    )
+
+
+def theme_id(design_id: str) -> str:
+    for candidate, design_ids in THEME_DESIGN_IDS.items():
+        if design_id in design_ids:
+            return candidate
+    return "monstres-et-merveilles"
 
 
 def color_payload(color_id: str) -> dict:
@@ -210,7 +406,7 @@ def checksum(path: Path) -> str:
 def rendered_asset_version(design_id: str, override: dict) -> str:
     """Return a stable cache key for a composited mockup and its settings."""
     digest = hashlib.sha256()
-    art_path = SOURCE_ROOT / "colored" / f"{design_id}-colored.png"
+    art_path = artwork_path(design_id)
     for path in (art_path, override["template"]):
         with path.open("rb") as handle:
             for chunk in iter(lambda: handle.read(1024 * 1024), b""):
@@ -254,7 +450,7 @@ def fit(image: Image.Image, maximum: tuple[int, int]) -> Image.Image:
 def render_custom_print(design_id: str, override: dict) -> Image.Image:
     garment = Image.open(override["template"]).convert("RGBA")
     art = fit(
-        trim_alpha(Image.open(SOURCE_ROOT / "colored" / f"{design_id}-colored.png")),
+        trim_alpha(Image.open(artwork_path(design_id))),
         override["maximum"],
     )
     center_x, center_y = override["center"]
@@ -282,6 +478,20 @@ def render_custom_print(design_id: str, override: dict) -> Image.Image:
     return garment
 
 
+def render_centered_headwear(design_id: str, override: dict) -> Image.Image:
+    product = Image.open(override["template"]).convert("RGBA")
+    product, _, _ = render_headwear(
+        product,
+        Image.open(artwork_path(design_id)),
+        {
+            "template": override["template"].stem,
+            "max": override["maximum"],
+            "center": override["center"],
+        },
+    )
+    return product
+
+
 def read_csv(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
@@ -297,10 +507,21 @@ def make_item(
     color_id: str,
     source_image: Path,
     source_collection: str,
+    headwear_template: Path | None = None,
 ) -> dict:
     title = TITLE_OVERRIDES.get(design_id, title)
     garment_id, garment_label = GARMENTS[garment_key]
     override = PRINT_OVERRIDES.get((source_collection, design_id))
+    headwear_maximum = HEADWEAR_PRINT_MAXIMUMS.get((garment_id, design_id))
+    if headwear_maximum:
+        if not headwear_template:
+            raise ValueError(f"Missing headwear template for {item_id}")
+        override = {
+            "renderer": "centered-headwear-v1",
+            "template": headwear_template,
+            "maximum": headwear_maximum,
+            "center": HEADWEAR_PRINT_CENTERS[garment_id],
+        }
     web_stem = slug(item_id)
     if override:
         web_stem = f"{web_stem}-r{rendered_asset_version(design_id, override)}"
@@ -308,7 +529,12 @@ def make_item(
     for asset_root in ASSET_ROOTS:
         destination = asset_root / web_name
         if override:
-            optimize_rendered_image(render_custom_print(design_id, override), destination)
+            rendered = (
+                render_centered_headwear(design_id, override)
+                if override.get("renderer") == "centered-headwear-v1"
+                else render_custom_print(design_id, override)
+            )
+            optimize_rendered_image(rendered, destination)
         else:
             optimize_image(source_image, destination)
     item = {
@@ -322,18 +548,27 @@ def make_item(
             "price": PRICES[garment_id],
         },
         "color": color_payload(color_id),
+        "themeId": theme_id(design_id),
+        "specialCollectionId": SPECIAL_COLLECTION_BY_DESIGN.get(design_id),
+        "collectionRole": COLLECTION_ROLE_BY_DESIGN.get(design_id),
         "image": f"/catalog/{web_name}",
         "active": True,
         "source": {
             "collection": source_collection,
             "file": source_image.name,
             "checksum": checksum(source_image),
+            "artworkChecksum": checksum(artwork_path(design_id)),
         },
     }
     if override:
         item["render"] = {
-            "variant": "custom-print",
+            "variant": (
+                "centered-headwear"
+                if override.get("renderer") == "centered-headwear-v1"
+                else "custom-print"
+            ),
             "printBoxPx": f"{override['maximum'][0]}x{override['maximum'][1]}",
+            "centerPx": f"{override['center'][0]}x{override['center'][1]}",
         }
     return item
 
@@ -399,6 +634,11 @@ for manifest_path, collection_root, source_collection in expansion_sources:
                 color_id=color_id,
                 source_image=collection_root / asset_folder / row["mockup"],
                 source_collection=source_collection,
+                headwear_template=(
+                    SOURCE_ROOT / "apparel_expansion" / "_templates" / row["template"]
+                    if is_headwear
+                    else None
+                ),
             )
         )
 
@@ -410,7 +650,7 @@ if len({item['id'] for item in items}) != len(items):
     raise RuntimeError("Catalog item IDs are not unique")
 
 catalog = {
-    "schemaVersion": 2,
+    "schemaVersion": 3,
     "campaign": {
         "id": "collection-2026",
         "title": {
@@ -420,6 +660,8 @@ catalog = {
         "minSelections": 0,
     },
     "sections": SECTION_DEFINITIONS,
+    "themes": THEME_DEFINITIONS,
+    "specialCollections": SPECIAL_COLLECTION_DEFINITIONS,
     "items": items,
 }
 

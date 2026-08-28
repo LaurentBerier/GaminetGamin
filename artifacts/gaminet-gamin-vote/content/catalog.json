@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "campaign": {
     "id": "collection-2026",
     "title": {
@@ -58,6 +58,91 @@
       }
     }
   ],
+  "themes": [
+    {
+      "id": "royaume-des-pepins",
+      "label": {
+        "fr": "Le Royaume des Pépins",
+        "en": "The Kingdom of Seeds"
+      },
+      "description": {
+        "fr": "Les héros, alliés et microbes du jeu Le Royaume des Pépins.",
+        "en": "Heroes, allies, and microbes from The Kingdom of Seeds game."
+      }
+    },
+    {
+      "id": "animaux-rigolos",
+      "label": {
+        "fr": "Animaux rigolos",
+        "en": "Funny animals"
+      },
+      "description": {
+        "fr": "Grenouilles, chats, crabes et autres bêtes pleines de caractère.",
+        "en": "Frogs, cats, crabs, and other creatures full of personality."
+      }
+    },
+    {
+      "id": "gourmandises",
+      "label": {
+        "fr": "Gourmandises",
+        "en": "Food fun"
+      },
+      "description": {
+        "fr": "Des aliments, collations et légumes qui ont pris vie.",
+        "en": "Food, snacks, and vegetables that came to life."
+      }
+    },
+    {
+      "id": "musique-et-cosmos",
+      "label": {
+        "fr": "Musique et cosmos",
+        "en": "Music and cosmos"
+      },
+      "description": {
+        "fr": "Des étoiles, des instruments et beaucoup de rythme.",
+        "en": "Stars, instruments, and plenty of rhythm."
+      }
+    },
+    {
+      "id": "aventures-et-copains",
+      "label": {
+        "fr": "Aventures et copains",
+        "en": "Adventures and friends"
+      },
+      "description": {
+        "fr": "Des voyages, des lieux étonnants et des duos inséparables.",
+        "en": "Journeys, surprising places, and inseparable duos."
+      }
+    },
+    {
+      "id": "monstres-et-merveilles",
+      "label": {
+        "fr": "Monstres et merveilles",
+        "en": "Monsters and wonders"
+      },
+      "description": {
+        "fr": "Les créatures les plus étranges et merveilleuses de la collection.",
+        "en": "The collection's strangest and most wonderful creatures."
+      }
+    }
+  ],
+  "specialCollections": [
+    {
+      "id": "royaume-des-pepins",
+      "label": {
+        "fr": "Le Royaume des Pépins",
+        "en": "The Kingdom of Seeds"
+      },
+      "kind": {
+        "fr": "Produit associé · Jeu",
+        "en": "Associated product · Game"
+      },
+      "description": {
+        "fr": "Une collection spéciale inspirée du jeu Le Royaume des Pépins.",
+        "en": "A special collection inspired by The Kingdom of Seeds game."
+      }
+    }
+  ],
   "items": [
     {
       "id": "primary-vivid-img-6170-long-sleeve-shirt-coral-red",
@@ -80,12 +165,16 @@
           "en": "Coral red"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/primary-vivid-img-6170-long-sleeve-shirt-coral-red.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "IMG_6170-longsleeve-coral-red-mockup.png",
-        "checksum": "fb6e38c4cdbfa682"
+        "checksum": "fb6e38c4cdbfa682",
+        "artworkChecksum": "c9c0c0b31bc41b80"
       }
     },
     {
@@ -109,12 +198,16 @@
           "en": "Cobalt blue"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/primary-vivid-img-6504-crewneck-sweatshirt-cobalt-blue.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "IMG_6504-crewneck-cobalt-blue-mockup.png",
-        "checksum": "e314176a83b90fab"
+        "checksum": "e314176a83b90fab",
+        "artworkChecksum": "78845fd33b5ac227"
       }
     },
     {
@@ -138,12 +231,16 @@
           "en": "Bright teal"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/primary-vivid-img-6799-hoodie-bright-teal.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "IMG_6799-hoodie-bright-teal-mockup.png",
-        "checksum": "08dae9692ed513a3"
+        "checksum": "08dae9692ed513a3",
+        "artworkChecksum": "cc85f3563487561b"
       }
     },
     {
@@ -167,12 +264,16 @@
           "en": "Electric violet"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/primary-vivid-v2-20260823-142751-t-shirt-electric-violet.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260823_142751-tshirt-electric-violet-mockup.png",
-        "checksum": "4fcce769818a37a3"
+        "checksum": "4fcce769818a37a3",
+        "artworkChecksum": "7be360cb9d699344"
       }
     },
     {
@@ -196,12 +297,16 @@
           "en": "Bright teal"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/primary-vivid-v2-20260823-142759-hoodie-bright-teal.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260823_142759-hoodie-bright-teal-mockup.png",
-        "checksum": "ea0faf6f866c332c"
+        "checksum": "ea0faf6f866c332c",
+        "artworkChecksum": "323ae21e0babc774"
       }
     },
     {
@@ -225,12 +330,16 @@
           "en": "Cobalt blue"
         }
       },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/primary-vivid-v2-20260823-142814-crewneck-sweatshirt-cobalt-blue.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260823_142814-crewneck-cobalt-blue-mockup.png",
-        "checksum": "78c27fe477f4c7d3"
+        "checksum": "78c27fe477f4c7d3",
+        "artworkChecksum": "96c0dc0ac6373a98"
       }
     },
     {
@@ -254,16 +363,21 @@
           "en": "Electric purple"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/primary-vivid-img-6166-hoodie-electric-purple-r30d9109b29.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "IMG_6166-hoodie-electric-purple-mockup.png",
-        "checksum": "2af71c9438c4ca9b"
+        "checksum": "2af71c9438c4ca9b",
+        "artworkChecksum": "4584c870c2397209"
       },
       "render": {
         "variant": "custom-print",
-        "printBoxPx": "270x300"
+        "printBoxPx": "270x300",
+        "centerPx": "627x500"
       }
     },
     {
@@ -287,18 +401,22 @@
           "en": "Tangerine orange"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/primary-vivid-v2-20260805-140323-crewneck-sweatshirt-tangerine-orange.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260805_140323-crewneck-tangerine-orange-mockup.png",
-        "checksum": "22e50ef8ac664d8c"
+        "checksum": "22e50ef8ac664d8c",
+        "artworkChecksum": "4b86ce3b048043ab"
       }
     },
     {
       "id": "primary-vivid-v2-20260805-140342-long-sleeve-shirt-sunflower-yellow",
       "designId": "V2_20260805_140342",
-      "title": "Melon-Melon",
+      "title": "Wallie",
       "sectionId": "vivid",
       "garment": {
         "id": "longsleeve",
@@ -316,12 +434,19 @@
           "en": "Sunflower yellow"
         }
       },
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Personnage du jeu",
+        "en": "Game character"
+      },
       "image": "/catalog/primary-vivid-v2-20260805-140342-long-sleeve-shirt-sunflower-yellow.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260805_140342-longsleeve-sunflower-yellow-mockup.png",
-        "checksum": "557d376258bda9df"
+        "checksum": "557d376258bda9df",
+        "artworkChecksum": "a4375fe47354fae2"
       }
     },
     {
@@ -345,12 +470,16 @@
           "en": "Hot pink"
         }
       },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/primary-vivid-v2-20260823-142513-t-shirt-hot-pink.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260823_142513-tshirt-hot-pink-mockup.png",
-        "checksum": "a815fa2a3ca98acd"
+        "checksum": "a815fa2a3ca98acd",
+        "artworkChecksum": "460058a9b8e88694"
       }
     },
     {
@@ -374,12 +503,16 @@
           "en": "Tangerine orange"
         }
       },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/primary-vivid-v2-20260823-142700-crewneck-sweatshirt-tangerine-orange.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260823_142700-crewneck-tangerine-orange-mockup.png",
-        "checksum": "6e689ee61779cd82"
+        "checksum": "6e689ee61779cd82",
+        "artworkChecksum": "1f79aaf4d478c97f"
       }
     },
     {
@@ -403,12 +536,16 @@
           "en": "Sunflower yellow"
         }
       },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/primary-vivid-v2-20260823-142814-long-sleeve-shirt-sunflower-yellow.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260823_142814-longsleeve-sunflower-yellow-mockup.png",
-        "checksum": "a19af1910f9ab365"
+        "checksum": "a19af1910f9ab365",
+        "artworkChecksum": "96c0dc0ac6373a98"
       }
     },
     {
@@ -432,12 +569,16 @@
           "en": "Hot pink"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/alternate-vivid-img-6328-t-shirt-hot-pink.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "IMG_6328-tshirt-hot-pink-set2-mockup.png",
-        "checksum": "defa1e618d7bce96"
+        "checksum": "defa1e618d7bce96",
+        "artworkChecksum": "56f8e0674ae2f4d8"
       }
     },
     {
@@ -461,18 +602,22 @@
           "en": "Sunflower yellow"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/alternate-vivid-img-6444-long-sleeve-shirt-sunflower-yellow.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "IMG_6444-longsleeve-sunflower-yellow-set2-mockup.png",
-        "checksum": "a45d758c21351378"
+        "checksum": "a45d758c21351378",
+        "artworkChecksum": "6fc4de01f8eb1bfe"
       }
     },
     {
       "id": "alternate-vivid-img-6553-crewneck-sweatshirt-tangerine-orange",
       "designId": "IMG_6553",
-      "title": "La Bête au Filet",
+      "title": "Le Microboss",
       "sectionId": "vivid",
       "garment": {
         "id": "crewneck",
@@ -490,12 +635,19 @@
           "en": "Tangerine orange"
         }
       },
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Boss des microbes",
+        "en": "Microbe boss"
+      },
       "image": "/catalog/alternate-vivid-img-6553-crewneck-sweatshirt-tangerine-orange.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "IMG_6553-crewneck-tangerine-orange-set2-mockup.png",
-        "checksum": "94c544dff5129b8e"
+        "checksum": "94c544dff5129b8e",
+        "artworkChecksum": "7656efa80a124c6a"
       }
     },
     {
@@ -519,12 +671,16 @@
           "en": "Electric purple"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/alternate-vivid-v2-20260823-142456-hoodie-electric-purple.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "V2_20260823_142456-hoodie-electric-purple-set2-mockup.png",
-        "checksum": "24b7016d7cd78e18"
+        "checksum": "24b7016d7cd78e18",
+        "artworkChecksum": "8df051a51261b1b6"
       }
     },
     {
@@ -548,12 +704,16 @@
           "en": "Cobalt blue"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/alternate-vivid-v2-20260823-142638-crewneck-sweatshirt-cobalt-blue.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "V2_20260823_142638-crewneck-cobalt-blue-set2-mockup.png",
-        "checksum": "729cff481ee1dcdc"
+        "checksum": "729cff481ee1dcdc",
+        "artworkChecksum": "8ce3466435a9cc29"
       }
     },
     {
@@ -577,18 +737,22 @@
           "en": "Coral red"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/alternate-vivid-img-6554-long-sleeve-shirt-coral-red.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "IMG_6554-longsleeve-coral-red-set2-mockup.png",
-        "checksum": "291d4817fc29ac68"
+        "checksum": "291d4817fc29ac68",
+        "artworkChecksum": "8c63f6e791c4e49c"
       }
     },
     {
       "id": "alternate-vivid-v2-20260805-140256-hoodie-bright-teal",
       "designId": "V2_20260805_140256",
-      "title": "La Chenille Étonnée",
+      "title": "Le Microbe Ébahi",
       "sectionId": "vivid",
       "garment": {
         "id": "hoodie",
@@ -606,18 +770,25 @@
           "en": "Bright teal"
         }
       },
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Microbe surpris",
+        "en": "Surprised microbe"
+      },
       "image": "/catalog/alternate-vivid-v2-20260805-140256-hoodie-bright-teal.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "V2_20260805_140256-hoodie-bright-teal-set2-mockup.png",
-        "checksum": "bce85132acb1be8c"
+        "checksum": "bce85132acb1be8c",
+        "artworkChecksum": "dad5936cdb97091c"
       }
     },
     {
       "id": "alternate-vivid-v2-20260805-140342-t-shirt-electric-violet",
       "designId": "V2_20260805_140342",
-      "title": "Melon-Melon",
+      "title": "Wallie",
       "sectionId": "vivid",
       "garment": {
         "id": "tshirt",
@@ -635,12 +806,19 @@
           "en": "Electric violet"
         }
       },
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Personnage du jeu",
+        "en": "Game character"
+      },
       "image": "/catalog/alternate-vivid-v2-20260805-140342-t-shirt-electric-violet.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "V2_20260805_140342-tshirt-electric-violet-set2-mockup.png",
-        "checksum": "776a02ed727c36e1"
+        "checksum": "776a02ed727c36e1",
+        "artworkChecksum": "a4375fe47354fae2"
       }
     },
     {
@@ -664,12 +842,16 @@
           "en": "Sunflower yellow"
         }
       },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/alternate-vivid-v2-20260823-142700-long-sleeve-shirt-sunflower-yellow.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "V2_20260823_142700-longsleeve-sunflower-yellow-set2-mockup.png",
-        "checksum": "32d02d96c05bddb8"
+        "checksum": "32d02d96c05bddb8",
+        "artworkChecksum": "1f79aaf4d478c97f"
       }
     },
     {
@@ -693,12 +875,16 @@
           "en": "Tangerine orange"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/alternate-vivid-v2-20260823-142759-crewneck-sweatshirt-tangerine-orange.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "V2_20260823_142759-crewneck-tangerine-orange-set2-mockup.png",
-        "checksum": "b024660df4a7a66e"
+        "checksum": "b024660df4a7a66e",
+        "artworkChecksum": "323ae21e0babc774"
       }
     },
     {
@@ -722,12 +908,16 @@
           "en": "Black"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-breuvagegentilglace-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "BreuvageGentilGlace-hoodie-black-mockup.png",
-        "checksum": "f0d006f4a24e3b30"
+        "checksum": "f0d006f4a24e3b30",
+        "artworkChecksum": "0cb8fb48ca132867"
       }
     },
     {
@@ -751,12 +941,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-0103-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_0103-crewneck-grey-mockup.png",
-        "checksum": "ad0f4674211730e9"
+        "checksum": "ad0f4674211730e9",
+        "artworkChecksum": "c69ed5b69af902ef"
       }
     },
     {
@@ -780,12 +974,16 @@
           "en": "Navy"
         }
       },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6163-tshirt-navy.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6163-tshirt-navy-mockup.png",
-        "checksum": "a0121c4b421593fc"
+        "checksum": "a0121c4b421593fc",
+        "artworkChecksum": "83ff2157b357a281"
       }
     },
     {
@@ -809,12 +1007,16 @@
           "en": "Forest green"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6164-longsleeve-green.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6164-longsleeve-green-mockup.png",
-        "checksum": "a5babc9718d4e0cc"
+        "checksum": "a5babc9718d4e0cc",
+        "artworkChecksum": "a1476db0c12bb8bf"
       }
     },
     {
@@ -838,12 +1040,16 @@
           "en": "Black"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6165-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6165-hoodie-black-mockup.png",
-        "checksum": "ae4f82161169155d"
+        "checksum": "ae4f82161169155d",
+        "artworkChecksum": "9b61cfe46d21813e"
       }
     },
     {
@@ -867,16 +1073,21 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6166-crewneck-grey-r62a49108e0.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6166-crewneck-grey-mockup.png",
-        "checksum": "2995c96862963448"
+        "checksum": "2995c96862963448",
+        "artworkChecksum": "4584c870c2397209"
       },
       "render": {
         "variant": "custom-print",
-        "printBoxPx": "365x385"
+        "printBoxPx": "365x385",
+        "centerPx": "627x520"
       }
     },
     {
@@ -900,12 +1111,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6169-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6169-crewneck-grey-mockup.png",
-        "checksum": "535f25ffa883218b"
+        "checksum": "535f25ffa883218b",
+        "artworkChecksum": "2e2ce59aeade9ee4"
       }
     },
     {
@@ -929,12 +1144,16 @@
           "en": "Forest green"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6170-longsleeve-green.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6170-longsleeve-green-mockup.png",
-        "checksum": "2641b625eb6b0bbd"
+        "checksum": "2641b625eb6b0bbd",
+        "artworkChecksum": "c9c0c0b31bc41b80"
       }
     },
     {
@@ -958,16 +1177,21 @@
           "en": "Black"
         }
       },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6173-hoodie-black-r9f82fa121a.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6173-hoodie-black-mockup.png",
-        "checksum": "c802bd04379da8b5"
+        "checksum": "c802bd04379da8b5",
+        "artworkChecksum": "93d189e40c019e70"
       },
       "render": {
         "variant": "custom-print",
-        "printBoxPx": "250x215"
+        "printBoxPx": "250x215",
+        "centerPx": "627x505"
       }
     },
     {
@@ -991,12 +1215,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6175-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6175-crewneck-grey-mockup.png",
-        "checksum": "1bec896d9c5bfe3b"
+        "checksum": "1bec896d9c5bfe3b",
+        "artworkChecksum": "1622888921c71b41"
       }
     },
     {
@@ -1020,12 +1248,16 @@
           "en": "Navy"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6176-tshirt-navy.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6176-tshirt-navy-mockup.png",
-        "checksum": "af789443d8ebc2d4"
+        "checksum": "af789443d8ebc2d4",
+        "artworkChecksum": "7ba8642c08a0a65a"
       }
     },
     {
@@ -1049,12 +1281,16 @@
           "en": "Forest green"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6211-longsleeve-green.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6211-longsleeve-green-mockup.png",
-        "checksum": "2908ef8adf1d254b"
+        "checksum": "2908ef8adf1d254b",
+        "artworkChecksum": "cf99a88b6fc9cd83"
       }
     },
     {
@@ -1078,12 +1314,16 @@
           "en": "Black"
         }
       },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6212-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6212-hoodie-black-mockup.png",
-        "checksum": "68f9b7a5ba7c6ab2"
+        "checksum": "68f9b7a5ba7c6ab2",
+        "artworkChecksum": "661a2de9ce2022de"
       }
     },
     {
@@ -1107,12 +1347,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6218-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6218-crewneck-grey-mockup.png",
-        "checksum": "be84554d3cf96b13"
+        "checksum": "be84554d3cf96b13",
+        "artworkChecksum": "3ac841245bb401fa"
       }
     },
     {
@@ -1136,12 +1380,16 @@
           "en": "Navy"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6235-tshirt-navy.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6235-tshirt-navy-mockup.png",
-        "checksum": "7e638368e61d6b18"
+        "checksum": "7e638368e61d6b18",
+        "artworkChecksum": "0e2bf6026fff9ccc"
       }
     },
     {
@@ -1165,12 +1413,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6282-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6282-crewneck-grey-mockup.png",
-        "checksum": "501b541d9fa00bf9"
+        "checksum": "501b541d9fa00bf9",
+        "artworkChecksum": "f01921a44d82f025"
       }
     },
     {
@@ -1194,12 +1446,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6283-2-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6283 2-crewneck-grey-mockup.png",
-        "checksum": "a3039e48e7c1788b"
+        "checksum": "a3039e48e7c1788b",
+        "artworkChecksum": "bcb9536aa3ef6f25"
       }
     },
     {
@@ -1223,12 +1479,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6284-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6284-crewneck-grey-mockup.png",
-        "checksum": "c1b7d4810d6e7177"
+        "checksum": "c1b7d4810d6e7177",
+        "artworkChecksum": "5c0db58703497a99"
       }
     },
     {
@@ -1252,12 +1512,16 @@
           "en": "Forest green"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6285-longsleeve-green.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6285-longsleeve-green-mockup.png",
-        "checksum": "644b0e88e1062aa2"
+        "checksum": "644b0e88e1062aa2",
+        "artworkChecksum": "e0e31b968397cf32"
       }
     },
     {
@@ -1281,12 +1545,16 @@
           "en": "Black"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6299-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6299-hoodie-black-mockup.png",
-        "checksum": "d7d5783cef88e80b"
+        "checksum": "d7d5783cef88e80b",
+        "artworkChecksum": "83dd0433e0962c7b"
       }
     },
     {
@@ -1310,12 +1578,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6301-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6301-crewneck-grey-mockup.png",
-        "checksum": "77884cbc18af87a2"
+        "checksum": "77884cbc18af87a2",
+        "artworkChecksum": "222f7f42691debe1"
       }
     },
     {
@@ -1339,12 +1611,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6310-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6310-crewneck-grey-mockup.png",
-        "checksum": "0eccc06bf043055c"
+        "checksum": "0eccc06bf043055c",
+        "artworkChecksum": "7e0f5971f53dd101"
       }
     },
     {
@@ -1368,12 +1644,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6328-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6328-crewneck-grey-mockup.png",
-        "checksum": "4f61b874f55fde78"
+        "checksum": "4f61b874f55fde78",
+        "artworkChecksum": "56f8e0674ae2f4d8"
       }
     },
     {
@@ -1397,12 +1677,16 @@
           "en": "Black"
         }
       },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6336-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6336-hoodie-black-mockup.png",
-        "checksum": "8a15b6644a461de2"
+        "checksum": "8a15b6644a461de2",
+        "artworkChecksum": "c434a6a7d362ca9d"
       }
     },
     {
@@ -1426,12 +1710,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6357-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6357-crewneck-grey-mockup.png",
-        "checksum": "92b9cdef731dbc77"
+        "checksum": "92b9cdef731dbc77",
+        "artworkChecksum": "21c8f2c5855f2e71"
       }
     },
     {
@@ -1455,12 +1743,16 @@
           "en": "Navy"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6443-tshirt-navy.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6443-tshirt-navy-mockup.png",
-        "checksum": "eae2517cc5fe5b2b"
+        "checksum": "eae2517cc5fe5b2b",
+        "artworkChecksum": "eaeefc82d1104fee"
       }
     },
     {
@@ -1484,12 +1776,16 @@
           "en": "Forest green"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6444-longsleeve-green.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6444-longsleeve-green-mockup.png",
-        "checksum": "e87aa996a6548beb"
+        "checksum": "e87aa996a6548beb",
+        "artworkChecksum": "6fc4de01f8eb1bfe"
       }
     },
     {
@@ -1513,12 +1809,16 @@
           "en": "Black"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6504-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6504-hoodie-black-mockup.png",
-        "checksum": "6ad11158b3e133dd"
+        "checksum": "6ad11158b3e133dd",
+        "artworkChecksum": "78845fd33b5ac227"
       }
     },
     {
@@ -1542,12 +1842,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6505-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6505-crewneck-grey-mockup.png",
-        "checksum": "ddcdbb3352157f86"
+        "checksum": "ddcdbb3352157f86",
+        "artworkChecksum": "5246df73c2fcdb87"
       }
     },
     {
@@ -1571,12 +1875,16 @@
           "en": "Navy"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6508-tshirt-navy.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6508-tshirt-navy-mockup.png",
-        "checksum": "ead1bea41e2bcdb7"
+        "checksum": "ead1bea41e2bcdb7",
+        "artworkChecksum": "a6974eafd93e5259"
       }
     },
     {
@@ -1600,12 +1908,16 @@
           "en": "Forest green"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6549-longsleeve-green.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6549-longsleeve-green-mockup.png",
-        "checksum": "04e41fb5de6db822"
+        "checksum": "04e41fb5de6db822",
+        "artworkChecksum": "e4854e8b8499051a"
       }
     },
     {
@@ -1629,18 +1941,22 @@
           "en": "Black"
         }
       },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6550-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6550-hoodie-black-mockup.png",
-        "checksum": "125502756a4bf5db"
+        "checksum": "125502756a4bf5db",
+        "artworkChecksum": "a364c85ff421eeb0"
       }
     },
     {
       "id": "classic-img-6553-crewneck-grey",
       "designId": "IMG_6553",
-      "title": "La Bête au Filet",
+      "title": "Le Microboss",
       "sectionId": "classics",
       "garment": {
         "id": "crewneck",
@@ -1658,12 +1974,19 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Boss des microbes",
+        "en": "Microbe boss"
+      },
       "image": "/catalog/classic-img-6553-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6553-crewneck-grey-mockup.png",
-        "checksum": "3a64763e2bfd4f46"
+        "checksum": "3a64763e2bfd4f46",
+        "artworkChecksum": "7656efa80a124c6a"
       }
     },
     {
@@ -1687,12 +2010,16 @@
           "en": "Navy"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6554-tshirt-navy.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6554-tshirt-navy-mockup.png",
-        "checksum": "63b5dad2557448b5"
+        "checksum": "63b5dad2557448b5",
+        "artworkChecksum": "8c63f6e791c4e49c"
       }
     },
     {
@@ -1716,12 +2043,16 @@
           "en": "Forest green"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6555-longsleeve-green.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6555-longsleeve-green-mockup.png",
-        "checksum": "45cd110338538432"
+        "checksum": "45cd110338538432",
+        "artworkChecksum": "6061652bd85e996b"
       }
     },
     {
@@ -1745,12 +2076,16 @@
           "en": "Black"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6556-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6556-hoodie-black-mockup.png",
-        "checksum": "d3f5610eff6f33c1"
+        "checksum": "d3f5610eff6f33c1",
+        "artworkChecksum": "ba3dee2b643cdf9a"
       }
     },
     {
@@ -1774,12 +2109,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6739-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6739-crewneck-grey-mockup.png",
-        "checksum": "d2ced6596f2af16f"
+        "checksum": "d2ced6596f2af16f",
+        "artworkChecksum": "583fd53322c01da2"
       }
     },
     {
@@ -1803,12 +2142,16 @@
           "en": "Navy"
         }
       },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6740-tshirt-navy.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6740-tshirt-navy-mockup.png",
-        "checksum": "b4ccb9f727c16791"
+        "checksum": "b4ccb9f727c16791",
+        "artworkChecksum": "a6fc4107a5d25f0b"
       }
     },
     {
@@ -1832,12 +2175,16 @@
           "en": "Forest green"
         }
       },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6750-longsleeve-green.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6750-longsleeve-green-mockup.png",
-        "checksum": "1a3fd4e6892af8af"
+        "checksum": "1a3fd4e6892af8af",
+        "artworkChecksum": "796a7849afdd59a3"
       }
     },
     {
@@ -1861,12 +2208,16 @@
           "en": "Black"
         }
       },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6751-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6751-hoodie-black-mockup.png",
-        "checksum": "1d9ae095f8f1788b"
+        "checksum": "1d9ae095f8f1788b",
+        "artworkChecksum": "658f88688da68a4e"
       }
     },
     {
@@ -1890,12 +2241,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6772-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6772-crewneck-grey-mockup.png",
-        "checksum": "2df782ae8716b091"
+        "checksum": "2df782ae8716b091",
+        "artworkChecksum": "d85411f87d2029cf"
       }
     },
     {
@@ -1919,12 +2274,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6773-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6773-crewneck-grey-mockup.png",
-        "checksum": "e659b9b7a6074c99"
+        "checksum": "e659b9b7a6074c99",
+        "artworkChecksum": "3a092a476e4d072b"
       }
     },
     {
@@ -1948,12 +2307,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6782-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6782-crewneck-grey-mockup.png",
-        "checksum": "5b2182a63d29fd3c"
+        "checksum": "5b2182a63d29fd3c",
+        "artworkChecksum": "543a8e9b8982b60a"
       }
     },
     {
@@ -1977,12 +2340,16 @@
           "en": "Black"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6798-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6798-hoodie-black-mockup.png",
-        "checksum": "a87489e1841e2487"
+        "checksum": "a87489e1841e2487",
+        "artworkChecksum": "930f8229a616534e"
       }
     },
     {
@@ -2006,12 +2373,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-img-6799-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "IMG_6799-crewneck-grey-mockup.png",
-        "checksum": "497fc8030f2a6d68"
+        "checksum": "497fc8030f2a6d68",
+        "artworkChecksum": "cc85f3563487561b"
       }
     },
     {
@@ -2035,18 +2406,22 @@
           "en": "Navy"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-v2-20260805-140243-tshirt-navy.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260805_140243-tshirt-navy-mockup.png",
-        "checksum": "1a4347dd445fa17d"
+        "checksum": "1a4347dd445fa17d",
+        "artworkChecksum": "ad3d7eec90031199"
       }
     },
     {
       "id": "classic-v2-20260805-140256-longsleeve-green",
       "designId": "V2_20260805_140256",
-      "title": "La Chenille Étonnée",
+      "title": "Le Microbe Ébahi",
       "sectionId": "classics",
       "garment": {
         "id": "longsleeve",
@@ -2064,18 +2439,25 @@
           "en": "Forest green"
         }
       },
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Microbe surpris",
+        "en": "Surprised microbe"
+      },
       "image": "/catalog/classic-v2-20260805-140256-longsleeve-green.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260805_140256-longsleeve-green-mockup.png",
-        "checksum": "53f85cc88a3b9463"
+        "checksum": "53f85cc88a3b9463",
+        "artworkChecksum": "dad5936cdb97091c"
       }
     },
     {
       "id": "classic-v2-20260805-140312-hoodie-black",
       "designId": "V2_20260805_140312",
-      "title": "Bleu le Hérissé",
+      "title": "Le Vilain Hérissé",
       "sectionId": "classics",
       "garment": {
         "id": "hoodie",
@@ -2093,12 +2475,19 @@
           "en": "Black"
         }
       },
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Microbe ennemi",
+        "en": "Enemy microbe"
+      },
       "image": "/catalog/classic-v2-20260805-140312-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260805_140312-hoodie-black-mockup.png",
-        "checksum": "5921feacdf1e351b"
+        "checksum": "5921feacdf1e351b",
+        "artworkChecksum": "63e2ef2ec1a8349d"
       }
     },
     {
@@ -2122,18 +2511,22 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-v2-20260805-140323-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260805_140323-crewneck-grey-mockup.png",
-        "checksum": "4671869fa46c143d"
+        "checksum": "4671869fa46c143d",
+        "artworkChecksum": "4b86ce3b048043ab"
       }
     },
     {
       "id": "classic-v2-20260805-140334-tshirt-navy",
       "designId": "V2_20260805_140334",
-      "title": "Monsieur Grelot",
+      "title": "Monsieur Citron",
       "sectionId": "classics",
       "garment": {
         "id": "tshirt",
@@ -2151,18 +2544,30 @@
           "en": "Navy"
         }
       },
-      "image": "/catalog/classic-v2-20260805-140334-tshirt-navy.webp",
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Gentil allié citron",
+        "en": "Friendly lemon ally"
+      },
+      "image": "/catalog/classic-v2-20260805-140334-tshirt-navy-r0c0319b01a.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260805_140334-tshirt-navy-mockup.png",
-        "checksum": "3d5f31a72eb8a780"
+        "checksum": "3d5f31a72eb8a780",
+        "artworkChecksum": "d8d115b139f4d33c"
+      },
+      "render": {
+        "variant": "custom-print",
+        "printBoxPx": "280x305",
+        "centerPx": "627x520"
       }
     },
     {
       "id": "classic-v2-20260805-140342-longsleeve-green",
       "designId": "V2_20260805_140342",
-      "title": "Melon-Melon",
+      "title": "Wallie",
       "sectionId": "classics",
       "garment": {
         "id": "longsleeve",
@@ -2180,12 +2585,19 @@
           "en": "Forest green"
         }
       },
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Personnage du jeu",
+        "en": "Game character"
+      },
       "image": "/catalog/classic-v2-20260805-140342-longsleeve-green.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260805_140342-longsleeve-green-mockup.png",
-        "checksum": "2aecb0c250ba0001"
+        "checksum": "2aecb0c250ba0001",
+        "artworkChecksum": "a4375fe47354fae2"
       }
     },
     {
@@ -2209,12 +2621,16 @@
           "en": "Black"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-v2-20260823-142146-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260823_142146-hoodie-black-mockup.png",
-        "checksum": "cfa49f3fe3d76d69"
+        "checksum": "cfa49f3fe3d76d69",
+        "artworkChecksum": "5ebb4549dce42d0d"
       }
     },
     {
@@ -2238,12 +2654,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-v2-20260823-142456-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260823_142456-crewneck-grey-mockup.png",
-        "checksum": "0c029acb4194dc97"
+        "checksum": "0c029acb4194dc97",
+        "artworkChecksum": "8df051a51261b1b6"
       }
     },
     {
@@ -2267,12 +2687,16 @@
           "en": "Navy"
         }
       },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-v2-20260823-142513-tshirt-navy.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260823_142513-tshirt-navy-mockup.png",
-        "checksum": "3060a42adcce6d35"
+        "checksum": "3060a42adcce6d35",
+        "artworkChecksum": "460058a9b8e88694"
       }
     },
     {
@@ -2296,12 +2720,16 @@
           "en": "Forest green"
         }
       },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-v2-20260823-142638-longsleeve-green.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260823_142638-longsleeve-green-mockup.png",
-        "checksum": "22a82d930b08bc3f"
+        "checksum": "22a82d930b08bc3f",
+        "artworkChecksum": "8ce3466435a9cc29"
       }
     },
     {
@@ -2325,12 +2753,16 @@
           "en": "Black"
         }
       },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-v2-20260823-142700-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260823_142700-hoodie-black-mockup.png",
-        "checksum": "f2a8368d6a1d8057"
+        "checksum": "f2a8368d6a1d8057",
+        "artworkChecksum": "1f79aaf4d478c97f"
       }
     },
     {
@@ -2354,12 +2786,16 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-v2-20260823-142733-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260823_142733-crewneck-grey-mockup.png",
-        "checksum": "93bb9de9546ccaac"
+        "checksum": "93bb9de9546ccaac",
+        "artworkChecksum": "ac8c2fa8663283ff"
       }
     },
     {
@@ -2383,12 +2819,16 @@
           "en": "Navy"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-v2-20260823-142751-tshirt-navy.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260823_142751-tshirt-navy-mockup.png",
-        "checksum": "12aca898f829c32f"
+        "checksum": "12aca898f829c32f",
+        "artworkChecksum": "7be360cb9d699344"
       }
     },
     {
@@ -2412,12 +2852,16 @@
           "en": "Forest green"
         }
       },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-v2-20260823-142759-longsleeve-green.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260823_142759-longsleeve-green-mockup.png",
-        "checksum": "31c300ea156a24d7"
+        "checksum": "31c300ea156a24d7",
+        "artworkChecksum": "323ae21e0babc774"
       }
     },
     {
@@ -2441,12 +2885,16 @@
           "en": "Black"
         }
       },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-v2-20260823-142806-hoodie-black.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260823_142806-hoodie-black-mockup.png",
-        "checksum": "a7be1652c10d3529"
+        "checksum": "a7be1652c10d3529",
+        "artworkChecksum": "36e27713bc92680b"
       }
     },
     {
@@ -2470,18 +2918,22 @@
           "en": "Heather grey"
         }
       },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
       "image": "/catalog/classic-v2-20260823-142814-crewneck-grey.webp",
       "active": true,
       "source": {
         "collection": "standard",
         "file": "V2_20260823_142814-crewneck-grey-mockup.png",
-        "checksum": "930c2dc75fa75513"
+        "checksum": "930c2dc75fa75513",
+        "artworkChecksum": "96c0dc0ac6373a98"
       }
     },
     {
       "id": "primary-caps-v2-20260805-140342-casquette-berry-purple",
       "designId": "V2_20260805_140342",
-      "title": "Melon-Melon",
+      "title": "Wallie",
       "sectionId": "caps",
       "garment": {
         "id": "cap",
@@ -2499,18 +2951,30 @@
           "en": "Berry purple"
         }
       },
-      "image": "/catalog/primary-caps-v2-20260805-140342-casquette-berry-purple.webp",
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Personnage du jeu",
+        "en": "Game character"
+      },
+      "image": "/catalog/primary-caps-v2-20260805-140342-casquette-berry-purple-rca39092dac.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260805_140342-casquette-berry-purple-mockup.png",
-        "checksum": "156825c8024638ee"
+        "checksum": "156825c8024638ee",
+        "artworkChecksum": "a4375fe47354fae2"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "250x175",
+        "centerPx": "575x555"
       }
     },
     {
       "id": "primary-caps-v2-20260805-140342-casquette-cobalt-blue",
       "designId": "V2_20260805_140342",
-      "title": "Melon-Melon",
+      "title": "Wallie",
       "sectionId": "caps",
       "garment": {
         "id": "cap",
@@ -2528,18 +2992,30 @@
           "en": "Cobalt blue"
         }
       },
-      "image": "/catalog/primary-caps-v2-20260805-140342-casquette-cobalt-blue.webp",
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Personnage du jeu",
+        "en": "Game character"
+      },
+      "image": "/catalog/primary-caps-v2-20260805-140342-casquette-cobalt-blue-r8c610b7fb3.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260805_140342-casquette-cobalt-blue-mockup.png",
-        "checksum": "0db3c8b1796e5614"
+        "checksum": "0db3c8b1796e5614",
+        "artworkChecksum": "a4375fe47354fae2"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "250x175",
+        "centerPx": "575x555"
       }
     },
     {
       "id": "primary-caps-v2-20260805-140342-casquette-tangerine-orange",
       "designId": "V2_20260805_140342",
-      "title": "Melon-Melon",
+      "title": "Wallie",
       "sectionId": "caps",
       "garment": {
         "id": "cap",
@@ -2557,12 +3033,24 @@
           "en": "Tangerine orange"
         }
       },
-      "image": "/catalog/primary-caps-v2-20260805-140342-casquette-tangerine-orange.webp",
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Personnage du jeu",
+        "en": "Game character"
+      },
+      "image": "/catalog/primary-caps-v2-20260805-140342-casquette-tangerine-orange-r6bb043771a.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260805_140342-casquette-tangerine-orange-mockup.png",
-        "checksum": "de2fb3196582b353"
+        "checksum": "de2fb3196582b353",
+        "artworkChecksum": "a4375fe47354fae2"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "250x175",
+        "centerPx": "575x555"
       }
     },
     {
@@ -2586,12 +3074,21 @@
           "en": "Berry purple"
         }
       },
-      "image": "/catalog/primary-caps-v2-20260823-142146-casquette-berry-purple.webp",
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/primary-caps-v2-20260823-142146-casquette-berry-purple-rdcb2cd1887.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260823_142146-casquette-berry-purple-mockup.png",
-        "checksum": "b4344095fe55a6d1"
+        "checksum": "b4344095fe55a6d1",
+        "artworkChecksum": "5ebb4549dce42d0d"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "250x175",
+        "centerPx": "575x555"
       }
     },
     {
@@ -2615,12 +3112,21 @@
           "en": "Cobalt blue"
         }
       },
-      "image": "/catalog/primary-caps-v2-20260823-142146-casquette-cobalt-blue.webp",
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/primary-caps-v2-20260823-142146-casquette-cobalt-blue-r5c2faa72e5.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260823_142146-casquette-cobalt-blue-mockup.png",
-        "checksum": "54771e75a46703a0"
+        "checksum": "54771e75a46703a0",
+        "artworkChecksum": "5ebb4549dce42d0d"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "250x175",
+        "centerPx": "575x555"
       }
     },
     {
@@ -2644,18 +3150,27 @@
           "en": "Tangerine orange"
         }
       },
-      "image": "/catalog/primary-caps-v2-20260823-142146-casquette-tangerine-orange.webp",
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/primary-caps-v2-20260823-142146-casquette-tangerine-orange-rd704b0e1f3.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "V2_20260823_142146-casquette-tangerine-orange-mockup.png",
-        "checksum": "899fec6c455116aa"
+        "checksum": "899fec6c455116aa",
+        "artworkChecksum": "5ebb4549dce42d0d"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "250x175",
+        "centerPx": "575x555"
       }
     },
     {
       "id": "alternate-caps-v2-20260805-140334-casquette-berry-purple",
       "designId": "V2_20260805_140334",
-      "title": "Monsieur Grelot",
+      "title": "Monsieur Citron",
       "sectionId": "caps",
       "garment": {
         "id": "cap",
@@ -2673,18 +3188,30 @@
           "en": "Berry purple"
         }
       },
-      "image": "/catalog/alternate-caps-v2-20260805-140334-casquette-berry-purple.webp",
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Gentil allié citron",
+        "en": "Friendly lemon ally"
+      },
+      "image": "/catalog/alternate-caps-v2-20260805-140334-casquette-berry-purple-r310d372e82.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "V2_20260805_140334-casquette-berry-purple-set2-mockup.png",
-        "checksum": "8c1850a90a5909a4"
+        "checksum": "8c1850a90a5909a4",
+        "artworkChecksum": "d8d115b139f4d33c"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "230x185",
+        "centerPx": "575x555"
       }
     },
     {
       "id": "alternate-caps-v2-20260805-140334-casquette-cobalt-blue",
       "designId": "V2_20260805_140334",
-      "title": "Monsieur Grelot",
+      "title": "Monsieur Citron",
       "sectionId": "caps",
       "garment": {
         "id": "cap",
@@ -2702,18 +3229,30 @@
           "en": "Cobalt blue"
         }
       },
-      "image": "/catalog/alternate-caps-v2-20260805-140334-casquette-cobalt-blue.webp",
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Gentil allié citron",
+        "en": "Friendly lemon ally"
+      },
+      "image": "/catalog/alternate-caps-v2-20260805-140334-casquette-cobalt-blue-r9cb2fa56f9.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "V2_20260805_140334-casquette-cobalt-blue-set2-mockup.png",
-        "checksum": "2e84d70f5392014f"
+        "checksum": "2e84d70f5392014f",
+        "artworkChecksum": "d8d115b139f4d33c"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "230x185",
+        "centerPx": "575x555"
       }
     },
     {
       "id": "alternate-caps-v2-20260805-140334-casquette-tangerine-orange",
       "designId": "V2_20260805_140334",
-      "title": "Monsieur Grelot",
+      "title": "Monsieur Citron",
       "sectionId": "caps",
       "garment": {
         "id": "cap",
@@ -2731,12 +3270,24 @@
           "en": "Tangerine orange"
         }
       },
-      "image": "/catalog/alternate-caps-v2-20260805-140334-casquette-tangerine-orange.webp",
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Gentil allié citron",
+        "en": "Friendly lemon ally"
+      },
+      "image": "/catalog/alternate-caps-v2-20260805-140334-casquette-tangerine-orange-rd8104c3ad2.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "V2_20260805_140334-casquette-tangerine-orange-set2-mockup.png",
-        "checksum": "c46ce6e5be5e83db"
+        "checksum": "c46ce6e5be5e83db",
+        "artworkChecksum": "d8d115b139f4d33c"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "230x185",
+        "centerPx": "575x555"
       }
     },
     {
@@ -2760,12 +3311,21 @@
           "en": "Berry purple"
         }
       },
-      "image": "/catalog/alternate-caps-img-6554-casquette-berry-purple.webp",
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/alternate-caps-img-6554-casquette-berry-purple-rf20840b4b5.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "IMG_6554-casquette-berry-purple-set2-mockup.png",
-        "checksum": "4e1a8d3f0f418170"
+        "checksum": "4e1a8d3f0f418170",
+        "artworkChecksum": "8c63f6e791c4e49c"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "220x190",
+        "centerPx": "575x555"
       }
     },
     {
@@ -2789,12 +3349,21 @@
           "en": "Cobalt blue"
         }
       },
-      "image": "/catalog/alternate-caps-img-6554-casquette-cobalt-blue.webp",
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/alternate-caps-img-6554-casquette-cobalt-blue-r56b303592d.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "IMG_6554-casquette-cobalt-blue-set2-mockup.png",
-        "checksum": "98f31c838c790590"
+        "checksum": "98f31c838c790590",
+        "artworkChecksum": "8c63f6e791c4e49c"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "220x190",
+        "centerPx": "575x555"
       }
     },
     {
@@ -2818,12 +3387,21 @@
           "en": "Tangerine orange"
         }
       },
-      "image": "/catalog/alternate-caps-img-6554-casquette-tangerine-orange.webp",
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/alternate-caps-img-6554-casquette-tangerine-orange-r92280282aa.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "IMG_6554-casquette-tangerine-orange-set2-mockup.png",
-        "checksum": "7da6f5c1d0afc140"
+        "checksum": "7da6f5c1d0afc140",
+        "artworkChecksum": "8c63f6e791c4e49c"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "220x190",
+        "centerPx": "575x555"
       }
     },
     {
@@ -2847,12 +3425,21 @@
           "en": "Sunflower yellow"
         }
       },
-      "image": "/catalog/primary-bucket-hats-img-6504-bucket-hat-sunflower-yellow.webp",
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/primary-bucket-hats-img-6504-bucket-hat-sunflower-yellow-ra76478be7b.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "IMG_6504-bucket-hat-sunflower-mockup.png",
-        "checksum": "322ee9b668ea8e4e"
+        "checksum": "322ee9b668ea8e4e",
+        "artworkChecksum": "78845fd33b5ac227"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "225x190",
+        "centerPx": "627x565"
       }
     },
     {
@@ -2876,12 +3463,21 @@
           "en": "Bright teal"
         }
       },
-      "image": "/catalog/primary-bucket-hats-img-6504-bucket-hat-bright-teal.webp",
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/primary-bucket-hats-img-6504-bucket-hat-bright-teal-r53e3a7b150.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "IMG_6504-bucket-hat-bright-teal-mockup.png",
-        "checksum": "be49487f9f558b02"
+        "checksum": "be49487f9f558b02",
+        "artworkChecksum": "78845fd33b5ac227"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "225x190",
+        "centerPx": "627x565"
       }
     },
     {
@@ -2905,18 +3501,27 @@
           "en": "Hot pink"
         }
       },
-      "image": "/catalog/primary-bucket-hats-img-6504-bucket-hat-hot-pink.webp",
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/primary-bucket-hats-img-6504-bucket-hat-hot-pink-re1cb7bb4b1.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "IMG_6504-bucket-hat-hot-pink-mockup.png",
-        "checksum": "58e17cb8665ccce4"
+        "checksum": "58e17cb8665ccce4",
+        "artworkChecksum": "78845fd33b5ac227"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "225x190",
+        "centerPx": "627x565"
       }
     },
     {
       "id": "primary-bucket-hats-img-6553-bucket-hat-sunflower-yellow",
       "designId": "IMG_6553",
-      "title": "La Bête au Filet",
+      "title": "Le Microboss",
       "sectionId": "bucket-hats",
       "garment": {
         "id": "bucket-hat",
@@ -2934,18 +3539,30 @@
           "en": "Sunflower yellow"
         }
       },
-      "image": "/catalog/primary-bucket-hats-img-6553-bucket-hat-sunflower-yellow.webp",
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Boss des microbes",
+        "en": "Microbe boss"
+      },
+      "image": "/catalog/primary-bucket-hats-img-6553-bucket-hat-sunflower-yellow-r0f45dbcd19.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "IMG_6553-bucket-hat-sunflower-mockup.png",
-        "checksum": "f8ac318773c27056"
+        "checksum": "f8ac318773c27056",
+        "artworkChecksum": "7656efa80a124c6a"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "215x195",
+        "centerPx": "627x565"
       }
     },
     {
       "id": "primary-bucket-hats-img-6553-bucket-hat-bright-teal",
       "designId": "IMG_6553",
-      "title": "La Bête au Filet",
+      "title": "Le Microboss",
       "sectionId": "bucket-hats",
       "garment": {
         "id": "bucket-hat",
@@ -2963,18 +3580,30 @@
           "en": "Bright teal"
         }
       },
-      "image": "/catalog/primary-bucket-hats-img-6553-bucket-hat-bright-teal.webp",
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Boss des microbes",
+        "en": "Microbe boss"
+      },
+      "image": "/catalog/primary-bucket-hats-img-6553-bucket-hat-bright-teal-r98f3d0e982.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "IMG_6553-bucket-hat-bright-teal-mockup.png",
-        "checksum": "078484c0e01ce54b"
+        "checksum": "078484c0e01ce54b",
+        "artworkChecksum": "7656efa80a124c6a"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "215x195",
+        "centerPx": "627x565"
       }
     },
     {
       "id": "primary-bucket-hats-img-6553-bucket-hat-hot-pink",
       "designId": "IMG_6553",
-      "title": "La Bête au Filet",
+      "title": "Le Microboss",
       "sectionId": "bucket-hats",
       "garment": {
         "id": "bucket-hat",
@@ -2992,12 +3621,24 @@
           "en": "Hot pink"
         }
       },
-      "image": "/catalog/primary-bucket-hats-img-6553-bucket-hat-hot-pink.webp",
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Boss des microbes",
+        "en": "Microbe boss"
+      },
+      "image": "/catalog/primary-bucket-hats-img-6553-bucket-hat-hot-pink-r4838435187.webp",
       "active": true,
       "source": {
         "collection": "primary",
         "file": "IMG_6553-bucket-hat-hot-pink-mockup.png",
-        "checksum": "953a9e5225bac543"
+        "checksum": "953a9e5225bac543",
+        "artworkChecksum": "7656efa80a124c6a"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "215x195",
+        "centerPx": "627x565"
       }
     },
     {
@@ -3021,12 +3662,21 @@
           "en": "Sunflower yellow"
         }
       },
-      "image": "/catalog/alternate-bucket-hats-img-6336-bucket-hat-sunflower-yellow.webp",
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/alternate-bucket-hats-img-6336-bucket-hat-sunflower-yellow-r5d5f88dc83.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "IMG_6336-bucket-hat-sunflower-set2-mockup.png",
-        "checksum": "16db13db91de8c9b"
+        "checksum": "16db13db91de8c9b",
+        "artworkChecksum": "c434a6a7d362ca9d"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "240x170",
+        "centerPx": "627x565"
       }
     },
     {
@@ -3050,12 +3700,21 @@
           "en": "Bright teal"
         }
       },
-      "image": "/catalog/alternate-bucket-hats-img-6336-bucket-hat-bright-teal.webp",
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/alternate-bucket-hats-img-6336-bucket-hat-bright-teal-r84b50943a4.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "IMG_6336-bucket-hat-bright-teal-set2-mockup.png",
-        "checksum": "da828c9f42f826e4"
+        "checksum": "da828c9f42f826e4",
+        "artworkChecksum": "c434a6a7d362ca9d"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "240x170",
+        "centerPx": "627x565"
       }
     },
     {
@@ -3079,12 +3738,21 @@
           "en": "Hot pink"
         }
       },
-      "image": "/catalog/alternate-bucket-hats-img-6336-bucket-hat-hot-pink.webp",
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/alternate-bucket-hats-img-6336-bucket-hat-hot-pink-r9eeb71a7d9.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "IMG_6336-bucket-hat-hot-pink-set2-mockup.png",
-        "checksum": "328f1d65c6c8d838"
+        "checksum": "328f1d65c6c8d838",
+        "artworkChecksum": "c434a6a7d362ca9d"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "240x170",
+        "centerPx": "627x565"
       }
     },
     {
@@ -3108,12 +3776,21 @@
           "en": "Sunflower yellow"
         }
       },
-      "image": "/catalog/alternate-bucket-hats-v2-20260823-142456-bucket-hat-sunflower-yellow.webp",
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/alternate-bucket-hats-v2-20260823-142456-bucket-hat-sunflower-yellow-r5e643eb658.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "V2_20260823_142456-bucket-hat-sunflower-set2-mockup.png",
-        "checksum": "94e595b0b44dba0a"
+        "checksum": "94e595b0b44dba0a",
+        "artworkChecksum": "8df051a51261b1b6"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "225x195",
+        "centerPx": "627x565"
       }
     },
     {
@@ -3137,12 +3814,21 @@
           "en": "Bright teal"
         }
       },
-      "image": "/catalog/alternate-bucket-hats-v2-20260823-142456-bucket-hat-bright-teal.webp",
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/alternate-bucket-hats-v2-20260823-142456-bucket-hat-bright-teal-r21392be05b.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "V2_20260823_142456-bucket-hat-bright-teal-set2-mockup.png",
-        "checksum": "bfcc935ed9470e57"
+        "checksum": "bfcc935ed9470e57",
+        "artworkChecksum": "8df051a51261b1b6"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "225x195",
+        "centerPx": "627x565"
       }
     },
     {
@@ -3166,12 +3852,21 @@
           "en": "Hot pink"
         }
       },
-      "image": "/catalog/alternate-bucket-hats-v2-20260823-142456-bucket-hat-hot-pink.webp",
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/alternate-bucket-hats-v2-20260823-142456-bucket-hat-hot-pink-rb9928ef5bd.webp",
       "active": true,
       "source": {
         "collection": "alternate",
         "file": "V2_20260823_142456-bucket-hat-hot-pink-set2-mockup.png",
-        "checksum": "dcafeb86b33ab0e1"
+        "checksum": "dcafeb86b33ab0e1",
+        "artworkChecksum": "8df051a51261b1b6"
+      },
+      "render": {
+        "variant": "centered-headwear",
+        "printBoxPx": "225x195",
+        "centerPx": "627x565"
       }
     }
   ]
