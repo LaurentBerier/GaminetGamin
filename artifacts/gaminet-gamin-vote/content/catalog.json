@@ -3428,7 +3428,7 @@
       "themeId": "gourmandises",
       "specialCollectionId": null,
       "collectionRole": null,
-      "image": "/catalog/primary-bucket-hats-img-6504-bucket-hat-sunflower-yellow-ra76478be7b.webp",
+      "image": "/catalog/primary-bucket-hats-img-6504-bucket-hat-sunflower-yellow-r0da02db398.webp",
       "active": true,
       "source": {
         "collection": "primary",
@@ -3439,7 +3439,7 @@
       "render": {
         "variant": "centered-headwear",
         "printBoxPx": "225x190",
-        "centerPx": "627x565"
+        "centerPx": "627x610"
       }
     },
     {
@@ -3466,7 +3466,7 @@
       "themeId": "gourmandises",
       "specialCollectionId": null,
       "collectionRole": null,
-      "image": "/catalog/primary-bucket-hats-img-6504-bucket-hat-bright-teal-r53e3a7b150.webp",
+      "image": "/catalog/primary-bucket-hats-img-6504-bucket-hat-bright-teal-rcfc9157f21.webp",
       "active": true,
       "source": {
         "collection": "primary",
@@ -3477,7 +3477,7 @@
       "render": {
         "variant": "centered-headwear",
         "printBoxPx": "225x190",
-        "centerPx": "627x565"
+        "centerPx": "627x610"
       }
     },
     {
@@ -3504,7 +3504,7 @@
       "themeId": "gourmandises",
       "specialCollectionId": null,
       "collectionRole": null,
-      "image": "/catalog/primary-bucket-hats-img-6504-bucket-hat-hot-pink-re1cb7bb4b1.webp",
+      "image": "/catalog/primary-bucket-hats-img-6504-bucket-hat-hot-pink-r0a5a555ec4.webp",
       "active": true,
       "source": {
         "collection": "primary",
@@ -3515,7 +3515,7 @@
       "render": {
         "variant": "centered-headwear",
         "printBoxPx": "225x190",
-        "centerPx": "627x565"
+        "centerPx": "627x610"
       }
     },
     {
@@ -3545,7 +3545,7 @@
         "fr": "Boss des microbes",
         "en": "Microbe boss"
       },
-      "image": "/catalog/primary-bucket-hats-img-6553-bucket-hat-sunflower-yellow-r0f45dbcd19.webp",
+      "image": "/catalog/primary-bucket-hats-img-6553-bucket-hat-sunflower-yellow-re4592c276e.webp",
       "active": true,
       "source": {
         "collection": "primary",
@@ -3556,7 +3556,7 @@
       "render": {
         "variant": "centered-headwear",
         "printBoxPx": "215x195",
-        "centerPx": "627x565"
+        "centerPx": "627x610"
       }
     },
     {
@@ -3586,7 +3586,7 @@
         "fr": "Boss des microbes",
         "en": "Microbe boss"
       },
-      "image": "/catalog/primary-bucket-hats-img-6553-bucket-hat-bright-teal-r98f3d0e982.webp",
+      "image": "/catalog/primary-bucket-hats-img-6553-bucket-hat-bright-teal-rd56841c9e2.webp",
       "active": true,
       "source": {
         "collection": "primary",
@@ -3597,7 +3597,7 @@
       "render": {
         "variant": "centered-headwear",
         "printBoxPx": "215x195",
-        "centerPx": "627x565"
+        "centerPx": "627x610"
       }
     },
     {
@@ -3627,7 +3627,7 @@
         "fr": "Boss des microbes",
         "en": "Microbe boss"
       },
-      "image": "/catalog/primary-bucket-hats-img-6553-bucket-hat-hot-pink-r4838435187.webp",
+      "image": "/catalog/primary-bucket-hats-img-6553-bucket-hat-hot-pink-r27ab22dda7.webp",
       "active": true,
       "source": {
         "collection": "primary",
@@ -3638,7 +3638,7 @@
       "render": {
         "variant": "centered-headwear",
         "printBoxPx": "215x195",
-        "centerPx": "627x565"
+        "centerPx": "627x610"
       }
     },
     {
@@ -3665,7 +3665,7 @@
       "themeId": "aventures-et-copains",
       "specialCollectionId": null,
       "collectionRole": null,
-      "image": "/catalog/alternate-bucket-hats-img-6336-bucket-hat-sunflower-yellow-r5d5f88dc83.webp",
+      "image": "/catalog/alternate-bucket-hats-img-6336-bucket-hat-sunflower-yellow-rebf74a2cf7.webp",
       "active": true,
       "source": {
         "collection": "alternate",
@@ -3676,7 +3676,7 @@
       "render": {
         "variant": "centered-headwear",
         "printBoxPx": "240x170",
-        "centerPx": "627x565"
+        "centerPx": "627x610"
       }
     },
     {
@@ -3703,7 +3703,7 @@
       "themeId": "aventures-et-copains",
       "specialCollectionId": null,
       "collectionRole": null,
-      "image": "/catalog/alternate-bucket-hats-img-6336-bucket-hat-bright-teal-r84b50943a4.webp",
+      "image": "/catalog/alternate-bucket-hats-img-6336-bucket-hat-bright-teal-r9dcbe6de23.webp",
       "active": true,
       "source": {
         "collection": "alternate",
@@ -3714,7 +3714,7 @@
       "render": {
         "variant": "centered-headwear",
         "printBoxPx": "240x170",
-        "centerPx": "627x565"
+        "centerPx": "627x610"
       }
     },
     {
@@ -3741,7 +3741,7 @@
       "themeId": "aventures-et-copains",
       "specialCollectionId": null,
       "collectionRole": null,
-      "image": "/catalog/alternate-bucket-hats-img-6336-bucket-hat-hot-pink-r9eeb71a7d9.webp",
+      "image": "/catalog/alternate-bucket-hats-img-6336-bucket-hat-hot-pink-re3f9c85512.webp",
       "active": true,
       "source": {
         "collection": "alternate",
@@ -3752,7 +3752,7 @@
       "render": {
         "variant": "centered-headwear",
         "printBoxPx": "240x170",
-        "centerPx": "627x565"
+        "centerPx": "627x610"
       }
     },
     {
@@ -3779,7 +3779,7 @@
       "themeId": "gourmandises",
       "specialCollectionId": null,
       "collectionRole": null,
-      "image": "/catalog/alternate-bucket-hats-v2-20260823-142456-bucket-hat-sunflower-yellow-r5e643eb658.webp",
+      "image": "/catalog/alternate-bucket-hats-v2-20260823-142456-bucket-hat-sunflower-yellow-r2866633ac4.webp",
       "active": true,
       "source": {
         "collection": "alternate",
@@ -3790,7 +3790,7 @@
       "render": {
         "variant": "centered-headwear",
         "printBoxPx": "225x195",
-        "centerPx": "627x565"
+        "centerPx": "627x610"
       }
     },
     {
@@ -3817,7 +3817,7 @@
       "themeId": "gourmandises",
       "specialCollectionId": null,
       "collectionRole": null,
-      "image": "/catalog/alternate-bucket-hats-v2-20260823-142456-bucket-hat-bright-teal-r21392be05b.webp",
+      "image": "/catalog/alternate-bucket-hats-v2-20260823-142456-bucket-hat-bright-teal-rfa67170acd.webp",
       "active": true,
       "source": {
         "collection": "alternate",
@@ -3828,7 +3828,7 @@
       "render": {
         "variant": "centered-headwear",
         "printBoxPx": "225x195",
-        "centerPx": "627x565"
+        "centerPx": "627x610"
       }
     },
     {
@@ -3855,7 +3855,7 @@
       "themeId": "gourmandises",
       "specialCollectionId": null,
       "collectionRole": null,
-      "image": "/catalog/alternate-bucket-hats-v2-20260823-142456-bucket-hat-hot-pink-rb9928ef5bd.webp",
+      "image": "/catalog/alternate-bucket-hats-v2-20260823-142456-bucket-hat-hot-pink-rb87aea7c3e.webp",
       "active": true,
       "source": {
         "collection": "alternate",
@@ -3866,7 +3866,7 @@
       "render": {
         "variant": "centered-headwear",
         "printBoxPx": "225x195",
-        "centerPx": "627x565"
+        "centerPx": "627x610"
       }
     }
   ]

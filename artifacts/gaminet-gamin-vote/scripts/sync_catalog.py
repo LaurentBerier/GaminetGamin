@@ -308,7 +308,7 @@ HEADWEAR_PRINT_MAXIMUMS = {
 }
 
 HEADWEAR_PRINT_CENTERS = {
-    "bucket-hat": (627, 565),
+    "bucket-hat": (627, 610),
     "cap": (575, 555),
 }
 
