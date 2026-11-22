@@ -14,7 +14,7 @@ import re
 from pathlib import Path
 
 from PIL import Image
-from collection_extensions import merge_extension
+from collection_extensions import apply_extensions
 
 SITE = Path(__file__).resolve().parents[1]
 CONFIG = json.loads((SITE / "content/v3-designs.json").read_text())
@@ -138,7 +138,7 @@ def main():
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(extension, ensure_ascii=False, indent=2) + "\n")
     catalog_path = SITE / "content/catalog.json"
-    catalog = merge_extension(json.loads(catalog_path.read_text()), extension)
+    catalog = apply_extensions(json.loads(catalog_path.read_text()), SITE / "content/collections")
     catalog_path.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n")
     with (source / "manifest.csv").open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=manifest[0].keys())

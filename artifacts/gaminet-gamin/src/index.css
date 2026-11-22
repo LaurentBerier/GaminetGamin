@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@source "../../gaminet-gamin-vote/app/components/catalog";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));

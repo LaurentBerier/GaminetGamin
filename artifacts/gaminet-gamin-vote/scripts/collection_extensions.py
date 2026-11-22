@@ -4,6 +4,19 @@ from pathlib import Path
 
 
 def merge_extension(catalog: dict, extension: dict) -> dict:
+    if extension.get("mode") == "item-variants":
+        incoming = extension["items"]
+        incoming_ids = {item["id"] for item in incoming}
+        if len(incoming_ids) != len(incoming):
+            raise ValueError("Variant extension contains duplicate vote IDs")
+        catalog["items"] = [item for item in catalog["items"]
+                            if item["id"] not in incoming_ids] + incoming
+        for field in ("themes", "specialCollections"):
+            records = extension.get(field, [])
+            ids = {record["id"] for record in records}
+            catalog[field] = [record for record in catalog.get(field, [])
+                              if record["id"] not in ids] + records
+        return catalog
     collection_id = extension["collectionId"]
     incoming_ids = {item["id"] for item in extension["items"]}
     retained = [item for item in catalog["items"]

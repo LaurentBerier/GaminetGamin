@@ -3,9 +3,11 @@ import { ArrowRight, Heart, Pencil, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useLang, type Lang } from "@/contexts/LangContext";
 import catalog from "../../../gaminet-gamin-vote/content/catalog.json";
+import { groupProducts, productId } from "../../../gaminet-gamin-vote/app/components/catalog/grouping";
+import type { CatalogItem } from "../../../gaminet-gamin-vote/app/components/catalog/grouping";
 
 const activeItems = catalog.items.filter((item) => item.active);
-const activeItemCount = activeItems.length;
+const activeItemCount = groupProducts(activeItems).length;
 const newItems = activeItems.filter((item) => item.specialCollectionId === "nouveautes-v3");
 
 function shuffled<T>(items: readonly T[]) {
@@ -113,12 +115,12 @@ const spanishColors: Record<string, string> = {
   "cobalt-blue": "Azul cobalto",
 };
 
-function garmentLabel(item: (typeof catalog.items)[number], lang: Lang) {
+function garmentLabel(item: CatalogItem, lang: Lang) {
   if (lang === "es") return spanishGarments[item.garment.id] ?? item.garment.label.en;
   return item.garment.label[lang];
 }
 
-function colorLabel(item: (typeof catalog.items)[number], lang: Lang) {
+function colorLabel(item: CatalogItem, lang: Lang) {
   if (lang === "es") return spanishColors[item.color.id] ?? item.color.label.en;
   return item.color.label[lang];
 }
@@ -126,7 +128,7 @@ function colorLabel(item: (typeof catalog.items)[number], lang: Lang) {
 export default function HomePage() {
   const { lang, t } = useLang();
   const pageCopy = copy[lang];
-  const [featuredItems] = useState(() => shuffled(newItems.length ? newItems : activeItems).slice(0, 6));
+  const [featuredItems] = useState(() => shuffled(groupProducts(newItems.length ? newItems : activeItems).map((product) => product.variants[0])).slice(0, 6));
 
   const shopRoute = lang === "fr" ? "/fr/boutique" : lang === "en" ? "/en/shop" : "/es/tienda";
   const programRoute = lang === "fr" ? "/fr/artistes" : lang === "en" ? "/en/little-monsters" : "/es/pequenos-monstruos";
@@ -201,7 +203,7 @@ export default function HomePage() {
               {featuredItems.slice(0, 4).map((item, index) => (
                 <Link
                   key={item.id}
-                  href={`${shopRoute}?collection=nouveautes-v3&item=${encodeURIComponent(item.id)}`}
+                  href={`${shopRoute}?collection=nouveautes-v3&product=${encodeURIComponent(productId(item))}&color=${encodeURIComponent(item.color.id)}`}
                   className={`group relative overflow-hidden rounded-[2rem] border border-black/10 bg-white p-2 shadow-[0_18px_50px_rgba(53,45,36,0.11)] transition duration-300 hover:-translate-y-1 ${
                     index === 1 ? "mt-8" : index === 2 ? "-mt-8" : ""
                   }`}
@@ -246,7 +248,7 @@ export default function HomePage() {
           {featuredItems.map((item, index) => (
             <Link
               key={item.id}
-              href={`${shopRoute}?collection=nouveautes-v3&item=${encodeURIComponent(item.id)}`}
+              href={`${shopRoute}?collection=nouveautes-v3&product=${encodeURIComponent(productId(item))}&color=${encodeURIComponent(item.color.id)}`}
               className="group overflow-hidden rounded-[1.7rem] border border-black/10 bg-white shadow-[0_8px_30px_rgba(53,45,36,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_38px_rgba(53,45,36,0.12)]"
               data-testid={`collection-card-${index}`}
             >

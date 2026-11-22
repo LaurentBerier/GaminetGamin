@@ -54,3 +54,21 @@ Tote and mug prices are collection proposals; the website presents them as such.
 The main shop and standalone voting site keep their existing items and campaign
 settings when the V3 extension is merged. Do not replace one site's older catalog
 with the other site's catalog: their prior collections differ.
+
+## Grouped products and colour choices
+
+The storefront groups active records by `designId` and `garment.id`. Each group
+has a shareable product page with a colour selector. Vote IDs remain per colour,
+so existing ballots and colour preferences survive regrouping. Related products
+show the same illustration on other garments first, then other drawings in the
+same theme. Product links use `?product=…&color=…`; old `?item=…` links still work.
+
+Reviewed second-colour mockups, their approved-master checksums, and reusable
+templates are recorded in `Designs/ColorChoices_output`. From this main checkout,
+run `python3 scripts/sync_color_choices.py --source-root /absolute/path/to/ColorChoices_output
+--voting-site /absolute/path/to/the/voting/site` on one line. The export validates
+the complete review manifests before copying optimized images to both sites.
+It preserves each campaign and asserts at least two colours per product.
+
+The portable `collections/zz-color-choices.json` extension is applied after V3
+when rebuilding either catalog. Do not replace ballot IDs or campaign settings.

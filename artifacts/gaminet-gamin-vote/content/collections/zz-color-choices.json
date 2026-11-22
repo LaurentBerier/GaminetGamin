@@ -1,0 +1,3421 @@
+{
+  "mode": "item-variants",
+  "items": [
+    {
+      "id": "colorchoices-breuvagegentilglace-hoodie-bright-teal",
+      "designId": "BreuvageGentilGlace",
+      "title": "Le Frappé Joyeux",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-breuvagegentilglace-hoodie-bright-teal-59ade60f11.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-breuvagegentilglace-hoodie-bright-teal.png",
+        "checksum": "59ade60f116c64b3",
+        "artworkChecksum": "0cb8fb48ca132867",
+        "parentItemId": "classic-breuvagegentilglace-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6163-tshirt-hot-pink",
+      "designId": "IMG_6163",
+      "title": "Les Copains des Étoiles",
+      "sectionId": "classics",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6163-tshirt-hot-pink-192dc65b60.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6163-tshirt-hot-pink.png",
+        "checksum": "192dc65b60484696",
+        "artworkChecksum": "83ff2157b357a281",
+        "parentItemId": "classic-img-6163-tshirt-navy",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6166-crewneck-cobalt-blue",
+      "designId": "IMG_6166",
+      "title": "Le Flatuleur Mental",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6166-crewneck-cobalt-blue-168bc6dd73.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6166-crewneck-cobalt-blue.png",
+        "checksum": "168bc6dd73c2d048",
+        "artworkChecksum": "4584c870c2397209",
+        "parentItemId": "classic-img-6166-crewneck-grey",
+        "method": "approved-art-template-composite"
+      },
+      "render": {
+        "variant": "custom-print",
+        "printBoxPx": "365x385",
+        "centerPx": "627x520"
+      }
+    },
+    {
+      "id": "colorchoices-img-6173-hoodie-bright-teal",
+      "designId": "IMG_6173",
+      "title": "Le Chalet",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6173-hoodie-bright-teal-19e30abfc8.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6173-hoodie-bright-teal.png",
+        "checksum": "19e30abfc89a42f8",
+        "artworkChecksum": "93d189e40c019e70",
+        "parentItemId": "classic-img-6173-hoodie-black",
+        "method": "approved-art-template-composite"
+      },
+      "render": {
+        "variant": "custom-print",
+        "printBoxPx": "250x215",
+        "centerPx": "627x505"
+      }
+    },
+    {
+      "id": "colorchoices-img-6211-longsleeve-coral-red",
+      "designId": "IMG_6211",
+      "title": "Zoé et le Chat-Ramen",
+      "sectionId": "classics",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "coral-red",
+        "hex": "#f05555",
+        "label": {
+          "fr": "Rouge corail",
+          "en": "Coral red"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6211-longsleeve-coral-red-54f650a0d3.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6211-longsleeve-coral-red.png",
+        "checksum": "54f650a0d30ee122",
+        "artworkChecksum": "cf99a88b6fc9cd83",
+        "parentItemId": "classic-img-6211-longsleeve-green",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6235-tshirt-hot-pink",
+      "designId": "IMG_6235",
+      "title": "Le Chat aux Grands Yeux",
+      "sectionId": "classics",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6235-tshirt-hot-pink-43be4a8fe8.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6235-tshirt-hot-pink.png",
+        "checksum": "43be4a8fe85d9d04",
+        "artworkChecksum": "0e2bf6026fff9ccc",
+        "parentItemId": "classic-img-6235-tshirt-navy",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6284-crewneck-cobalt-blue",
+      "designId": "IMG_6284",
+      "title": "Gros Toudou de Mauvaise Humeur",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6284-crewneck-cobalt-blue-e46fdd473c.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6284-crewneck-cobalt-blue.png",
+        "checksum": "e46fdd473c05cd8c",
+        "artworkChecksum": "5c0db58703497a99",
+        "parentItemId": "classic-img-6284-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6301-crewneck-cobalt-blue",
+      "designId": "IMG_6301",
+      "title": "La Carotte Assise",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6301-crewneck-cobalt-blue-96c9777847.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6301-crewneck-cobalt-blue.png",
+        "checksum": "96c9777847b567e0",
+        "artworkChecksum": "222f7f42691debe1",
+        "parentItemId": "classic-img-6301-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6328-crewneck-cobalt-blue",
+      "designId": "IMG_6328",
+      "title": "Le Roi Haricot",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6328-crewneck-cobalt-blue-250856eaa2.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6328-crewneck-cobalt-blue.png",
+        "checksum": "250856eaa28ef87f",
+        "artworkChecksum": "56f8e0674ae2f4d8",
+        "parentItemId": "classic-img-6328-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6357-crewneck-cobalt-blue",
+      "designId": "IMG_6357",
+      "title": "Les Deux Copains",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6357-crewneck-cobalt-blue-1d21aacc00.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6357-crewneck-cobalt-blue.png",
+        "checksum": "1d21aacc00c36d05",
+        "artworkChecksum": "21c8f2c5855f2e71",
+        "parentItemId": "classic-img-6357-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6504-hoodie-bright-teal",
+      "designId": "IMG_6504",
+      "title": "Monsieur Tartine",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6504-hoodie-bright-teal-f71cf694c4.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6504-hoodie-bright-teal.png",
+        "checksum": "f71cf694c4f031ad",
+        "artworkChecksum": "78845fd33b5ac227",
+        "parentItemId": "classic-img-6504-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6549-longsleeve-coral-red",
+      "designId": "IMG_6549",
+      "title": "Le Garçon au T-Shirt Monstre",
+      "sectionId": "classics",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "coral-red",
+        "hex": "#f05555",
+        "label": {
+          "fr": "Rouge corail",
+          "en": "Coral red"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6549-longsleeve-coral-red-e60f29e126.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6549-longsleeve-coral-red.png",
+        "checksum": "e60f29e126ce914a",
+        "artworkChecksum": "e4854e8b8499051a",
+        "parentItemId": "classic-img-6549-longsleeve-green",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6554-tshirt-hot-pink",
+      "designId": "IMG_6554",
+      "title": "Lapin Flamme",
+      "sectionId": "classics",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6554-tshirt-hot-pink-f0c58073f3.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6554-tshirt-hot-pink.png",
+        "checksum": "f0c58073f322ce31",
+        "artworkChecksum": "8c63f6e791c4e49c",
+        "parentItemId": "classic-img-6554-tshirt-navy",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6556-hoodie-bright-teal",
+      "designId": "IMG_6556",
+      "title": "Le Crabe qui Salue",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6556-hoodie-bright-teal-f38edefc0d.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6556-hoodie-bright-teal.png",
+        "checksum": "f38edefc0d7c47cc",
+        "artworkChecksum": "ba3dee2b643cdf9a",
+        "parentItemId": "classic-img-6556-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6750-longsleeve-navy",
+      "designId": "IMG_6750",
+      "title": "Pout le Télé-Copain",
+      "sectionId": "classics",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "navy",
+        "hex": "#243750",
+        "label": {
+          "fr": "Bleu marine",
+          "en": "Navy"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6750-longsleeve-navy-fbbda8a554.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6750-longsleeve-navy.png",
+        "checksum": "fbbda8a55421b25b",
+        "artworkChecksum": "796a7849afdd59a3",
+        "parentItemId": "classic-img-6750-longsleeve-green",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6773-crewneck-cobalt-blue",
+      "designId": "IMG_6773",
+      "title": "La Pirate et la Commode",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6773-crewneck-cobalt-blue-33716db545.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6773-crewneck-cobalt-blue.png",
+        "checksum": "33716db5459bd157",
+        "artworkChecksum": "3a092a476e4d072b",
+        "parentItemId": "classic-img-6773-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6799-crewneck-cobalt-blue",
+      "designId": "IMG_6799",
+      "title": "Le Bagel Méchant",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6799-crewneck-cobalt-blue-0b5fefdd90.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6799-crewneck-cobalt-blue.png",
+        "checksum": "0b5fefdd9064d189",
+        "artworkChecksum": "cc85f3563487561b",
+        "parentItemId": "classic-img-6799-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260805-140312-hoodie-electric-purple",
+      "designId": "V2_20260805_140312",
+      "title": "Le Vilain Hérissé",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "electric-purple",
+        "hex": "#7034ba",
+        "label": {
+          "fr": "Pourpre électrique",
+          "en": "Electric purple"
+        }
+      },
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Microbe ennemi",
+        "en": "Enemy microbe"
+      },
+      "image": "/catalog/colorchoices-v2-20260805-140312-hoodie-electric-purple-de3ad4c565.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260805-140312-hoodie-electric-purple.png",
+        "checksum": "de3ad4c565274d62",
+        "artworkChecksum": "63e2ef2ec1a8349d",
+        "parentItemId": "classic-v2-20260805-140312-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142146-hoodie-bright-teal",
+      "designId": "V2_20260823_142146",
+      "title": "Sushi Double",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142146-hoodie-bright-teal-e4939c8d11.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142146-hoodie-bright-teal.png",
+        "checksum": "e4939c8d1170722f",
+        "artworkChecksum": "5ebb4549dce42d0d",
+        "parentItemId": "classic-v2-20260823-142146-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142638-crewneck-grey",
+      "designId": "V2_20260823_142638",
+      "title": "Le Bol Cosmique",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck sweatshirt"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "grey",
+        "hex": "#b7b7b4",
+        "label": {
+          "fr": "Gris chiné",
+          "en": "Heather grey"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142638-crewneck-grey-253372015a.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142638-crewneck-grey.png",
+        "checksum": "253372015a23e890",
+        "artworkChecksum": "8ce3466435a9cc29",
+        "parentItemId": "alternate-vivid-v2-20260823-142638-crewneck-sweatshirt-cobalt-blue",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142700-hoodie-bright-teal",
+      "designId": "V2_20260823_142700",
+      "title": "Bang Bang et le Lapin Géant",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142700-hoodie-bright-teal-c9a327362f.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142700-hoodie-bright-teal.png",
+        "checksum": "c9a327362fd10828",
+        "artworkChecksum": "1f79aaf4d478c97f",
+        "parentItemId": "classic-v2-20260823-142700-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142759-crewneck-grey",
+      "designId": "V2_20260823_142759",
+      "title": "Axolotl Solo Électrique",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck sweatshirt"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "grey",
+        "hex": "#b7b7b4",
+        "label": {
+          "fr": "Gris chiné",
+          "en": "Heather grey"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142759-crewneck-grey-4e6ad2f030.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142759-crewneck-grey.png",
+        "checksum": "4e6ad2f030027a5e",
+        "artworkChecksum": "323ae21e0babc774",
+        "parentItemId": "alternate-vivid-v2-20260823-142759-crewneck-sweatshirt-tangerine-orange",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142806-hoodie-bright-teal",
+      "designId": "V2_20260823_142806",
+      "title": "Bzzz au Synthé",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142806-hoodie-bright-teal-6f901462ff.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142806-hoodie-bright-teal.png",
+        "checksum": "6f901462ffefbd3f",
+        "artworkChecksum": "36e27713bc92680b",
+        "parentItemId": "classic-v2-20260823-142806-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-bouboule-hoodie-bright-teal",
+      "designId": "V3_Bouboule",
+      "title": "Bouboule",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-bouboule-hoodie-bright-teal-6a292bea5d.webp",
+      "artworkImage": "/designs/v3-bouboule-eed616f891.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-bouboule-hoodie-bright-teal.png",
+        "checksum": "6a292bea5d384e7e",
+        "artworkChecksum": "eed616f8917afffa",
+        "parentItemId": "v3-bouboule-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-chatpsycho-hoodie-black",
+      "designId": "V3_ChatPsycho",
+      "title": "Chat Psycho",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "black",
+        "hex": "#20201f",
+        "label": {
+          "fr": "Noir",
+          "en": "Black"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-chatpsycho-hoodie-black-1657229838.webp",
+      "artworkImage": "/designs/v3-chatpsycho-699e135abd.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-chatpsycho-hoodie-black.png",
+        "checksum": "1657229838f71ad2",
+        "artworkChecksum": "699e135abdde621f",
+        "parentItemId": "v3-chatpsycho-hoodie-bright-teal",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-cornetmulti-tshirt-navy",
+      "designId": "V3_CornetMulti",
+      "title": "Le Cornet des chats",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "navy",
+        "hex": "#243750",
+        "label": {
+          "fr": "Bleu marine",
+          "en": "Navy"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-cornetmulti-tshirt-navy-4acff9115f.webp",
+      "artworkImage": "/designs/v3-cornetmulti-144b55b49a.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-cornetmulti-tshirt-navy.png",
+        "checksum": "4acff9115ff2cb43",
+        "artworkChecksum": "144b55b49ae4dbf4",
+        "parentItemId": "v3-cornetmulti-tshirt-electric-violet",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-guybrule-hoodie-bright-teal",
+      "designId": "V3_GuyBrule",
+      "title": "Guy Brûle",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-guybrule-hoodie-bright-teal-9b12227ed8.webp",
+      "artworkImage": "/designs/v3-guybrule-04372b8c62.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-guybrule-hoodie-bright-teal.png",
+        "checksum": "9b12227ed82c8b61",
+        "artworkChecksum": "04372b8c62408159",
+        "parentItemId": "v3-guybrule-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-hotdog-furieux-tshirt-hot-pink",
+      "designId": "V3_HotDog_Furieux",
+      "title": "Le Hot-Dog furieux",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-hotdog-furieux-tshirt-hot-pink-1ee04f2b33.webp",
+      "artworkImage": "/designs/v3-hotdog-furieux-44613d46c6.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-hotdog-furieux-tshirt-hot-pink.png",
+        "checksum": "1ee04f2b333dc5bd",
+        "artworkChecksum": "44613d46c6a10cd8",
+        "parentItemId": "v3-hotdog-furieux-tshirt-navy",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-montru-hoodie-electric-purple",
+      "designId": "V3_Montru",
+      "title": "Montru",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "electric-purple",
+        "hex": "#7034ba",
+        "label": {
+          "fr": "Pourpre électrique",
+          "en": "Electric purple"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-montru-hoodie-electric-purple-e2d950f23d.webp",
+      "artworkImage": "/designs/v3-montru-bdc5116dfc.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-montru-hoodie-electric-purple.png",
+        "checksum": "e2d950f23d884cbe",
+        "artworkChecksum": "bdc5116dfc0ec8e7",
+        "parentItemId": "v3-montru-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-chat-tshirt-navy",
+      "designId": "V3_chat",
+      "title": "Le Chat violet",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "navy",
+        "hex": "#243750",
+        "label": {
+          "fr": "Bleu marine",
+          "en": "Navy"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-chat-tshirt-navy-40e1b37cd4.webp",
+      "artworkImage": "/designs/v3-chat-68d95e563b.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-chat-tshirt-navy.png",
+        "checksum": "40e1b37cd405afec",
+        "artworkChecksum": "68d95e563b558d47",
+        "parentItemId": "v3-chat-tshirt-hot-pink",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-pomi-longsleeve-sunflower-yellow",
+      "designId": "V3_pomi",
+      "title": "Pomi Pom",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "sunflower-yellow",
+        "hex": "#ffc928",
+        "label": {
+          "fr": "Jaune tournesol",
+          "en": "Sunflower yellow"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-pomi-longsleeve-sunflower-yellow-e14f4e941c.webp",
+      "artworkImage": "/designs/v3-pomi-36a5dba979.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-pomi-longsleeve-sunflower-yellow.png",
+        "checksum": "e14f4e941c5073b6",
+        "artworkChecksum": "36a5dba97933f163",
+        "parentItemId": "v3-pomi-longsleeve-green",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6164-longsleeve-coral-red",
+      "designId": "IMG_6164",
+      "title": "Clovis aux Ailes Folles",
+      "sectionId": "classics",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "coral-red",
+        "hex": "#f05555",
+        "label": {
+          "fr": "Rouge corail",
+          "en": "Coral red"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6164-longsleeve-coral-red-3b234e39fe.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6164-longsleeve-coral-red.png",
+        "checksum": "3b234e39fe0c82ad",
+        "artworkChecksum": "a1476db0c12bb8bf",
+        "parentItemId": "classic-img-6164-longsleeve-green",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6166-hoodie-black",
+      "designId": "IMG_6166",
+      "title": "Le Flatuleur Mental",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "black",
+        "hex": "#20201f",
+        "label": {
+          "fr": "Noir",
+          "en": "Black"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6166-hoodie-black-baa0c018e1.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6166-hoodie-black.png",
+        "checksum": "baa0c018e10f31c4",
+        "artworkChecksum": "4584c870c2397209",
+        "parentItemId": "primary-vivid-img-6166-hoodie-electric-purple",
+        "method": "approved-art-template-composite"
+      },
+      "render": {
+        "variant": "custom-print",
+        "printBoxPx": "270x300",
+        "centerPx": "627x500"
+      }
+    },
+    {
+      "id": "colorchoices-img-6175-crewneck-cobalt-blue",
+      "designId": "IMG_6175",
+      "title": "Le Gang des Bêtes",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6175-crewneck-cobalt-blue-62dcf9f28a.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6175-crewneck-cobalt-blue.png",
+        "checksum": "62dcf9f28a1384e0",
+        "artworkChecksum": "1622888921c71b41",
+        "parentItemId": "classic-img-6175-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6212-hoodie-bright-teal",
+      "designId": "IMG_6212",
+      "title": "Les Montagnes Copines",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6212-hoodie-bright-teal-ed4dccb020.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6212-hoodie-bright-teal.png",
+        "checksum": "ed4dccb02059f144",
+        "artworkChecksum": "661a2de9ce2022de",
+        "parentItemId": "classic-img-6212-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6282-crewneck-cobalt-blue",
+      "designId": "IMG_6282",
+      "title": "Clody-Clod",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6282-crewneck-cobalt-blue-4c85e047ff.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6282-crewneck-cobalt-blue.png",
+        "checksum": "4c85e047ff33bb1e",
+        "artworkChecksum": "f01921a44d82f025",
+        "parentItemId": "classic-img-6282-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6285-longsleeve-coral-red",
+      "designId": "IMG_6285",
+      "title": "Chat-Disco",
+      "sectionId": "classics",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "coral-red",
+        "hex": "#f05555",
+        "label": {
+          "fr": "Rouge corail",
+          "en": "Coral red"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6285-longsleeve-coral-red-4ada28f859.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6285-longsleeve-coral-red.png",
+        "checksum": "4ada28f859d8da3c",
+        "artworkChecksum": "e0e31b968397cf32",
+        "parentItemId": "classic-img-6285-longsleeve-green",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6310-crewneck-tangerine-orange",
+      "designId": "IMG_6310",
+      "title": "FlatuFleur Patoune",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "tangerine-orange",
+        "hex": "#fa7218",
+        "label": {
+          "fr": "Orange tangerine",
+          "en": "Tangerine orange"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6310-crewneck-tangerine-orange-324a8eb77d.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6310-crewneck-tangerine-orange.png",
+        "checksum": "324a8eb77df80f6e",
+        "artworkChecksum": "7e0f5971f53dd101",
+        "parentItemId": "classic-img-6310-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6328-tshirt-navy",
+      "designId": "IMG_6328",
+      "title": "Le Roi Haricot",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "navy",
+        "hex": "#243750",
+        "label": {
+          "fr": "Bleu marine",
+          "en": "Navy"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6328-tshirt-navy-fcb94f0379.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6328-tshirt-navy.png",
+        "checksum": "fcb94f037947e67b",
+        "artworkChecksum": "56f8e0674ae2f4d8",
+        "parentItemId": "alternate-vivid-img-6328-t-shirt-hot-pink",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6443-tshirt-hot-pink",
+      "designId": "IMG_6443",
+      "title": "Grenouille Grand Bras",
+      "sectionId": "classics",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6443-tshirt-hot-pink-3342f96e6c.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6443-tshirt-hot-pink.png",
+        "checksum": "3342f96e6c7ac3be",
+        "artworkChecksum": "eaeefc82d1104fee",
+        "parentItemId": "classic-img-6443-tshirt-navy",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6505-crewneck-cobalt-blue",
+      "designId": "IMG_6505",
+      "title": "Le Chef Moustache",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6505-crewneck-cobalt-blue-55bb4f49bf.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6505-crewneck-cobalt-blue.png",
+        "checksum": "55bb4f49bfed52ff",
+        "artworkChecksum": "5246df73c2fcdb87",
+        "parentItemId": "classic-img-6505-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6550-hoodie-bright-teal",
+      "designId": "IMG_6550",
+      "title": "Le Voyageur au Petit Sac",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6550-hoodie-bright-teal-9d3c9d628a.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6550-hoodie-bright-teal.png",
+        "checksum": "9d3c9d628a5d6213",
+        "artworkChecksum": "a364c85ff421eeb0",
+        "parentItemId": "classic-img-6550-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6739-crewneck-cobalt-blue",
+      "designId": "IMG_6739",
+      "title": "Le Chat à Lunettes",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6739-crewneck-cobalt-blue-cfdbd4127c.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6739-crewneck-cobalt-blue.png",
+        "checksum": "cfdbd4127c789bfb",
+        "artworkChecksum": "583fd53322c01da2",
+        "parentItemId": "classic-img-6739-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6751-hoodie-bright-teal",
+      "designId": "IMG_6751",
+      "title": "Glaci le Cyclope",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6751-hoodie-bright-teal-6fc67b31ac.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6751-hoodie-bright-teal.png",
+        "checksum": "6fc67b31ac058fb8",
+        "artworkChecksum": "658f88688da68a4e",
+        "parentItemId": "classic-img-6751-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6782-crewneck-cobalt-blue",
+      "designId": "IMG_6782",
+      "title": "Sandwich-Zilla",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6782-crewneck-cobalt-blue-da1dfbc804.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6782-crewneck-cobalt-blue.png",
+        "checksum": "da1dfbc8041ebb81",
+        "artworkChecksum": "543a8e9b8982b60a",
+        "parentItemId": "classic-img-6782-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6799-hoodie-black",
+      "designId": "IMG_6799",
+      "title": "Le Bagel Méchant",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "black",
+        "hex": "#20201f",
+        "label": {
+          "fr": "Noir",
+          "en": "Black"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6799-hoodie-black-637cd32d6e.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6799-hoodie-black.png",
+        "checksum": "637cd32d6e57505c",
+        "artworkChecksum": "cc85f3563487561b",
+        "parentItemId": "primary-vivid-img-6799-hoodie-bright-teal",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260805-140256-hoodie-black",
+      "designId": "V2_20260805_140256",
+      "title": "Le Microbe Ébahi",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "black",
+        "hex": "#20201f",
+        "label": {
+          "fr": "Noir",
+          "en": "Black"
+        }
+      },
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Microbe surpris",
+        "en": "Surprised microbe"
+      },
+      "image": "/catalog/colorchoices-v2-20260805-140256-hoodie-black-8bae1a7cd7.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260805-140256-hoodie-black.png",
+        "checksum": "8bae1a7cd7aa36f6",
+        "artworkChecksum": "dad5936cdb97091c",
+        "parentItemId": "alternate-vivid-v2-20260805-140256-hoodie-bright-teal",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260805-140334-tshirt-hot-pink",
+      "designId": "V2_20260805_140334",
+      "title": "Monsieur Citron",
+      "sectionId": "classics",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Gentil allié citron",
+        "en": "Friendly lemon ally"
+      },
+      "image": "/catalog/colorchoices-v2-20260805-140334-tshirt-hot-pink-6d9252429a.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260805-140334-tshirt-hot-pink.png",
+        "checksum": "6d9252429aa7003e",
+        "artworkChecksum": "d8d115b139f4d33c",
+        "parentItemId": "classic-v2-20260805-140334-tshirt-navy",
+        "method": "approved-art-template-composite"
+      },
+      "render": {
+        "variant": "custom-print",
+        "printBoxPx": "280x305",
+        "centerPx": "627x520"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142456-crewneck-cobalt-blue",
+      "designId": "V2_20260823_142456",
+      "title": "La Pizza Zinzin",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142456-crewneck-cobalt-blue-a299936a80.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142456-crewneck-cobalt-blue.png",
+        "checksum": "a299936a8071cb23",
+        "artworkChecksum": "8df051a51261b1b6",
+        "parentItemId": "classic-v2-20260823-142456-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142638-longsleeve-coral-red",
+      "designId": "V2_20260823_142638",
+      "title": "Le Bol Cosmique",
+      "sectionId": "classics",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "coral-red",
+        "hex": "#f05555",
+        "label": {
+          "fr": "Rouge corail",
+          "en": "Coral red"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142638-longsleeve-coral-red-66eda24836.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142638-longsleeve-coral-red.png",
+        "checksum": "66eda24836cfdb75",
+        "artworkChecksum": "8ce3466435a9cc29",
+        "parentItemId": "classic-v2-20260823-142638-longsleeve-green",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142700-longsleeve-green",
+      "designId": "V2_20260823_142700",
+      "title": "Bang Bang et le Lapin Géant",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "green",
+        "hex": "#455646",
+        "label": {
+          "fr": "Vert forêt",
+          "en": "Forest green"
+        }
+      },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142700-longsleeve-green-be1e800b21.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142700-longsleeve-green.png",
+        "checksum": "be1e800b21413144",
+        "artworkChecksum": "1f79aaf4d478c97f",
+        "parentItemId": "alternate-vivid-v2-20260823-142700-long-sleeve-shirt-sunflower-yellow",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142759-hoodie-black",
+      "designId": "V2_20260823_142759",
+      "title": "Axolotl Solo Électrique",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "black",
+        "hex": "#20201f",
+        "label": {
+          "fr": "Noir",
+          "en": "Black"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142759-hoodie-black-fec2ce00db.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142759-hoodie-black.png",
+        "checksum": "fec2ce00dbcf8c32",
+        "artworkChecksum": "323ae21e0babc774",
+        "parentItemId": "primary-vivid-v2-20260823-142759-hoodie-bright-teal",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142814-longsleeve-green",
+      "designId": "V2_20260823_142814",
+      "title": "Dino Tempo",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "green",
+        "hex": "#455646",
+        "label": {
+          "fr": "Vert forêt",
+          "en": "Forest green"
+        }
+      },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142814-longsleeve-green-bbf4584244.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142814-longsleeve-green.png",
+        "checksum": "bbf458424407a9f8",
+        "artworkChecksum": "96c0dc0ac6373a98",
+        "parentItemId": "primary-vivid-v2-20260823-142814-long-sleeve-shirt-sunflower-yellow",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-bouleetchat-crewneck-tangerine-orange",
+      "designId": "V3_BouleEtChat",
+      "title": "Boule et Chat",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "tangerine-orange",
+        "hex": "#fa7218",
+        "label": {
+          "fr": "Orange tangerine",
+          "en": "Tangerine orange"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-bouleetchat-crewneck-tangerine-orange-a79a63c1e1.webp",
+      "artworkImage": "/designs/v3-bouleetchat-1503a79d4a.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-bouleetchat-crewneck-tangerine-orange.png",
+        "checksum": "a79a63c1e1ea4959",
+        "artworkChecksum": "1503a79d4a2f6d23",
+        "parentItemId": "v3-bouleetchat-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-chiensaucissepomme-broco-bili-tshirt-hot-pink",
+      "designId": "V3_ChienSaucissePomme_Broco_Bili",
+      "title": "Le Chien Saucisse-Pomme",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-chiensaucissepomme-broco-bili-tshirt-hot-pink-8d215426e1.webp",
+      "artworkImage": "/designs/v3-chiensaucissepomme-broco-bili-7a21a9f89e.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-chiensaucissepomme-broco-bili-tshirt-hot-pink.png",
+        "checksum": "8d215426e1e758e4",
+        "artworkChecksum": "7a21a9f89e8318df",
+        "parentItemId": "v3-chiensaucissepomme-broco-bili-tshirt-navy",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-elcornet-longsleeve-coral-red",
+      "designId": "V3_ElCornet",
+      "title": "El Cornet",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "coral-red",
+        "hex": "#f05555",
+        "label": {
+          "fr": "Rouge corail",
+          "en": "Coral red"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-elcornet-longsleeve-coral-red-ac621f74cb.webp",
+      "artworkImage": "/designs/v3-elcornet-4867945606.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-elcornet-longsleeve-coral-red.png",
+        "checksum": "ac621f74cb75dfae",
+        "artworkChecksum": "48679456062dee05",
+        "parentItemId": "v3-elcornet-longsleeve-green",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-harryhearth-tshirt-navy",
+      "designId": "V3_HarryHearth",
+      "title": "Harry et le cœur",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "navy",
+        "hex": "#243750",
+        "label": {
+          "fr": "Bleu marine",
+          "en": "Navy"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-harryhearth-tshirt-navy-4525904bfd.webp",
+      "artworkImage": "/designs/v3-harryhearth-8d97ee348b.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-harryhearth-tshirt-navy.png",
+        "checksum": "4525904bfd635283",
+        "artworkChecksum": "8d97ee348bd1bea3",
+        "parentItemId": "v3-harryhearth-tshirt-electric-violet",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-lapinou-crewneck-cobalt-blue",
+      "designId": "V3_Lapinou",
+      "title": "Lapinou",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-lapinou-crewneck-cobalt-blue-fd3b7c4a1b.webp",
+      "artworkImage": "/designs/v3-lapinou-49df9c56b9.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-lapinou-crewneck-cobalt-blue.png",
+        "checksum": "fd3b7c4a1b0b6318",
+        "artworkChecksum": "49df9c56b9fc7a17",
+        "parentItemId": "v3-lapinou-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-oeufsouriant-tshirt-hot-pink",
+      "designId": "V3_OeufSouriant",
+      "title": "L’Œuf souriant",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-oeufsouriant-tshirt-hot-pink-76c14ef9e0.webp",
+      "artworkImage": "/designs/v3-oeufsouriant-8e9285529b.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-oeufsouriant-tshirt-hot-pink.png",
+        "checksum": "76c14ef9e0d5d5da",
+        "artworkChecksum": "8e9285529b839ab1",
+        "parentItemId": "v3-oeufsouriant-tshirt-navy",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-garry-longsleeve-coral-red",
+      "designId": "V3_garry",
+      "title": "Garry sur ses pattes",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "coral-red",
+        "hex": "#f05555",
+        "label": {
+          "fr": "Rouge corail",
+          "en": "Coral red"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-garry-longsleeve-coral-red-2048012dbc.webp",
+      "artworkImage": "/designs/v3-garry-781dadf01f.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-garry-longsleeve-coral-red.png",
+        "checksum": "2048012dbc416af3",
+        "artworkChecksum": "781dadf01fba6fea",
+        "parentItemId": "v3-garry-longsleeve-green",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-0103-crewneck-cobalt-blue",
+      "designId": "IMG_0103",
+      "title": "Nounours Bonjour",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-0103-crewneck-cobalt-blue-53cb78ec49.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-0103-crewneck-cobalt-blue.png",
+        "checksum": "53cb78ec4914c4e5",
+        "artworkChecksum": "c69ed5b69af902ef",
+        "parentItemId": "classic-img-0103-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6165-hoodie-bright-teal",
+      "designId": "IMG_6165",
+      "title": "La Fleur de l'Étrange",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6165-hoodie-bright-teal-82adc721ca.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6165-hoodie-bright-teal.png",
+        "checksum": "82adc721cac316f4",
+        "artworkChecksum": "9b61cfe46d21813e",
+        "parentItemId": "classic-img-6165-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6169-crewneck-tangerine-orange",
+      "designId": "IMG_6169",
+      "title": "Le Plongeur Farceur",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "tangerine-orange",
+        "hex": "#fa7218",
+        "label": {
+          "fr": "Orange tangerine",
+          "en": "Tangerine orange"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6169-crewneck-tangerine-orange-a5f8bd7256.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6169-crewneck-tangerine-orange.png",
+        "checksum": "a5f8bd72568cd079",
+        "artworkChecksum": "2e2ce59aeade9ee4",
+        "parentItemId": "classic-img-6169-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6176-tshirt-hot-pink",
+      "designId": "IMG_6176",
+      "title": "Monsieur Grandes Oreilles",
+      "sectionId": "classics",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6176-tshirt-hot-pink-259d35e428.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6176-tshirt-hot-pink.png",
+        "checksum": "259d35e4282f6b78",
+        "artworkChecksum": "7ba8642c08a0a65a",
+        "parentItemId": "classic-img-6176-tshirt-navy",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6218-crewneck-cobalt-blue",
+      "designId": "IMG_6218",
+      "title": "Chaise Haricot",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6218-crewneck-cobalt-blue-f53dff91c0.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6218-crewneck-cobalt-blue.png",
+        "checksum": "f53dff91c0190454",
+        "artworkChecksum": "3ac841245bb401fa",
+        "parentItemId": "classic-img-6218-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6283-2-crewneck-cobalt-blue",
+      "designId": "IMG_6283 2",
+      "title": "La Boutique des Canards",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6283-2-crewneck-cobalt-blue-d09c07a2c5.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6283-2-crewneck-cobalt-blue.png",
+        "checksum": "d09c07a2c537432d",
+        "artworkChecksum": "bcb9536aa3ef6f25",
+        "parentItemId": "classic-img-6283-2-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6299-hoodie-bright-teal",
+      "designId": "IMG_6299",
+      "title": "L'Oiseau aux Yeux Bleus",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6299-hoodie-bright-teal-8cdea528af.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6299-hoodie-bright-teal.png",
+        "checksum": "8cdea528af7f5e19",
+        "artworkChecksum": "83dd0433e0962c7b",
+        "parentItemId": "classic-img-6299-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6336-hoodie-bright-teal",
+      "designId": "IMG_6336",
+      "title": "Le Dormeur au Bonnet Bleu",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6336-hoodie-bright-teal-a4b73a8428.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6336-hoodie-bright-teal.png",
+        "checksum": "a4b73a84289084b8",
+        "artworkChecksum": "c434a6a7d362ca9d",
+        "parentItemId": "classic-img-6336-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6504-crewneck-grey",
+      "designId": "IMG_6504",
+      "title": "Monsieur Tartine",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck sweatshirt"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "grey",
+        "hex": "#b7b7b4",
+        "label": {
+          "fr": "Gris chiné",
+          "en": "Heather grey"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6504-crewneck-grey-4e721f552f.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6504-crewneck-grey.png",
+        "checksum": "4e721f552fc74dbd",
+        "artworkChecksum": "78845fd33b5ac227",
+        "parentItemId": "primary-vivid-img-6504-crewneck-sweatshirt-cobalt-blue",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6508-tshirt-hot-pink",
+      "designId": "IMG_6508",
+      "title": "Jamais Arrêt!",
+      "sectionId": "classics",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6508-tshirt-hot-pink-42b6fb4c6e.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6508-tshirt-hot-pink.png",
+        "checksum": "42b6fb4c6e434002",
+        "artworkChecksum": "a6974eafd93e5259",
+        "parentItemId": "classic-img-6508-tshirt-navy",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6554-longsleeve-green",
+      "designId": "IMG_6554",
+      "title": "Lapin Flamme",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "green",
+        "hex": "#455646",
+        "label": {
+          "fr": "Vert forêt",
+          "en": "Forest green"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6554-longsleeve-green-0fb60b246a.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6554-longsleeve-green.png",
+        "checksum": "0fb60b246a42092b",
+        "artworkChecksum": "8c63f6e791c4e49c",
+        "parentItemId": "alternate-vivid-img-6554-long-sleeve-shirt-coral-red",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6555-longsleeve-sunflower-yellow",
+      "designId": "IMG_6555",
+      "title": "Le Crabe Timide",
+      "sectionId": "classics",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "sunflower-yellow",
+        "hex": "#ffc928",
+        "label": {
+          "fr": "Jaune tournesol",
+          "en": "Sunflower yellow"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6555-longsleeve-sunflower-yellow-4f7675e731.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6555-longsleeve-sunflower-yellow.png",
+        "checksum": "4f7675e731cfd678",
+        "artworkChecksum": "6061652bd85e996b",
+        "parentItemId": "classic-img-6555-longsleeve-green",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6740-tshirt-hot-pink",
+      "designId": "IMG_6740",
+      "title": "Le Roi Monteillier",
+      "sectionId": "classics",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6740-tshirt-hot-pink-74427a2452.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6740-tshirt-hot-pink.png",
+        "checksum": "74427a2452da371d",
+        "artworkChecksum": "a6fc4107a5d25f0b",
+        "parentItemId": "classic-img-6740-tshirt-navy",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6772-crewneck-tangerine-orange",
+      "designId": "IMG_6772",
+      "title": "Le Pirate et la Commode",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "tangerine-orange",
+        "hex": "#fa7218",
+        "label": {
+          "fr": "Orange tangerine",
+          "en": "Tangerine orange"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6772-crewneck-tangerine-orange-61c4575781.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6772-crewneck-tangerine-orange.png",
+        "checksum": "61c45757819cc1c6",
+        "artworkChecksum": "d85411f87d2029cf",
+        "parentItemId": "classic-img-6772-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-img-6798-hoodie-bright-teal",
+      "designId": "IMG_6798",
+      "title": "Choux-Garou!",
+      "sectionId": "classics",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-img-6798-hoodie-bright-teal-8070bd7f92.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-img-6798-hoodie-bright-teal.png",
+        "checksum": "8070bd7f927312de",
+        "artworkChecksum": "930f8229a616534e",
+        "parentItemId": "classic-img-6798-hoodie-black",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260805-140243-tshirt-hot-pink",
+      "designId": "V2_20260805_140243",
+      "title": "Le Roi Patate",
+      "sectionId": "classics",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260805-140243-tshirt-hot-pink-2ef6a77cd4.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260805-140243-tshirt-hot-pink.png",
+        "checksum": "2ef6a77cd4be2b21",
+        "artworkChecksum": "ad3d7eec90031199",
+        "parentItemId": "classic-v2-20260805-140243-tshirt-navy",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260805-140256-longsleeve-coral-red",
+      "designId": "V2_20260805_140256",
+      "title": "Le Microbe Ébahi",
+      "sectionId": "classics",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "coral-red",
+        "hex": "#f05555",
+        "label": {
+          "fr": "Rouge corail",
+          "en": "Coral red"
+        }
+      },
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Microbe surpris",
+        "en": "Surprised microbe"
+      },
+      "image": "/catalog/colorchoices-v2-20260805-140256-longsleeve-coral-red-e1501c0abc.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260805-140256-longsleeve-coral-red.png",
+        "checksum": "e1501c0abcf56750",
+        "artworkChecksum": "dad5936cdb97091c",
+        "parentItemId": "classic-v2-20260805-140256-longsleeve-green",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260805-140342-tshirt-navy",
+      "designId": "V2_20260805_140342",
+      "title": "Wallie",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "navy",
+        "hex": "#243750",
+        "label": {
+          "fr": "Bleu marine",
+          "en": "Navy"
+        }
+      },
+      "themeId": "royaume-des-pepins",
+      "specialCollectionId": "royaume-des-pepins",
+      "collectionRole": {
+        "fr": "Personnage du jeu",
+        "en": "Game character"
+      },
+      "image": "/catalog/colorchoices-v2-20260805-140342-tshirt-navy-7821a46f3c.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260805-140342-tshirt-navy.png",
+        "checksum": "7821a46f3c7c30c2",
+        "artworkChecksum": "a4375fe47354fae2",
+        "parentItemId": "alternate-vivid-v2-20260805-140342-t-shirt-electric-violet",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142456-hoodie-black",
+      "designId": "V2_20260823_142456",
+      "title": "La Pizza Zinzin",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "black",
+        "hex": "#20201f",
+        "label": {
+          "fr": "Noir",
+          "en": "Black"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142456-hoodie-black-ed4ce16091.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142456-hoodie-black.png",
+        "checksum": "ed4ce160911967c0",
+        "artworkChecksum": "8df051a51261b1b6",
+        "parentItemId": "alternate-vivid-v2-20260823-142456-hoodie-electric-purple",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142700-crewneck-grey",
+      "designId": "V2_20260823_142700",
+      "title": "Bang Bang et le Lapin Géant",
+      "sectionId": "vivid",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck sweatshirt"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "grey",
+        "hex": "#b7b7b4",
+        "label": {
+          "fr": "Gris chiné",
+          "en": "Heather grey"
+        }
+      },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142700-crewneck-grey-fb109bd9c0.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142700-crewneck-grey.png",
+        "checksum": "fb109bd9c0f4f887",
+        "artworkChecksum": "1f79aaf4d478c97f",
+        "parentItemId": "primary-vivid-v2-20260823-142700-crewneck-sweatshirt-tangerine-orange",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142733-crewneck-cobalt-blue",
+      "designId": "V2_20260823_142733",
+      "title": "Les Copains Cosmiques",
+      "sectionId": "classics",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "musique-et-cosmos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142733-crewneck-cobalt-blue-876a98def0.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142733-crewneck-cobalt-blue.png",
+        "checksum": "876a98def06f3f68",
+        "artworkChecksum": "ac8c2fa8663283ff",
+        "parentItemId": "classic-v2-20260823-142733-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v2-20260823-142759-longsleeve-coral-red",
+      "designId": "V2_20260823_142759",
+      "title": "Axolotl Solo Électrique",
+      "sectionId": "classics",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "coral-red",
+        "hex": "#f05555",
+        "label": {
+          "fr": "Rouge corail",
+          "en": "Coral red"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": null,
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v2-20260823-142759-longsleeve-coral-red-7e7fd33da4.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v2-20260823-142759-longsleeve-coral-red.png",
+        "checksum": "7e7fd33da4e4ee7d",
+        "artworkChecksum": "323ae21e0babc774",
+        "parentItemId": "classic-v2-20260823-142759-longsleeve-green",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-bouboule-cap-cobalt-blue",
+      "designId": "V3_Bouboule",
+      "title": "Bouboule",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "cap",
+        "label": {
+          "fr": "Casquette",
+          "en": "Cap"
+        },
+        "price": 34.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-bouboule-cap-cobalt-blue-62d5a4c25b.webp",
+      "artworkImage": "/designs/v3-bouboule-eed616f891.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-bouboule-cap-cobalt-blue.png",
+        "checksum": "62d5a4c25b92f2f3",
+        "artworkChecksum": "eed616f8917afffa",
+        "parentItemId": "v3-bouboule-casquette-berry-purple",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-broco-bili-tshirt-hot-pink",
+      "designId": "V3_Broco_Bili",
+      "title": "Broco-Bili",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-broco-bili-tshirt-hot-pink-5fcdfb8eb2.webp",
+      "artworkImage": "/designs/v3-broco-bili-b30d08641d.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-broco-bili-tshirt-hot-pink.png",
+        "checksum": "5fcdfb8eb2cc72fe",
+        "artworkChecksum": "b30d08641d72d345",
+        "parentItemId": "v3-broco-bili-tshirt-navy",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-cinamonroll-crewneck-tangerine-orange",
+      "designId": "V3_CinamonRoll",
+      "title": "Cinamon roll",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "tangerine-orange",
+        "hex": "#fa7218",
+        "label": {
+          "fr": "Orange tangerine",
+          "en": "Tangerine orange"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-cinamonroll-crewneck-tangerine-orange-4ef6a4cfab.webp",
+      "artworkImage": "/designs/v3-cinamonroll-50dfd0f23c.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-cinamonroll-crewneck-tangerine-orange.png",
+        "checksum": "4ef6a4cfabc49785",
+        "artworkChecksum": "50dfd0f23c178a80",
+        "parentItemId": "v3-cinamonroll-crewneck-grey",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-escargot-tshirt-hot-pink",
+      "designId": "V3_Escargot",
+      "title": "L’Escargot qui crie",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-escargot-tshirt-hot-pink-5fb81a44c3.webp",
+      "artworkImage": "/designs/v3-escargot-380092cbfd.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-escargot-tshirt-hot-pink.png",
+        "checksum": "5fb81a44c35a996b",
+        "artworkChecksum": "380092cbfda8e926",
+        "parentItemId": "v3-escargot-tshirt-navy",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-hotdog-furieux-cap-berry-purple",
+      "designId": "V3_HotDog_Furieux",
+      "title": "Le Hot-Dog furieux",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "cap",
+        "label": {
+          "fr": "Casquette",
+          "en": "Cap"
+        },
+        "price": 34.99
+      },
+      "color": {
+        "id": "berry-purple",
+        "hex": "#963a8d",
+        "label": {
+          "fr": "Violet baie",
+          "en": "Berry purple"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-hotdog-furieux-cap-berry-purple-708c15690b.webp",
+      "artworkImage": "/designs/v3-hotdog-furieux-44613d46c6.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-hotdog-furieux-cap-berry-purple.png",
+        "checksum": "708c15690bd006cf",
+        "artworkChecksum": "44613d46c6a10cd8",
+        "parentItemId": "v3-hotdog-furieux-casquette-cobalt-blue",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-liz-tshirt-navy",
+      "designId": "V3_Liz",
+      "title": "Liz et le cactus",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "navy",
+        "hex": "#243750",
+        "label": {
+          "fr": "Bleu marine",
+          "en": "Navy"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-liz-tshirt-navy-75bcd0c4d6.webp",
+      "artworkImage": "/designs/v3-liz-b143bae449.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-liz-tshirt-navy.png",
+        "checksum": "75bcd0c4d63773bb",
+        "artworkChecksum": "b143bae4492ed563",
+        "parentItemId": "v3-liz-tshirt-hot-pink",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-chat-bucket-hat-bright-teal",
+      "designId": "V3_chat",
+      "title": "Le Chat violet",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "bucket-hat",
+        "label": {
+          "fr": "Chapeau",
+          "en": "Bucket hat"
+        },
+        "price": 39.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-chat-bucket-hat-bright-teal-6a59439c53.webp",
+      "artworkImage": "/designs/v3-chat-68d95e563b.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-chat-bucket-hat-bright-teal.png",
+        "checksum": "6a59439c532a84c7",
+        "artworkChecksum": "68d95e563b558d47",
+        "parentItemId": "v3-chat-bucket-hat-sunflower",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-poissongarry-crewneck-grey",
+      "designId": "V3_poissonGarry",
+      "title": "Garry le poisson",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "grey",
+        "hex": "#b7b7b4",
+        "label": {
+          "fr": "Gris chiné",
+          "en": "Heather grey"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-poissongarry-crewneck-grey-546a0f28bb.webp",
+      "artworkImage": "/designs/v3-poissongarry-6235c193c3.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-poissongarry-crewneck-grey.png",
+        "checksum": "546a0f28bb26d3b7",
+        "artworkChecksum": "6235c193c38bf4ec",
+        "parentItemId": "v3-poissongarry-crewneck-cobalt-blue",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-harryhearth-tote-sage",
+      "designId": "V3_HarryHearth",
+      "title": "Harry et le cœur",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tote",
+        "label": {
+          "fr": "Sac en toile",
+          "en": "Tote bag"
+        },
+        "price": 29.99
+      },
+      "color": {
+        "id": "sage",
+        "hex": "#77906f",
+        "label": {
+          "fr": "Sauge",
+          "en": "Sage"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-harryhearth-tote-sage-774f078527.webp",
+      "artworkImage": "/designs/v3-harryhearth-8d97ee348b.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-harryhearth-tote-sage.png",
+        "checksum": "774f0785273501c8",
+        "artworkChecksum": "8d97ee348bd1bea3",
+        "parentItemId": "v3-harryhearth-tote-natural",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-lapinou-tote-sage",
+      "designId": "V3_Lapinou",
+      "title": "Lapinou",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tote",
+        "label": {
+          "fr": "Sac en toile",
+          "en": "Tote bag"
+        },
+        "price": 29.99
+      },
+      "color": {
+        "id": "sage",
+        "hex": "#77906f",
+        "label": {
+          "fr": "Sauge",
+          "en": "Sage"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-lapinou-tote-sage-ac66ef4c32.webp",
+      "artworkImage": "/designs/v3-lapinou-49df9c56b9.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-lapinou-tote-sage.png",
+        "checksum": "ac66ef4c32f8c3fc",
+        "artworkChecksum": "49df9c56b9fc7a17",
+        "parentItemId": "v3-lapinou-tote-natural",
+        "method": "approved-art-template-composite"
+      }
+    },
+    {
+      "id": "colorchoices-v3-oeufsouriant-mug-sky-blue",
+      "designId": "V3_OeufSouriant",
+      "title": "L’Œuf souriant",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "mug",
+        "label": {
+          "fr": "Tasse",
+          "en": "Mug"
+        },
+        "price": 24.99
+      },
+      "color": {
+        "id": "sky-blue",
+        "hex": "#80bbd6",
+        "label": {
+          "fr": "Bleu ciel",
+          "en": "Sky blue"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/colorchoices-v3-oeufsouriant-mug-sky-blue-6e09378c5c.webp",
+      "artworkImage": "/designs/v3-oeufsouriant-8e9285529b.webp",
+      "active": true,
+      "source": {
+        "collection": "color-choices",
+        "file": "colorchoices-v3-oeufsouriant-mug-sky-blue.png",
+        "checksum": "6e09378c5cefb59e",
+        "artworkChecksum": "8e9285529b839ab1",
+        "parentItemId": "v3-oeufsouriant-mug-white",
+        "method": "approved-art-template-composite"
+      }
+    }
+  ],
+  "themes": [
+    {
+      "id": "royaume-des-pepins",
+      "label": {
+        "fr": "Le Royaume des Pépins",
+        "en": "The Kingdom of Seeds"
+      },
+      "description": {
+        "fr": "Les héros, alliés et microbes du jeu Le Royaume des Pépins.",
+        "en": "Heroes, allies, and microbes from The Kingdom of Seeds game."
+      }
+    },
+    {
+      "id": "animaux-rigolos",
+      "label": {
+        "fr": "Animaux rigolos",
+        "en": "Funny animals"
+      },
+      "description": {
+        "fr": "Grenouilles, chats, crabes et autres bêtes pleines de caractère.",
+        "en": "Frogs, cats, crabs, and other creatures full of personality."
+      }
+    },
+    {
+      "id": "gourmandises",
+      "label": {
+        "fr": "Gourmandises",
+        "en": "Food fun"
+      },
+      "description": {
+        "fr": "Des aliments, collations et légumes qui ont pris vie.",
+        "en": "Food, snacks, and vegetables that came to life."
+      }
+    },
+    {
+      "id": "musique-et-cosmos",
+      "label": {
+        "fr": "Musique et cosmos",
+        "en": "Music and cosmos"
+      },
+      "description": {
+        "fr": "Des étoiles, des instruments et beaucoup de rythme.",
+        "en": "Stars, instruments, and plenty of rhythm."
+      }
+    },
+    {
+      "id": "aventures-et-copains",
+      "label": {
+        "fr": "Aventures et copains",
+        "en": "Adventures and friends"
+      },
+      "description": {
+        "fr": "Des voyages, des lieux étonnants et des duos inséparables.",
+        "en": "Journeys, surprising places, and inseparable duos."
+      }
+    },
+    {
+      "id": "monstres-et-merveilles",
+      "label": {
+        "fr": "Monstres et merveilles",
+        "en": "Monsters and wonders"
+      },
+      "description": {
+        "fr": "Les créatures les plus étranges et merveilleuses de la collection.",
+        "en": "The collection's strangest and most wonderful creatures."
+      }
+    }
+  ],
+  "specialCollections": [
+    {
+      "id": "royaume-des-pepins",
+      "label": {
+        "fr": "Le Royaume des Pépins",
+        "en": "The Kingdom of Seeds"
+      },
+      "kind": {
+        "fr": "Produit associé · Jeu",
+        "en": "Associated product · Game"
+      },
+      "description": {
+        "fr": "Une collection spéciale inspirée du jeu Le Royaume des Pépins.",
+        "en": "A special collection inspired by The Kingdom of Seeds game."
+      }
+    },
+    {
+      "id": "nouveautes-v3",
+      "label": {
+        "fr": "Nouveautés V3",
+        "en": "New in V3"
+      },
+      "kind": {
+        "fr": "Nouvelle collection",
+        "en": "New collection"
+      },
+      "description": {
+        "fr": "Les derniers dessins des p’tits monstres, en couleurs et tout en caractère.",
+        "en": "The latest little-monster drawings, full of color and personality."
+      }
+    }
+  ]
+}
