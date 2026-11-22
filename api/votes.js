@@ -124,7 +124,12 @@ async function getPool() {
         UNIQUE (campaign_id, voter_id)
       )
     `)
-    .then(() => undefined);
+    .then(() => undefined)
+    .catch((error) => {
+      // Allow the next request to reconnect after a paused database resumes.
+      schemaReady = undefined;
+      throw error;
+    });
   await schemaReady;
   return pool;
 }
