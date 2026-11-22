@@ -6,6 +6,7 @@ import catalog from "../../../gaminet-gamin-vote/content/catalog.json";
 
 const activeItems = catalog.items.filter((item) => item.active);
 const activeItemCount = activeItems.length;
+const newItems = activeItems.filter((item) => item.specialCollectionId === "nouveautes-v3");
 
 function shuffled<T>(items: readonly T[]) {
   const result = [...items];
@@ -18,7 +19,7 @@ function shuffled<T>(items: readonly T[]) {
 
 const copy = {
   fr: {
-    eyebrow: "Collection 2026 · Vote ouvert",
+    eyebrow: "Nouveautés V3 · Vote ouvert",
     title: "Tu choisis la prochaine collection.",
     intro:
       "La vraie collection est prête à être départagée. Choisis autant de favoris que tu veux : tes votes nous aideront à décider quels vêtements prendront vie.",
@@ -27,11 +28,11 @@ const copy = {
     pieces: "créations en lice",
     choices: "favoris sans limite",
     madeHere: "imaginé au Québec",
-    collectionEyebrow: "Le vestiaire en lice",
+    collectionEyebrow: "Les derniers dessins prennent vie",
     collectionTitle: "De la couleur. Des monstres. Ton dernier mot.",
     collectionIntro:
-      "T-shirts, hoodies, crewnecks, casquettes et chapeaux : voici un aperçu des vraies créations soumises au vote.",
-    candidate: "Candidat 2026",
+      "20 nouveaux dessins, du Broco-Bili à Lapinou : découvre les chandails, casquettes, sacs et la tasse de la collection V3.",
+    candidate: "Nouveauté V3",
     vote: "Voter",
     seeAll: `Découvrir les ${activeItemCount} créations`,
     finalEyebrow: "Ton vote compte",
@@ -41,7 +42,7 @@ const copy = {
     finalCta: "Je choisis mes favoris",
   },
   en: {
-    eyebrow: "Collection 2026 · Voting is open",
+    eyebrow: "New in V3 · Voting is open",
     title: "You choose the next collection.",
     intro:
       "The real collection is ready for your verdict. Pick as many favorites as you like: your votes will help decide which garments come to life.",
@@ -50,11 +51,11 @@ const copy = {
     pieces: "designs in the running",
     choices: "unlimited favorites",
     madeHere: "imagined in Québec",
-    collectionEyebrow: "The lineup",
+    collectionEyebrow: "The latest drawings come to life",
     collectionTitle: "Big color. Little monsters. Your final say.",
     collectionIntro:
-      "T-shirts, hoodies, crewnecks, caps and bucket hats: here is a glimpse of the real designs up for a vote.",
-    candidate: "2026 candidate",
+      "20 new drawings, from Broco-Bili to Lapinou: discover the shirts, caps, bags, and mug in the V3 collection.",
+    candidate: "New in V3",
     vote: "Vote",
     seeAll: `Explore all ${activeItemCount} designs`,
     finalEyebrow: "Your vote counts",
@@ -64,7 +65,7 @@ const copy = {
     finalCta: "Choose my favorites",
   },
   es: {
-    eyebrow: "Colección 2026 · Votación abierta",
+    eyebrow: "Novedades V3 · Votación abierta",
     title: "Tú eliges la próxima colección.",
     intro:
       "La colección real está lista para tu veredicto. Elige todas las favoritas que quieras: tus votos nos ayudarán a decidir qué prendas cobrarán vida.",
@@ -73,11 +74,11 @@ const copy = {
     pieces: "diseños candidatos",
     choices: "favoritas sin límite",
     madeHere: "imaginado en Québec",
-    collectionEyebrow: "La selección",
+    collectionEyebrow: "Los nuevos dibujos cobran vida",
     collectionTitle: "Mucho color. Pequeños monstruos. Tú decides.",
     collectionIntro:
-      "Camisetas, sudaderas, gorras y sombreros: descubre una muestra de los diseños reales sometidos a votación.",
-    candidate: "Candidata 2026",
+      "20 nuevos dibujos, de Broco-Bili a Lapinou: descubre las camisetas, gorras, bolsas y la taza de la colección V3.",
+    candidate: "Novedad V3",
     vote: "Votar",
     seeAll: `Descubrir los ${activeItemCount} diseños`,
     finalEyebrow: "Tu voto cuenta",
@@ -95,6 +96,12 @@ const spanishGarments: Record<string, string> = {
   "long-sleeve-shirt": "Camiseta de manga larga",
   casquette: "Gorra",
   "bucket-hat": "Sombrero",
+  tshirt: "Camiseta",
+  crewneck: "Sudadera",
+  longsleeve: "Camiseta de manga larga",
+  cap: "Gorra",
+  tote: "Bolsa de tela",
+  mug: "Taza",
 };
 
 const spanishColors: Record<string, string> = {
@@ -119,7 +126,7 @@ function colorLabel(item: (typeof catalog.items)[number], lang: Lang) {
 export default function HomePage() {
   const { lang, t } = useLang();
   const pageCopy = copy[lang];
-  const [featuredItems] = useState(() => shuffled(activeItems).slice(0, 6));
+  const [featuredItems] = useState(() => shuffled(newItems.length ? newItems : activeItems).slice(0, 6));
 
   const shopRoute = lang === "fr" ? "/fr/boutique" : lang === "en" ? "/en/shop" : "/es/tienda";
   const programRoute = lang === "fr" ? "/fr/artistes" : lang === "en" ? "/en/little-monsters" : "/es/pequenos-monstruos";
@@ -194,7 +201,7 @@ export default function HomePage() {
               {featuredItems.slice(0, 4).map((item, index) => (
                 <Link
                   key={item.id}
-                  href={shopRoute}
+                  href={`${shopRoute}?collection=nouveautes-v3&item=${encodeURIComponent(item.id)}`}
                   className={`group relative overflow-hidden rounded-[2rem] border border-black/10 bg-white p-2 shadow-[0_18px_50px_rgba(53,45,36,0.11)] transition duration-300 hover:-translate-y-1 ${
                     index === 1 ? "mt-8" : index === 2 ? "-mt-8" : ""
                   }`}
@@ -239,7 +246,7 @@ export default function HomePage() {
           {featuredItems.map((item, index) => (
             <Link
               key={item.id}
-              href={shopRoute}
+              href={`${shopRoute}?collection=nouveautes-v3&item=${encodeURIComponent(item.id)}`}
               className="group overflow-hidden rounded-[1.7rem] border border-black/10 bg-white shadow-[0_8px_30px_rgba(53,45,36,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_38px_rgba(53,45,36,0.12)]"
               data-testid={`collection-card-${index}`}
             >

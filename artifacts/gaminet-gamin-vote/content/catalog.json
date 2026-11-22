@@ -10,6 +10,18 @@
   },
   "sections": [
     {
+      "id": "nouveautes-v3",
+      "order": 5,
+      "label": {
+        "fr": "Nouveautés V3",
+        "en": "New in V3"
+      },
+      "description": {
+        "fr": "20 nouveaux dessins, déclinés en chandails, casquettes, chapeau, sacs en toile et tasse.",
+        "en": "20 new drawings on shirts, caps, a bucket hat, tote bags, and a mug."
+      }
+    },
+    {
       "id": "classics",
       "order": 10,
       "label": {
@@ -140,6 +152,21 @@
       "description": {
         "fr": "Une collection spéciale inspirée du jeu Le Royaume des Pépins.",
         "en": "A special collection inspired by The Kingdom of Seeds game."
+      }
+    },
+    {
+      "id": "nouveautes-v3",
+      "label": {
+        "fr": "Nouveautés V3",
+        "en": "New in V3"
+      },
+      "kind": {
+        "fr": "Nouvelle collection",
+        "en": "New collection"
+      },
+      "description": {
+        "fr": "Les derniers dessins des p’tits monstres, en couleurs et tout en caractère.",
+        "en": "The latest little-monster drawings, full of color and personality."
       }
     }
   ],
@@ -3867,6 +3894,890 @@
         "variant": "centered-headwear",
         "printBoxPx": "225x195",
         "centerPx": "627x610"
+      }
+    },
+    {
+      "id": "v3-bouboule-hoodie-black",
+      "designId": "V3_Bouboule",
+      "title": "Bouboule",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "black",
+        "hex": "#20201f",
+        "label": {
+          "fr": "Noir",
+          "en": "Black"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-bouboule-hoodie-black-b5dfd1f87b.webp",
+      "artworkImage": "/designs/v3-bouboule-eed616f891.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "Bouboule-hoodie-black-v3.png",
+        "checksum": "b5dfd1f87b92bce0",
+        "artworkChecksum": "eed616f8917afffa"
+      }
+    },
+    {
+      "id": "v3-bouboule-casquette-berry-purple",
+      "designId": "V3_Bouboule",
+      "title": "Bouboule",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "cap",
+        "label": {
+          "fr": "Casquette",
+          "en": "Cap"
+        },
+        "price": 34.99
+      },
+      "color": {
+        "id": "berry-purple",
+        "hex": "#963a8d",
+        "label": {
+          "fr": "Violet baie",
+          "en": "Berry purple"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-bouboule-casquette-berry-purple-d4463ac604.webp",
+      "artworkImage": "/designs/v3-bouboule-eed616f891.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "Bouboule-casquette-berry-purple-v3.png",
+        "checksum": "d4463ac60401d55f",
+        "artworkChecksum": "eed616f8917afffa"
+      }
+    },
+    {
+      "id": "v3-bouleetchat-crewneck-grey",
+      "designId": "V3_BouleEtChat",
+      "title": "Boule et Chat",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "grey",
+        "hex": "#b7b7b4",
+        "label": {
+          "fr": "Gris chiné",
+          "en": "Heather grey"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-bouleetchat-crewneck-grey-a1cab6912c.webp",
+      "artworkImage": "/designs/v3-bouleetchat-1503a79d4a.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "BouleEtChat-crewneck-grey-v3.png",
+        "checksum": "a1cab6912c3a98bd",
+        "artworkChecksum": "1503a79d4a2f6d23"
+      }
+    },
+    {
+      "id": "v3-broco-bili-tshirt-navy",
+      "designId": "V3_Broco_Bili",
+      "title": "Broco-Bili",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "navy",
+        "hex": "#243750",
+        "label": {
+          "fr": "Bleu marine",
+          "en": "Navy"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-broco-bili-tshirt-navy-123ea03556.webp",
+      "artworkImage": "/designs/v3-broco-bili-b30d08641d.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "Broco_Bili-tshirt-navy-v3.png",
+        "checksum": "123ea035569b2f17",
+        "artworkChecksum": "b30d08641d72d345"
+      }
+    },
+    {
+      "id": "v3-chat-tshirt-hot-pink",
+      "designId": "V3_chat",
+      "title": "Le Chat violet",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-chat-tshirt-hot-pink-3c71f61145.webp",
+      "artworkImage": "/designs/v3-chat-68d95e563b.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "chat-tshirt-hot-pink-v3.png",
+        "checksum": "3c71f6114585fc7f",
+        "artworkChecksum": "68d95e563b558d47"
+      }
+    },
+    {
+      "id": "v3-chat-bucket-hat-sunflower",
+      "designId": "V3_chat",
+      "title": "Le Chat violet",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "bucket-hat",
+        "label": {
+          "fr": "Chapeau",
+          "en": "Bucket hat"
+        },
+        "price": 39.99
+      },
+      "color": {
+        "id": "sunflower-yellow",
+        "hex": "#ffc928",
+        "label": {
+          "fr": "Jaune tournesol",
+          "en": "Sunflower yellow"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-chat-bucket-hat-sunflower-3478991907.webp",
+      "artworkImage": "/designs/v3-chat-68d95e563b.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "chat-bucket-hat-sunflower-v3.png",
+        "checksum": "34789919076a69d5",
+        "artworkChecksum": "68d95e563b558d47"
+      }
+    },
+    {
+      "id": "v3-chatpsycho-hoodie-bright-teal",
+      "designId": "V3_ChatPsycho",
+      "title": "Chat Psycho",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "bright-teal",
+        "hex": "#11aaa1",
+        "label": {
+          "fr": "Turquoise vif",
+          "en": "Bright teal"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-chatpsycho-hoodie-bright-teal-54d693742f.webp",
+      "artworkImage": "/designs/v3-chatpsycho-699e135abd.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "ChatPsycho-hoodie-bright-teal-v3.png",
+        "checksum": "54d693742f21a125",
+        "artworkChecksum": "699e135abdde621f"
+      }
+    },
+    {
+      "id": "v3-chiensaucissepomme-broco-bili-tshirt-navy",
+      "designId": "V3_ChienSaucissePomme_Broco_Bili",
+      "title": "Le Chien Saucisse-Pomme",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "navy",
+        "hex": "#243750",
+        "label": {
+          "fr": "Bleu marine",
+          "en": "Navy"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-chiensaucissepomme-broco-bili-tshirt-navy-ceeb54efed.webp",
+      "artworkImage": "/designs/v3-chiensaucissepomme-broco-bili-7a21a9f89e.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "ChienSaucissePomme_Broco_Bili-tshirt-navy-v3.png",
+        "checksum": "ceeb54efed003f62",
+        "artworkChecksum": "7a21a9f89e8318df"
+      }
+    },
+    {
+      "id": "v3-cinamonroll-crewneck-grey",
+      "designId": "V3_CinamonRoll",
+      "title": "Cinamon roll",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "grey",
+        "hex": "#b7b7b4",
+        "label": {
+          "fr": "Gris chiné",
+          "en": "Heather grey"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-cinamonroll-crewneck-grey-fad3088261.webp",
+      "artworkImage": "/designs/v3-cinamonroll-50dfd0f23c.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "CinamonRoll-crewneck-grey-v3.png",
+        "checksum": "fad30882614caa30",
+        "artworkChecksum": "50dfd0f23c178a80"
+      }
+    },
+    {
+      "id": "v3-cornetmulti-tshirt-electric-violet",
+      "designId": "V3_CornetMulti",
+      "title": "Le Cornet des chats",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "electric-violet",
+        "hex": "#7740d6",
+        "label": {
+          "fr": "Violet électrique",
+          "en": "Electric violet"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-cornetmulti-tshirt-electric-violet-fed523dd33.webp",
+      "artworkImage": "/designs/v3-cornetmulti-144b55b49a.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "CornetMulti-tshirt-electric-violet-v3.png",
+        "checksum": "fed523dd33be467c",
+        "artworkChecksum": "144b55b49ae4dbf4"
+      }
+    },
+    {
+      "id": "v3-elcornet-longsleeve-green",
+      "designId": "V3_ElCornet",
+      "title": "El Cornet",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "green",
+        "hex": "#455646",
+        "label": {
+          "fr": "Vert forêt",
+          "en": "Forest green"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-elcornet-longsleeve-green-10160b9999.webp",
+      "artworkImage": "/designs/v3-elcornet-4867945606.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "ElCornet-longsleeve-green-v3.png",
+        "checksum": "10160b999941daed",
+        "artworkChecksum": "48679456062dee05"
+      }
+    },
+    {
+      "id": "v3-escargot-tshirt-navy",
+      "designId": "V3_Escargot",
+      "title": "L’Escargot qui crie",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "navy",
+        "hex": "#243750",
+        "label": {
+          "fr": "Bleu marine",
+          "en": "Navy"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-escargot-tshirt-navy-9d93392a4a.webp",
+      "artworkImage": "/designs/v3-escargot-380092cbfd.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "Escargot-tshirt-navy-v3.png",
+        "checksum": "9d93392a4a852441",
+        "artworkChecksum": "380092cbfda8e926"
+      }
+    },
+    {
+      "id": "v3-garry-longsleeve-green",
+      "designId": "V3_garry",
+      "title": "Garry sur ses pattes",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "green",
+        "hex": "#455646",
+        "label": {
+          "fr": "Vert forêt",
+          "en": "Forest green"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-garry-longsleeve-green-3d027f162c.webp",
+      "artworkImage": "/designs/v3-garry-781dadf01f.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "garry-longsleeve-green-v3.png",
+        "checksum": "3d027f162cba765c",
+        "artworkChecksum": "781dadf01fba6fea"
+      }
+    },
+    {
+      "id": "v3-guybrule-hoodie-black",
+      "designId": "V3_GuyBrule",
+      "title": "Guy Brûle",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "black",
+        "hex": "#20201f",
+        "label": {
+          "fr": "Noir",
+          "en": "Black"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-guybrule-hoodie-black-90604ba81f.webp",
+      "artworkImage": "/designs/v3-guybrule-04372b8c62.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "GuyBrule-hoodie-black-v3.png",
+        "checksum": "90604ba81f3038bc",
+        "artworkChecksum": "04372b8c62408159"
+      }
+    },
+    {
+      "id": "v3-harryhearth-tshirt-electric-violet",
+      "designId": "V3_HarryHearth",
+      "title": "Harry et le cœur",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "electric-violet",
+        "hex": "#7740d6",
+        "label": {
+          "fr": "Violet électrique",
+          "en": "Electric violet"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-harryhearth-tshirt-electric-violet-dfe0718969.webp",
+      "artworkImage": "/designs/v3-harryhearth-8d97ee348b.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "HarryHearth-tshirt-electric-violet-v3.png",
+        "checksum": "dfe0718969aebbea",
+        "artworkChecksum": "8d97ee348bd1bea3"
+      }
+    },
+    {
+      "id": "v3-harryhearth-tote-natural",
+      "designId": "V3_HarryHearth",
+      "title": "Harry et le cœur",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tote",
+        "label": {
+          "fr": "Sac en toile",
+          "en": "Tote bag"
+        },
+        "price": 29.99
+      },
+      "color": {
+        "id": "natural",
+        "hex": "#eee5d4",
+        "label": {
+          "fr": "Naturel",
+          "en": "Natural"
+        }
+      },
+      "themeId": "aventures-et-copains",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-harryhearth-tote-natural-102ca9f68e.webp",
+      "artworkImage": "/designs/v3-harryhearth-8d97ee348b.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "HarryHearth-tote-natural-v3.png",
+        "checksum": "102ca9f68e7ffc10",
+        "artworkChecksum": "8d97ee348bd1bea3"
+      }
+    },
+    {
+      "id": "v3-hotdog-furieux-tshirt-navy",
+      "designId": "V3_HotDog_Furieux",
+      "title": "Le Hot-Dog furieux",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "navy",
+        "hex": "#243750",
+        "label": {
+          "fr": "Bleu marine",
+          "en": "Navy"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-hotdog-furieux-tshirt-navy-159b5c06a2.webp",
+      "artworkImage": "/designs/v3-hotdog-furieux-44613d46c6.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "HotDog_Furieux-tshirt-navy-v3.png",
+        "checksum": "159b5c06a2d375f9",
+        "artworkChecksum": "44613d46c6a10cd8"
+      }
+    },
+    {
+      "id": "v3-hotdog-furieux-casquette-cobalt-blue",
+      "designId": "V3_HotDog_Furieux",
+      "title": "Le Hot-Dog furieux",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "cap",
+        "label": {
+          "fr": "Casquette",
+          "en": "Cap"
+        },
+        "price": 34.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-hotdog-furieux-casquette-cobalt-blue-abede3dc9b.webp",
+      "artworkImage": "/designs/v3-hotdog-furieux-44613d46c6.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "HotDog_Furieux-casquette-cobalt-blue-v3.png",
+        "checksum": "abede3dc9b177c4e",
+        "artworkChecksum": "44613d46c6a10cd8"
+      }
+    },
+    {
+      "id": "v3-lapinou-crewneck-grey",
+      "designId": "V3_Lapinou",
+      "title": "Lapinou",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "grey",
+        "hex": "#b7b7b4",
+        "label": {
+          "fr": "Gris chiné",
+          "en": "Heather grey"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-lapinou-crewneck-grey-2cfd8549b9.webp",
+      "artworkImage": "/designs/v3-lapinou-49df9c56b9.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "Lapinou-crewneck-grey-v3.png",
+        "checksum": "2cfd8549b96b35dc",
+        "artworkChecksum": "49df9c56b9fc7a17"
+      }
+    },
+    {
+      "id": "v3-lapinou-tote-natural",
+      "designId": "V3_Lapinou",
+      "title": "Lapinou",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tote",
+        "label": {
+          "fr": "Sac en toile",
+          "en": "Tote bag"
+        },
+        "price": 29.99
+      },
+      "color": {
+        "id": "natural",
+        "hex": "#eee5d4",
+        "label": {
+          "fr": "Naturel",
+          "en": "Natural"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-lapinou-tote-natural-4015615d24.webp",
+      "artworkImage": "/designs/v3-lapinou-49df9c56b9.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "Lapinou-tote-natural-v3.png",
+        "checksum": "4015615d242367f9",
+        "artworkChecksum": "49df9c56b9fc7a17"
+      }
+    },
+    {
+      "id": "v3-liz-tshirt-hot-pink",
+      "designId": "V3_Liz",
+      "title": "Liz et le cactus",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "hot-pink",
+        "hex": "#fb2f83",
+        "label": {
+          "fr": "Rose éclatant",
+          "en": "Hot pink"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-liz-tshirt-hot-pink-92e83a1035.webp",
+      "artworkImage": "/designs/v3-liz-b143bae449.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "Liz-tshirt-hot-pink-v3.png",
+        "checksum": "92e83a1035c6ad90",
+        "artworkChecksum": "b143bae4492ed563"
+      }
+    },
+    {
+      "id": "v3-montru-hoodie-black",
+      "designId": "V3_Montru",
+      "title": "Montru",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "hoodie",
+        "label": {
+          "fr": "Hoodie",
+          "en": "Hoodie"
+        },
+        "price": 74.99
+      },
+      "color": {
+        "id": "black",
+        "hex": "#20201f",
+        "label": {
+          "fr": "Noir",
+          "en": "Black"
+        }
+      },
+      "themeId": "monstres-et-merveilles",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-montru-hoodie-black-9e2b6826c8.webp",
+      "artworkImage": "/designs/v3-montru-bdc5116dfc.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "Montru-hoodie-black-v3.png",
+        "checksum": "9e2b6826c8001271",
+        "artworkChecksum": "bdc5116dfc0ec8e7"
+      }
+    },
+    {
+      "id": "v3-oeufsouriant-tshirt-navy",
+      "designId": "V3_OeufSouriant",
+      "title": "L’Œuf souriant",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "tshirt",
+        "label": {
+          "fr": "T-shirt",
+          "en": "T-shirt"
+        },
+        "price": 44.99
+      },
+      "color": {
+        "id": "navy",
+        "hex": "#243750",
+        "label": {
+          "fr": "Bleu marine",
+          "en": "Navy"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-oeufsouriant-tshirt-navy-29defe7bdf.webp",
+      "artworkImage": "/designs/v3-oeufsouriant-8e9285529b.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "OeufSouriant-tshirt-navy-v3.png",
+        "checksum": "29defe7bdf8fe13b",
+        "artworkChecksum": "8e9285529b839ab1"
+      }
+    },
+    {
+      "id": "v3-oeufsouriant-mug-white",
+      "designId": "V3_OeufSouriant",
+      "title": "L’Œuf souriant",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "mug",
+        "label": {
+          "fr": "Tasse",
+          "en": "Mug"
+        },
+        "price": 24.99
+      },
+      "color": {
+        "id": "white",
+        "hex": "#ffffff",
+        "label": {
+          "fr": "Blanc",
+          "en": "White"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-oeufsouriant-mug-white-7bc39eb4d9.webp",
+      "artworkImage": "/designs/v3-oeufsouriant-8e9285529b.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "OeufSouriant-mug-white-v3.png",
+        "checksum": "7bc39eb4d935a2af",
+        "artworkChecksum": "8e9285529b839ab1"
+      }
+    },
+    {
+      "id": "v3-poissongarry-crewneck-cobalt-blue",
+      "designId": "V3_poissonGarry",
+      "title": "Garry le poisson",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "crewneck",
+        "label": {
+          "fr": "Crewneck",
+          "en": "Crewneck"
+        },
+        "price": 64.99
+      },
+      "color": {
+        "id": "cobalt-blue",
+        "hex": "#1d45c7",
+        "label": {
+          "fr": "Bleu cobalt",
+          "en": "Cobalt blue"
+        }
+      },
+      "themeId": "animaux-rigolos",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-poissongarry-crewneck-cobalt-blue-cd65b996ac.webp",
+      "artworkImage": "/designs/v3-poissongarry-6235c193c3.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "poissonGarry-crewneck-cobalt-blue-v3.png",
+        "checksum": "cd65b996ac78938a",
+        "artworkChecksum": "6235c193c38bf4ec"
+      }
+    },
+    {
+      "id": "v3-pomi-longsleeve-green",
+      "designId": "V3_pomi",
+      "title": "Pomi Pom",
+      "sectionId": "nouveautes-v3",
+      "garment": {
+        "id": "longsleeve",
+        "label": {
+          "fr": "Chandail manches longues",
+          "en": "Long-sleeve shirt"
+        },
+        "price": 49.99
+      },
+      "color": {
+        "id": "green",
+        "hex": "#455646",
+        "label": {
+          "fr": "Vert forêt",
+          "en": "Forest green"
+        }
+      },
+      "themeId": "gourmandises",
+      "specialCollectionId": "nouveautes-v3",
+      "collectionRole": null,
+      "image": "/catalog/v3-pomi-longsleeve-green-e73ce00fc4.webp",
+      "artworkImage": "/designs/v3-pomi-36a5dba979.webp",
+      "active": true,
+      "source": {
+        "collection": "v3",
+        "file": "pomi-longsleeve-green-v3.png",
+        "checksum": "e73ce00fc4d3c889",
+        "artworkChecksum": "36a5dba97933f163"
       }
     }
   ]

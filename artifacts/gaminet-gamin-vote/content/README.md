@@ -35,3 +35,22 @@ Add the display metadata to `THEME_DEFINITIONS` or `SPECIAL_COLLECTION_DEFINITIO
 Artwork replacements live in `content/artwork-overrides` and are mapped through `ARTWORK_OVERRIDES`. Headwear sizing and centered placement are controlled by `HEADWEAR_PRINT_MAXIMUMS` and `HEADWEAR_PRINT_CENTERS`.
 
 Do not rename existing item IDs after voting begins: ballot history uses those stable IDs.
+
+
+## V3 collection (November 2026)
+
+The 20 latest drawings and 26 product proposals are declared in `v3-designs.json`.
+Their reviewed transparent masters and product mockups live in
+`Designs/Batch4_V3_output` beside the source drawings. Originals remain in
+`Designs/SRC/V3`.
+
+Run `python3 scripts/sync_v3.py` to export the reviewed images and refresh V3.
+Use `--source-root /absolute/path/to/Batch4_V3_output` from another checkout.
+The exporter validates every input before updating the catalog, keeps stable
+`v3-…` vote IDs, and saves its portable extension in `collections/v3.json`.
+Re-running the older Batch 3 sync automatically reapplies saved extensions.
+Tote and mug prices are collection proposals; the website presents them as such.
+
+The main shop and standalone voting site keep their existing items and campaign
+settings when the V3 extension is merged. Do not replace one site's older catalog
+with the other site's catalog: their prior collections differ.

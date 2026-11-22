@@ -17,6 +17,7 @@ import unicodedata
 from pathlib import Path
 
 from PIL import Image, ImageChops, ImageEnhance, ImageFilter
+from collection_extensions import apply_extensions
 
 
 SITE_ROOT = Path(__file__).resolve().parents[1]
@@ -666,6 +667,7 @@ catalog = {
 }
 
 CATALOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+catalog = apply_extensions(catalog, SITE_ROOT / "content" / "collections")
 CATALOG_PATH.write_text(
     json.dumps(catalog, ensure_ascii=False, indent=2) + "\n",
     encoding="utf-8",

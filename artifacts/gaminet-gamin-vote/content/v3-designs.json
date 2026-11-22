@@ -1,0 +1,26 @@
+{
+  "collectionId": "nouveautes-v3",
+  "sourceFolder": "Batch4_V3_output",
+  "designs": [
+    {"stem":"Bouboule","title":"Bouboule","theme":"monstres-et-merveilles","products":["hoodie-black","casquette-berry-purple"]},
+    {"stem":"BouleEtChat","title":"Boule et Chat","theme":"aventures-et-copains","products":["crewneck-grey"]},
+    {"stem":"Broco_Bili","title":"Broco-Bili","theme":"gourmandises","products":["tshirt-navy"]},
+    {"stem":"chat","title":"Le Chat violet","theme":"animaux-rigolos","products":["tshirt-hot-pink","bucket-hat-sunflower"]},
+    {"stem":"ChatPsycho","title":"Chat Psycho","theme":"animaux-rigolos","products":["hoodie-bright-teal"]},
+    {"stem":"ChienSaucissePomme_Broco_Bili","title":"Le Chien Saucisse-Pomme","theme":"gourmandises","products":["tshirt-navy"]},
+    {"stem":"CinamonRoll","title":"Cinamon roll","theme":"gourmandises","products":["crewneck-grey"]},
+    {"stem":"CornetMulti","title":"Le Cornet des chats","theme":"gourmandises","products":["tshirt-electric-violet"]},
+    {"stem":"ElCornet","title":"El Cornet","theme":"gourmandises","products":["longsleeve-green"]},
+    {"stem":"Escargot","title":"L’Escargot qui crie","theme":"animaux-rigolos","products":["tshirt-navy"]},
+    {"stem":"garry","title":"Garry sur ses pattes","theme":"animaux-rigolos","products":["longsleeve-green"]},
+    {"stem":"GuyBrule","title":"Guy Brûle","theme":"monstres-et-merveilles","products":["hoodie-black"]},
+    {"stem":"HarryHearth","title":"Harry et le cœur","theme":"aventures-et-copains","products":["tshirt-electric-violet","tote-natural"]},
+    {"stem":"HotDog_Furieux","title":"Le Hot-Dog furieux","theme":"gourmandises","products":["tshirt-navy","casquette-cobalt-blue"]},
+    {"stem":"Lapinou","title":"Lapinou","theme":"animaux-rigolos","products":["crewneck-grey","tote-natural"]},
+    {"stem":"Liz","title":"Liz et le cactus","theme":"animaux-rigolos","products":["tshirt-hot-pink"]},
+    {"stem":"Montru","title":"Montru","theme":"monstres-et-merveilles","products":["hoodie-black"]},
+    {"stem":"OeufSouriant","title":"L’Œuf souriant","theme":"gourmandises","products":["tshirt-navy","mug-white"]},
+    {"stem":"poissonGarry","title":"Garry le poisson","theme":"animaux-rigolos","products":["crewneck-cobalt-blue"]},
+    {"stem":"pomi","title":"Pomi Pom","theme":"gourmandises","products":["longsleeve-green"]}
+  ]
+}

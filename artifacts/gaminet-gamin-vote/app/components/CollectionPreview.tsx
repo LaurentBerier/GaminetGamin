@@ -16,6 +16,7 @@ type ResultData = {
 };
 
 const activeItems = catalog.items.filter((item) => item.active);
+const v3Items = activeItems.filter((item) => item.sectionId === "nouveautes-v3");
 const itemById = new Map(activeItems.map((item) => [item.id, item]));
 const activeSections = catalog.sections.filter((section) =>
   activeItems.some((item) => item.sectionId === section.id),
@@ -390,7 +391,7 @@ export function CollectionPreview() {
     const url = publicVotingUrl(voterGroup || undefined);
     try {
       if (navigator.share) {
-        await navigator.share({ title: 'Vote Gaminet Gamin', text: 'Choisis tes vêtements préférés pour la prochaine collection Gaminet Gamin.', url });
+        await navigator.share({ title: 'Vote Gaminet Gamin', text: 'Choisis tes créations préférées pour la prochaine collection Gaminet Gamin.', url });
       } else {
         await copyText(url);
       }
@@ -459,7 +460,7 @@ export function CollectionPreview() {
           <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#c8914a]">Nouvelle collection · vote ouvert</p>
           <h1 className="text-4xl font-black uppercase tracking-tight sm:text-5xl">Boutique</h1>
           <p className="mt-3 text-base font-semibold text-black/50 sm:text-lg">
-            Tous nos nouveaux dessins et vêtements sont réunis ici. Agrandissez une photo pour voir le morceau, puis cliquez sur le cœur pour voter instantanément.
+            Tous nos dessins, vêtements et accessoires sont réunis ici. Agrandissez une photo pour voir le morceau, puis cliquez sur le cœur pour voter instantanément.
           </p>
           <div className="mt-5 h-1 w-16 rounded-full bg-[#c8914a]" />
           <div className="mt-5 flex flex-wrap items-center gap-3 text-xs font-bold text-black/45">
@@ -472,6 +473,17 @@ export function CollectionPreview() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
+        {v3Items.length > 0 && (
+          <div className="mb-8 flex flex-col gap-5 rounded-3xl bg-[#e9e1fa] p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-sm font-bold text-[#594276]">20 nouveaux dessins · Novembre 2026</p>
+              <h2 className="mt-1 text-2xl font-black">Les nouveautés V3 sont arrivées.</h2>
+              <p className="mt-2 max-w-xl text-base text-[#44374f]">Chandails, casquettes, chapeau, sacs et tasse : choisis les dessins que tu veux voir prendre vie. Prix proposés pour la collection.</p>
+            </div>
+            <button type="button" onClick={() => { setFilter('nouveautes-v3'); setQuery(''); setThemeFilter('all'); setGarmentFilter('all'); setColorFilter('all'); setSpecialFilter('all'); }} className="shrink-0 rounded-full bg-[#201c19] px-5 py-3 text-sm font-bold text-white hover:bg-[#44374f]">Voir les {v3Items.length} nouveautés</button>
+          </div>
+        )}
+
         <div className="sticky top-16 z-20 -mx-2 mb-8 rounded-2xl bg-[#faf9f6]/95 px-2 py-3 backdrop-blur-lg">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex gap-2 overflow-x-auto pb-1" aria-label="Filtrer les vêtements">
