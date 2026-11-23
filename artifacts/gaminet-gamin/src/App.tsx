@@ -27,25 +27,17 @@ function RedirectToFr() {
 
 function AppLayout() {
   const [location] = useLocation();
-  const isVotingStorefront = ["/fr/boutique", "/en/shop", "/es/tienda"].includes(location);
+  const isVotingStorefront = ["/fr/boutique", "/en/shop", "/es/tienda"].includes(location.replace(/\/$/, ""));
 
-  if (location === "/admin" || location === "/admin/") {
-    return (
-      <Suspense fallback={<main className="grid min-h-screen place-items-center bg-[#201c19] font-black text-white">Ouverture de l’administration…</main>}>
-        <AdminDashboardPage />
-      </Suspense>
-    );
-  }
-
-  if (isVotingStorefront) {
-    return <CollectionVotingPage />;
-  }
+  const isAdmin = location === "/admin" || location === "/admin/";
 
   return (
     <div className="min-h-screen flex flex-col bg-stone-50">
       <Header />
       <div className="flex-1">
-        <Switch>
+        {isAdmin ? <Suspense fallback={<main className="grid min-h-[70vh] place-items-center">Ouverture de l’administration…</main>}>
+          <AdminDashboardPage />
+        </Suspense> : isVotingStorefront ? <CollectionVotingPage key={location} /> : <Switch>
           <Route path="/" component={RedirectToFr} />
           <Route path="/fr" component={HomePage} />
           <Route path="/fr/boutique" component={BoutiquePage} />
@@ -66,9 +58,9 @@ function AppLayout() {
           <Route path="/es/pequenos-monstruos" component={ArtistesPage} />
           <Route path="/es/contacto" component={ContactPage} />
           <Route component={NotFound} />
-        </Switch>
+        </Switch>}
       </div>
-      <Footer />
+      {!isAdmin && <Footer />}
     </div>
   );
 }

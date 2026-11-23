@@ -119,10 +119,12 @@ async function getPool() {
         voter_name TEXT,
         voter_group TEXT,
         selected_item_ids JSONB NOT NULL,
+        price_survey JSONB,
         submitted_at BIGINT NOT NULL,
         updated_at BIGINT NOT NULL,
         UNIQUE (campaign_id, voter_id)
-      )
+      );
+      ALTER TABLE gaminet_ballots ADD COLUMN IF NOT EXISTS price_survey JSONB;
     `)
     .then(() => undefined)
     .catch((error) => {
@@ -176,6 +178,7 @@ function normalizePostgresBallot(row) {
         voterName: row.voter_name ?? '',
         voterGroup: row.voter_group ?? '',
         selectedItemIds: row.selected_item_ids,
+        priceSurvey: row.price_survey ?? null,
         submittedAt: Number(row.submitted_at),
         updatedAt: Number(row.updated_at),
       }
@@ -186,7 +189,7 @@ async function readBallot(campaignId, voterId) {
   const database = await getPool();
   if (database) {
     const result = await database.query(
-      `SELECT voter_name, voter_group, selected_item_ids, submitted_at, updated_at
+      `SELECT voter_name, voter_group, selected_item_ids, price_survey, submitted_at, updated_at
        FROM gaminet_ballots
        WHERE campaign_id = $1 AND voter_id = $2`,
       [campaignId, voterId],
@@ -202,7 +205,7 @@ async function readCampaignBallots(campaignId) {
   const database = await getPool();
   if (database) {
     const result = await database.query(
-      `SELECT voter_name, voter_group, selected_item_ids, submitted_at, updated_at
+      `SELECT voter_name, voter_group, selected_item_ids, price_survey, submitted_at, updated_at
        FROM gaminet_ballots
        WHERE campaign_id = $1`,
       [campaignId],
@@ -225,12 +228,13 @@ async function saveBallot(campaignId, voterId, ballot) {
     await database.query(
       `INSERT INTO gaminet_ballots (
          campaign_id, voter_id, voter_name, voter_group,
-         selected_item_ids, submitted_at, updated_at
-       ) VALUES ($1, $2, $3, $4, $5::jsonb, $6, $7)
+         selected_item_ids, submitted_at, updated_at, price_survey
+       ) VALUES ($1, $2, $3, $4, $5::jsonb, $6, $7, $8::jsonb)
        ON CONFLICT (campaign_id, voter_id) DO UPDATE SET
          voter_name = EXCLUDED.voter_name,
          voter_group = EXCLUDED.voter_group,
          selected_item_ids = EXCLUDED.selected_item_ids,
+         price_survey = EXCLUDED.price_survey,
          updated_at = EXCLUDED.updated_at`,
       [
         campaignId,
@@ -240,6 +244,7 @@ async function saveBallot(campaignId, voterId, ballot) {
         JSON.stringify(ballot.selectedItemIds),
         ballot.submittedAt,
         ballot.updatedAt,
+        JSON.stringify(ballot.priceSurvey ?? null),
       ],
     );
     return;
@@ -334,6 +339,18 @@ async function handlePost(request, response) {
   if (!validCampaignIds.has(campaignId) || !validPublicId(voterId)) {
     return send(response, 400, { error: 'Bulletin invalide.' });
   }
+  if (body.action === 'price-survey') {
+    const existing = await readBallot(campaignId, voterId);
+    const { validPriceSurvey } = await import('../artifacts/gaminet-gamin-vote/lib/price-survey.mjs');
+    if (!existing || !validPriceSurvey(body.priceSurvey, existing.selectedItemIds, catalog.items)) {
+      return send(response, 400, { error: 'Aimez au moins trois modèles de chandails et indiquez un prix valide.' });
+    }
+    const { version, status, itemId, garmentId, amount, currency, charity } = body.priceSurvey;
+    const now = Date.now();
+    await saveBallot(campaignId, voterId, { ...existing, priceSurvey: { version, status, itemId, garmentId, amount, currency, charity }, updatedAt: now });
+    return send(response, 200, { success: true, updatedAt: now });
+  }
+  if (body.action) return send(response, 400, { error: 'Action inconnue.' });
   if (selectedItemIds.some((itemId) => !validItemIds.has(itemId))) {
     return send(response, 400, {
       error: 'Choisissez uniquement parmi les morceaux disponibles.',
@@ -351,6 +368,7 @@ async function handlePost(request, response) {
     voterName,
     voterGroup,
     selectedItemIds,
+    priceSurvey: existing?.priceSurvey ?? null,
     submittedAt: existing?.submittedAt ?? now,
     updatedAt: now,
   });

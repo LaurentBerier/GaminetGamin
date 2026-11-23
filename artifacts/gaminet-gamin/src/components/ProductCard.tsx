@@ -27,7 +27,6 @@ export function ProductCard({ produit, priority = false }: ProductCardProps) {
   const colors = getColorOptions(produit);
   const defaultGarment = getDefaultGarment(produit);
   const [selectedColor, setSelectedColor] = useState(colors[0]);
-  const price = defaultGarment?.price ?? produit.prix;
   const layered = isLayeredProduct(produit);
 
   return (
@@ -83,9 +82,6 @@ export function ProductCard({ produit, priority = false }: ProductCardProps) {
               {translateField(produit.nom)}
             </h3>
           </Link>
-          <span className="font-bold text-stone-900 text-sm whitespace-nowrap" data-testid={`text-price-${produit.id}`}>
-            {price.toFixed(2)} $
-          </span>
         </div>
 
         <p className="text-stone-500 text-xs mb-3 leading-relaxed line-clamp-2">

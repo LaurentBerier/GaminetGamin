@@ -6,7 +6,7 @@ Public catalog and voting site for the 107 current apparel mockups.
 
 - `content/catalog.json` contains the sections, garments, colors, titles, images, and campaign rules.
 - `scripts/sync_catalog.py` rebuilds that catalog and the optimized web images from the three Batch 3 manifests.
-- The public page creates filters, counts, priced shop cards, and voting hearts directly from the catalog.
+- The public page creates filters, counts, shop cards without displayed prices, and voting hearts directly from the catalog.
 - A garment, color, or section can be added without changing the page component.
 
 ## Voting model
@@ -35,3 +35,11 @@ pnpm build
 ```
 
 See `content/README.md` for the color, garment, and section workflow.
+
+## Price survey
+
+After three distinct apparel models are liked (color variants of the same drawing and garment count once), visitors may suggest a price in CAD for one liked garment. The question mentions a contribution from profits to the Fondation CHU Sainte-Justine, without specifying a percentage or implying a formal partnership. Visitors can answer, choose “Je ne sais pas”, or defer, and edit their answer later.
+
+The Vercel endpoint stores `priceSurvey` with the existing ballot, adding the nullable `price_survey` JSONB column to PostgreSQL automatically. Redis and the standalone endpoint store the same object. Subsequent favorite changes preserve the response; removing all favorites removes the entire ballot. `/admin` displays prices by garment and group, with a separate CSV export. Existing votes need no data backfill.
+
+The shared header includes **Connexion** on desktop and in the mobile menu. It opens `/admin`, using the existing `ADMIN_PASSWORD` (or `RESULTS_KEY`) and an eight-hour HttpOnly session. No password is included in the public bundle. A hosting environment without either variable must configure one before sign-in is available.

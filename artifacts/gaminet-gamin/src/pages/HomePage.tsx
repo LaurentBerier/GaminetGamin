@@ -132,7 +132,6 @@ export default function HomePage() {
 
   const shopRoute = lang === "fr" ? "/fr/boutique" : lang === "en" ? "/en/shop" : "/es/tienda";
   const programRoute = lang === "fr" ? "/fr/artistes" : lang === "en" ? "/en/little-monsters" : "/es/pequenos-monstruos";
-  const numberLocale = lang === "fr" ? "fr-CA" : lang === "es" ? "es-CA" : "en-CA";
 
   return (
     <main className="overflow-hidden bg-[#f7f3eb]">
@@ -275,9 +274,6 @@ export default function HomePage() {
                   <Heart size={19} className="mt-0.5 shrink-0 text-[#ef5d82] transition group-hover:fill-[#ef5d82]" />
                 </div>
                 <div className="mt-4 flex items-center justify-between border-t border-black/8 pt-3">
-                  <span className="text-sm font-black text-[#201c19]">
-                    {new Intl.NumberFormat(numberLocale, { style: "currency", currency: "CAD" }).format(item.garment.price)}
-                  </span>
                   <span className="flex items-center gap-1 text-xs font-black text-[#a45c26]">
                     {pageCopy.vote} <ArrowRight size={13} className="transition group-hover:translate-x-1" />
                   </span>

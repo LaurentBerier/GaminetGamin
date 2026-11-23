@@ -6,6 +6,7 @@ import catalog from '../../content/catalog.json';
 import { CollectionStorefront } from './catalog/CollectionStorefront';
 
 import { PreferenceResults } from './catalog/PreferenceResults';
+import { PriceSurveyResults } from './catalog/PriceSurveyResults';
 import type { VoteResults as ResultData } from '../../lib/vote-results.mjs';
 
 const activeItems = catalog.items.filter((item) => item.active);
@@ -170,6 +171,7 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
           </button>
         </div>
 
+        <PriceSurveyResults summary={(group === 'all' ? data : data?.groups[group])?.priceSurvey} groupLabel={group === 'all' ? 'Tous' : humanGroup(group)} />
         <PreferenceResults items={catalog.items} summary={group === 'all' ? data : data?.groups[group]} groupLabel={group === 'all' ? 'Tous' : humanGroup(group)} />
         <h2 className="mt-12 text-2xl font-black">Combinaisons illustration · couleur · vêtement</h2>
         <p className="mt-2 text-base text-stone-600">Retrouvez aussi les modèles précis choisis, avec leur illustration, couleur et vêtement.</p>

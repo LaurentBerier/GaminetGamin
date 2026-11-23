@@ -111,11 +111,11 @@
     "step3_texte": "If we select the drawing, it becomes a real collection. The artist gets a free shirt + a share of profits from every sale.",
     "cause_titre": "The cause behind the drawings",
     "cause_texte": "For every sale of a community-submitted design, 10% is donated to a Québec youth organization of the child's choice.",
-    "cause_organismes": "Partner organizations",
+    "cause_organismes": "Charities to support",
     "cause_org1": "Fondation Jeunes en Tête",
     "cause_org2": "Big Brothers Big Sisters",
     "cause_org3": "Tel-Jeunes",
-    "cause_note": "The young artist can choose which of these three organizations receives their share if they'd rather donate than keep it.",
+    "cause_note": "The young artist can choose which of these organizations receives their share if they'd rather donate than keep it.",
     "form_titre": "Submit a drawing",
     "form_prenom": "Child's first name",
     "form_age": "Child's age",
@@ -141,6 +141,7 @@
     "faq3_q": "How much does my child earn?",
     "faq3_r": "10% of each sale goes to the youth organization chosen by the child, paid by cheque or store credit at the parent's choice.",
     "faq4_q": "How long until we hear back?",
-    "faq4_r": "We review all submissions and respond within 4 to 6 weeks. Thank you for your patience!"
+    "faq4_r": "We review all submissions and respond within 4 to 6 weeks. Thank you for your patience!",
+    "cause_org4": "Fondation CHU Sainte-Justine"
   }
 }

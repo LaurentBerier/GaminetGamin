@@ -111,11 +111,11 @@
     "step3_texte": "Si elegimos el dibujo, se convierte en una colección real. El artista recibe una camiseta gratis + una parte de las ganancias de cada venta.",
     "cause_titre": "La causa detrás de los dibujos",
     "cause_texte": "Por cada venta de un diseño enviado por la comunidad, el 10% se dona a una organización juvenil de Québec elegida por el niño creador.",
-    "cause_organismes": "Organizaciones asociadas",
+    "cause_organismes": "Organizaciones para apoyar",
     "cause_org1": "Fondation Jeunes en Tête",
     "cause_org2": "Grandes Hermanos Grandes Hermanas",
     "cause_org3": "Tel-Jeunes",
-    "cause_note": "El joven artista puede elegir cuál de estas tres organizaciones recibe su parte si prefiere donar en lugar de quedársela.",
+    "cause_note": "El joven artista puede elegir cuál de estas organizaciones recibe su parte si prefiere donar en lugar de quedársela.",
     "form_titre": "Enviar un dibujo",
     "form_prenom": "Nombre del niño",
     "form_age": "Edad del niño",
@@ -141,6 +141,7 @@
     "faq3_q": "¿Cuánto gana mi hijo?",
     "faq3_r": "El 10% de cada venta va a la organización juvenil elegida por el niño, pagado por cheque o crédito en la tienda a elección del padre.",
     "faq4_q": "¿Cuánto tiempo hasta recibir respuesta?",
-    "faq4_r": "Revisamos todos los envíos y respondemos en un plazo de 4 a 6 semanas. ¡Gracias por su paciencia!"
+    "faq4_r": "Revisamos todos los envíos y respondemos en un plazo de 4 a 6 semanas. ¡Gracias por su paciencia!",
+    "cause_org4": "Fondation CHU Sainte-Justine"
   }
 }

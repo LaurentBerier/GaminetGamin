@@ -233,7 +233,7 @@ export default function ArtistesPage() {
             </div>
             <div className="space-y-4">
               <p className="text-green-200 text-xs font-bold uppercase tracking-widest mb-4">{pa.cause_organismes}</p>
-              {[pa.cause_org1, pa.cause_org2, pa.cause_org3].map((org, i) => (
+              {[pa.cause_org1, pa.cause_org2, pa.cause_org3, pa.cause_org4].map((org, i) => (
                 <div key={i} className="flex items-center gap-3 bg-white/10 rounded-xl px-5 py-4">
                   <div className="w-8 h-8 rounded-full bg-gg-gold/80 flex items-center justify-center text-stone-900 font-black text-sm flex-shrink-0">{i + 1}</div>
                   <span className="text-white font-medium">{org}</span>

@@ -111,11 +111,11 @@
     "step3_texte": "Si on choisit son dessin, il devient une vraie collection. L'artiste reçoit un chandail gratuit + une portion des profits sur chaque vente.",
     "cause_titre": "La cause derrière les dessins",
     "cause_texte": "Pour chaque vente d'un design soumis par la communauté, 10% est versé à un organisme jeunesse québécois choisi par l'enfant créateur.",
-    "cause_organismes": "Les organismes partenaires",
+    "cause_organismes": "Les organismes à soutenir",
     "cause_org1": "Fondation Jeunes en Tête",
     "cause_org2": "Grands Frères Grandes Soeurs",
     "cause_org3": "Tel-Jeunes",
-    "cause_note": "L'enfant créateur peut choisir lequel de ces trois organismes reçoit sa portion s'il préfère donner plutôt que garder.",
+    "cause_note": "L'enfant créateur peut choisir lequel de ces organismes reçoit sa portion s'il préfère donner plutôt que garder.",
     "form_titre": "Soumettre un dessin",
     "form_prenom": "Prénom de l'enfant",
     "form_age": "Âge de l'enfant",
@@ -141,6 +141,7 @@
     "faq3_q": "Combien gagne mon enfant?",
     "faq3_r": "10% de chaque vente va à l'organisme jeunesse choisi par l'enfant, versé par chèque ou crédit boutique au choix du parent.",
     "faq4_q": "Combien de temps avant qu'on vous réponde?",
-    "faq4_r": "On examine toutes les soumissions et on répond dans un délai de 4 à 6 semaines. Merci de votre patience!"
+    "faq4_r": "On examine toutes les soumissions et on répond dans un délai de 4 à 6 semaines. Merci de votre patience!",
+    "cause_org4": "Fondation CHU Sainte-Justine"
   }
 }

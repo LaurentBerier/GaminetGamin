@@ -3,7 +3,7 @@ function preferences() {
   return { participants: 0, totalVotes: 0, itemCounts: counts(), colorCounts: counts(), garmentCounts: counts() };
 }
 function summary() {
-  return { ...preferences(), illustrationCounts: counts(), illustrations: counts() };
+  return { ...preferences(), illustrationCounts: counts(), illustrations: counts(), priceSurvey: { responses: 0, skipped: 0, unsure: 0, garments: counts() } };
 }
 function increment(target, id) { target[id] = (target[id] ?? 0) + 1; }
 
@@ -13,6 +13,20 @@ function addPreferences(target, items) {
   for (const item of items) increment(target.itemCounts, item.id);
   for (const id of new Set(items.map((item) => item.color.id))) increment(target.colorCounts, id);
   for (const id of new Set(items.map((item) => item.garment.id))) increment(target.garmentCounts, id);
+}
+
+function addPriceSurvey(target, answer) {
+  if (!answer || answer.version !== 1) return;
+  const survey = target.priceSurvey;
+  if (answer.status === 'skipped') { survey.skipped += 1; return; }
+  if (answer.status !== 'answered' && answer.status !== 'unsure') return;
+  if (answer.status === 'answered' && (typeof answer.amount !== 'number' || !Number.isFinite(answer.amount) || answer.amount < 1 || answer.amount > 1000)) return;
+  survey.responses += 1;
+  survey.garments[answer.garmentId] ??= { amounts: counts(), unsure: 0 };
+  if (answer.status === 'unsure') {
+    survey.unsure += 1;
+    survey.garments[answer.garmentId].unsure += 1;
+  } else increment(survey.garments[answer.garmentId].amounts, answer.amount);
 }
 
 function addBallot(target, items) {
@@ -40,6 +54,8 @@ export function summarizeBallots(ballots, catalogItems) {
     result.groups[group] ??= summary();
     addBallot(result, items);
     addBallot(result.groups[group], items);
+    addPriceSurvey(result, ballot.priceSurvey);
+    addPriceSurvey(result.groups[group], ballot.priceSurvey);
     result.lastVoteAt = Math.max(result.lastVoteAt, ballot.updatedAt || 0);
   }
   return result;

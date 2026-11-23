@@ -60,7 +60,6 @@ export default function ProduitPage() {
     defaultGarment;
   const selectedColorOption = selectedColor ?? colors[0];
   const layered = isLayeredProduct(produit);
-  const currentPrice = selectedGarment?.price ?? produit.prix;
   const currentComposition = selectedGarment?.composition ?? produit.composition;
 
   return (
@@ -153,10 +152,6 @@ export default function ProduitPage() {
             {translateField(produit.nom as any)}
           </h1>
 
-          <p className="text-2xl font-bold text-stone-900 mb-6" data-testid="product-price">
-            {currentPrice.toFixed(2)} $
-          </p>
-
           <div className="mb-6">
             <h3 className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">{t.produit.description}</h3>
             <p className="text-stone-600 leading-relaxed" data-testid="product-description">
@@ -184,9 +179,6 @@ export default function ProduitPage() {
                     data-testid={`garment-${garment.id}`}
                   >
                     <span className="block">{translateField(garment.label)}</span>
-                    <span className="block text-xs opacity-70 mt-0.5">
-                      {garment.price.toFixed(2)} $
-                    </span>
                   </button>
                 ))}
               </div>

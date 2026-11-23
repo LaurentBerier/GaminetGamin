@@ -18,6 +18,7 @@ import {
 import catalog from '../../../gaminet-gamin-vote/content/catalog.json';
 
 import { PreferenceResults } from '../../../gaminet-gamin-vote/app/components/catalog/PreferenceResults';
+import { PriceSurveyResults } from '../../../gaminet-gamin-vote/app/components/catalog/PriceSurveyResults';
 import type { VoteResults as ResultData } from '../../../gaminet-gamin-vote/lib/vote-results.mjs';
 
 type AccessState = 'checking' | 'signed-out' | 'signed-in';
@@ -102,7 +103,7 @@ function LoginScreen({
   };
 
   return (
-    <main className="relative grid min-h-screen place-items-center overflow-hidden bg-[#201c19] px-5 py-12 text-[#201c19]">
+    <main className="relative grid min-h-[calc(100dvh-5rem)] place-items-center overflow-hidden bg-[#201c19] px-5 py-12 text-[#201c19]">
       <div className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-[#ff718a]/25 blur-3xl" />
       <div className="absolute -bottom-32 -right-24 h-96 w-96 rounded-full bg-[#dce77d]/20 blur-3xl" />
       <section className="relative w-full max-w-md rounded-[2rem] bg-[#f7f3eb] p-6 shadow-2xl sm:p-9" aria-labelledby="admin-login-title">
@@ -327,7 +328,7 @@ export default function AdminDashboardPage() {
 
   if (access === 'checking') {
     return (
-      <main className="grid min-h-screen place-items-center bg-[#201c19] text-white">
+      <main className="grid min-h-[calc(100dvh-5rem)] place-items-center bg-[#201c19] text-white">
         <div className="text-center">
           <RefreshCw className="mx-auto animate-spin text-[#dce77d]" size={30} aria-hidden="true" />
           <p className="mt-4 text-sm font-black">Ouverture du tableau de bord…</p>
@@ -345,13 +346,10 @@ export default function AdminDashboardPage() {
   const bestScore = ranked[0]?.votes ?? 0;
 
   return (
-    <main className="min-h-screen bg-[#f7f3eb] text-[#201c19]">
-      <header className="border-b border-white/10 bg-[#201c19] text-white">
+    <main className="min-h-[calc(100dvh-5rem)] bg-[#f7f3eb] text-[#201c19]">
+      <div className="border-b border-white/10 bg-[#201c19] text-white" role="region" aria-label="Actions du tableau de bord">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-5 sm:px-8">
-          <a href="/fr" className="leading-none transition hover:opacity-75" aria-label="Accueil Gaminet Gamin">
-            <span className="block text-lg font-black uppercase tracking-tight">Gaminet Gamin</span>
-            <span className="mt-1 block text-[10px] font-black uppercase tracking-[0.28em] text-[#dce77d]">Administration</span>
-          </a>
+          <p className="text-sm font-black uppercase tracking-widest">Administration du sondage</p>
           <div className="flex flex-wrap items-center gap-2">
             <button onClick={() => void copyVotingLink('main')} className="flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-black text-[#201c19]">
               {copiedLink === 'main' ? <Check size={16} /> : <Copy size={16} />}
@@ -365,7 +363,7 @@ export default function AdminDashboardPage() {
             </button>
           </div>
         </div>
-      </header>
+      </div>
 
       <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -441,6 +439,7 @@ export default function AdminDashboardPage() {
           ))}
         </div>
 
+        <PriceSurveyResults summary={(selectedGroup === 'all' ? data : groupSummary)?.priceSurvey} groupLabel={selectedGroup === 'all' ? 'Tous' : humanGroup(selectedGroup)} />
         <PreferenceResults items={catalog.items} summary={selectedGroup === 'all' ? data : groupSummary} groupLabel={selectedGroup === 'all' ? 'Tous' : humanGroup(selectedGroup)} />
 
         <section className="mt-6 overflow-hidden rounded-[2rem] border border-black/8 bg-white shadow-[0_12px_40px_rgba(53,45,36,0.08)]" aria-labelledby="ranking-title">

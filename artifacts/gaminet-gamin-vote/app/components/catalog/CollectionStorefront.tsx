@@ -5,6 +5,10 @@ import type { MouseEvent } from 'react';
 import { garmentNames, garmentOrder, groupProducts, productId, productUrl, relatedProducts } from './grouping';
 import type { CatalogItem, ProductGroup } from './grouping';
 import { ProductImage } from './ProductImage';
+import { SiteHeader } from '../SiteHeader';
+import { PriceSurveyDialog } from './PriceSurveyDialog';
+import { surveyEligibleItems } from '../../../lib/price-survey.mjs';
+import type { PriceSurvey } from '../../../lib/price-survey.mjs';
 
 type Labelled = { id: string; label: { fr: string; en: string } };
 type Catalog = {
@@ -15,7 +19,6 @@ type Catalog = {
 };
 type Route = { product: string; color: string; legacyItem: string };
 const emptyRoute: Route = { product: '', color: '', legacyItem: '' };
-const money = (price: number) => new Intl.NumberFormat('fr-CA', { style: 'currency', currency: 'CAD' }).format(price);
 
 export function CollectionStorefront({ catalog, standalone = false }: { catalog: Catalog; standalone?: boolean }) {
   const products = useMemo(() => groupProducts(catalog.items), [catalog.items]);
@@ -30,6 +33,9 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [shareLabel, setShareLabel] = useState('Partager');
   const [notice, setNotice] = useState('');
+  const [priceSurvey, setPriceSurvey] = useState<PriceSurvey | null>(null);
+  const [surveyItem, setSurveyItem] = useState<CatalogItem | null>(null);
+  const surveyPrompted = useRef(false);
   const voter = useRef('');
   const voterName = useRef('');
   const voterGroup = useRef('');
@@ -53,8 +59,9 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
 
   useEffect(() => {
     readRoute();
-    window.addEventListener('popstate', readRoute);
-    return () => window.removeEventListener('popstate', readRoute);
+    const navigationEvents = ['popstate', 'pushState', 'replaceState'];
+    for (const event of navigationEvents) window.addEventListener(event, readRoute);
+    return () => { for (const event of navigationEvents) window.removeEventListener(event, readRoute); };
   }, [readRoute]);
 
   useEffect(() => {
@@ -68,10 +75,11 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
     } catch {
       voter.current = crypto.randomUUID();
     }
+    try { surveyPrompted.current = sessionStorage.getItem('gg-price-prompt:' + catalog.campaign.id) === '1'; } catch { /* Storage is optional. */ }
     voterGroup.current = (new URLSearchParams(window.location.search).get('group') ?? '').slice(0, 60);
     fetch('/api/votes?mode=ballot&campaignId=' + encodeURIComponent(catalog.campaign.id) + '&voterId=' + encodeURIComponent(voter.current), { cache: 'no-store', signal: controller.signal })
       .then(async (response) => {
-        const body = await response.json() as { error?: string; ballot?: { selectedItemIds: string[]; voterName?: string; voterGroup?: string } | null };
+        const body = await response.json() as { error?: string; ballot?: { selectedItemIds: string[]; voterName?: string; voterGroup?: string; priceSurvey?: PriceSurvey | null } | null };
         if (!response.ok) throw new Error(body.error || 'Chargement impossible');
         return body;
       })
@@ -83,12 +91,34 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
         setSelected(ids);
         voterName.current = body.ballot.voterName || '';
         voterGroup.current ||= body.ballot.voterGroup || '';
+        setPriceSurvey(body.ballot.priceSurvey ?? null);
         if (ids.length) setSaveState('saved');
       })
       .catch(() => { if (!cancelled) setSaveState('error'); })
       .finally(() => { window.clearTimeout(timeout); if (!cancelled) setReady(true); });
     return () => { cancelled = true; controller.abort(); window.clearTimeout(timeout); };
   }, [catalog.campaign.id, itemById]);
+
+  const eligibleItems = useMemo(() => surveyEligibleItems(selected, catalog.items), [selected, catalog.items]);
+  useEffect(() => {
+    if (!ready || saveState !== 'saved' || eligibleItems.length < 3 || priceSurvey || surveyPrompted.current) return;
+    surveyPrompted.current = true;
+    try { sessionStorage.setItem('gg-price-prompt:' + catalog.campaign.id, '1'); } catch { /* Storage is optional. */ }
+    setSurveyItem(eligibleItems[eligibleItems.length - 1]);
+  }, [ready, saveState, eligibleItems, priceSurvey]);
+
+  function savePriceSurvey(answer: PriceSurvey) {
+    const request = queue.current.catch(() => undefined).then(async () => {
+      const response = await fetch('/api/votes', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'price-survey', campaignId: catalog.campaign.id, voterId: voter.current, priceSurvey: answer }),
+      });
+      if (!response.ok) throw new Error('Réponse non enregistrée');
+      setPriceSurvey(answer);
+    });
+    queue.current = request.catch(() => undefined);
+    return request;
+  }
 
   const legacyItem = itemById.get(route.legacyItem);
   const currentProductId = route.product || (legacyItem ? productId(legacyItem) : '');
@@ -187,7 +217,10 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
       });
       if (!response.ok) throw new Error('Vote non enregistré');
       savedSelections.current = next;
-      if (requestRevision === revision.current) setSaveState(next.length ? 'saved' : 'idle');
+      if (requestRevision === revision.current) {
+        setSaveState(next.length ? 'saved' : 'idle');
+        if (!next.length) setPriceSurvey(null);
+      }
     }).catch(() => {
       if (requestRevision !== revision.current) return;
       selections.current = savedSelections.current;
@@ -225,33 +258,23 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
           <div className="flex items-center gap-1.5" aria-label={entry.variants.length + ' couleurs proposées'}>
             {entry.variants.map((item) => <a key={item.id} href={productUrl(shopPath, entry, item)} onClick={(event) => productClick(event, entry, item)} aria-label={entry.title + ' en ' + item.color.label.fr} title={item.color.label.fr} className="grid h-8 w-8 place-items-center rounded-full border border-stone-200 hover:border-stone-800"><span className="h-5 w-5 rounded-full border border-black/10" style={{ backgroundColor: item.color.hex }} /></a>)}
           </div>
-          <p className="text-sm font-black">{money(image.garment.price)}</p>
         </div>
         <p className="mt-3 text-sm font-semibold text-stone-500">{entry.variants.length} couleurs · Choisir mon modèle</p>
       </div>
     </article>;
   }
 
-  return <main className="min-h-screen bg-[#faf9f6] text-[#201c19]">
-    <header className="sticky top-0 z-30 border-b border-stone-200 bg-[#faf9f6]/95 backdrop-blur-xl">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
-        <a href={mainOrigin + '/fr'} className="shrink-0 font-black uppercase leading-tight" aria-label="Accueil Gaminet Gamin">Gaminet Gamin<span className="mt-1 block text-sm tracking-[0.3em] text-[#a87739]">GG</span></a>
-        <nav className="hidden items-center gap-6 text-sm font-bold text-stone-600 md:flex" aria-label="Navigation principale">
-          <button type="button" onClick={() => showCollection(true)} className="text-[#201c19]">La collection</button>
-          <a href={mainOrigin + '/fr/artistes'}>Les p’tits artistes</a>
-          <a href={mainOrigin + '/fr/apropos'}>Notre histoire</a>
-        </nav>
-        <div className="flex items-center gap-2">
-          <button type="button" onClick={() => void share()} className="rounded-full border border-stone-200 bg-white px-4 py-2.5 text-sm font-bold">{shareLabel}</button>
-          <span className="rounded-full bg-[#201c19] px-4 py-2.5 text-sm font-bold text-white" aria-label={selected.length + ' favoris'}>♥ {selected.length}{maxSelections ? ' / ' + maxSelections : ''}</span>
-        </div>
+  return <>
+    {standalone && <SiteHeader standalone />}
+    <main className="min-h-[calc(100dvh-5rem)] bg-[#faf9f6] text-[#201c19]">
+    <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 border-b border-stone-200 px-4 py-4 sm:px-6" aria-label="Vos favoris">
+      <p className="text-sm font-bold">♥ {selected.length} favoris{maxSelections ? ' / ' + maxSelections : ''}</p>
+      <div className="flex flex-wrap items-center gap-2">
+        {eligibleItems.length >= 3 && <button type="button" onClick={() => setSurveyItem(eligibleItems.find((item) => item.id === priceSurvey?.itemId) ?? eligibleItems[eligibleItems.length - 1])} className="rounded-full bg-[#e9e1fa] px-4 py-2.5 text-sm font-bold">{priceSurvey?.status === 'answered' || priceSurvey?.status === 'unsure' ? 'Modifier ma réponse sur le prix' : 'Donner mon avis sur le prix'}</button>}
+        <button type="button" onClick={() => void share()} className="rounded-full border border-stone-200 bg-white px-4 py-2.5 text-sm font-bold">{shareLabel}</button>
       </div>
-      <nav className="flex gap-5 overflow-x-auto border-t border-stone-200 px-4 py-3 text-sm font-bold text-stone-600 md:hidden" aria-label="Navigation mobile">
-        <button type="button" onClick={() => showCollection(true)} className="shrink-0">La collection</button>
-        <a href={mainOrigin + '/fr/artistes'} className="shrink-0">Les p’tits artistes</a>
-        <a href={mainOrigin + '/fr/apropos'} className="shrink-0">Notre histoire</a>
-      </nav>
-    </header>
+    </div>
+    {surveyItem && <PriceSurveyDialog item={surveyItem} previous={priceSurvey} onSave={savePriceSurvey} onDismiss={() => setSurveyItem(null)} />}
 
     {product && variant ? <>
       <section className="mx-auto max-w-7xl px-4 pb-14 pt-6 sm:px-6 sm:pt-10">
@@ -263,7 +286,6 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
           <div className="lg:sticky lg:top-28">
             <p className="text-sm font-black uppercase tracking-[0.16em] text-[#96682f]">{variant.garment.label.fr}{product.designId.startsWith('V3_') ? ' · Nouveauté' : ''}</p>
             <h1 ref={productHeading} tabIndex={-1} className="mt-3 text-4xl font-black leading-tight tracking-tight outline-none sm:text-5xl">{product.title}</h1>
-            <p className="mt-4 text-2xl font-black">{money(variant.garment.price)} <span className="text-sm font-medium text-stone-500">prix proposé</span></p>
             <p className="mt-5 text-base leading-relaxed text-stone-600">Un dessin d’enfant, tout son caractère. Choisissez votre couleur préférée et aidez-nous à lui faire une place dans la prochaine collection.</p>
             <fieldset className="mt-8">
               <legend className="mb-3 text-base font-bold">Couleur : <span className="font-medium">{variant.color.label.fr}</span></legend>
@@ -330,13 +352,13 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
         {!filtered.length && <p className="rounded-3xl bg-white p-12 text-center text-lg font-bold text-stone-500">Aucun modèle pour cette recherche. Essayez un autre dessin ou une autre couleur.</p>}
       </section>
     </>}
-    <footer className="bg-[#201c19] text-white">
+    {standalone && <footer className="bg-[#201c19] text-white">
       <div className="mx-auto grid max-w-7xl gap-8 px-6 py-12 sm:grid-cols-2">
         <div><p className="text-xl font-black uppercase">Gaminet Gamin <span className="text-[#c8914a]">GG</span></p><p className="mt-4 max-w-md text-base leading-relaxed text-white/60">Des dessins d’enfants qui ont plus d’imagination que nous autres. Imaginé au Québec.</p></div>
         <nav className="flex flex-wrap items-start gap-6 text-sm font-bold" aria-label="Liens de pied de page"><button type="button" onClick={() => showCollection(true)}>La collection</button><a href={mainOrigin + '/fr/artistes'}>Les p’tits artistes</a><a href={mainOrigin + '/fr/contact'}>Contact</a></nav>
-        <p className="text-sm text-white/45">© 2026 Gaminet Gamin GG · Prix proposés en dollars canadiens.</p>
+        <p className="text-sm text-white/45">© 2026 Gaminet Gamin GG · La prochaine collection se choisit avec vous.</p>
         {!standalone && <nav className="flex gap-4 text-sm font-bold" aria-label="Langues"><a href="/fr/boutique" lang="fr">FR</a><a href="/en/shop" lang="en">EN</a><a href="/es/tienda" lang="es">ES</a></nav>}
       </div>
-    </footer>
-  </main>;
+    </footer>}
+  </main></>;
 }
