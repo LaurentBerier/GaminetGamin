@@ -277,8 +277,8 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
               </div>
             </fieldset>
             <button type="button" onClick={() => vote(variant.id)} disabled={!ready} aria-pressed={selected.includes(variant.id)} className={'mt-7 flex w-full items-center justify-center gap-3 rounded-full px-5 py-4 text-base font-black transition disabled:opacity-40 ' + (selected.includes(variant.id) ? 'bg-[#ff718a] text-[#201c19]' : 'bg-[#201c19] text-white hover:bg-[#44374f]')}>
-              <span className="text-2xl" aria-hidden="true">{selected.includes(variant.id) ? '♥' : '♡'}</span>
-              {selected.includes(variant.id) ? 'Retirer ce coloris de mes favoris' : 'Voter pour ce coloris'}
+              <svg width="24" height="24" viewBox="0 0 24 24" fill={selected.includes(variant.id) ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z" /></svg>
+              Voter
             </button>
             <p className="mt-3 text-center text-sm text-stone-600" role="status" aria-live="polite">{notice || status}</p>
             <div className="mt-8 rounded-2xl bg-[#e9e1fa] p-5">
