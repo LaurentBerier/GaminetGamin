@@ -35,7 +35,7 @@ export function CharityCommitment({ compact = false }: { compact?: boolean }) {
       <div><p className="text-lg font-black">{text.title}</p><p className="mt-1 text-base leading-relaxed text-white/90">{text.message} <a href="https://www.fondationstejustine.org/" target="_blank" rel="noreferrer" className="font-bold underline underline-offset-4">Fondation CHU Sainte-Justine</a>.</p><a href={storyPath + '#engagement'} className="mt-2 inline-block text-sm font-bold text-[#dce77d] underline underline-offset-4">{text.link}</a></div>
     </div>
   </aside>;
-  return <section id="engagement" className="mb-12 scroll-mt-28 rounded-3xl bg-[#315c47] p-6 text-white sm:p-9" aria-labelledby="charity-title" data-testid="charity-story">
+  return <section id="engagement" className="mb-12 scroll-mt-36 rounded-3xl bg-[#315c47] p-6 text-white sm:p-9" aria-labelledby="charity-title" data-testid="charity-story">
     <Heart size={28} aria-hidden="true" className="text-[#dce77d]" />
     <h2 id="charity-title" className="mt-4 text-3xl font-black">{text.title}</h2>
     <p className="mt-4 text-lg leading-relaxed text-white/90">{text.story}</p>

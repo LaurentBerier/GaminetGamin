@@ -13,14 +13,27 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <div className="flex flex-col leading-none mb-4">
-              <span className="font-black text-stone-100 text-xl tracking-tight uppercase" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                GAMINET GAMIN
-              </span>
-              <span className="font-black text-gg-gold text-lg tracking-widest" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                GG
-              </span>
-            </div>
+            <Link
+              href={homeRoute}
+              onClick={(event) => {
+                if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && event.button === 0) {
+                  window.scrollTo({ top: 0, behavior: "instant" });
+                }
+              }}
+              className="mb-5 inline-block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              <img
+                src="/brand/gaminet-gamin-blanc-v1-400.png"
+                srcSet="/brand/gaminet-gamin-blanc-v1-400.png 400w, /brand/gaminet-gamin-blanc-v1-800.png 800w"
+                sizes="208px"
+                width={1448}
+                height={1086}
+                alt="Gaminet Gamin"
+                className="block h-auto w-52"
+                loading="lazy"
+                decoding="async"
+              />
+            </Link>
             <p className="text-stone-400 text-sm leading-relaxed max-w-xs">
               {t.home.subslogan}
             </p>

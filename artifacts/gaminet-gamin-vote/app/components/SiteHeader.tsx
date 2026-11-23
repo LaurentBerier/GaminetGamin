@@ -109,18 +109,24 @@ export function SiteHeader({
       data-testid="header"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex h-20 items-center justify-between gap-3">
+        <div className="flex h-28 items-center justify-between gap-3 sm:h-32">
           <a
             href={origin + routes[lang][0]}
             onClick={navigate}
             aria-label={labels[lang][0] + " Gaminet Gamin"}
-            className="shrink-0 font-black uppercase leading-tight tracking-tight"
+            className="shrink-0 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
             data-testid="logo-link"
           >
-            Gaminet Gamin
-            <span className="mt-1 block text-sm tracking-[0.3em] text-[#a87739]">
-              GG
-            </span>
+            <img
+              src="/brand/gaminet-gamin-couleur-v1-320.png"
+              srcSet="/brand/gaminet-gamin-couleur-v1-320.png 320w, /brand/gaminet-gamin-couleur-v1-640.png 640w"
+              sizes="(min-width: 640px) 144px, 128px"
+              width={1430}
+              height={1100}
+              alt=""
+              className="block h-auto w-32 sm:w-36"
+              fetchPriority="high"
+            />
           </a>
           <nav
             className="hidden items-center gap-5 lg:flex"

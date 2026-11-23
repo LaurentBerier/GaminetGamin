@@ -292,7 +292,7 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
         </nav>
         <div className="grid items-start gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-14">
           <ProductImage key={variant.id} src={variant.image} alt={product.title + ' — ' + variant.garment.label.fr + ' ' + variant.color.label.fr} />
-          <div className="lg:sticky lg:top-28">
+          <div className="lg:sticky lg:top-36">
             <p className="text-sm font-black uppercase tracking-[0.16em] text-[#96682f]">{variant.garment.label.fr}{product.designId.startsWith('V3_') ? ' · Nouveauté' : ''}</p>
             <h1 ref={productHeading} tabIndex={-1} className="mt-3 text-4xl font-black leading-tight tracking-tight outline-none sm:text-5xl">{product.title}</h1>
             <p className="mt-5 text-base leading-relaxed text-stone-600">Un dessin d’enfant, tout son caractère. Choisissez votre couleur préférée et aidez-nous à lui faire une place dans la prochaine collection.</p>
