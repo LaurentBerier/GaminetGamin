@@ -1,5 +1,5 @@
-import { validPriceSurvey } from '../../../lib/price-survey.mjs';
-import type { PriceSurvey } from '../../../lib/price-survey.mjs';
+import { validPriceSurvey, mergePriceSurvey } from '../../../lib/price-survey.mjs';
+import type { StoredPriceSurvey } from '../../../lib/price-survey.mjs';
 import { summarizeBallots } from '../../../lib/vote-results.mjs';
 import { NextRequest, NextResponse } from 'next/server';
 import catalog from '../../../content/catalog.json';
@@ -11,7 +11,7 @@ type StoredBallot = {
   voterName: string;
   voterGroup: string;
   selectedItemIds: string[];
-  priceSurvey?: PriceSurvey | null;
+  priceSurvey?: StoredPriceSurvey | null;
   submittedAt: number;
   updatedAt: number;
 };
@@ -213,11 +213,10 @@ export async function POST(request: NextRequest) {
     if (body.action === 'price-survey') {
       const existing = await readBallot(campaignId, voterId);
       if (!existing || !validPriceSurvey(body.priceSurvey, existing.selectedItemIds, catalog.items)) {
-        return json({ error: 'Aimez au moins trois modèles de chandails et indiquez un prix valide.' }, { status: 400 });
+        return json({ error: 'Choisissez un modèle aimé et une réponse valide pour ce type de vêtement.' }, { status: 400 });
       }
-      const { version, status, itemId, garmentId, amount, currency, charity } = body.priceSurvey;
       const now = Date.now();
-      await saveBallot(campaignId, voterId, { ...existing, priceSurvey: { version, status, itemId, garmentId, amount, currency, charity }, updatedAt: now });
+      await saveBallot(campaignId, voterId, { ...existing, priceSurvey: mergePriceSurvey(existing.priceSurvey, body.priceSurvey), updatedAt: now });
       return json({ success: true, updatedAt: now });
     }
     if (body.action) return json({ error: 'Action inconnue.' }, { status: 400 });

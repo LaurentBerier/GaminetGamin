@@ -27,9 +27,8 @@ export function PriceSurveyResults({
           "Je ne sais pas",
           values.unsure,
         ]);
+      if (values.skipped) rows.push([groupLabel, garmentNames[id] ?? id, 'Plus tard', values.skipped]);
     }
-    if (summary?.skipped)
-      rows.push([groupLabel, "", "Plus tard", summary.skipped]);
     const csv =
       "\uFEFF" +
       rows
@@ -82,22 +81,22 @@ export function PriceSurveyResults({
         </button>
       </div>
       <p className="mt-3 text-base leading-relaxed text-stone-600">
-        Prix proposés après trois modèles de chandails aimés, avec la mention
-        d’un don d’une partie des profits à la Fondation CHU Sainte-Justine. Les
-        montants sont séparés par type de vêtement.
+        Chaque visiteur peut proposer un prix par type de produit aimé. Toutes les
+        réponses sont comptées, même lorsque le sondage reste incomplet. Les anciennes
+        réponses sont conservées et les montants sont regroupés par type.
       </p>
       <p className="mt-4 text-sm font-bold">
-        {summary?.responses ?? 0} réponse
+        {summary?.respondents ?? 0} personne{(summary?.respondents ?? 0) > 1 ? "s" : ""} · {summary?.responses ?? 0} réponse
         {(summary?.responses ?? 0) > 1 ? "s" : ""} · {summary?.unsure ?? 0} « Je
         ne sais pas » · {summary?.skipped ?? 0} « Plus tard »
       </p>
-      {!summary?.responses ? (
+      {!summary?.responses && !summary?.skipped ? (
         <p className="mt-6 rounded-2xl bg-stone-50 p-5 text-stone-500">
           Aucune réponse sur le prix pour ce groupe pour le moment.
         </p>
       ) : (
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {Object.entries(summary.garments).map(([id, values]) => {
+          {Object.entries(summary?.garments ?? {}).map(([id, values]) => {
             const entries = Object.entries(values.amounts)
               .map(([amount, count]) => [Number(amount), count])
               .sort((a, b) => a[0] - b[0]);
@@ -145,6 +144,7 @@ export function PriceSurveyResults({
                     </details>
                   </>
                 )}
+                {values.skipped > 0 && <p className="mt-3 text-sm text-stone-500">{values.skipped} « Plus tard »</p>}
                 {values.unsure > 0 && (
                   <p className="mt-3 text-sm text-stone-500">
                     {values.unsure} « Je ne sais pas »

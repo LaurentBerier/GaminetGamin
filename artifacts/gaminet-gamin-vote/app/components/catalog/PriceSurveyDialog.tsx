@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { priceChoices } from "../../../lib/price-survey.mjs";
 import type { PriceSurvey } from "../../../lib/price-survey.mjs";
 import type { CatalogItem } from "./grouping";
 
@@ -16,14 +17,15 @@ export function PriceSurveyDialog({
   onDismiss: () => void;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
-  const [amount, setAmount] = useState(
-    previous?.itemId === item.id ? (previous.amount?.toString() ?? "") : "",
-  );
+  const options = priceChoices[item.garment.id] ?? [];
+  const previousAmount = previous?.status === 'answered' ? previous.amount : null;
+  const [choice, setChoice] = useState(previousAmount !== null ? (options.includes(previousAmount) ? String(previousAmount) : 'other') : '');
+  const [amount, setAmount] = useState(previousAmount !== null && !options.includes(previousAmount) ? String(previousAmount) : '');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
-  const amountNumber = Number(amount.replace(",", "."));
+  const amountNumber = Number((choice === "other" ? amount : choice).replace(",", "."));
   const validAmount =
-    amount.trim() !== "" &&
+    choice !== "" && (choice !== "other" || amount.trim() !== "") &&
     Number.isFinite(amountNumber) &&
     amountNumber >= 1 &&
     amountNumber <= 1000 &&
@@ -46,13 +48,14 @@ export function PriceSurveyDialog({
     setError("");
     try {
       await onSave({
-        version: 1,
+        version: 2,
         status,
         itemId: item.id,
         garmentId: item.garment.id,
         amount: status === "answered" ? amountNumber : null,
         currency: "CAD",
         charity: "fondation-chu-sainte-justine",
+        answerSource: choice === "other" ? "custom" : "choice",
       });
       onDismiss();
     } catch {
@@ -73,11 +76,11 @@ export function PriceSurveyDialog({
       }}
       aria-labelledby="price-survey-title"
       aria-describedby="price-survey-intro"
-      className="fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-3xl border-0 bg-stone-50 p-6 text-stone-900 shadow-2xl backdrop:bg-black/50 sm:p-8"
+      className="fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-xl overflow-y-auto rounded-3xl border-0 bg-stone-50 p-5 text-stone-900 shadow-2xl backdrop:bg-black/50 sm:p-6"
     >
       <div className="flex items-center justify-between gap-3">
         <p className="text-sm font-bold uppercase tracking-widest text-[#96682f]">
-          Vos coups de cœur, la suite
+          Votre avis · {item.garment.label.fr}
         </p>
         <button
           type="button"
@@ -91,22 +94,21 @@ export function PriceSurveyDialog({
       </div>
       <h2
         id="price-survey-title"
-        className="mt-4 text-3xl font-black leading-tight"
+        className="mt-2 text-2xl font-black leading-tight"
       >
-        Quel prix vous semblerait juste?
+        Combien seriez-vous prêt à payer?
       </h2>
       <p
         id="price-survey-intro"
-        className="mt-3 text-base leading-relaxed text-stone-600"
+        className="mt-2 text-sm leading-relaxed text-stone-600"
       >
-        Vous avez aimé plusieurs chandails. Pour ce modèle, combien seriez-vous
-        prêt à payer?
+        Une réponse par type de produit, même si vous aimez plusieurs modèles.
       </p>
-      <div className="mt-5 flex items-center gap-4 rounded-2xl border border-stone-200 bg-white p-3">
+      <div className="mt-3 flex items-center gap-3 rounded-2xl border border-stone-200 bg-white p-2">
         <img
           src={item.image}
           alt={item.title + " — " + item.garment.label.fr}
-          className="h-24 w-24 rounded-xl object-cover"
+          className="h-16 w-16 rounded-xl object-cover"
         />
         <div>
           <p className="font-black">{item.title}</p>
@@ -115,7 +117,7 @@ export function PriceSurveyDialog({
           </p>
         </div>
       </div>
-      <p className="mt-5 rounded-2xl bg-[#e9e1fa] p-4 text-base leading-relaxed text-[#594276]">
+      <p className="mt-3 rounded-2xl bg-[#e9e1fa] p-3 text-sm leading-relaxed text-[#594276]">
         Une partie des profits sera versée à la{" "}
         <a
           href="https://www.fondationstejustine.org/"
@@ -128,32 +130,28 @@ export function PriceSurveyDialog({
         , pour soutenir la santé des enfants.
       </p>
       <form
-        className="mt-5"
+        className="mt-3"
         onSubmit={(event) => {
           event.preventDefault();
           void submit("answered");
         }}
       >
-        <label htmlFor="survey-price" className="block text-base font-bold">
-          Votre prix pour ce chandail (CAD)
-        </label>
-        <div className="relative mt-2">
-          <input
-            id="survey-price"
-            inputMode="decimal"
-            value={amount}
-            onChange={(event) => setAmount(event.target.value)}
-            disabled={saving}
-            aria-describedby="price-survey-help"
-            placeholder="Votre montant"
-            className="w-full rounded-xl border border-stone-300 bg-white px-4 py-3 pr-12 text-lg outline-none focus:ring-2 focus:ring-[#a87739]"
-          />
-          <span className="absolute right-4 top-3 text-lg font-bold">$</span>
-        </div>
+        <fieldset disabled={saving}>
+          <legend className="text-base font-bold">Votre budget · {item.garment.label.fr} (CAD)</legend>
+          <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {[...options.map(String), 'other'].map((value) => <label key={value} className={'relative flex cursor-pointer items-center justify-center gap-2 rounded-xl border-2 px-2 py-2.5 text-sm font-bold focus-within:ring-2 focus-within:ring-[#a87739] ' + (choice === value ? 'border-stone-900 bg-[#e9e1fa]' : 'border-stone-200 bg-white')}>
+              <input type="radio" name="price-choice" value={value} checked={choice === value} onChange={() => setChoice(value)} className="h-4 w-4 accent-stone-900" />
+              {value === 'other' ? 'Autre montant' : value + ' $'}
+            </label>)}
+          </div>
+          {choice === 'other' && <label className="mt-4 block text-sm font-bold">Votre montant en dollars canadiens
+            <input id="survey-price" inputMode="decimal" value={amount} onChange={(event) => setAmount(event.target.value)} aria-describedby="price-survey-help" placeholder="Votre montant" className="mt-2 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-lg outline-none focus:ring-2 focus:ring-[#a87739]" />
+          </label>}
+        </fieldset>
         <p id="price-survey-help" className="mt-2 text-sm text-stone-500">
-          Question facultative, sans engagement d’achat.
+          Votre vote est déjà compté. Réponse facultative, sans engagement d’achat.
         </p>
-        {amount.trim() && !validAmount && (
+        {choice === "other" && amount.trim() && !validAmount && (
           <p className="mt-2 text-sm text-red-800">
             Entrez un montant entre 1 et 1 000 $, avec au plus deux décimales.
           </p>
@@ -169,11 +167,11 @@ export function PriceSurveyDialog({
         <button
           type="submit"
           disabled={saving || !validAmount}
-          className="mt-5 w-full rounded-full bg-stone-900 px-5 py-3.5 text-base font-bold text-white disabled:opacity-40"
+          className="mt-3 w-full rounded-full bg-stone-900 px-5 py-3.5 text-base font-bold text-white disabled:opacity-40"
         >
           {saving ? "Enregistrement…" : "Envoyer ma réponse"}
         </button>
-        <div className="mt-3 flex flex-wrap justify-center gap-2">
+        <div className="mt-1 flex flex-wrap justify-center gap-2">
           <button
             type="button"
             disabled={saving}

@@ -1,3 +1,4 @@
+import { CharityCommitment } from "@/components/CharityCommitment";
 import { useLang } from "@/contexts/LangContext";
 
 export default function AproposPage() {
@@ -10,6 +11,7 @@ export default function AproposPage() {
           {t.apropos.titre}
         </h1>
         <div className="h-1 w-16 bg-gg-gold rounded-full mb-8" />
+        <CharityCommitment />
         <div className="space-y-5 text-stone-600 text-lg leading-relaxed">
           <p data-testid="apropos-p1">{t.apropos.p1}</p>
           <p data-testid="apropos-p2">{t.apropos.p2}</p>

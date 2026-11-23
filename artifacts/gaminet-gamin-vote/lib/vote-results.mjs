@@ -1,9 +1,10 @@
+import { priceSurveysByGarment } from './price-survey.mjs';
 function counts() { return Object.create(null); }
 function preferences() {
   return { participants: 0, totalVotes: 0, itemCounts: counts(), colorCounts: counts(), garmentCounts: counts() };
 }
 function summary() {
-  return { ...preferences(), illustrationCounts: counts(), illustrations: counts(), priceSurvey: { responses: 0, skipped: 0, unsure: 0, garments: counts() } };
+  return { ...preferences(), illustrationCounts: counts(), illustrations: counts(), priceSurvey: { respondents: 0, responses: 0, skipped: 0, unsure: 0, garments: counts() } };
 }
 function increment(target, id) { target[id] = (target[id] ?? 0) + 1; }
 
@@ -15,18 +16,21 @@ function addPreferences(target, items) {
   for (const id of new Set(items.map((item) => item.garment.id))) increment(target.garmentCounts, id);
 }
 
-function addPriceSurvey(target, answer) {
-  if (!answer || answer.version !== 1) return;
+function addPriceSurvey(target, stored) {
   const survey = target.priceSurvey;
-  if (answer.status === 'skipped') { survey.skipped += 1; return; }
-  if (answer.status !== 'answered' && answer.status !== 'unsure') return;
-  if (answer.status === 'answered' && (typeof answer.amount !== 'number' || !Number.isFinite(answer.amount) || answer.amount < 1 || answer.amount > 1000)) return;
-  survey.responses += 1;
-  survey.garments[answer.garmentId] ??= { amounts: counts(), unsure: 0 };
-  if (answer.status === 'unsure') {
-    survey.unsure += 1;
-    survey.garments[answer.garmentId].unsure += 1;
-  } else increment(survey.garments[answer.garmentId].amounts, answer.amount);
+  let responded = false;
+  for (const answer of Object.values(priceSurveysByGarment(stored))) {
+    if (!['answered', 'unsure', 'skipped'].includes(answer.status)) continue;
+    if (answer.status === 'answered' && (typeof answer.amount !== 'number' || !Number.isFinite(answer.amount) || answer.amount < 1 || answer.amount > 1000)) continue;
+    survey.garments[answer.garmentId] ??= { amounts: counts(), unsure: 0, skipped: 0 };
+    const garment = survey.garments[answer.garmentId];
+    if (answer.status === 'skipped') { survey.skipped += 1; garment.skipped += 1; continue; }
+    responded = true;
+    survey.responses += 1;
+    if (answer.status === 'unsure') { survey.unsure += 1; garment.unsure += 1; }
+    else increment(garment.amounts, answer.amount);
+  }
+  if (responded) survey.respondents += 1;
 }
 
 function addBallot(target, items) {

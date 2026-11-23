@@ -13,12 +13,13 @@ test('protected results return per-person rankings from existing ballots without
   ];
   let queries = 0;
   const originalLoad = Module._load;
-  const originalEnv = { database: process.env.DATABASE_URL, password: process.env.ADMIN_PASSWORD };
+  const originalEnv = { database: process.env.DATABASE_URL, password: process.env.ADMIN_PASSWORD, email: process.env.ADMIN_EMAIL };
   process.env.DATABASE_URL = 'postgres://offline-test';
   process.env.ADMIN_PASSWORD = 'test-preferences-only';
+  process.env.ADMIN_EMAIL = 'admin@example.test';
   Module._load = function (name, ...args) {
     if (name === 'pg') return { Pool: class {
-      async query(sql) { queries += 1; return { rows: sql.includes('SELECT') ? rows : [] }; }
+      async query(sql) { queries += 1; return { rows: sql.includes('RETURNING attempts') ? [{ attempts: 1, window_started_at: Date.now() }] : sql.includes('SELECT') ? rows : [] }; }
     } };
     return originalLoad.call(this, name, ...args);
   };
@@ -34,7 +35,7 @@ test('protected results return per-person rankings from existing ballots without
     const rejected = await request({ method: 'GET', query });
     assert.equal(rejected.statusCode, 401);
     assert.equal(queries, 0);
-    const login = await request({ method: 'POST', body: { action: 'admin-login', password: 'test-preferences-only' } });
+    const login = await request({ method: 'POST', body: { action: 'admin-login', email: 'admin@example.test', password: 'test-preferences-only' } });
     const response = await request({ method: 'GET', query, headers: { cookie: login.headers['Set-Cookie'].split(';')[0] } });
     assert.equal(response.statusCode, 200);
     assert.equal(response.body.illustrationCounts.V3_Lapinou, 2);
@@ -46,5 +47,6 @@ test('protected results return per-person rankings from existing ballots without
   } finally {
     if (originalEnv.database === undefined) delete process.env.DATABASE_URL; else process.env.DATABASE_URL = originalEnv.database;
     if (originalEnv.password === undefined) delete process.env.ADMIN_PASSWORD; else process.env.ADMIN_PASSWORD = originalEnv.password;
+    if (originalEnv.email === undefined) delete process.env.ADMIN_EMAIL; else process.env.ADMIN_EMAIL = originalEnv.email;
   }
 });

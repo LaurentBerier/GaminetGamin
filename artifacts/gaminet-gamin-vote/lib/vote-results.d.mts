@@ -1,4 +1,4 @@
-import type { PriceSurvey } from './price-survey.mjs';
+import type { StoredPriceSurvey } from './price-survey.mjs';
 export type PreferenceCounts = {
   participants: number;
   totalVotes: number;
@@ -7,10 +7,11 @@ export type PreferenceCounts = {
   garmentCounts: Record<string, number>;
 };
 export type PriceSurveySummary = {
+  respondents: number;
   responses: number;
   skipped: number;
   unsure: number;
-  garments: Record<string, { amounts: Record<string, number>; unsure: number }>;
+  garments: Record<string, { amounts: Record<string, number>; unsure: number; skipped: number }>;
 };
 export type VoteSummary = PreferenceCounts & {
   priceSurvey: PriceSurveySummary;
@@ -23,6 +24,6 @@ export type VoteResults = VoteSummary & {
   lastVoteAt: number;
 };
 export function summarizeBallots(
-  ballots: ReadonlyArray<{ selectedItemIds: string[]; voterGroup?: string; updatedAt: number; priceSurvey?: PriceSurvey | null }>,
+  ballots: ReadonlyArray<{ selectedItemIds: string[]; voterGroup?: string; updatedAt: number; priceSurvey?: StoredPriceSurvey | null }>,
   items: ReadonlyArray<{ id: string; active: boolean; designId: string; color: { id: string }; garment: { id: string } }>,
 ): Omit<VoteResults, 'campaignId'>;

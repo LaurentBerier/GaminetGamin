@@ -1,3 +1,4 @@
+import { CharityCommitment } from "@/components/CharityCommitment";
 import { Link } from "wouter";
 import { ArrowRight, Heart, Pencil, Sparkles } from "lucide-react";
 import { useState } from "react";
@@ -135,6 +136,7 @@ export default function HomePage() {
 
   return (
     <main className="overflow-hidden bg-[#f7f3eb]">
+      <CharityCommitment compact />
       <section className="relative border-b border-black/10" data-testid="hero-section">
         <div className="absolute -left-20 top-24 h-72 w-72 rounded-full bg-[#ef8db7]/25 blur-3xl" />
         <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-[#56c9c5]/25 blur-3xl" />

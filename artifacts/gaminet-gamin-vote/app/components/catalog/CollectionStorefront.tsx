@@ -7,8 +7,8 @@ import type { CatalogItem, ProductGroup } from './grouping';
 import { ProductImage } from './ProductImage';
 import { SiteHeader } from '../SiteHeader';
 import { PriceSurveyDialog } from './PriceSurveyDialog';
-import { surveyEligibleItems } from '../../../lib/price-survey.mjs';
-import type { PriceSurvey } from '../../../lib/price-survey.mjs';
+import { surveyEligibleItems, priceSurveysByGarment, mergePriceSurvey } from '../../../lib/price-survey.mjs';
+import type { PriceSurvey, StoredPriceSurvey } from '../../../lib/price-survey.mjs';
 
 type Labelled = { id: string; label: { fr: string; en: string } };
 type Catalog = {
@@ -33,9 +33,9 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [shareLabel, setShareLabel] = useState('Partager');
   const [notice, setNotice] = useState('');
-  const [priceSurvey, setPriceSurvey] = useState<PriceSurvey | null>(null);
+  const [priceSurvey, setPriceSurvey] = useState<StoredPriceSurvey | null>(null);
   const [surveyItem, setSurveyItem] = useState<CatalogItem | null>(null);
-  const surveyPrompted = useRef(false);
+  const surveyPrompted = useRef(new Set<string>());
   const voter = useRef('');
   const voterName = useRef('');
   const voterGroup = useRef('');
@@ -75,11 +75,11 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
     } catch {
       voter.current = crypto.randomUUID();
     }
-    try { surveyPrompted.current = sessionStorage.getItem('gg-price-prompt:' + catalog.campaign.id) === '1'; } catch { /* Storage is optional. */ }
+    try { const saved = JSON.parse(sessionStorage.getItem('gg-price-types:' + catalog.campaign.id) || '[]'); if (Array.isArray(saved)) surveyPrompted.current = new Set(saved.filter((id) => typeof id === 'string')); } catch { /* Storage is optional. */ }
     voterGroup.current = (new URLSearchParams(window.location.search).get('group') ?? '').slice(0, 60);
     fetch('/api/votes?mode=ballot&campaignId=' + encodeURIComponent(catalog.campaign.id) + '&voterId=' + encodeURIComponent(voter.current), { cache: 'no-store', signal: controller.signal })
       .then(async (response) => {
-        const body = await response.json() as { error?: string; ballot?: { selectedItemIds: string[]; voterName?: string; voterGroup?: string; priceSurvey?: PriceSurvey | null } | null };
+        const body = await response.json() as { error?: string; ballot?: { selectedItemIds: string[]; voterName?: string; voterGroup?: string; priceSurvey?: StoredPriceSurvey | null } | null };
         if (!response.ok) throw new Error(body.error || 'Chargement impossible');
         return body;
       })
@@ -100,21 +100,25 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
   }, [catalog.campaign.id, itemById]);
 
   const eligibleItems = useMemo(() => surveyEligibleItems(selected, catalog.items), [selected, catalog.items]);
+  const priceAnswers = useMemo(() => priceSurveysByGarment(priceSurvey), [priceSurvey]);
   useEffect(() => {
-    if (!ready || saveState !== 'saved' || eligibleItems.length < 3 || priceSurvey || surveyPrompted.current) return;
-    surveyPrompted.current = true;
-    try { sessionStorage.setItem('gg-price-prompt:' + catalog.campaign.id, '1'); } catch { /* Storage is optional. */ }
-    setSurveyItem(eligibleItems[eligibleItems.length - 1]);
-  }, [ready, saveState, eligibleItems, priceSurvey]);
+    if (!ready || saveState !== 'saved' || surveyItem) return;
+    const next = eligibleItems.find((item) => !surveyPrompted.current.has(item.garment.id)
+      && (!priceAnswers[item.garment.id] || priceAnswers[item.garment.id].status === 'skipped'));
+    if (!next) return;
+    surveyPrompted.current.add(next.garment.id);
+    try { sessionStorage.setItem('gg-price-types:' + catalog.campaign.id, JSON.stringify([...surveyPrompted.current])); } catch { /* Storage is optional. */ }
+    setSurveyItem(next);
+  }, [ready, saveState, eligibleItems, priceAnswers, surveyItem, catalog.campaign.id]);
 
   function savePriceSurvey(answer: PriceSurvey) {
     const request = queue.current.catch(() => undefined).then(async () => {
       const response = await fetch('/api/votes', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'price-survey', campaignId: catalog.campaign.id, voterId: voter.current, priceSurvey: answer }),
       });
       if (!response.ok) throw new Error('Réponse non enregistrée');
-      setPriceSurvey(answer);
+      setPriceSurvey((previous) => mergePriceSurvey(previous, answer));
     });
     queue.current = request.catch(() => undefined);
     return request;
@@ -139,7 +143,7 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
   }, [products, category, collection, theme, query]);
   const designCount = new Set(products.map((entry) => entry.designId)).size;
   const newDesignCount = new Set(products.filter((entry) => entry.designId.startsWith('V3_')).map((entry) => entry.designId)).size;
-  const status = !ready ? 'Chargement des favoris…' : saveState === 'saving' ? 'Enregistrement…' : saveState === 'saved' ? 'Favoris enregistrés' : saveState === 'error' ? 'Connexion interrompue — réessayez votre vote' : 'Vos coups de cœur comptent.';
+  const status = !ready ? 'Chargement des favoris…' : saveState === 'saving' ? 'Enregistrement…' : saveState === 'saved' ? 'Chaque favori est enregistré et compté, même si vous vous arrêtez ici.' : saveState === 'error' ? 'Connexion interrompue — réessayez votre vote' : 'Vos coups de cœur comptent.';
   const maxSelections = catalog.campaign.maxSelections;
   const mainOrigin = standalone ? 'https://gaminetgamin.com' : '';
 
@@ -212,7 +216,7 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
     const requestRevision = ++revision.current;
     queue.current = queue.current.catch(() => undefined).then(async () => {
       const response = await fetch('/api/votes', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ campaignId: catalog.campaign.id, voterId: voter.current, voterName: voterName.current, voterGroup: voterGroup.current, selectedItemIds: next }),
       });
       if (!response.ok) throw new Error('Vote non enregistré');
@@ -268,13 +272,18 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
     {standalone && <SiteHeader standalone />}
     <main className="min-h-[calc(100dvh-5rem)] bg-[#faf9f6] text-[#201c19]">
     <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 border-b border-stone-200 px-4 py-4 sm:px-6" aria-label="Vos favoris">
-      <p className="text-sm font-bold">♥ {selected.length} favoris{maxSelections ? ' / ' + maxSelections : ''}</p>
+      <p className="text-sm font-bold">♥ {selected.length} favori{selected.length > 1 ? 's' : ''}{maxSelections ? ' / ' + maxSelections : ''}</p>
       <div className="flex flex-wrap items-center gap-2">
-        {eligibleItems.length >= 3 && <button type="button" onClick={() => setSurveyItem(eligibleItems.find((item) => item.id === priceSurvey?.itemId) ?? eligibleItems[eligibleItems.length - 1])} className="rounded-full bg-[#e9e1fa] px-4 py-2.5 text-sm font-bold">{priceSurvey?.status === 'answered' || priceSurvey?.status === 'unsure' ? 'Modifier ma réponse sur le prix' : 'Donner mon avis sur le prix'}</button>}
+        {eligibleItems.length > 0 && <details className="relative">
+          <summary className="cursor-pointer rounded-full bg-[#e9e1fa] px-4 py-2.5 text-sm font-bold">Mes réponses sur les prix</summary>
+          <div className="absolute right-0 top-full z-20 mt-2 w-72 space-y-1 rounded-2xl border border-stone-200 bg-white p-2 shadow-xl">
+            {eligibleItems.map((item) => <button key={item.garment.id} type="button" onClick={(event) => { event.currentTarget.closest('details')?.removeAttribute('open'); setSurveyItem(item); }} className="block w-full rounded-xl px-3 py-3 text-left text-sm font-bold hover:bg-stone-100">{priceAnswers[item.garment.id] && priceAnswers[item.garment.id].status !== 'skipped' ? 'Modifier' : 'Répondre'} · {item.garment.label.fr}</button>)}
+          </div>
+        </details>}
         <button type="button" onClick={() => void share()} className="rounded-full border border-stone-200 bg-white px-4 py-2.5 text-sm font-bold">{shareLabel}</button>
       </div>
     </div>
-    {surveyItem && <PriceSurveyDialog item={surveyItem} previous={priceSurvey} onSave={savePriceSurvey} onDismiss={() => setSurveyItem(null)} />}
+    {surveyItem && <PriceSurveyDialog key={surveyItem.garment.id} item={surveyItem} previous={priceAnswers[surveyItem.garment.id] ?? null} onSave={savePriceSurvey} onDismiss={() => setSurveyItem(null)} />}
 
     {product && variant ? <>
       <section className="mx-auto max-w-7xl px-4 pb-14 pt-6 sm:px-6 sm:pt-10">
@@ -325,7 +334,7 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
     </> : currentProductId ? <section className="mx-auto max-w-3xl px-6 py-24 text-center"><h1 className="text-3xl font-black">Ce modèle n’est plus dans la collection.</h1><button type="button" onClick={() => showCollection(true)} className="mt-6 rounded-full bg-[#201c19] px-6 py-3 font-bold text-white">Voir la collection</button></section> : <>
       <section className="mx-auto max-w-7xl px-4 pb-8 pt-10 sm:px-6 sm:pt-16">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-          <div><p className="text-sm font-bold uppercase tracking-[0.18em] text-[#96682f]">Des petits dessins. Beaucoup de caractère.</p><h1 className="mt-3 text-4xl font-black tracking-tight sm:text-6xl">À chacun son coup de cœur.</h1><p className="mt-5 max-w-2xl text-lg leading-relaxed text-stone-600">Choisissez un vêtement, trouvez votre dessin, puis explorez ses couleurs. Une page par modèle, toutes ses possibilités.</p></div>
+          <div><p className="text-sm font-bold uppercase tracking-[0.18em] text-[#96682f]">Des petits dessins. Beaucoup de caractère.</p><h1 className="mt-3 text-4xl font-black tracking-tight sm:text-6xl">À chacun son coup de cœur.</h1><p className="mt-5 max-w-2xl text-lg leading-relaxed text-stone-600">Choisissez un vêtement, trouvez votre dessin, puis explorez ses couleurs. Chaque cœur compte, sans minimum de choix. Répondez aux questions sur le prix seulement si vous le souhaitez.</p></div>
           <div className="shrink-0 text-sm text-stone-500"><p><strong className="text-2xl text-[#201c19]">{products.length}</strong> modèles · {designCount} dessins</p><p className="mt-2" role="status" aria-live="polite">{status}</p></div>
         </div>
         {newDesignCount > 0 && <div className="mt-8 flex flex-col justify-between gap-4 rounded-3xl bg-[#e9e1fa] p-5 sm:flex-row sm:items-center sm:p-6"><div><p className="font-black">Les nouveautés V3 sont là.</p><p className="mt-1 text-base text-[#594276]">{newDesignCount} nouveaux dessins, à découvrir dans toutes leurs couleurs.</p></div><button type="button" onClick={() => { updateFilter('type', 'all'); updateFilter('collection', 'nouveautes-v3'); updateFilter('theme', 'all'); updateFilter('q', ''); }} className="shrink-0 rounded-full bg-[#201c19] px-5 py-3 text-sm font-bold text-white">Voir les nouveautés</button></div>}

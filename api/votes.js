@@ -38,6 +38,10 @@ function adminSecret() {
   return process.env.ADMIN_PASSWORD || process.env.RESULTS_KEY || '';
 }
 
+function adminEmail() {
+  return (process.env.ADMIN_EMAIL || '').trim().toLowerCase();
+}
+
 function safelyMatches(supplied, expected) {
   const suppliedBuffer = Buffer.from(supplied);
   const expectedBuffer = Buffer.from(expected);
@@ -49,7 +53,7 @@ function safelyMatches(supplied, expected) {
 
 function adminSignature(secret, expiresAt) {
   return createHmac('sha256', secret)
-    .update(`gaminet-gamin-admin:${expiresAt}`)
+    .update(`gaminet-gamin-admin:v2:admin:${adminEmail()}:${expiresAt}`)
     .digest('base64url');
 }
 
@@ -70,7 +74,7 @@ function cookieValue(request, name) {
 
 function hasAdminSession(request) {
   const secret = adminSecret();
-  if (!secret) return false;
+  if (!secret || !adminEmail()) return false;
   const [rawExpiry, signature] = cookieValue(request, adminCookieName).split('.');
   const expiresAt = Number(rawExpiry);
   if (
@@ -125,6 +129,11 @@ async function getPool() {
         UNIQUE (campaign_id, voter_id)
       );
       ALTER TABLE gaminet_ballots ADD COLUMN IF NOT EXISTS price_survey JSONB;
+      CREATE TABLE IF NOT EXISTS gaminet_login_attempts (
+        attempt_key TEXT PRIMARY KEY,
+        attempts INTEGER NOT NULL,
+        window_started_at BIGINT NOT NULL
+      );
     `)
     .then(() => undefined)
     .catch((error) => {
@@ -162,6 +171,48 @@ async function redisCommand(command) {
     throw new Error(body.error || 'Le stockage des votes est indisponible.');
   }
   return body.result;
+}
+
+const loginWindowMs = 15 * 60 * 1000;
+
+async function consumeLoginAttempt(request, email) {
+  // Vercel overwrites x-forwarded-for. Direct local requests use their socket IP.
+  const ip = process.env.VERCEL
+    ? queryValue(request.headers?.['x-forwarded-for']).split(',')[0].trim()
+    : request.socket?.remoteAddress || 'local';
+  const keys = ['ip:' + ip, 'email:' + email].map((scope) =>
+    'gg:login:' + createHmac('sha256', adminSecret()).update(scope).digest('hex'));
+  const database = await getPool();
+  const now = Date.now();
+  const attempts = [];
+  if (database) {
+    await database.query('DELETE FROM gaminet_login_attempts WHERE window_started_at < $1', [now - loginWindowMs]);
+  }
+  for (const key of keys) {
+    if (database) {
+      const result = await database.query(`
+        INSERT INTO gaminet_login_attempts (attempt_key, attempts, window_started_at)
+        VALUES ($1, 1, $2)
+        ON CONFLICT (attempt_key) DO UPDATE SET
+          attempts = CASE WHEN gaminet_login_attempts.window_started_at <= $2 - $3 THEN 1 ELSE gaminet_login_attempts.attempts + 1 END,
+          window_started_at = CASE WHEN gaminet_login_attempts.window_started_at <= $2 - $3 THEN $2 ELSE gaminet_login_attempts.window_started_at END
+        RETURNING attempts, window_started_at`, [key, now, loginWindowMs]);
+      attempts.push({ count: Number(result.rows[0].attempts), remaining: Number(result.rows[0].window_started_at) + loginWindowMs - now });
+    } else {
+      const [count, remaining] = await redisCommand(['EVAL',
+        "local n=redis.call('INCR',KEYS[1]); if n==1 then redis.call('PEXPIRE',KEYS[1],ARGV[1]) end; return {n,redis.call('PTTL',KEYS[1])}",
+        1, key, loginWindowMs]);
+      attempts.push({ count: Number(count), remaining: Number(remaining) });
+    }
+  }
+  const blocked = attempts.filter((attempt, index) => attempt.count > (index === 0 ? 20 : 5));
+  return { keys, retryAfter: blocked.length ? Math.max(1, Math.ceil(Math.max(...blocked.map((attempt) => attempt.remaining)) / 1000)) : 0 };
+}
+
+async function clearLoginAttempts(keys) {
+  const database = await getPool();
+  if (database) await database.query('DELETE FROM gaminet_login_attempts WHERE attempt_key = ANY($1::text[])', [keys]);
+  else await redisCommand(['DEL', ...keys]);
 }
 
 function ballotKey(campaignId, voterId) {
@@ -288,9 +339,9 @@ async function handleGet(request, response) {
   if (mode !== 'results') {
     return send(response, 400, { error: 'Mode inconnu.' });
   }
-  if (!adminSecret()) {
+  if (!adminSecret() || !adminEmail()) {
     return send(response, 503, {
-      error: 'Le mot de passe administrateur n’est pas configuré.',
+      error: 'L’accès administrateur n’est pas encore configuré.',
     });
   }
   if (!hasAdminSession(request)) {
@@ -308,17 +359,24 @@ async function handlePost(request, response) {
 
   if (body.action === 'admin-login') {
     const secret = adminSecret();
-    if (!secret) {
+    if (!secret || !adminEmail()) {
       return send(response, 503, {
-        error: 'Le mot de passe administrateur n’est pas configuré.',
+        error: 'L’accès administrateur n’est pas encore configuré.',
       });
     }
     const password = typeof body.password === 'string' && body.password.length <= 1024
       ? body.password
       : '';
-    if (!safelyMatches(password, secret)) {
-      return send(response, 401, { error: 'Mot de passe incorrect.' });
+    const email = typeof body.email === 'string' && body.email.length <= 254 ? body.email.trim().toLowerCase() : '';
+    const attempt = await consumeLoginAttempt(request, email);
+    if (attempt.retryAfter) {
+      response.setHeader('Retry-After', String(attempt.retryAfter));
+      return send(response, 429, { error: 'Trop de tentatives. Réessayez dans quelques minutes.' });
     }
+    const passwordMatches = safelyMatches(password, secret);
+    const emailMatches = safelyMatches(email, adminEmail());
+    if (!passwordMatches || !emailMatches) return send(response, 401, { error: 'Courriel ou mot de passe incorrect.' });
+    await clearLoginAttempts(attempt.keys);
     startAdminSession(request, response);
     return send(response, 200, { success: true });
   }
@@ -341,13 +399,12 @@ async function handlePost(request, response) {
   }
   if (body.action === 'price-survey') {
     const existing = await readBallot(campaignId, voterId);
-    const { validPriceSurvey } = await import('../artifacts/gaminet-gamin-vote/lib/price-survey.mjs');
+    const { validPriceSurvey, mergePriceSurvey } = await import('../artifacts/gaminet-gamin-vote/lib/price-survey.mjs');
     if (!existing || !validPriceSurvey(body.priceSurvey, existing.selectedItemIds, catalog.items)) {
-      return send(response, 400, { error: 'Aimez au moins trois modèles de chandails et indiquez un prix valide.' });
+      return send(response, 400, { error: 'Choisissez un modèle aimé et une réponse valide pour ce type de vêtement.' });
     }
-    const { version, status, itemId, garmentId, amount, currency, charity } = body.priceSurvey;
     const now = Date.now();
-    await saveBallot(campaignId, voterId, { ...existing, priceSurvey: { version, status, itemId, garmentId, amount, currency, charity }, updatedAt: now });
+    await saveBallot(campaignId, voterId, { ...existing, priceSurvey: mergePriceSurvey(existing.priceSurvey, body.priceSurvey), updatedAt: now });
     return send(response, 200, { success: true, updatedAt: now });
   }
   if (body.action) return send(response, 400, { error: 'Action inconnue.' });

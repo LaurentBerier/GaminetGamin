@@ -11,6 +11,7 @@ const models = [
   ).values(),
 ].slice(0, 4);
 const ids = models.map((item) => item.id);
+const hoodie = catalog.items.find(item => item.active && item.garment.id === "hoodie");
 const answer = {
   version: 1,
   status: "answered",
@@ -29,6 +30,8 @@ for (const backend of ["postgres", "redis"])
     const rows = new Map();
     const values = new Map();
     const sets = new Map();
+    const attempts = new Map();
+    process.env.ADMIN_EMAIL = "admin@example.test";
     process.env.ADMIN_PASSWORD = "local-test-password";
     delete process.env.DATABASE_URL;
     if (backend === "postgres")
@@ -37,12 +40,25 @@ for (const backend of ["postgres", "redis"])
       process.env.KV_REST_API_URL = "https://redis.invalid";
       process.env.KV_REST_API_TOKEN = "local-test";
     }
-    Module._load = function (name, ...args) {
+    const mockLoad = function (name, ...args) {
       if (name === "pg")
         return {
           Pool: class {
             async query(sql, params = []) {
               if (sql.includes("CREATE TABLE")) return { rows: [] };
+              if (sql.includes("gaminet_login_attempts")) {
+                if (sql.includes("INSERT")) {
+                  const previous = attempts.get(params[0]);
+                  const row = previous && previous.window_started_at > params[1] - params[2]
+                    ? { ...previous, attempts: previous.attempts + 1 }
+                    : { attempts: 1, window_started_at: params[1] };
+                  attempts.set(params[0], row);
+                  return { rows: [row] };
+                }
+                if (sql.includes("ANY")) for (const key of params[0]) attempts.delete(key);
+                else for (const [key, row] of attempts) if (row.window_started_at < params[0]) attempts.delete(key);
+                return { rows: [] };
+              }
               const key = params[0] + ":" + params[1];
               if (sql.includes("INSERT"))
                 rows.set(key, {
@@ -69,8 +85,10 @@ for (const backend of ["postgres", "redis"])
         };
       return originalLoad.call(this, name, ...args);
     };
+    Module._load = mockLoad;
     global.fetch = async (_url, options) => {
-      const [command, key, value] = JSON.parse(options.body);
+      const args = JSON.parse(options.body);
+      const [command, key, value] = args;
       let result = null;
       if (command === "GET") result = values.get(key) ?? null;
       if (command === "SET") {
@@ -87,7 +105,14 @@ for (const backend of ["postgres", "redis"])
         result = JSON.parse(options.body)
           .slice(1)
           .map((key) => values.get(key) ?? null);
-      if (command === "DEL") values.delete(key);
+      if (command === "EVAL") {
+        const counterKey = args[3];
+        const row = attempts.get(counterKey) ?? { attempts: 0, window_started_at: Date.now() };
+        row.attempts += 1;
+        attempts.set(counterKey, row);
+        result = [row.attempts, args[4]];
+      }
+      if (command === "DEL") for (const deleted of args.slice(1)) { values.delete(deleted); attempts.delete(deleted); }
       if (command === "SREM") sets.get(key)?.delete(value);
       return { ok: true, json: async () => ({ result }) };
     };
@@ -125,33 +150,40 @@ for (const backend of ["postgres", "redis"])
       request({ method: "GET", query: { ...base, mode: "ballot" } });
     try {
       assert.equal((await survey(answer)).statusCode, 400);
-      await vote(ids.slice(0, 2));
-      assert.equal((await survey(answer)).statusCode, 400);
+      await vote(ids.slice(0, 1));
+      assert.equal((await survey(answer)).statusCode, 200);
       await vote(ids.slice(0, 3));
       assert.equal((await survey({ ...answer, amount: -1 })).statusCode, 400);
       assert.equal((await survey(answer)).statusCode, 200);
       await vote(ids);
       let saved = (await ballot()).body.ballot;
       assert.deepEqual(saved.selectedItemIds, ids);
-      assert.equal(saved.priceSurvey.amount, 39.5);
+      assert.equal(saved.priceSurvey.byGarment.tshirt.amount, 39.5);
       await survey({ ...answer, amount: 45 });
       saved = (await ballot()).body.ballot;
-      assert.equal(saved.priceSurvey.amount, 45);
+      assert.equal(saved.priceSurvey.byGarment.tshirt.amount, 45);
       assert.deepEqual(saved.selectedItemIds, ids);
+      await vote([...ids, hoodie.id]);
+      assert.equal((await survey({ ...answer, version: 2, itemId: hoodie.id, garmentId: "hoodie", amount: 70, answerSource: "choice" })).statusCode, 200);
+      saved = (await ballot()).body.ballot;
+      assert.equal(saved.priceSurvey.byGarment.tshirt.amount, 45);
+      assert.equal(saved.priceSurvey.byGarment.hoodie.amount, 70);
       const query = { mode: "results", campaignId: catalog.campaign.id };
       assert.equal((await request({ method: "GET", query })).statusCode, 401);
       assert.equal(
         (
           await request({
             method: "POST",
-            body: { action: "admin-login", password: "wrong" },
+            body: { action: "admin-login", email: process.env.ADMIN_EMAIL, password: "wrong" },
           })
         ).statusCode,
         401,
       );
+      assert.equal((await request({ method: "POST", body: { action: "admin-login", password: process.env.ADMIN_PASSWORD } })).statusCode, 401);
+      assert.equal((await request({ method: "POST", body: { action: "admin-login", email: "stranger@example.test", password: process.env.ADMIN_PASSWORD } })).statusCode, 401);
       const login = await request({
         method: "POST",
-        body: { action: "admin-login", password: process.env.ADMIN_PASSWORD },
+        body: { action: "admin-login", email: " ADMIN@EXAMPLE.TEST ", password: process.env.ADMIN_PASSWORD },
         headers: { "x-forwarded-proto": "https" },
       });
       assert.equal(login.statusCode, 200);
@@ -163,13 +195,24 @@ for (const backend of ["postgres", "redis"])
         query,
         headers: { cookie },
       });
-      assert.equal(result.body.priceSurvey.responses, 1);
+      assert.equal(result.body.priceSurvey.responses, 2);
+      assert.equal(result.body.priceSurvey.respondents, 1);
+      assert.equal(result.body.participants, 1);
+      assert.equal(result.body.totalVotes, ids.length + 1);
+      assert.equal(result.body.priceSurvey.garments.hoodie.amounts["70"], 1);
       assert.equal(result.body.priceSurvey.garments.tshirt.amounts["45"], 1);
       assert.equal(
         result.body.priceSurvey.garments.tshirt.amounts["39.5"],
         undefined,
       );
-      assert.equal(result.body.groups.test.priceSurvey.responses, 1);
+      assert.equal(result.body.groups.test.priceSurvey.responses, 2);
+      const oldExpiry = Date.now() + 60_000;
+      const oldSignature = createHmac("sha256", process.env.ADMIN_PASSWORD)
+        .update(`gaminet-gamin-admin:${oldExpiry}`).digest("base64url");
+      assert.equal((await request({ method: "GET", query, headers: { cookie: `gg_admin=${oldExpiry}.${oldSignature}` } })).statusCode, 401);
+      process.env.ADMIN_EMAIL = "changed@example.test";
+      assert.equal((await request({ method: "GET", query, headers: { cookie } })).statusCode, 401);
+      process.env.ADMIN_EMAIL = "admin@example.test";
       assert.equal(
         (
           await request({
@@ -182,7 +225,7 @@ for (const backend of ["postgres", "redis"])
       );
       const expiry = Date.now() - 1000;
       const signature = createHmac("sha256", process.env.ADMIN_PASSWORD)
-        .update(`gaminet-gamin-admin:${expiry}`)
+        .update(`gaminet-gamin-admin:v2:admin:${process.env.ADMIN_EMAIL}:${expiry}`)
         .digest("base64url");
       assert.equal(
         (
@@ -200,7 +243,23 @@ for (const backend of ["postgres", "redis"])
       });
       assert.match(logout.headers["Set-Cookie"], /Max-Age=0/);
       await survey({ ...answer, status: "skipped", amount: null });
-      assert.equal((await ballot()).body.ballot.priceSurvey.status, "skipped");
+      assert.equal((await ballot()).body.ballot.priceSurvey.byGarment.tshirt.status, "skipped");
+      assert.equal((await ballot()).body.ballot.priceSurvey.byGarment.hoodie.amount, 70);
+      // The limit survives a fresh server handler, using the shared database.
+      for (let i = 0; i < 5; i++) {
+        assert.equal((await request({ method: "POST", body: { action: "admin-login", email: process.env.ADMIN_EMAIL, password: "wrong" } })).statusCode, 401);
+      }
+      delete require.cache[require.resolve("../api/votes.js")];
+      Module._load = mockLoad;
+      const restartedHandler = require("../api/votes.js");
+      Module._load = originalLoad;
+      const blocked = { headers: {}, setHeader(k, v) { this.headers[k] = v; }, end(body) { this.body = JSON.parse(body); } };
+      await restartedHandler({ method: "POST", body: { action: "admin-login", email: process.env.ADMIN_EMAIL, password: process.env.ADMIN_PASSWORD } }, blocked);
+      assert.equal(blocked.statusCode, 429);
+      assert.ok(Number(blocked.headers["Retry-After"]) > 0);
+      delete process.env.ADMIN_EMAIL;
+      assert.equal((await request({ method: "GET", query, headers: { cookie } })).statusCode, 503);
+      process.env.ADMIN_EMAIL = "admin@example.test";
       await vote([]);
       assert.equal((await ballot()).body.ballot, null);
       delete process.env.ADMIN_PASSWORD;

@@ -92,14 +92,15 @@ function LoginScreen({
 }: {
   error: string;
   isSubmitting: boolean;
-  onLogin: (password: string) => Promise<void>;
+  onLogin: (email: string, password: string) => Promise<void>;
 }) {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    void onLogin(password);
+    void onLogin(email, password);
   };
 
   return (
@@ -117,6 +118,8 @@ function LoginScreen({
         </p>
 
         <form onSubmit={submit} className="mt-8">
+          <label htmlFor="admin-email" className="block text-sm font-bold text-stone-700">Adresse courriel</label>
+          <input id="admin-email" name="email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="username" autoCapitalize="none" spellCheck={false} autoFocus required className="mb-5 mt-2 w-full rounded-2xl border border-black/10 bg-white px-4 py-4 font-bold outline-none transition focus:border-[#b77832] focus:ring-4 focus:ring-[#b77832]/10" />
           <label htmlFor="admin-password" className="text-xs font-black uppercase tracking-[0.14em] text-black/50">
             Mot de passe administrateur
           </label>
@@ -127,7 +130,6 @@ function LoginScreen({
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               autoComplete="current-password"
-              autoFocus
               required
               className="w-full rounded-2xl border border-black/10 bg-white py-4 pl-4 pr-14 font-bold outline-none transition focus:border-[#b77832] focus:ring-4 focus:ring-[#b77832]/10"
             />
@@ -147,7 +149,7 @@ function LoginScreen({
           )}
           <button
             type="submit"
-            disabled={!password || isSubmitting}
+            disabled={!email || !password || isSubmitting}
             className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-[#201c19] px-5 py-4 font-black text-white transition hover:bg-[#4a7a5e] disabled:cursor-not-allowed disabled:opacity-45"
           >
             {isSubmitting && <RefreshCw size={17} className="animate-spin" aria-hidden="true" />}
@@ -229,7 +231,7 @@ export default function AdminDashboardPage() {
     return () => window.clearInterval(interval);
   }, [access, loadResults]);
 
-  const login = async (password: string) => {
+  const login = async (email: string, password: string) => {
     setIsSubmitting(true);
     setError('');
     try {
@@ -237,7 +239,7 @@ export default function AdminDashboardPage() {
         method: 'POST',
         credentials: 'same-origin',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'admin-login', password }),
+        body: JSON.stringify({ action: 'admin-login', email, password }),
       });
       const body = await readJson<Record<string, never>>(response);
       if (!response.ok) throw new Error(body.error || 'Connexion impossible.');
