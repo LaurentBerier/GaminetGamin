@@ -1,5 +1,6 @@
 import { CharityCommitment } from "@/components/CharityCommitment";
 import { useLang } from "@/contexts/LangContext";
+import { ArtworkAccent } from "../../../gaminet-gamin-vote/app/components/ArtworkAccent";
 
 export default function AproposPage() {
   const { t } = useLang();
@@ -48,7 +49,8 @@ export default function AproposPage() {
         ))}
       </div>
 
-      <div className="mt-20 bg-amber-50 border border-amber-100 rounded-3xl p-10 text-center">
+      <div className="relative mt-28 bg-amber-50 border border-amber-100 rounded-3xl px-6 pb-10 pt-16 text-center sm:px-10">
+        <ArtworkAccent name="chat" className="absolute -top-16 left-1/2 w-32 -translate-x-1/2 -rotate-6" />
         <p className="text-3xl sm:text-4xl font-black text-stone-900 uppercase tracking-tight" style={{ fontFamily: "'Nunito', sans-serif" }}>
           {t.home.slogan}
         </p>

@@ -6,6 +6,7 @@ import { garmentNames, garmentOrder, groupProducts, productId, productUrl, relat
 import type { CatalogItem, ProductGroup } from './grouping';
 import { ProductImage } from './ProductImage';
 import { SiteHeader } from '../SiteHeader';
+import { ArtworkAccent } from '../ArtworkAccent';
 import { PriceSurveyDialog } from './PriceSurveyDialog';
 import { surveyEligibleItems, priceSurveysByGarment, mergePriceSurvey } from '../../../lib/price-survey.mjs';
 import type { PriceSurvey, StoredPriceSurvey } from '../../../lib/price-survey.mjs';
@@ -292,7 +293,7 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
         </nav>
         <div className="grid items-start gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-14">
           <ProductImage key={variant.id} src={variant.image} alt={product.title + ' — ' + variant.garment.label.fr + ' ' + variant.color.label.fr} />
-          <div className="lg:sticky lg:top-36">
+          <div className="lg:sticky" style={{ top: 'calc(var(--site-masthead-height, 8rem) + 1rem)' }}>
             <p className="text-sm font-black uppercase tracking-[0.16em] text-[#96682f]">{variant.garment.label.fr}{product.designId.startsWith('V3_') ? ' · Nouveauté' : ''}</p>
             <h1 ref={productHeading} tabIndex={-1} className="mt-3 text-4xl font-black leading-tight tracking-tight outline-none sm:text-5xl">{product.title}</h1>
             <p className="mt-5 text-base leading-relaxed text-stone-600">Un dessin d’enfant, tout son caractère. Choisissez votre couleur préférée et aidez-nous à lui faire une place dans la prochaine collection.</p>
@@ -335,7 +336,7 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
       <section className="mx-auto max-w-7xl px-4 pb-8 pt-10 sm:px-6 sm:pt-16">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div><p className="text-sm font-bold uppercase tracking-[0.18em] text-[#96682f]">Des petits dessins. Beaucoup de caractère.</p><h1 className="mt-3 text-4xl font-black tracking-tight sm:text-6xl">À chacun son coup de cœur.</h1><p className="mt-5 max-w-2xl text-lg leading-relaxed text-stone-600">Choisissez un vêtement, trouvez votre dessin, puis explorez ses couleurs. Chaque cœur compte, sans minimum de choix. Répondez aux questions sur le prix seulement si vous le souhaitez.</p></div>
-          <div className="shrink-0 text-sm text-stone-500"><p><strong className="text-2xl text-[#201c19]">{products.length}</strong> modèles · {designCount} dessins</p><p className="mt-2" role="status" aria-live="polite">{status}</p></div>
+          <div className="flex shrink-0 items-center gap-4 text-sm text-stone-500 lg:max-w-xs lg:flex-col lg:items-start"><ArtworkAccent name="chat" eager className="w-24 -rotate-6 lg:w-32" /><div><p><strong className="text-2xl text-[#201c19]">{products.length}</strong> modèles · {designCount} dessins</p><p className="mt-2" role="status" aria-live="polite">{status}</p></div></div>
         </div>
         {newDesignCount > 0 && <div className="mt-8 flex flex-col justify-between gap-4 rounded-3xl bg-[#e9e1fa] p-5 sm:flex-row sm:items-center sm:p-6"><div><p className="font-black">Les nouveautés V3 sont là.</p><p className="mt-1 text-base text-[#594276]">{newDesignCount} nouveaux dessins, à découvrir dans toutes leurs couleurs.</p></div><button type="button" onClick={() => { updateFilter('type', 'all'); updateFilter('collection', 'nouveautes-v3'); updateFilter('theme', 'all'); updateFilter('q', ''); }} className="shrink-0 rounded-full bg-[#201c19] px-5 py-3 text-sm font-bold text-white">Voir les nouveautés</button></div>}
       </section>

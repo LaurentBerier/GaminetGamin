@@ -1,6 +1,6 @@
-import { CharityCommitment } from "@/components/CharityCommitment";
+import { ArtworkAccent } from "../../../gaminet-gamin-vote/app/components/ArtworkAccent";
 import { Link } from "wouter";
-import { ArrowRight, Heart, Pencil, Sparkles } from "lucide-react";
+import { ArrowRight, Heart, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useLang, type Lang } from "@/contexts/LangContext";
 import catalog from "../../../gaminet-gamin-vote/content/catalog.json";
@@ -136,7 +136,6 @@ export default function HomePage() {
 
   return (
     <main className="overflow-hidden bg-[#f7f3eb]">
-      <CharityCommitment compact />
       <section className="relative border-b border-black/10" data-testid="hero-section">
         <div className="absolute -left-20 top-24 h-72 w-72 rounded-full bg-[#ef8db7]/25 blur-3xl" />
         <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-[#56c9c5]/25 blur-3xl" />
@@ -197,6 +196,7 @@ export default function HomePage() {
           </div>
 
           <div className="relative mx-auto w-full max-w-2xl lg:mx-0">
+            <ArtworkAccent name="lapinou" eager className="absolute -right-2 -top-16 z-20 w-24 rotate-6 sm:-top-20 sm:w-32" />
             <div className="absolute -left-4 top-[18%] z-20 rotate-[-8deg] rounded-full bg-[#dce77d] px-4 py-2 text-xs font-black uppercase tracking-[0.1em] shadow-lg">
               {pageCopy.vote} ♥
             </div>
@@ -319,9 +319,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-5 py-9 sm:px-8">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#c8914a]/20">
-                <Pencil size={22} className="text-[#9c682f]" />
-              </div>
+              <ArtworkAccent name="monstru" className="w-20 -rotate-6 sm:w-24" />
               <div>
                 <h3 className="text-lg font-black text-[#201c19]" style={{ fontFamily: "'Nunito', sans-serif" }}>{t.home.programme_titre}</h3>
                 <p className="max-w-lg text-sm text-black/55">{t.home.programme_texte}</p>

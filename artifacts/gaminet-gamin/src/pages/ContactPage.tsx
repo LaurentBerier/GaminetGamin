@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLang } from "@/contexts/LangContext";
 import { Instagram, Mail } from "lucide-react";
+import { ArtworkAccent } from "../../../gaminet-gamin-vote/app/components/ArtworkAccent";
 
 export default function ContactPage() {
   const { t } = useLang();
@@ -14,12 +15,15 @@ export default function ContactPage() {
 
   return (
     <main className="max-w-4xl mx-auto px-4 sm:px-6 py-20" data-testid="contact-page">
-      <div className="mb-12">
+      <div className="mb-12 flex items-center justify-between gap-4">
+        <div>
         <h1 className="text-4xl sm:text-5xl font-black text-stone-900 uppercase tracking-tight mb-3" style={{ fontFamily: "'Nunito', sans-serif" }} data-testid="contact-title">
           {t.contact.titre}
         </h1>
         <p className="text-stone-500 text-lg mb-4">{t.contact.sous_titre}</p>
         <div className="h-1 w-16 bg-gg-gold rounded-full" />
+        </div>
+        <ArtworkAccent name="egg" eager className="w-20 rotate-6 sm:w-36" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-5 gap-12">

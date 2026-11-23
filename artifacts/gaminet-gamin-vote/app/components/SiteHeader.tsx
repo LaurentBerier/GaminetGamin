@@ -46,12 +46,14 @@ export function SiteHeader({
   lang = "fr",
   location = "/fr/boutique",
   standalone = false,
+  sticky = true,
   onNavigate,
   onLanguageChange,
 }: {
   lang?: Lang;
   location?: string;
   standalone?: boolean;
+  sticky?: boolean;
   onNavigate?: (href: string) => void;
   onLanguageChange?: (lang: Lang) => void;
 }) {
@@ -105,7 +107,7 @@ export function SiteHeader({
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-stone-200 bg-stone-50/95 text-stone-900 backdrop-blur-sm"
+      className={(sticky ? 'sticky top-0 ' : 'relative ') + 'z-50 border-b border-stone-200 bg-stone-50/95 text-stone-900 backdrop-blur-sm'}
       data-testid="header"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6">

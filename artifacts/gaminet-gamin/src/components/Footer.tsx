@@ -1,6 +1,7 @@
 import { useLang } from "@/contexts/LangContext";
 import { Link } from "wouter";
 import { Instagram } from "lucide-react";
+import { ArtworkParade } from "../../../gaminet-gamin-vote/app/components/ArtworkAccent";
 
 export function Footer() {
   const { lang, t } = useLang();
@@ -9,8 +10,9 @@ export function Footer() {
   const homeRoute = lang === "fr" ? "/fr" : lang === "en" ? "/en" : "/es";
 
   return (
-    <footer className="bg-stone-900 text-stone-300 mt-24" data-testid="footer">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <footer className="relative mt-32 bg-stone-900 text-stone-300" data-testid="footer">
+      <div className="relative -top-16 -mb-16 sm:-top-20 sm:-mb-20"><ArtworkParade /></div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <Link

@@ -5,6 +5,7 @@ import soumissions from "@/data/soumissions-vedettes.json";
 import { useState, useRef } from "react";
 import { ArrowRight, Upload, CheckCircle2, ChevronDown, ChevronUp, Palette, Camera, Shirt, Heart } from "lucide-react";
 import type { Product } from "@/types/product";
+import { ArtworkAccent } from "../../../gaminet-gamin-vote/app/components/ArtworkAccent";
 
 type ArtistEntry = {
   id: string;
@@ -118,12 +119,7 @@ export default function ArtistesPage() {
 
       {/* ── HERO ── */}
       <section className="relative min-h-[65vh] flex items-center bg-gradient-to-br from-amber-50 via-stone-50 to-green-50 overflow-hidden" data-testid="pa-hero">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-10 right-12 text-9xl opacity-10 rotate-12">🎨</div>
-          <div className="absolute bottom-8 left-8 text-7xl opacity-10 -rotate-6">✏️</div>
-          <div className="absolute top-1/2 right-1/4 text-5xl opacity-10 rotate-45">⭐</div>
-        </div>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20 relative z-10 w-full">
+        <div className="max-w-6xl mx-auto grid items-center gap-10 px-4 sm:px-6 py-16 relative z-10 w-full lg:grid-cols-[1fr_240px]">
           <div className="max-w-2xl">
             <h1
               className="text-4xl sm:text-5xl md:text-6xl font-black text-stone-900 leading-tight tracking-tight mb-4 uppercase"
@@ -144,6 +140,10 @@ export default function ArtistesPage() {
               {pa.hero_cta}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </button>
+          </div>
+          <div className="flex items-end justify-center gap-5 lg:flex-col lg:items-center" aria-hidden="true">
+            <ArtworkAccent name="monstru" eager className="w-24 -rotate-6 sm:w-32 lg:w-40" />
+            <ArtworkAccent name="lapinou" eager className="w-24 rotate-6 sm:w-32 lg:-mt-6 lg:ml-20" />
           </div>
         </div>
       </section>
