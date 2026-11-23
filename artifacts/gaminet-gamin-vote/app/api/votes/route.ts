@@ -1,3 +1,4 @@
+import { summarizeBallots } from '../../../lib/vote-results.mjs';
 import { NextRequest, NextResponse } from 'next/server';
 import catalog from '../../../content/catalog.json';
 
@@ -171,33 +172,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const ballots = await readCampaignBallots(campaignId);
-    const itemCounts: Record<string, number> = {};
-    const groupCounts: Record<
-      string,
-      { participants: number; itemCounts: Record<string, number> }
-    > = {};
-    let lastVoteAt = 0;
-
-    for (const ballot of ballots) {
-      const group = ballot.voterGroup.trim() || 'Sans groupe';
-      groupCounts[group] ??= { participants: 0, itemCounts: {} };
-      groupCounts[group].participants += 1;
-      lastVoteAt = Math.max(lastVoteAt, ballot.updatedAt);
-      for (const itemId of ballot.selectedItemIds) {
-        if (!validItemIds.has(itemId)) continue;
-        itemCounts[itemId] = (itemCounts[itemId] ?? 0) + 1;
-        groupCounts[group].itemCounts[itemId] =
-          (groupCounts[group].itemCounts[itemId] ?? 0) + 1;
-      }
-    }
-
-    return json({
-      campaignId,
-      participants: ballots.length,
-      itemCounts,
-      groups: groupCounts,
-      lastVoteAt,
-    });
+    return json({ campaignId, ...summarizeBallots(ballots, catalog.items) });
   } catch (reason) {
     return storageError(reason);
   }

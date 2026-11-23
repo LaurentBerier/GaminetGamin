@@ -72,3 +72,20 @@ It preserves each campaign and asserts at least two colours per product.
 
 The portable `collections/zz-color-choices.json` extension is applied after V3
 when rebuilding either catalog. Do not replace ballot IDs or campaign settings.
+
+## Preference results
+
+Each saved product choice identifies an illustration (`designId`), colour
+(`color.id`) and garment (`garment.id`). `lib/vote-results.mjs` derives rankings
+from existing ballots without modifying their storage. A ballot contributes
+once per distinct illustration, colour and garment; liking two colours of the
+same illustration does not count as two illustration supporters. Exact product
+combination counts remain available separately.
+
+Results show illustrations first, colours second, and garments third. Selecting
+an illustration limits its colour and garment breakdown to choices with that
+illustration. Its denominator is the number of people who liked that drawing.
+Global rankings use all campaign participants; group views use only that group.
+Multiple preferences are allowed, so percentages may sum to more than 100%.
+The CSV export includes the three global rankings and each illustration's
+colour/garment breakdown. Existing results authentication stays in place.

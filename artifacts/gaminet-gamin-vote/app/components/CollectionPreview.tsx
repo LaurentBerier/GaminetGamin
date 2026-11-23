@@ -5,16 +5,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import catalog from '../../content/catalog.json';
 import { CollectionStorefront } from './catalog/CollectionStorefront';
 
-type ResultData = {
-  campaignId: string;
-  participants: number;
-  itemCounts: Record<string, number>;
-  groups: Record<
-    string,
-    { participants: number; itemCounts: Record<string, number> }
-  >;
-  lastVoteAt: number;
-};
+import { PreferenceResults } from './catalog/PreferenceResults';
+import type { VoteResults as ResultData } from '../../lib/vote-results.mjs';
 
 const activeItems = catalog.items.filter((item) => item.active);
 const itemById = new Map(activeItems.map((item) => [item.id, item]));
@@ -83,8 +75,10 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
   }, [resultsKey]);
 
   useEffect(() => {
+    const previousTitle = document.title;
+    document.title = 'Résultats des votes | Gaminet Gamin';
     const refreshTimer = window.setTimeout(() => void refresh(), 0);
-    return () => window.clearTimeout(refreshTimer);
+    return () => { window.clearTimeout(refreshTimer); document.title = previousTitle; };
   }, [refresh]);
 
   const currentParticipants =
@@ -147,8 +141,8 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
               <p className="text-xs font-bold uppercase tracking-[0.12em] text-black/55">Participants</p>
             </div>
             <div className="rounded-3xl bg-white px-6 py-5 shadow-sm">
-              <p className="text-4xl font-black">{ranked.length}</p>
-              <p className="text-xs font-bold uppercase tracking-[0.12em] text-black/45">Choix cités</p>
+              <p className="text-4xl font-black">{Object.keys((group === 'all' ? data : data?.groups[group])?.illustrationCounts ?? {}).length}</p>
+              <p className="text-xs font-bold uppercase tracking-[0.12em] text-black/45">Illustrations appréciées</p>
             </div>
           </div>
         </div>
@@ -175,6 +169,10 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
             {groupLinkCopied ? 'Lien copié' : 'Copier ce lien de groupe'}
           </button>
         </div>
+
+        <PreferenceResults items={catalog.items} summary={group === 'all' ? data : data?.groups[group]} groupLabel={group === 'all' ? 'Tous' : humanGroup(group)} />
+        <h2 className="mt-12 text-2xl font-black">Combinaisons illustration · couleur · vêtement</h2>
+        <p className="mt-2 text-base text-stone-600">Retrouvez aussi les modèles précis choisis, avec leur illustration, couleur et vêtement.</p>
 
         <div className="mt-5 grid grid-cols-2 gap-2 rounded-[1.6rem] border border-black/8 bg-white p-4 lg:grid-cols-[1fr_1fr_1fr_1.2fr_auto]">
           <select value={rankingTheme} onChange={(event) => setRankingTheme(event.target.value)} className="rounded-xl border border-black/10 bg-[#f7f3eb] px-3 py-3 text-xs font-bold outline-none focus:border-[#b77832]" aria-label="Classer par thème">
@@ -239,7 +237,8 @@ function ResultsDashboard({ resultsKey }: { resultsKey: string }) {
 }
 
 export function CollectionPreview() {
-  const [resultsKey] = useState(() => getUrlValue('results'));
+  const [resultsKey, setResultsKey] = useState('');
+  useEffect(() => { setResultsKey(getUrlValue('results')); }, []);
   if (resultsKey) return <ResultsDashboard resultsKey={resultsKey} />;
   return <CollectionStorefront catalog={catalog} standalone />;
 }

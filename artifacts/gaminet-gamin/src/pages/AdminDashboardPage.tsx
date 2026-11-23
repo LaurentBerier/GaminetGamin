@@ -17,17 +17,8 @@ import {
 } from 'lucide-react';
 import catalog from '../../../gaminet-gamin-vote/content/catalog.json';
 
-type ResultData = {
-  campaignId: string;
-  participants: number;
-  totalVotes: number;
-  itemCounts: Record<string, number>;
-  groups: Record<
-    string,
-    { participants: number; itemCounts: Record<string, number> }
-  >;
-  lastVoteAt: number;
-};
+import { PreferenceResults } from '../../../gaminet-gamin-vote/app/components/catalog/PreferenceResults';
+import type { VoteResults as ResultData } from '../../../gaminet-gamin-vote/lib/vote-results.mjs';
 
 type AccessState = 'checking' | 'signed-out' | 'signed-in';
 
@@ -349,7 +340,7 @@ export default function AdminDashboardPage() {
     return <LoginScreen error={error} isSubmitting={isSubmitting} onLogin={login} />;
   }
 
-  const citedChoices = Object.values(currentCounts).filter((count) => count > 0).length;
+  const citedChoices = Object.values((selectedGroup === 'all' ? data : groupSummary)?.illustrationCounts ?? {}).filter((count) => count > 0).length;
   const averageVotes = currentParticipants ? (currentTotalVotes / currentParticipants).toFixed(1).replace('.', ',') : '0';
   const bestScore = ranked[0]?.votes ?? 0;
 
@@ -388,7 +379,7 @@ export default function AdminDashboardPage() {
             </div>
           </div>
           <button onClick={exportResults} className="flex w-fit items-center gap-2 rounded-full bg-[#201c19] px-5 py-3 text-sm font-black text-white transition hover:bg-[#4a7a5e]">
-            <Download size={17} /> Exporter en CSV
+            <Download size={17} /> Exporter les combinaisons
           </button>
         </div>
 
@@ -417,7 +408,7 @@ export default function AdminDashboardPage() {
           <div className="rounded-[1.6rem] bg-white p-5 shadow-sm">
             <Trophy size={20} className="text-[#4a7a5e]" aria-hidden="true" />
             <p className="mt-5 text-4xl font-black">{citedChoices}</p>
-            <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-black/45">Modèles choisis</p>
+            <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-black/45">Illustrations appréciées</p>
           </div>
         </div>
 
@@ -450,29 +441,13 @@ export default function AdminDashboardPage() {
           ))}
         </div>
 
-        {ranked.some((entry) => entry.votes > 0) && (
-          <section className="mt-4 grid gap-3 md:grid-cols-3" aria-label="Palmarès">
-            {ranked.filter((entry) => entry.votes > 0).slice(0, 3).map(({ item, votes }, index) => (
-              <article key={item.id} className={`overflow-hidden rounded-[1.6rem] ${index === 0 ? 'bg-[#201c19] text-white' : 'border border-black/8 bg-white'}`}>
-                <div className="grid grid-cols-[104px_1fr] items-center">
-                  <img src={item.image} alt="" className="h-full min-h-32 w-full object-cover" />
-                  <div className="min-w-0 p-4">
-                    <p className={`text-[10px] font-black uppercase tracking-[0.14em] ${index === 0 ? 'text-[#dce77d]' : 'text-[#b77832]'}`}>#{index + 1} du classement</p>
-                    <h2 className="mt-2 truncate font-black">{item.title}</h2>
-                    <p className={`mt-1 truncate text-xs font-semibold ${index === 0 ? 'text-white/50' : 'text-black/45'}`}>{item.garment.label.fr}</p>
-                    <p className="mt-3 text-2xl font-black">{votes} <span className="text-xs">votes</span></p>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </section>
-        )}
+        <PreferenceResults items={catalog.items} summary={selectedGroup === 'all' ? data : groupSummary} groupLabel={selectedGroup === 'all' ? 'Tous' : humanGroup(selectedGroup)} />
 
         <section className="mt-6 overflow-hidden rounded-[2rem] border border-black/8 bg-white shadow-[0_12px_40px_rgba(53,45,36,0.08)]" aria-labelledby="ranking-title">
           <div className="flex flex-col gap-4 border-b border-black/8 p-5 sm:flex-row sm:items-end sm:justify-between sm:p-6">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#b77832]">Compilation complète</p>
-              <h2 id="ranking-title" className="mt-2 text-2xl font-black">Classements par thème, catégorie, couleur et collection</h2>
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-[#b77832]">Détail des modèles</p>
+              <h2 id="ranking-title" className="mt-2 text-2xl font-black">Combinaisons illustration · couleur · vêtement</h2>
             </div>
             <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-end">
               <select value={selectedTheme} onChange={(event) => setSelectedTheme(event.target.value)} className="rounded-full border border-black/10 bg-[#f7f3eb] px-4 py-3 text-sm font-bold outline-none focus:border-[#b77832]" aria-label="Filtrer par thème">

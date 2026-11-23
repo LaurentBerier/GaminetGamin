@@ -293,31 +293,8 @@ async function handleGet(request, response) {
   }
 
   const ballots = await readCampaignBallots(campaignId);
-  const itemCounts = {};
-  const groups = {};
-  let lastVoteAt = 0;
-  let totalVotes = 0;
-  for (const ballot of ballots) {
-    const group = ballot.voterGroup.trim() || 'Sans groupe';
-    groups[group] ??= { participants: 0, itemCounts: {} };
-    groups[group].participants += 1;
-    lastVoteAt = Math.max(lastVoteAt, ballot.updatedAt);
-    for (const itemId of ballot.selectedItemIds) {
-      if (!validItemIds.has(itemId)) continue;
-      totalVotes += 1;
-      itemCounts[itemId] = (itemCounts[itemId] ?? 0) + 1;
-      groups[group].itemCounts[itemId] =
-        (groups[group].itemCounts[itemId] ?? 0) + 1;
-    }
-  }
-  return send(response, 200, {
-    campaignId,
-    participants: ballots.length,
-    totalVotes,
-    itemCounts,
-    groups,
-    lastVoteAt,
-  });
+  const { summarizeBallots } = await import('../artifacts/gaminet-gamin-vote/lib/vote-results.mjs');
+  return send(response, 200, { campaignId, ...summarizeBallots(ballots, catalog.items) });
 }
 
 async function handlePost(request, response) {

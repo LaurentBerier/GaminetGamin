@@ -283,7 +283,7 @@ export function CollectionStorefront({ catalog, standalone = false }: { catalog:
             <p className="mt-3 text-center text-sm text-stone-600" role="status" aria-live="polite">{notice || status}</p>
             <div className="mt-8 rounded-2xl bg-[#e9e1fa] p-5">
               <p className="font-bold">C’est vous qui choisissez la suite.</p>
-              <p className="mt-2 text-sm leading-relaxed text-[#594276]">Ces modèles sont proposés au vote. Votre cœur concerne cette couleur précise. Vous pouvez aimer plusieurs coloris.</p>
+              <p className="mt-2 text-sm leading-relaxed text-[#594276]">Chaque cœur exprime trois préférences : l’illustration, la couleur et le type de vêtement. Un même dessin compte une seule fois par personne, même si vous aimez plusieurs versions.</p>
             </div>
           </div>
         </div>
